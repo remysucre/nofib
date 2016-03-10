@@ -10,7 +10,7 @@ import System.Environment
 import Control.Monad
 
 -- To keep it backward compatible with pre-Haskell 98 compilers..
-#define fail ioError
+-- #define fail ioError
 
 -- Picture handling:
 
@@ -110,7 +110,7 @@ main = do
     (year:n:_) <- getArgs
     replicateM_ (read n) (calFor year)
 
-calFor year | illFormed = fail (userError "Bad argument")
+calFor year | illFormed = ioError (userError "Bad argument")
             | otherwise = print (length (cal yr))
 			-- SDM: changed to print the length, otherwise
 			-- stdout file is too huge.
