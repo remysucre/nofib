@@ -1,0 +1,40 @@
+module Consts
+       (cylLen, cylLen2, cylRad, cylRad2, wgtCut, wgtCut2, ergCut, big,
+        small, nothing, scatter, escape, transit, numExit, numLev, numStat,
+        ne, nt, ns, nek, nwk, nr, nsp, nc, nnc, nrk, wrl, wrg)
+       where
+ 
+cylLen, cylLen2, cylRad, cylRad2, wgtCut, wgtCut2, ergCut, big,
+        small, nothing :: Double
+cylLen = 20.0
+cylLen2 = cylLen + 10.0
+cylRad = 1.0
+cylRad2 = cylRad * cylRad
+big = 100.0
+small = 1.0e-7
+nothing = -30.0
+wgtCut = 0.5
+wgtCut2 = wgtCut * wgtCut
+ergCut = 1.0e-3
+ 
+scatter, escape, transit, numExit, numLev, numStat :: Int
+ 
+ne, nt, ns, nek, nwk, nr, nsp, nc, nnc, nrk, wrl, wrg :: Int
+scatter = 1
+escape = 2
+transit = 3
+numExit = 3
+numLev = 35
+numStat = 12
+ne = 1
+nt = 2
+ns = 3
+nek = 4
+nwk = 5
+nr = 6
+nsp = 7
+nc = 8
+nnc = 9
+nrk = 10
+wrl = 11
+wrg = 12

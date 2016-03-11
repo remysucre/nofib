@@ -1,0 +1,38 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing +RTS -M140m -RTS
+==nofib== symalg: time to compile RealM follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c RealM.hs -o RealM.o
+<<ghc: 230038936 bytes, 57 GCs, 5750162/10759096 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.40 MUT (0.44 elapsed), 0.29 GC (0.30 elapsed) :ghc>>
+==nofib== symalg: size of RealM.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  16079	   1520	      0	  17599	   44bf	RealM.o
+==nofib== symalg: time to compile BasicNumber follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c BasicNumber.hs -o BasicNumber.o
+
+BasicNumber.hs:109:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!pi) = error "pi : Not yet implemented"
+
+BasicNumber.hs:113:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!cos) = error "cos : Not yet implemented"
+
+BasicNumber.hs:116:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!atan) = error "atan : Not yet implemented"
+<<ghc: 82675904 bytes, 28 GCs, 5575400/10564608 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.10 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
+make: *** [BasicNumber.o] Error 1
+==nofib== symalg: time to compile Lexer follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Lexer.hs -o Lexer.o
+<<ghc: 176310280 bytes, 45 GCs, 5507742/10082752 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.28 MUT (0.31 elapsed), 0.26 GC (0.26 elapsed) :ghc>>
+==nofib== symalg: size of Lexer.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  11304	    680	      0	  11984	   2ed0	Lexer.o
+==nofib== symalg: time to compile Op follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Op.hs -o Op.o
+<<ghc: 137687416 bytes, 63 GCs, 5044912/8392312 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.19 MUT (0.22 elapsed), 0.21 GC (0.21 elapsed) :ghc>>
+==nofib== symalg: size of Op.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   7225	   1304	      0	   8529	   2151	Op.o
+make: Target `default' not remade because of errors.

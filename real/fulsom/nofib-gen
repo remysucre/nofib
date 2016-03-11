@@ -1,0 +1,58 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing -stdout-binary
+==nofib== fulsom: time to compile Interval follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Interval.hs -o Interval.o
+
+Interval.hs:19:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!(<)) = ivLess
+
+Interval.hs:22:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!(>=)) = ivGrEq
+
+Interval.hs:23:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!min) = ivMin
+
+Interval.hs:24:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!max) = ivMax
+
+Interval.hs:28:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!(*)) = ivMult
+
+Interval.hs:31:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!signum) = ivSignum
+
+Interval.hs:37:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!fromRational) = ivFromRational
+
+Interval.hs:47:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!tan) = ivTan
+
+Interval.hs:48:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!asin) = ivAsin
+
+Interval.hs:51:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!sinh) = ivSinh
+
+Interval.hs:54:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!asinh) = ivAsinh
+<<ghc: 76584760 bytes, 30 GCs, 5277520/9600296 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.02 elapsed), 0.07 MUT (0.23 elapsed), 0.16 GC (0.33 elapsed) :ghc>>
+make: *** [Interval.o] Error 1
+==nofib== fulsom: time to compile Patchlevel follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Patchlevel.hs -o Patchlevel.o
+<<ghc: 63467744 bytes, 24 GCs, 3702488/6114096 avg/max bytes residency (3 samples), 31M in use, 0.00 INIT (0.03 elapsed), 0.07 MUT (0.37 elapsed), 0.12 GC (0.26 elapsed) :ghc>>
+==nofib== fulsom: size of Patchlevel.o follows...
+   text	   data	    bss	    dec	    hex	filename
+    106	     80	      0	    186	     ba	Patchlevel.o
+make: Target `default' not remade because of errors.

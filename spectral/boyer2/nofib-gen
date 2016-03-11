@@ -1,0 +1,65 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== boyer2: time to compile Lisplikefns follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Lisplikefns.hs -o Lisplikefns.o
+<<ghc: 246205232 bytes, 56 GCs, 5719856/10538216 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.40 MUT (0.80 elapsed), 0.25 GC (0.38 elapsed) :ghc>>
+==nofib== boyer2: size of Lisplikefns.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  19069	    952	      0	  20021	   4e35	Lisplikefns.o
+==nofib== boyer2: time to compile Checker follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Checker.hs -o Checker.o
+<<ghc: 119705712 bytes, 43 GCs, 5461962/10221672 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.03 elapsed), 0.18 MUT (0.37 elapsed), 0.20 GC (0.30 elapsed) :ghc>>
+==nofib== boyer2: size of Checker.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   5265	    120	      0	   5385	   1509	Checker.o
+==nofib== boyer2: time to compile Rulebasetext follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Rulebasetext.hs -o Rulebasetext.o
+<<ghc: 179348968 bytes, 68 GCs, 5135932/8270408 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.02 elapsed), 0.29 MUT (0.62 elapsed), 0.23 GC (0.42 elapsed) :ghc>>
+==nofib== boyer2: size of Rulebasetext.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  16254	   6784	      0	  23038	   59fe	Rulebasetext.o
+==nofib== boyer2: time to compile Rewritefns follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Rewritefns.hs -o Rewritefns.o
+<<ghc: 199816096 bytes, 53 GCs, 5498414/10290680 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.02 elapsed), 0.30 MUT (0.56 elapsed), 0.23 GC (0.35 elapsed) :ghc>>
+==nofib== boyer2: size of Rewritefns.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  14944	    280	      0	  15224	   3b78	Rewritefns.o
+==nofib== boyer2: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 154858672 bytes, 48 GCs, 7902496/16780216 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.02 elapsed), 0.19 MUT (0.50 elapsed), 0.29 GC (0.43 elapsed) :ghc>>
+==nofib== boyer2: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   4406	    760	      0	   5166	   142e	Main.o
+==nofib== boyer2: time to link boyer2 follows...
+<<ghc: 38519480 bytes, 14 GCs, 410932/648560 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.01 elapsed), 0.05 MUT (0.90 elapsed), 0.06 GC (0.07 elapsed) :ghc>>
+==nofib== boyer2: size of boyer2 follows...
+   text	   data	    bss	    dec	    hex	filename
+ 853332	  52112	  48776	 954220	  e8f6c	boyer2
+==nofib== boyer2: time to run boyer2 follows...
+../../runstdtest/runstdtest ./boyer2  -o1 boyer2.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./boyer2  -o1 boyer2.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./boyer2  -o1 boyer2.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./boyer2  -o1 boyer2.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./boyer2  -o1 boyer2.stdout  -ghc-timing     ;
+
+real	0m0.021s
+user	0m0.010s
+sys	0m0.004s
+<<ghc: 3041496 bytes, 6 GCs (4 + 2), 0/0 avg/max bytes residency (0 samples), 920192 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.017s
+user	0m0.013s
+sys	0m0.002s
+<<ghc: 3041496 bytes, 6 GCs (4 + 2), 0/0 avg/max bytes residency (0 samples), 920192 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.020s
+user	0m0.009s
+sys	0m0.005s
+<<ghc: 3041496 bytes, 6 GCs (4 + 2), 0/0 avg/max bytes residency (0 samples), 920192 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.015s
+user	0m0.007s
+sys	0m0.007s
+<<ghc: 3041496 bytes, 6 GCs (4 + 2), 0/0 avg/max bytes residency (0 samples), 920192 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.016s
+user	0m0.012s
+sys	0m0.004s
+<<ghc: 3041496 bytes, 6 GCs (4 + 2), 0/0 avg/max bytes residency (0 samples), 920192 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

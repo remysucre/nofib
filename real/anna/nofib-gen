@@ -1,0 +1,34 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== anna: time to compile BaseDefs follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c BaseDefs.hs -o BaseDefs.o
+
+BaseDefs.hs:61:10: Warning:
+    No explicit implementation for
+      ‘abs’, ‘signum’, ‘fromInteger’, and (either ‘negate’ or ‘-’)
+    In the instance declaration for ‘Num (ExceptionInt a)’
+<<ghc: 1171573248 bytes, 276 GCs, 12038091/20847984 avg/max bytes residency (8 samples), 55M in use, 0.00 INIT (0.02 elapsed), 1.77 MUT (3.10 elapsed), 1.12 GC (1.70 elapsed) :ghc>>
+==nofib== anna: size of BaseDefs.o follows...
+   text	   data	    bss	    dec	    hex	filename
+ 103493	   6832	      0	 110325	  1aef5	BaseDefs.o
+==nofib== anna: time to compile MyUtils follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c MyUtils.hs -o MyUtils.o
+<<ghc: 210355416 bytes, 51 GCs, 5526498/10395528 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.03 elapsed), 0.29 MUT (0.65 elapsed), 0.19 GC (0.29 elapsed) :ghc>>
+==nofib== anna: size of MyUtils.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  13755	    960	      0	  14715	   397b	MyUtils.o
+==nofib== anna: time to compile Utils follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Utils.hs -o Utils.o
+
+Utils.hs:7:9:
+    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
+      (!xs) = x : xs
+    In an equation for ‘copy’:
+        copy (!n) (!x)
+          = take (max 0 n) xs
+          where
+              (!xs) = x : xs
+<<ghc: 112073624 bytes, 54 GCs, 6585427/14059128 avg/max bytes residency (5 samples), 31M in use, 0.00 INIT (0.03 elapsed), 0.13 MUT (0.36 elapsed), 0.26 GC (0.44 elapsed) :ghc>>
+make: *** [Utils.o] Error 1
+make: Target `default' not remade because of errors.

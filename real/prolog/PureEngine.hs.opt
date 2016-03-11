@@ -1,0 +1,23 @@
+module Engine (prove) where
+import PrologData
+import Subst
+ 
+data Prooftree = Done Subst
+               | Choice [Prooftree]
+ 
+prooftree :: Database -> Int -> Subst -> [Term] -> Prooftree
+prooftree db = pt
+  where  
+        pt :: Int -> Subst -> [Term] -> Prooftree
+        pt (!n) s [] = Done s
+        pt (!n) (!s) ((!(g : gs)))
+          = Choice
+              [pt (n + 1) (u @@ s) (map (apply u) (tp ++ gs)) |
+               ((!(tm :== (!tp)))) <- renClauses db n g, u <- unify g tm]
+ 
+search :: Prooftree -> [Subst]
+search (Done s) = [s]
+search (Choice (!pts)) = [s | pt <- pts, s <- search pt]
+ 
+prove :: Database -> [Term] -> [Subst]
+prove (!db) = search . prooftree db 1 nullSubst

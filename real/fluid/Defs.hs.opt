@@ -1,0 +1,14 @@
+module Defs
+       (Frac_type, My_Array, v_nodel, p_nodel, large_scalor, small, large)
+       where
+import S_Array
+import Norm
+ 
+type Frac_type = Float
+ 
+type My_Array a b = S_array b
+v_nodel = 6 :: Int
+p_nodel = 3 :: Int
+large_scalor = 1.0e20 :: Frac_type
+large = 1.0e20 :: Frac_type
+small = 1.0e-40 :: Frac_type

@@ -1,0 +1,49 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== atom: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+
+Main.hs:50:10: Warning:
+    No explicit implementation for
+      ‘abs’ and ‘signum’
+    In the instance declaration for ‘Num [a]’
+
+Main.hs:65:3: Warning:
+    Local definition of ‘<*>’ clashes with a future Prelude name - this will become an error in GHC 7.10, under the Applicative-Monad Proposal.
+<<ghc: 249287144 bytes, 67 GCs, 7950252/16717256 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.01 elapsed), 0.33 MUT (0.67 elapsed), 0.31 GC (0.53 elapsed) :ghc>>
+==nofib== atom: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  12646	   1112	      0	  13758	   35be	Main.o
+==nofib== atom: time to link atom follows...
+<<ghc: 38473512 bytes, 14 GCs, 409264/648600 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.01 elapsed), 0.04 MUT (1.11 elapsed), 0.06 GC (0.10 elapsed) :ghc>>
+==nofib== atom: size of atom follows...
+   text	   data	    bss	    dec	    hex	filename
+ 920415	  52696	  48776	1021887	  f97bf	atom
+==nofib== atom: time to run atom follows...
+../../runstdtest/runstdtest ./atom  -o1 atom.slowstdout -o1 atom.stdout  -ghc-timing     1700;   ../../runstdtest/runstdtest ./atom  -o1 atom.slowstdout -o1 atom.stdout  -ghc-timing     1700;   ../../runstdtest/runstdtest ./atom  -o1 atom.slowstdout -o1 atom.stdout  -ghc-timing     1700;   ../../runstdtest/runstdtest ./atom  -o1 atom.slowstdout -o1 atom.stdout  -ghc-timing     1700;   ../../runstdtest/runstdtest ./atom  -o1 atom.slowstdout -o1 atom.stdout  -ghc-timing     1700;
+
+real	0m1.522s
+user	0m1.183s
+sys	0m0.017s
+<<ghc: 1107906736 bytes, 1968 GCs (1729 + 239), 0/0 avg/max bytes residency (0 samples), 288239248 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.46 MUT (0.55 elapsed), 0.74 GC (0.95 elapsed), 0.63 GC(0) (0.80 elapsed), 0.11 GC(1) (0.15 elapsed), 1 balance :ghc>>
+
+real	0m1.576s
+user	0m1.198s
+sys	0m0.014s
+<<ghc: 1107906736 bytes, 1968 GCs (1729 + 239), 0/0 avg/max bytes residency (0 samples), 288239248 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.46 MUT (0.64 elapsed), 0.74 GC (0.92 elapsed), 0.64 GC(0) (0.80 elapsed), 0.11 GC(1) (0.12 elapsed), 1 balance :ghc>>
+
+real	0m2.143s
+user	0m1.164s
+sys	0m0.017s
+<<ghc: 1107906736 bytes, 1968 GCs (1729 + 239), 0/0 avg/max bytes residency (0 samples), 288239248 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.45 MUT (0.77 elapsed), 0.73 GC (1.33 elapsed), 0.62 GC(0) (1.15 elapsed), 0.10 GC(1) (0.18 elapsed), 1 balance :ghc>>
+
+real	0m1.748s
+user	0m1.196s
+sys	0m0.017s
+<<ghc: 1107906736 bytes, 1968 GCs (1729 + 239), 0/0 avg/max bytes residency (0 samples), 288239248 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.46 MUT (0.69 elapsed), 0.75 GC (1.04 elapsed), 0.64 GC(0) (0.93 elapsed), 0.10 GC(1) (0.12 elapsed), 1 balance :ghc>>
+
+real	0m2.411s
+user	0m1.238s
+sys	0m0.014s
+<<ghc: 1107906736 bytes, 1968 GCs (1729 + 239), 0/0 avg/max bytes residency (0 samples), 288239248 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.48 MUT (0.88 elapsed), 0.77 GC (1.51 elapsed), 0.65 GC(0) (1.27 elapsed), 0.11 GC(1) (0.25 elapsed), 1 balance :ghc>>

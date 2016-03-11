@@ -1,0 +1,41 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== calendar: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 340159760 bytes, 113 GCs, 11382825/27920880 avg/max bytes residency (6 samples), 60M in use, 0.00 INIT (0.00 elapsed), 0.50 MUT (0.56 elapsed), 0.53 GC (0.54 elapsed) :ghc>>
+==nofib== calendar: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  15030	   2232	      0	  17262	   436e	Main.o
+==nofib== calendar: time to link calendar follows...
+<<ghc: 38450552 bytes, 14 GCs, 409204/648760 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.71 elapsed), 0.07 GC (0.07 elapsed) :ghc>>
+==nofib== calendar: size of calendar follows...
+   text	   data	    bss	    dec	    hex	filename
+ 875092	  50288	  48776	 974156	  edd4c	calendar
+==nofib== calendar: time to run calendar follows...
+../../runstdtest/runstdtest ./calendar  -o1 calendar.slowstdout -o1 calendar.stdout  -ghc-timing     1993 2000;   ../../runstdtest/runstdtest ./calendar  -o1 calendar.slowstdout -o1 calendar.stdout  -ghc-timing     1993 2000;   ../../runstdtest/runstdtest ./calendar  -o1 calendar.slowstdout -o1 calendar.stdout  -ghc-timing     1993 2000;   ../../runstdtest/runstdtest ./calendar  -o1 calendar.slowstdout -o1 calendar.stdout  -ghc-timing     1993 2000;   ../../runstdtest/runstdtest ./calendar  -o1 calendar.slowstdout -o1 calendar.stdout  -ghc-timing     1993 2000;
+
+real	0m0.630s
+user	0m0.601s
+sys	0m0.017s
+<<ghc: 1467932352 bytes, 2819 GCs (2817 + 2), 0/0 avg/max bytes residency (0 samples), 7462128 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.57 MUT (0.58 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.641s
+user	0m0.617s
+sys	0m0.022s
+<<ghc: 1467932352 bytes, 2819 GCs (2817 + 2), 0/0 avg/max bytes residency (0 samples), 7462128 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.60 MUT (0.60 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.750s
+user	0m0.706s
+sys	0m0.036s
+<<ghc: 1467932352 bytes, 2819 GCs (2817 + 2), 0/0 avg/max bytes residency (0 samples), 7462128 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.68 MUT (0.69 elapsed), 0.05 GC (0.05 elapsed), 0.05 GC(0) (0.05 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.734s
+user	0m0.712s
+sys	0m0.017s
+<<ghc: 1467932352 bytes, 2819 GCs (2817 + 2), 0/0 avg/max bytes residency (0 samples), 7462128 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.68 MUT (0.68 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.687s
+user	0m0.663s
+sys	0m0.020s
+<<ghc: 1467932352 bytes, 2819 GCs (2817 + 2), 0/0 avg/max bytes residency (0 samples), 7462128 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.63 MUT (0.63 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

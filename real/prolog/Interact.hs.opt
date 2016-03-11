@@ -1,0 +1,43 @@
+module Interact (Interactive, skip, end, readln, writeln, readch)
+       where
+ 
+type Interactive = String -> String
+ 
+skip :: Interactive -> Interactive
+skip p (!inn) = p inn
+ 
+end :: Interactive
+end inn = ""
+ 
+writeln :: String -> Interactive -> Interactive
+writeln txt (!p) (!inn) = txt ++ p inn
+ 
+readch :: (Char -> Interactive) -> String -> Interactive
+readch act def (!"") = def
+readch act def ((!c) : (!cs)) = act c cs
+ 
+readln :: String -> (String -> Interactive) -> Interactive
+readln prompt g inn
+  = prompt ++ lineOut 0 line ++ "\n" ++ g (noBackSpaces line) input'
+  where (!line) = before '\n' inn
+        input' = after '\n' inn
+        after x = tail . dropWhile (x /=)
+        before x = takeWhile (x /=)
+ 
+rubout :: Char -> Bool
+rubout c = (c == '\DEL' || c == '\b')
+ 
+lineOut :: Int -> String -> String
+lineOut (!n) (!"") = ""
+lineOut n (!((!(c : (!cs)))))
+  | n > 0 && rubout c = "\b \b" ++ lineOut (n - 1) cs
+  | n == 0 && rubout c = lineOut 0 cs
+  | otherwise = c : lineOut (n + 1) cs
+ 
+noBackSpaces :: String -> String
+noBackSpaces = reverse . delete 0 . reverse
+  where delete (!n) (!"") = ""
+        delete n ((!(c : (!cs))))
+          | rubout c = delete (n + 1) cs
+          | n > 0 = delete (n - 1) cs
+          | otherwise = c : delete 0 cs

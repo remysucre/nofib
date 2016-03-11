@@ -1,0 +1,32 @@
+module Main (main) where
+import QSort
+import Data.List ((\\))
+import System.Environment
+import Control.Monad
+perms (!m) [] = []
+perms 1 l = map (: []) l
+perms m (!(n : ns)) = map ((:) n) (perms (m - 1) ns) ++ perms m ns
+awards scores
+  = award ("Gold", 70) ++
+      award ("Silver", 60) ++ award ("Bronze", 50)
+  where sumscores = map (\ (!p) -> (sum p, p)) (perms 3 scores)
+        atleast threshold
+          = filter (\ (sum, p) -> sum >= threshold) sumscores
+        award ((!name), (!threshold))
+          = map (\ ps -> (name, ps)) (sort (atleast threshold))
+findawards (!scores)
+  | null theawards = []
+  | otherwise = firstaward : findawards (scores \\ perm)
+  where firstaward@(!((!award), (!(sum, perm)))) = head theawards
+        (!theawards) = awards scores
+findallawards competitors
+  = map (\ (!(name, scores)) -> (name, findawards scores))
+      competitors
+competitors
+  = [("Simon", [35, 27, 40, 19, 34, 21]),
+     ("Hans", [23, 19, 45, 17, 10, 5, 8, 14]),
+     ("Phil", [1, 18, 35, 20, 21, 19, 34, 8, 16, 21]),
+     ("Kevin", [9, 23, 17, 54, 18, 41, 9, 18, 14])]
+main
+  = do ((!(n : _))) <- getArgs
+       replicateM_ (read n) $ print (findallawards competitors)

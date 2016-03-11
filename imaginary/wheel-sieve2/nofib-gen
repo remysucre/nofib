@@ -1,0 +1,78 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing +RTS -M300m -RTS
+==nofib== wheel-sieve2: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 192893944 bytes, 61 GCs, 8369345/18700232 avg/max bytes residency (5 samples), 42M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.22 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
+==nofib== wheel-sieve2: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   1390	    328	      0	   1718	    6b6	Main.o
+==nofib== wheel-sieve2: time to link wheel-sieve2 follows...
+<<ghc: 38448064 bytes, 14 GCs, 409488/648824 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.57 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
+==nofib== wheel-sieve2: size of wheel-sieve2 follows...
+   text	   data	    bss	    dec	    hex	filename
+ 857556	  48144	  48776	 954476	  e906c	wheel-sieve2
+==nofib== wheel-sieve2: time to run wheel-sieve2 follows...
+../../runstdtest/runstdtest ./wheel-sieve2  -o1 wheel-sieve2.slowstdout -o1 wheel-sieve2.stdout  -ghc-timing  +RTS -M300m -RTS    30000;   ../../runstdtest/runstdtest ./wheel-sieve2  -o1 wheel-sieve2.slowstdout -o1 wheel-sieve2.stdout  -ghc-timing  +RTS -M300m -RTS    30000;   ../../runstdtest/runstdtest ./wheel-sieve2  -o1 wheel-sieve2.slowstdout -o1 wheel-sieve2.stdout  -ghc-timing  +RTS -M300m -RTS    30000;   ../../runstdtest/runstdtest ./wheel-sieve2  -o1 wheel-sieve2.slowstdout -o1 wheel-sieve2.stdout  -ghc-timing  +RTS -M300m -RTS    30000;   ../../runstdtest/runstdtest ./wheel-sieve2  -o1 wheel-sieve2.slowstdout -o1 wheel-sieve2.stdout  -ghc-timing  +RTS -M300m -RTS    30000;
+
+real	0m0.012s
+user	0m0.002s
+sys	0m0.003s
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+**** expected exit status 0 not seen ; got 1
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+expected stderr not matched by reality
+--- /tmp/no_stderr29592	2016-03-10 19:20:09.715876395 -0500
++++ /tmp/runtest29592.2	2016-03-10 19:20:09.734876391 -0500
+@@ -0,0 +1 @@
++wheel-sieve2: <<loop>>
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.003s
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+**** expected exit status 0 not seen ; got 1
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+expected stderr not matched by reality
+--- /tmp/no_stderr29608	2016-03-10 19:20:09.763876385 -0500
++++ /tmp/runtest29608.2	2016-03-10 19:20:09.772876383 -0500
+@@ -0,0 +1 @@
++wheel-sieve2: <<loop>>
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.002s
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+**** expected exit status 0 not seen ; got 1
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+expected stderr not matched by reality
+--- /tmp/no_stderr29624	2016-03-10 19:20:09.798876377 -0500
++++ /tmp/runtest29624.2	2016-03-10 19:20:09.807876375 -0500
+@@ -0,0 +1 @@
++wheel-sieve2: <<loop>>
+
+real	0m0.005s
+user	0m0.000s
+sys	0m0.003s
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+**** expected exit status 0 not seen ; got 1
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+expected stderr not matched by reality
+--- /tmp/no_stderr29640	2016-03-10 19:20:09.833876369 -0500
++++ /tmp/runtest29640.2	2016-03-10 19:20:09.842876367 -0500
+@@ -0,0 +1 @@
++wheel-sieve2: <<loop>>
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.004s
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+**** expected exit status 0 not seen ; got 1
+././wheel-sieve2 +RTS -M300m -RTS 30000 < /dev/null
+expected stderr not matched by reality
+--- /tmp/no_stderr29656	2016-03-10 19:20:09.870876361 -0500
++++ /tmp/runtest29656.2	2016-03-10 19:20:09.881876359 -0500
+@@ -0,0 +1 @@
++wheel-sieve2: <<loop>>
+make: *** [runtests] Error 1
+make: Target `default' not remade because of errors.

@@ -1,0 +1,80 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing +RTS -K1m -RTS
+==nofib== hidden: time to compile Numbers follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Numbers.hs -o Numbers.o
+
+Numbers.hs:13:10: Warning:
+    No explicit implementation for
+      ‘abs’ and ‘signum’
+    In the instance declaration for ‘Num Number’
+
+Numbers.hs:20:10: Warning:
+    No explicit implementation for
+      ‘fromRational’
+    In the instance declaration for ‘Fractional Number’
+
+Numbers.hs:23:10: Warning:
+    No explicit implementation for
+      ‘pi’, ‘exp’, ‘log’, ‘sin’, ‘cos’, ‘asin’, ‘atan’, ‘acos’, ‘sinh’,
+      ‘cosh’, ‘asinh’, ‘atanh’, and ‘acosh’
+    In the instance declaration for ‘Floating Number’
+<<ghc: 187608040 bytes, 54 GCs, 5868220/11050376 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.03 elapsed), 0.25 MUT (0.73 elapsed), 0.19 GC (0.36 elapsed) :ghc>>
+==nofib== hidden: size of Numbers.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  10388	   1568	      0	  11956	   2eb4	Numbers.o
+==nofib== hidden: time to compile Vectors follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Vectors.hs -o Vectors.o
+<<ghc: 205802992 bytes, 58 GCs, 5587318/10535328 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.02 elapsed), 0.29 MUT (1.04 elapsed), 0.20 GC (0.48 elapsed) :ghc>>
+==nofib== hidden: size of Vectors.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  13215	   1152	      0	  14367	   381f	Vectors.o
+==nofib== hidden: time to compile Matrices follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Matrices.hs -o Matrices.o
+<<ghc: 68291856 bytes, 27 GCs, 3787301/6364736 avg/max bytes residency (3 samples), 31M in use, 0.00 INIT (0.03 elapsed), 0.08 MUT (0.34 elapsed), 0.11 GC (0.18 elapsed) :ghc>>
+==nofib== hidden: size of Matrices.o follows...
+   text	   data	    bss	    dec	    hex	filename
+    397	     24	      0	    421	    1a5	Matrices.o
+==nofib== hidden: time to compile Rotate follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Rotate.lhs -o Rotate.o
+<<ghc: 89657416 bytes, 32 GCs, 5148402/9566728 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.03 elapsed), 0.11 MUT (0.58 elapsed), 0.15 GC (0.38 elapsed) :ghc>>
+==nofib== hidden: size of Rotate.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   1282	    392	      0	   1674	    68a	Rotate.o
+==nofib== hidden: time to compile EdgePlate follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c EdgePlate.hs -o EdgePlate.o
+<<ghc: 98117656 bytes, 46 GCs, 5292124/9642032 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.04 elapsed), 0.13 MUT (0.53 elapsed), 0.16 GC (0.43 elapsed) :ghc>>
+==nofib== hidden: size of EdgePlate.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   3417	    256	      0	   3673	    e59	EdgePlate.o
+==nofib== hidden: time to compile Geometric follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Geometric.hs -o Geometric.o
+
+Geometric.hs:21:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!proj) = map proj
+
+Geometric.hs:27:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!rot) = rotate
+<<ghc: 62865328 bytes, 22 GCs, 3736520/6307912 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.02 elapsed), 0.06 MUT (0.17 elapsed), 0.11 GC (0.19 elapsed) :ghc>>
+make: *** [Geometric.o] Error 1
+==nofib== hidden: time to compile Solve follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Solve.hs -o Solve.o
+<<ghc: 107536688 bytes, 36 GCs, 5405666/9943080 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.02 elapsed), 0.13 MUT (0.34 elapsed), 0.16 GC (0.27 elapsed) :ghc>>
+==nofib== hidden: size of Solve.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   4331	    248	      0	   4579	   11e3	Solve.o
+==nofib== hidden: time to compile Postscript follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Postscript.hs -o Postscript.o
+<<ghc: 128413560 bytes, 38 GCs, 5445612/10112224 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.02 elapsed), 0.16 MUT (0.49 elapsed), 0.16 GC (0.26 elapsed) :ghc>>
+==nofib== hidden: size of Postscript.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   7883	    336	      0	   8219	   201b	Postscript.o
+==nofib== hidden: time to compile MyIO follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c MyIO.hs -o MyIO.o
+<<ghc: 149879192 bytes, 50 GCs, 7974835/17176080 avg/max bytes residency (5 samples), 39M in use, 0.00 INIT (0.02 elapsed), 0.17 MUT (0.50 elapsed), 0.26 GC (0.41 elapsed) :ghc>>
+==nofib== hidden: size of MyIO.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   2524	    400	      0	   2924	    b6c	MyIO.o
+make: Target `default' not remade because of errors.

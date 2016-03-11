@@ -1,0 +1,20 @@
+module Preds (into, onto) where
+import Numbers
+import Vectors
+import EdgePlate
+import Geometric
+ 
+onto :: Vector -> Edge -> Bool
+onto (!p) (!l)
+  | vertical l = proj (p) == proj (s (l))
+  | otherwise =
+    v ||| w && 0 <= v `inpr` w && v `inpr` w <= w `inpr` w
+  where v = proj (p - s (l))
+        w = proj (h (l))
+ 
+into :: Vector -> Plate -> Bool
+into v (!p@(!((!(Plt (!_) ls)))))
+  | vertical p = or [v `onto` l | (!l) <- ls]
+  | otherwise =
+    and [a >= 0 | (!a) <- zs] || and [a <= 0 | (!a) <- zs]
+  where zs = [z ((v - s (l)) * h (l)) | l <- ls]
