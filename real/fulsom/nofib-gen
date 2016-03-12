@@ -63,12 +63,8 @@ Interval.hs:53:9:
 Interval.hs:55:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!acosh) = ivAcosh
-<<ghc: 77040152 bytes, 30 GCs, 5258944/9519416 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.13 elapsed), 0.21 GC (0.21 elapsed) :ghc>>
+<<ghc: 77044544 bytes, 30 GCs, 5263778/9538464 avg/max bytes residency (4 samples), 31M in use, 0.01 INIT (0.01 elapsed), 0.06 MUT (0.08 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
 make: *** [Interval.o] Error 1
 ==nofib== fulsom: time to compile Patchlevel follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Patchlevel.hs -o Patchlevel.o
-<<ghc: 63391608 bytes, 24 GCs, 3702488/6114096 avg/max bytes residency (3 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.13 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
-==nofib== fulsom: size of Patchlevel.o follows...
-   text	   data	    bss	    dec	    hex	filename
-    106	     80	      0	    186	     ba	Patchlevel.o
-make: Target `default' not remade because of errors.
+make: *** [Patchlevel.o] Error 1

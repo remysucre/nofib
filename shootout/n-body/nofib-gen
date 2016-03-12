@@ -3,35 +3,19 @@ HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-s
 RUNTEST_OPTS = -ghc-timing
 ==nofib== n-body: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -O2 -XBangPatterns -fexcess-precision -c Main.hs -o Main.o
-<<ghc: 398589744 bytes, 112 GCs, 11566016/26614704 avg/max bytes residency (6 samples), 57M in use, 0.01 INIT (0.01 elapsed), 1.08 MUT (1.15 elapsed), 1.27 GC (1.27 elapsed) :ghc>>
+<<ghc: 395913464 bytes, 111 GCs, 11531365/26622960 avg/max bytes residency (6 samples), 57M in use, 0.00 INIT (0.00 elapsed), 0.56 MUT (0.60 elapsed), 0.56 GC (0.57 elapsed) :ghc>>
 ==nofib== n-body: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-  15868	    640	      0	  16508	   407c	Main.o
+  15220	    640	      0	  15860	   3df4	Main.o
 ==nofib== n-body: time to link n-body follows...
-<<ghc: 38490280 bytes, 14 GCs, 410976/649096 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (1.75 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+<<ghc: 38501400 bytes, 14 GCs, 410960/649064 avg/max bytes residency (2 samples), 30M in use, 0.04 INIT (0.04 elapsed), 0.06 MUT (0.69 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
 ==nofib== n-body: size of n-body follows...
    text	   data	    bss	    dec	    hex	filename
-1003912	  60928	  48776	1113616	 10fe10	n-body
+1003272	  60928	  48776	1112976	 10fb90	n-body
 ==nofib== n-body: time to run n-body follows...
-../../runstdtest/runstdtest ./n-body  -o1 n-body.slowstdout -o1 n-body.stdout  -ghc-timing     50000000  ;   ../../runstdtest/runstdtest ./n-body  -o1 n-body.slowstdout -o1 n-body.stdout  -ghc-timing     50000000  ;   ../../runstdtest/runstdtest ./n-body  -o1 n-body.slowstdout -o1 n-body.stdout  -ghc-timing     50000000  ;   ../../runstdtest/runstdtest ./n-body  -o1 n-body.slowstdout -o1 n-body.stdout  -ghc-timing     50000000  ;   ../../runstdtest/runstdtest ./n-body  -o1 n-body.slowstdout -o1 n-body.stdout  -ghc-timing     50000000  ;
+../../runstdtest/runstdtest ./n-body  -o1 n-body.stdout  -ghc-timing     5000000;
 
-real	0m25.494s
-user	0m25.200s
-sys	0m0.189s
-<<ghc: 16000180600 bytes, 30518 GCs (30516 + 2), 0/0 avg/max bytes residency (0 samples), 334624 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 24.99 MUT (25.09 elapsed), 0.39 GC (0.38 elapsed), 0.39 GC(0) (0.38 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m24.875s
-user	0m24.678s
-sys	0m0.189s
-<<ghc: 16000180600 bytes, 30518 GCs (30516 + 2), 0/0 avg/max bytes residency (0 samples), 334624 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 24.51 MUT (24.52 elapsed), 0.34 GC (0.34 elapsed), 0.34 GC(0) (0.33 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m25.533s
-user	0m24.468s
-sys	0m0.265s
-<<ghc: 16000180600 bytes, 30518 GCs (30516 + 2), 0/0 avg/max bytes residency (0 samples), 334624 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 24.41 MUT (25.17 elapsed), 0.31 GC (0.34 elapsed), 0.31 GC(0) (0.34 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m25.459s
-user	0m24.829s
-sys	0m0.465s
-<<ghc: 16000180600 bytes, 30518 GCs (30516 + 2), 0/0 avg/max bytes residency (0 samples), 334624 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 24.90 MUT (25.05 elapsed), 0.38 GC (0.39 elapsed), 0.38 GC(0) (0.39 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-make: *** [runtests] Terminated
+real	0m2.516s
+user	0m2.336s
+sys	0m0.167s
+<<ghc: 1600177960 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.38 MUT (2.41 elapsed), 0.11 GC (0.08 elapsed), 0.11 GC(0) (0.08 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

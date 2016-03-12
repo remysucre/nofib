@@ -8,27 +8,5 @@ BaseDefs.hs:61:10: Warning:
     No explicit implementation for
       ‘abs’, ‘signum’, ‘fromInteger’, and (either ‘negate’ or ‘-’)
     In the instance declaration for ‘Num (ExceptionInt a)’
-<<ghc: 1171369952 bytes, 275 GCs, 12020743/20719096 avg/max bytes residency (8 samples), 54M in use, 0.00 INIT (0.03 elapsed), 1.76 MUT (3.34 elapsed), 1.00 GC (1.71 elapsed) :ghc>>
-==nofib== anna: size of BaseDefs.o follows...
-   text	   data	    bss	    dec	    hex	filename
- 103525	   6832	      0	 110357	  1af15	BaseDefs.o
-==nofib== anna: time to compile MyUtils follows...
-/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c MyUtils.hs -o MyUtils.o
-<<ghc: 210572584 bytes, 51 GCs, 5530130/10409208 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.04 elapsed), 0.30 MUT (0.70 elapsed), 0.20 GC (0.31 elapsed) :ghc>>
-==nofib== anna: size of MyUtils.o follows...
-   text	   data	    bss	    dec	    hex	filename
-  13707	   1184	      0	  14891	   3a2b	MyUtils.o
-==nofib== anna: time to compile Utils follows...
-/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Utils.hs -o Utils.o
-
-Utils.hs:7:9:
-    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
-      (!xs) = x : xs
-    In an equation for ‘copy’:
-        copy (!n) x
-          = take (max 0 n) xs
-          where
-              (!xs) = x : xs
-<<ghc: 112483296 bytes, 54 GCs, 6589865/14063112 avg/max bytes residency (5 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.26 elapsed), 0.23 GC (0.41 elapsed) :ghc>>
-make: *** [Utils.o] Error 1
-make: Target `default' not remade because of errors.
+<<ghc: 154871392 bytes, 60 GCs, 7959942/16661952 avg/max bytes residency (5 samples), 36M in use, 0.00 INIT (0.00 elapsed), 0.19 MUT (0.19 elapsed), 0.35 GC (0.35 elapsed) :ghc>>
+make: *** [BaseDefs.o] Error 1

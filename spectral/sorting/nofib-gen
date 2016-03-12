@@ -1,0 +1,23 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== sorting: time to compile Sort follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Sort.hs -o Sort.o
+
+Sort.hs:50:21:
+    Couldn't match expected type ‘forall a1. Ord a1 => [a1] -> Tree a1’
+                with actual type ‘[a0] -> Tree a0’
+    Possible cause: ‘foldr’ is applied to too many arguments
+    In the expression: foldr to_tree Tip
+    In a pattern binding:
+      (!mkTree)
+        = foldr to_tree Tip
+        where
+            to_tree :: Ord a => a -> Tree a -> Tree a
+            to_tree (!x) (!Tip) = Branch x Tip Tip
+            to_tree (!x) ((!(Branch y (!l) r)))
+              | x <= y = Branch y (to_tree x l) r
+              | True = Branch y l (to_tree x r)
+<<ghc: 86102232 bytes, 32 GCs, 5597290/10497336 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.22 elapsed), 0.23 GC (0.23 elapsed) :ghc>>
+make: *** [Sort.o] Error 1
+make: Target `default' not remade because of errors.

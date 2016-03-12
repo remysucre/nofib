@@ -12,6 +12,6 @@ Main.hs:95:9:
           = rs
           where
               (!rs) = 0 :+: 1 / (compose fs rs)
-<<ghc: 100943368 bytes, 37 GCs, 5762134/10813904 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.05 elapsed), 0.12 MUT (0.40 elapsed), 0.20 GC (0.47 elapsed) :ghc>>
+<<ghc: 100945736 bytes, 38 GCs, 5835570/11106856 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.15 elapsed), 0.21 GC (0.21 elapsed) :ghc>>
 make: *** [Main.o] Error 1
 make: Target `default' not remade because of errors.

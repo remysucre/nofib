@@ -3,39 +3,19 @@ HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-s
 RUNTEST_OPTS = -ghc-timing
 ==nofib== gen_regexps: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
-<<ghc: 217125576 bytes, 61 GCs, 8744188/20175760 avg/max bytes residency (5 samples), 45M in use, 0.00 INIT (0.00 elapsed), 0.42 MUT (1.02 elapsed), 0.56 GC (0.56 elapsed) :ghc>>
+<<ghc: 210230736 bytes, 61 GCs, 8624830/19698376 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.33 MUT (0.37 elapsed), 0.38 GC (0.38 elapsed) :ghc>>
 ==nofib== gen_regexps: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   7937	    384	      0	   8321	   2081	Main.o
+   6857	    384	      0	   7241	   1c49	Main.o
 ==nofib== gen_regexps: time to link gen_regexps follows...
-<<ghc: 38468880 bytes, 14 GCs, 409456/648784 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.87 elapsed), 0.09 GC (0.09 elapsed) :ghc>>
+<<ghc: 38456048 bytes, 14 GCs, 409464/648800 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.57 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
 ==nofib== gen_regexps: size of gen_regexps follows...
    text	   data	    bss	    dec	    hex	filename
- 827620	  42704	  48776	 919100	  e063c	gen_regexps
+ 826548	  42704	  48776	 918028	  e020c	gen_regexps
 ==nofib== gen_regexps: time to run gen_regexps follows...
-../../runstdtest/runstdtest ./gen_regexps -i  gen_regexps.slowstdin -o1 gen_regexps.slowstdout -o1 gen_regexps.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./gen_regexps -i  gen_regexps.slowstdin -o1 gen_regexps.slowstdout -o1 gen_regexps.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./gen_regexps -i  gen_regexps.slowstdin -o1 gen_regexps.slowstdout -o1 gen_regexps.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./gen_regexps -i  gen_regexps.slowstdin -o1 gen_regexps.slowstdout -o1 gen_regexps.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./gen_regexps -i  gen_regexps.slowstdin -o1 gen_regexps.slowstdout -o1 gen_regexps.stdout  -ghc-timing     ;
+../../runstdtest/runstdtest ./gen_regexps -i  gen_regexps.stdin -o1 gen_regexps.stdout  -ghc-timing     ;
 
-real	0m2.315s
-user	0m2.177s
-sys	0m0.107s
-<<ghc: 771678552 bytes, 1490 GCs (1479 + 11), 0/0 avg/max bytes residency (0 samples), 226858032 bytes GC work, 60M in use, 0.00 INIT (0.00 elapsed), 1.63 MUT (1.64 elapsed), 0.63 GC (0.64 elapsed), 0.26 GC(0) (0.26 elapsed), 0.38 GC(1) (0.38 elapsed), 1 balance :ghc>>
-
-real	0m2.647s
-user	0m2.493s
-sys	0m0.123s
-<<ghc: 771678552 bytes, 1490 GCs (1479 + 11), 0/0 avg/max bytes residency (0 samples), 226858032 bytes GC work, 60M in use, 0.00 INIT (0.00 elapsed), 1.89 MUT (1.92 elapsed), 0.70 GC (0.71 elapsed), 0.30 GC(0) (0.30 elapsed), 0.40 GC(1) (0.41 elapsed), 1 balance :ghc>>
-
-real	0m2.847s
-user	0m2.713s
-sys	0m0.113s
-<<ghc: 771678552 bytes, 1490 GCs (1479 + 11), 0/0 avg/max bytes residency (0 samples), 228936440 bytes GC work, 60M in use, 0.00 INIT (0.00 elapsed), 2.14 MUT (2.15 elapsed), 0.66 GC (0.66 elapsed), 0.28 GC(0) (0.28 elapsed), 0.38 GC(1) (0.38 elapsed), 1 balance :ghc>>
-
-real	0m1.949s
-user	0m1.869s
-sys	0m0.068s
-<<ghc: 771678552 bytes, 1490 GCs (1479 + 11), 0/0 avg/max bytes residency (0 samples), 228936440 bytes GC work, 60M in use, 0.00 INIT (0.00 elapsed), 1.42 MUT (1.43 elapsed), 0.50 GC (0.50 elapsed), 0.18 GC(0) (0.18 elapsed), 0.32 GC(1) (0.32 elapsed), 1 balance :ghc>>
-
-real	0m2.475s
-user	0m2.353s
-sys	0m0.105s
-<<ghc: 771678552 bytes, 1490 GCs (1479 + 11), 0/0 avg/max bytes residency (0 samples), 226860728 bytes GC work, 60M in use, 0.00 INIT (0.00 elapsed), 1.81 MUT (1.82 elapsed), 0.63 GC (0.63 elapsed), 0.24 GC(0) (0.24 elapsed), 0.39 GC(1) (0.39 elapsed), 1 balance :ghc>>
+real	0m0.016s
+user	0m0.001s
+sys	0m0.006s
+<<ghc: 309520 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4248 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
