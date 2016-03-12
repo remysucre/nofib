@@ -14,16 +14,16 @@ cc_list
      select [a14, a24, a34, a44, a45, a46],
      select [a15, a25, a35, a45, a55, a56],
      select [a16, a26, a36, a46, a56, a66]]
-  where (!select)
-          = \ tup_list ->
+  where select
+          = \ (!tup_list) ->
               (map select1 tup_list, map select2 tup_list, map select3 tup_list,
                map select4 tup_list, map select5 tup_list, map select6 tup_list)
-        select1 = \ (!(x, (!_), _, (!_), (!_), (!_))) -> x
-        (!select2) = \ ((!_), x, _, _, _, (!_)) -> x
-        (!select3) = \ ((!_), _, x, _, (!_), _) -> x
-        select4 = \ ((!_), (!_), (!_), (!x), _, (!_)) -> x
-        select5 = \ (!(_, _, _, (!_), (!x), (!_))) -> x
-        select6 = \ (!(_, _, (!_), _, (!_), x)) -> x
+        (!select1) = \ (x, _, (!_), (!_), _, (!_)) -> x
+        select2 = \ (_, x, _, _, _, _) -> x
+        (!select3) = \ ((!_), (!_), (!x), (!_), _, _) -> x
+        (!select4) = \ (!(_, (!_), _, (!x), _, _)) -> x
+        select5 = \ ((!_), _, _, _, x, _) -> x
+        select6 = \ (_, (!_), (!_), (!_), _, x) -> x
 c4 = 4 :: Frac_type
 c9 = (-9) :: Frac_type
 c11 = 11 :: Frac_type
@@ -75,17 +75,16 @@ c_mat ::
 c_mat
   = s_listArray bnds
       (map
-         (\ (!((!col1), col2, col3, (!col4), (!col5), col6)) ->
-            (\ ((!gd1), gd2, (!gd3)) u ->
+         (\ (col1, (!col2), (!col3), col4, col5, (!col6)) ->
+            (\ (!(gd1, gd2, gd3)) (!u) ->
                map (\ col -> list_match_prod col u)
                  [map ((*) gd1) col1, map ((*) gd2) col2, map ((*) gd3) col3,
                   map (f' gd2 gd3) col4, map (f' gd1 gd3) col5,
                   map (f' gd1 gd2) col6])
               `bindTo`
-              (\ f ->
-                 (\ (!((!y1), (!y2))) (!(u1, (!u2))) ->
-                    zipWith (+) (f y1 u1) (f y2 u2))))
+              (\ (!f) ->
+                 (\ (!(y1, y2)) (!(u1, (!u2))) -> zipWith (+) (f y1 u1) (f y2 u2))))
          cc_list)
-  where (!f') = \ g1 g2 (!x) -> (fst x) * g1 + (snd x) * g2
+  where (!f') = \ g1 (!g2) (!x) -> (fst x) * g1 + (snd x) * g2
         bnds = (1, v_nodel)
-        bindTo x (!k) = k x
+        bindTo (!x) (!k) = k x

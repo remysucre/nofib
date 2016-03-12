@@ -9,23 +9,23 @@ import Postscript
 import Data.Array
  
 hiddenline :: Vector -> Input -> Output
-hiddenline (!v) (!corners)
+hiddenline (!v) corners
   = (draw . scale factor base . hideObj . makeObject) rotated
-  where rotated = v `rot` corners
-        (!(base, factor)) = getExtremes (concat rotated)
+  where (!rotated) = v `rot` corners
+        (base, (!factor)) = getExtremes (concat rotated)
  
 hide :: Array (Triangle Int) Bool -> Object -> Plate -> [Edge]
-hide memory (!obj) (!bottom@(!((!(Plt (!_) (!ls))))))
-  = foldr cmp ls tops
-  where tops = [top | top <- obj, lazyAbove memory top bottom]
+hide memory obj (!bottom@((!(Plt (!_) (!ls))))) = foldr cmp ls tops
+  where tops = [top | (!top) <- obj, lazyAbove memory top bottom]
  
 hideObj :: Object -> [Edge]
-hideObj obj = concat [hide (mkmemo above obj) obj plt | plt <- obj]
+hideObj (!obj)
+  = concat [hide (mkmemo above obj) obj plt | plt <- obj]
  
 getExtremes :: [Vector] -> (Vector, Number)
-getExtremes (!vs) = (vec [minimum xs, minimum ys, 0], factor)
-  where factor
+getExtremes vs = (vec [minimum xs, minimum ys, 0], factor)
+  where (!factor)
           = ((400 / ((maximum xs - minimum xs) `max` 1)) `min`
                (640 / ((maximum ys - minimum ys) `max` 1)))
-        (!xs) = map x vs
-        (!ys) = map y vs
+        xs = map x vs
+        ys = map y vs

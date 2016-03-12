@@ -8,11 +8,11 @@ paperY = 190 :: Int
  
 my_fromInt :: Num a => Int -> a
 my_fromInt = fromInteger . toInteger
-gspostscript str
+gspostscript (!str)
   = initialise stdheader ++ portrait ++ str ++ "showpage\n"
 postscript (!str)
   = initialise stdheader ++ landscape ++ str ++ "showpage\n"
-ePostscript (!((!reqdx), reqdy)) str
+ePostscript (reqdx, reqdy) str
   = initialise
       (stdheader ++
          "%%BoundingBox: 0 0 " ++
@@ -22,7 +22,8 @@ ePostscript (!((!reqdx), reqdy)) str
       scale (my_fromInt reqdx * 10 / my_fromInt paperX)
         (my_fromInt reqdy * 10 / my_fromInt paperY)
         ++ str ++ showpage
-initGraph title pedata (topX, topY) (!((!xlabel), ylabel)) (!keys)
+initGraph title (!pedata) (topX, (!topY)) (!((!xlabel), (!ylabel)))
+  keys
   = drawBox (Pt 0 0) paperX paperY ++
       drawBox (Pt 1 1) (paperX - 2) 5 ++
         drawBox (Pt 1 (paperY - 7)) (paperX - 2) 6 ++
@@ -47,7 +48,7 @@ initGraph title pedata (topX, topY) (!((!xlabel), ylabel)) (!keys)
                                               moveto (Pt dimX (-8)) ++
                                                 rjustify xlabel ++
                                                   stroke ++ setfont "NORM" ++ dokeys dimX keys
-placePEs (!(pes, on))
+placePEs ((!pes), (!on))
   | checkPEs (tail pes) on =
     showActive (length pes) (length used) ++
       showUsed pes used ++ setfont "NORM"
@@ -57,12 +58,12 @@ cms2pts :: Int -> Int
 cms2pts x = round (28.4584 * my_fromInt x)
  
 plotCurve :: Int -> [Point] -> Postscript
-plotCurve x (!pts) = setgray x ++ fillObject pts
+plotCurve (!x) pts = setgray x ++ fillObject pts
  
 plot :: [Point] -> Postscript
 plot points = plotCurve 5 (Pt 0 0 : points)
-dokeys (!left) (!keys) = concat (map2 format (places 0) keys)
-  where format pt@(!(Pt (!x) (!y))) (!((!col), (!tex), (!pc)))
+dokeys left keys = concat (map2 format (places 0) keys)
+  where format (!pt@(Pt (!x) (!y))) (col, tex, pc)
           = fillBox pt 16 9 col ++
               stroke ++
                 moveto (Pt (x + 17) (y + 3)) ++
@@ -73,9 +74,9 @@ dokeys (!left) (!keys) = concat (map2 format (places 0) keys)
                           setfont "BOLD" ++
                             cjustify (pc) ++ stroke ++ setfont "NORM" ++ setgray 10
         no = left `div` length keys
-        places n | n == no = []
-        places (!n) = (Pt (n * no) (-17)) : places (n + 1)
-showActive (!t) f
+        places (!n) | n == no = []
+        places n = (Pt (n * no) (-17)) : places (n + 1)
+showActive t (!f)
   = setfont "LARGE" ++
       moveto (Pt 10 16) ++
         cjustify (show f) ++
@@ -86,7 +87,7 @@ showActive (!t) f
                   setfont "SMALL" ++
                     moveto (Pt 10 8) ++
                       cjustify "displayed" ++ stroke ++ setfont "NORM"
-showUsed (!((!((!m) : pes)))) on
+showUsed ((!((!m) : pes))) on
   = moveto (Pt 2 2) ++
       setfont "SMALL" ++
         text "Configuration:" ++
@@ -96,45 +97,45 @@ showUsed (!((!((!m) : pes)))) on
           | elem pe on = ("SMALLBOLD", showPE pe)
           | otherwise = ("SMALL", showPE pe)
 dopes left (!pes) = concat (map2 format (places 0) pes)
-  where format (!pt@(!((!(Pt (!x) (!y)))))) ((!font), (!tex))
+  where format pt@(Pt (!x) (!y)) (font, (!tex))
           = setfont font ++ moveto pt ++ text tex ++ stroke
-        (!no) = left `div` ((length pes * 2) + 1)
-        f (!x) = (no * ((x * 2) + 1)) + 27
-        places (!n) | n > 2 * no = []
-        places (!n) = (Pt (f n) 2) : places (n + 1)
-checkPEs (!pes) (![]) = True
-checkPEs (!pes) (p : ps)
+        no = left `div` ((length pes * 2) + 1)
+        f x = (no * ((x * 2) + 1)) + 27
+        places n | n > 2 * no = []
+        places n = (Pt (f n) 2) : places (n + 1)
+checkPEs (!pes) [] = True
+checkPEs pes ((!(p : (!ps))))
   | elem p pes = checkPEs pes ps
   | otherwise =
     error
       ("Attempt to gather information from inactive PE - " ++ showPE p)
  
 showPE :: PElement -> String
-showPE (!((!(PE (!str) (!no))))) = str ++ "." ++ show no
-inv x
+showPE (!((!(PE (!str) no)))) = str ++ "." ++ show no
+inv (!x)
   | x >= 5 = setgray 0
   | otherwise = setgray 10
 dimX = paperX - 30
 dimY = paperY - 40
  
 markXAxis :: Int -> Int -> Postscript
-markXAxis (!dimX) (!maxX) = label 10 ++ markOnX 100
-  where label 0 = ""
-        label x
+markXAxis (!dimX) maxX = label 10 ++ markOnX 100
+  where label (!0) = ""
+        label (!x)
           = newpath ++
               moveto (Pt (notch x) 0) ++
                 rlineto 0 (-2) ++
                   moveto (Pt (notch x) (-5)) ++
                     cjustify (printFloat (t x)) ++ stroke ++ label (x - 1)
-        t (!x) = my_fromInt x * (my_fromInt maxX / my_fromInt 10)
+        t x = my_fromInt x * (my_fromInt maxX / my_fromInt 10)
         notch x = x * (dimX `div` 10)
-markOnX n = mapcat notches [1 .. n] ++ stroke
-  where notches (!n)
+markOnX (!n) = mapcat notches [1 .. n] ++ stroke
+  where notches n
           = movetofloat (m * my_fromInt n) 0 ++ (rlineto 0 (-1)) ++ stroke
-        m = my_fromInt dimX / my_fromInt n
+        (!m) = my_fromInt dimX / my_fromInt n
  
 markYAxis :: Int -> Int -> Postscript
-markYAxis (!dimY) maxY = label 10 ++ markOnY (calibrate maxY)
+markYAxis dimY maxY = label 10 ++ markOnY (calibrate maxY)
   where label (!0) = ""
         label x
           = newpath ++
@@ -151,15 +152,15 @@ calibrate (!x)
 markOnY n = mapcat notches [1 .. n] ++ stroke
   where notches n
           = movetofloat 0 (m * my_fromInt n) ++ (rlineto (-1) 0)
-        (!m) = my_fromInt dimY / my_fromInt n
-movetofloat x (!y) = show x ++ " " ++ show y ++ " moveto\n"
+        m = my_fromInt dimY / my_fromInt n
+movetofloat (!x) (!y) = show x ++ " " ++ show y ++ " moveto\n"
  
 determineScale :: [Point] -> (Int, Int)
 determineScale pts = (axisScale x, axisScale y)
-  where (min, Pt x y) = minandmax pts
+  where (!(min, (!(Pt x (!y))))) = minandmax pts
  
 axisScale :: Int -> Int
-axisScale (!x) = axisScale' x 1
+axisScale x = axisScale' x 1
 axisScale' x m
   | x <= m = m
   | x <= m * 2 = m * 2
@@ -169,19 +170,19 @@ axisScale' x m
  
 minandmax :: [Point] -> (Point, Point)
 minandmax [] = error "No points"
-minandmax (!((!((!p) : ps)))) = f (p, p) ps
-  where f p (![]) = p
-        f (!(Pt (!minx) miny, Pt (!maxx) maxy)) (!((!(Pt x (!y) : ps))))
+minandmax (!((!p) : ps)) = f (p, p) ps
+  where f (!p) (![]) = p
+        f (Pt minx miny, Pt (!maxx) maxy) (!((!(Pt (!x) (!y) : (!ps)))))
           = f (Pt minx' miny', Pt maxx' maxy') ps
-          where minx' = min x minx
-                miny' = min y miny
+          where (!minx') = min x minx
+                (!miny') = min y miny
                 maxx' = max x maxx
-                (!maxy') = max y maxy
+                maxy' = max y maxy
  
 printFloat :: Float -> String
 printFloat x = f (show (round (x * 10)))
-  where f (!"0") = "0"
+  where f "0" = "0"
         f r | x < 1 = "0." ++ r
-        f ((!r) : "0") | x < 10 = [r]
-        f (!((!r) : (!m))) | x < 10 = r : '.' : m
-        f _ = show (round x)
+        f ((!r) : (!"0")) | x < 10 = [r]
+        f (!((!(r : m)))) | x < 10 = r : '.' : m
+        f (!_) = show (round x)

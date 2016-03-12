@@ -21,14 +21,13 @@ jcb_method ::
                          Int ->
                            Frac_type ->
                              Frac_type -> (My_Array Int Frac_type, My_Array Int Frac_type)
-sparse_elems = \ (!y) -> map (\ (_, x) -> x) (sparse_assocs y)
-jcb_method (!f_step) el_det_fac (!asb_table) (!v_steer)
-  ((!all_bry), (!((!x_fixed), (!y_fixed)))) (b1, b2) (!scalor)
-  max_iter (!m_iter_toler) (!relax)
-  = sub_jacobi (init_u, init_u) max_iter
-  where n_bnds = s_bounds asb_table
-        init_u = s_array n_bnds []
-        sub_jacobi old_x (!n)
+sparse_elems = \ y -> map (\ ((!_), (!x)) -> x) (sparse_assocs y)
+jcb_method f_step (!el_det_fac) (!asb_table) v_steer
+  ((!all_bry), (x_fixed, y_fixed)) (b1, b2) scalor max_iter
+  (!m_iter_toler) (!relax) = sub_jacobi (init_u, init_u) max_iter
+  where (!n_bnds) = s_bounds asb_table
+        (!init_u) = s_array n_bnds []
+        sub_jacobi (!old_x) n
           = if
               (n <= 1) ||
                 ((n /= max_iter) &&
@@ -45,8 +44,8 @@ jcb_method (!f_step) el_det_fac (!asb_table) (!v_steer)
                       else
                       (find_diff all_bry (fst old_x) b1,
                        find_diff all_bry (snd old_x) b2)
-                bindTo x (!k) = k x
-                find_diff (!fixed) (!x) (!b)
+                bindTo (!x) k = k x
+                find_diff (!fixed) x (!b)
                   = s_def_listArray n_bnds (0 :: Frac_type)
                       [if fixed !^ i then 0 else
                          ((b !^ i) / scalor) `bindTo`
@@ -56,16 +55,16 @@ jcb_method (!f_step) el_det_fac (!asb_table) (!v_steer)
                                     sum
                                       [(list_inner_prod (get_val x (v_steer !^ e))
                                           (map (mult (fst (el_det_fac !^ e))) (m_mat !^ id)))
-                                       | ((!e), id) <- asb_table !^ i])
+                                       | (e, (!id)) <- asb_table !^ i])
                                  * relax)
                                 / (mat_diag !^ i))
-                       | i <- range n_bnds]
+                       | (!i) <- range n_bnds]
         mat_diag
           = s_listArray n_bnds
               [sum
                  [(fst (el_det_fac !^ e)) * (m_r_sum !^ id) |
-                  (!(e, (!id))) <- asb_table !^ i]
-               | (!i) <- range n_bnds]
+                  (e, id) <- asb_table !^ i]
+               | i <- range n_bnds]
 m_r_sum
   = s_def_listArray (1, v_nodel) def_v
       [def_v, def_v, def_v, v', v', v']

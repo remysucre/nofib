@@ -11,35 +11,35 @@ data Lisplist = Nil
               deriving (Eq, Show)
  
 mkLisplist :: [Token] -> Lisplist
-mkLisplist ((!((!"(") : t))) = if r /= [] then Nil else l
-  where (!((!r), l)) = sublist t
+mkLisplist (!((!((!"(") : (!t))))) = if r /= [] then Nil else l
+  where (r, (!l)) = sublist t
 mkLisplist _ = Nil
  
 sublist :: [Token] -> ([Token], Lisplist)
 sublist [] = ([], Nil)
-sublist ((!("(" : (!t)))) = (r2, Cons (l1, l2))
-  where (!(r1, (!l1))) = sublist t
-        (r2, (!l2)) = sublist r1
-sublist (!((!")") : (!t))) = (t, Nil)
-sublist ((!h) : (!t)) = (r, Cons (Atom h, l))
-  where (!((!r), (!l))) = sublist t
+sublist (!((!("(" : t)))) = (r2, Cons (l1, l2))
+  where (!((!r1), (!l1))) = sublist t
+        ((!r2), l2) = sublist r1
+sublist ((!((!")") : t))) = (t, Nil)
+sublist (!((!(h : (!t))))) = (r, Cons (Atom h, l))
+  where (!(r, (!l))) = sublist t
  
 strToToken :: String -> [Token]
 strToToken "" = []
-strToToken (!s) = a : strToToken b
-  where (!(a, (!b))) = getToken s
+strToToken s = a : strToToken b
+  where (!(a, b)) = getToken s
  
 getToken :: String -> (Token, String)
 getToken (!"") = ([], "")
-getToken ((!(h : t)))
+getToken (!((!(h : t))))
   | h == ' ' = getToken t
   | h == '(' || h == ')' = ([h], t)
   | otherwise = (h : a, b)
-  where (!(a, b)) = restOfToken t
+  where ((!a), b) = restOfToken t
  
 restOfToken :: String -> (Token, String)
 restOfToken "" = ([], "")
-restOfToken (h : t)
+restOfToken ((!h) : t)
   | h == '(' || h == ')' || h == ' ' = ([], h : t)
   | otherwise = (h : a, b)
   where ((!a), b) = restOfToken t
@@ -49,11 +49,11 @@ tv ((!(Atom x))) = x
 tv (!_) = error "Not an atom"
  
 atom :: Lisplist -> Bool
-atom (Atom (!x)) = True
+atom (!((!(Atom (!x))))) = True
 atom (!_) = False
  
 car :: Lisplist -> Lisplist
-car ((!(Cons ((!x), y)))) = x
+car (!((!(Cons (!((!x), y)))))) = x
 car _ = Nil
  
 cdr :: Lisplist -> Lisplist
@@ -70,10 +70,10 @@ cadddr :: Lisplist -> Lisplist
 cadddr = car . cdr . cdr . cdr
  
 assoc :: (Lisplist, Lisplist) -> Lisplist
-assoc (term, (!(Cons ((!x), y))))
+assoc ((!term), (!(Cons (!(x, (!y))))))
   = case x of
-        Cons ((!head@(!((!(Atom key))))), rest) | term == head -> x
-                                                | otherwise -> assoc (term, y)
+        (!(Cons (!(head@((!(Atom key))), rest)))) | term == head -> x
+                                                  | otherwise -> assoc (term, y)
         _ -> Nil
 assoc ((!_), _) = Nil
  
@@ -87,15 +87,15 @@ newLUT :: LUT
 newLUT = Empty
  
 addtoLUT :: (Token, Lisplist, LUT) -> LUT
-addtoLUT (!(k, l, Empty)) = Node (Empty, (k, [l]), Empty)
-addtoLUT (k, l, Node (left, (k1, kl), right))
+addtoLUT (!((!k), (!l), Empty)) = Node (Empty, (k, [l]), Empty)
+addtoLUT ((!k), l, Node ((!left), (k1, kl), right))
   | k == k1 = Node (left, (k1, l : kl), right)
   | k < k1 = Node (addtoLUT (k, l, left), (k1, kl), right)
   | otherwise = Node (left, (k1, kl), addtoLUT (k, l, right))
  
 getLUT :: (Token, LUT) -> [Lisplist]
-getLUT (!((!t), Empty)) = []
-getLUT ((!t), (!(Node ((!left), (k, kl), (!right)))))
+getLUT ((!t), (!Empty)) = []
+getLUT ((!t), Node (!((!left), (!((!k), kl)), right)))
   | t == k = kl
   | t < k = getLUT (t, left)
   | otherwise = getLUT (t, right)

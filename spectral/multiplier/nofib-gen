@@ -1,0 +1,62 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== multiplier: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+
+Main.hs:32:9:
+    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
+      ((!ready), ra, (!rb), prod) = multiplier wordsize start as bs
+      (!start) = ready
+    In an equation for ‘multsys’:
+        multsys (!wordsize) xs
+          = (as, bs, ready, ra, rb, prod)
+          where
+              ((!ready), ra, (!rb), prod) = multiplier wordsize start as bs
+              (!start) = ready
+              as = f (map fst xs)
+              bs = f (map snd xs)
+              ....
+
+Main.hs:48:9:
+    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
+      (!regP)
+        = wlat (2 * k) (wmux1 (2 * k) start sum (rept (2 * k) zerO))
+      (ovfl, sum)
+        = add
+            (2 * k) regP (wmux1 (2 * k) lsbB (rept (2 * k) zerO) regA) zerO
+    In an equation for ‘multiplier’:
+        multiplier (!k) start (!a) b
+          = (ready, regA, regB, regP)
+          where
+              (!regP)
+                = wlat (2 * k) (wmux1 (2 * k) start sum (rept (2 * k) zerO))
+              (ovfl, sum)
+                = add
+                    (2 * k) regP (wmux1 (2 * k) lsbB (rept (2 * k) zerO) regA) zerO
+              regA
+                = wlat
+                    (2 * k) (wmux1 (2 * k) start (shl (2 * k) regA) (rept k zerO ++ a))
+              (!regB) = wlat k (wmux1 k start (shr k regB) b)
+              ....
+
+Main.hs:56:9:
+    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
+      (!regB) = wlat k (wmux1 k start (shr k regB) b)
+    In an equation for ‘multiplier’:
+        multiplier (!k) start (!a) b
+          = (ready, regA, regB, regP)
+          where
+              (!regP)
+                = wlat (2 * k) (wmux1 (2 * k) start sum (rept (2 * k) zerO))
+              (ovfl, sum)
+                = add
+                    (2 * k) regP (wmux1 (2 * k) lsbB (rept (2 * k) zerO) regA) zerO
+              regA
+                = wlat
+                    (2 * k) (wmux1 (2 * k) start (shl (2 * k) regA) (rept k zerO ++ a))
+              (!regB) = wlat k (wmux1 k start (shr k regB) b)
+              ....
+<<ghc: 118676888 bytes, 61 GCs, 6769696/14437608 avg/max bytes residency (5 samples), 33M in use, 0.00 INIT (0.00 elapsed), 0.16 MUT (0.18 elapsed), 0.31 GC (0.31 elapsed) :ghc>>
+make: *** [Main.o] Error 1
+make: Target `default' not remade because of errors.

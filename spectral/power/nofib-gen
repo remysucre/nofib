@@ -1,0 +1,17 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== power: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+
+Main.hs:95:9:
+    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
+      (!rs) = 0 :+: 1 / (compose fs rs)
+    In an equation for ‘revert’:
+        revert ((!(0 :+: fs)))
+          = rs
+          where
+              (!rs) = 0 :+: 1 / (compose fs rs)
+<<ghc: 100943368 bytes, 37 GCs, 5762134/10813904 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.05 elapsed), 0.12 MUT (0.40 elapsed), 0.20 GC (0.47 elapsed) :ghc>>
+make: *** [Main.o] Error 1
+make: Target `default' not remade because of errors.

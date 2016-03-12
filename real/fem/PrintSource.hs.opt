@@ -30,22 +30,22 @@ a_node (!db) (!node)
         "   x = " ++
           (showlj 8 x) ++
             "   y = " ++ (showlj 8 y) ++ "   bc = " ++ (showlj 3 bc) ++ "\n"
-  where ((!x), y) = getnxy db node
-        bc = getnbc db node
-material_data db
+  where (x, y) = getnxy db node
+        (!bc) = getnbc db node
+material_data (!db)
   = "MATERIAL INFORMATION :\n\n" ++
       (concat (map a_material_s [1 .. (nmats db)]))
-  where (!a_material_s) = a_material db
+  where a_material_s = a_material db
 a_material db material
   = "  Material No.=" ++
       (showlj 3 material) ++
         "   EA = " ++ (showlj 8 ea) ++ "   EI = " ++ (showlj 8 ei) ++ "\n"
   where (ea, ei) = getmpro db material
-elements db
+elements (!db)
   = "\nELEMENT DATA:\n\n" ++
       (concat (map (a_element_s) [1 .. (nelem db)])) ++ "\n\n"
-  where (!a_element_s) = a_element db
-a_element db element
+  where a_element_s = a_element db
+a_element (!db) element
   = "  Element No.=" ++
       (showlj 3 element) ++
         "   Node.L =" ++
@@ -53,16 +53,16 @@ a_element db element
             "   Node.R =" ++
               (showlj 3 noder) ++
                 "   Material No. =" ++ (showlj 3 material) ++ "\n"
-  where ((!nodel), (!noder)) = getenlr db element
+  where (!((!nodel), noder)) = getenlr db element
         (!material) = getemat db element
 plds db
   = "\nPOINT LOADS DATA:\n\n" ++
       (concat (map (a_load_s) [1 .. (nplds db)])) ++ "\n\n"
-  where a_load_s = a_load db
+  where (!a_load_s) = a_load db
 a_load db (!n)
   = "  To_point No." ++
       (showlj 3 to_point) ++
         "  Px = " ++
           (showlj 9 px) ++
             "  Py = " ++ (showlj 9 py) ++ "  M = " ++ (showlj 9 m) ++ "\n"
-  where (!((!to_point), (!px), py, m)) = getpld db n
+  where (!((!to_point), px, py, m)) = getpld db n

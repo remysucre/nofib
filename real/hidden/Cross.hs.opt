@@ -7,13 +7,13 @@ import Preds
 import Data.List (nub)
  
 cross :: Edge -> Edge -> [(Vector, Vector)]
-cross (!l) (!k)
+cross (!l) k
   = [(s (l) + lambda `mulv` h (l), s (k) + mu `mulv` h (k)) |
-     (lambda, mu) <- solve (-h l) (h k) (s l - s k),
+     (!((!lambda), mu)) <- solve (-h l) (h k) (s l - s k),
      0 <= lambda && lambda <= 1 && 0 <= mu && mu <= 1]
  
 overlap :: Plate -> Plate -> [Vector]
-overlap (!((!(Plt (!_) ls)))) p2@(!((!(Plt (!_) (!ks)))))
+overlap (!(Plt _ ls)) p2@(!(Plt (!_) (!ks)))
   = nub
-      ([s (l) | l <- ls, s (l) `into` p2] ++
-         [p | l <- ls, k <- ks, (!((!p), q)) <- cross l k])
+      ([s (l) | (!l) <- ls, s (l) `into` p2] ++
+         [p | (!l) <- ls, k <- ks, (p, (!q)) <- cross l k])

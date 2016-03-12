@@ -13,13 +13,14 @@ import Patchlevel
 import System.Environment
 import System.IO
 main
-  = do (!argv) <- getArgs
-       let n = case argv of
-                   [a] -> read a
-                   (!_) -> 7
+  = do argv <- getArgs
+       let (!n)
+             = case argv of
+                   [(!a)] -> read a
+                   _ -> 7
        hSetBinaryMode stdout True
        putStr (picture n)
-picture n = go n pic
+picture (!n) = go n pic
  
 go :: Int -> Csg -> [Char]
 go (!n) = (cdraw n) . quadoct . (octcsg n)

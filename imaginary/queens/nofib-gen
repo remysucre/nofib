@@ -1,0 +1,41 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== queens: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 172642800 bytes, 55 GCs, 8397798/18971280 avg/max bytes residency (5 samples), 42M in use, 0.00 INIT (0.00 elapsed), 0.42 MUT (0.52 elapsed), 0.62 GC (0.64 elapsed) :ghc>>
+==nofib== queens: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   2398	    312	      0	   2710	    a96	Main.o
+==nofib== queens: time to link queens follows...
+<<ghc: 38445816 bytes, 14 GCs, 409332/648680 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (1.77 elapsed), 0.11 GC (0.12 elapsed) :ghc>>
+==nofib== queens: size of queens follows...
+   text	   data	    bss	    dec	    hex	filename
+ 859076	  48080	  48776	 955932	  e961c	queens
+==nofib== queens: time to run queens follows...
+../../runstdtest/runstdtest ./queens  -o1 queens.slowstdout -o1 queens.stdout  -ghc-timing     12;   ../../runstdtest/runstdtest ./queens  -o1 queens.slowstdout -o1 queens.stdout  -ghc-timing     12;   ../../runstdtest/runstdtest ./queens  -o1 queens.slowstdout -o1 queens.stdout  -ghc-timing     12;   ../../runstdtest/runstdtest ./queens  -o1 queens.slowstdout -o1 queens.stdout  -ghc-timing     12;   ../../runstdtest/runstdtest ./queens  -o1 queens.slowstdout -o1 queens.stdout  -ghc-timing     12;
+
+real	0m0.570s
+user	0m0.551s
+sys	0m0.010s
+<<ghc: 115741488 bytes, 223 GCs (221 + 2), 0/0 avg/max bytes residency (0 samples), 232048 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.54 MUT (0.55 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.439s
+user	0m0.428s
+sys	0m0.011s
+<<ghc: 115741488 bytes, 223 GCs (221 + 2), 0/0 avg/max bytes residency (0 samples), 232048 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.43 MUT (0.43 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.442s
+user	0m0.427s
+sys	0m0.012s
+<<ghc: 115741488 bytes, 223 GCs (221 + 2), 0/0 avg/max bytes residency (0 samples), 232048 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.43 MUT (0.43 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.529s
+user	0m0.514s
+sys	0m0.011s
+<<ghc: 115741488 bytes, 223 GCs (221 + 2), 0/0 avg/max bytes residency (0 samples), 232048 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.51 MUT (0.51 elapsed), 0.01 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.528s
+user	0m0.498s
+sys	0m0.016s
+<<ghc: 115741488 bytes, 223 GCs (221 + 2), 0/0 avg/max bytes residency (0 samples), 232048 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.50 MUT (0.51 elapsed), 0.01 GC (0.01 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

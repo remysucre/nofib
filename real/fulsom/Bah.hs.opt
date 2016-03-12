@@ -13,7 +13,7 @@ main = print blah
 blah = gone 9 pic
  
 go :: Int -> Csg -> [Char]
-go n = (draw n) . quadoct . (octcsg n)
+go (!n) = (draw n) . quadoct . (octcsg n)
  
 gone :: Int -> Csg -> [Char]
-gone n = (cdraw n) . quadoct . (octcsg n)
+gone (!n) = (cdraw n) . quadoct . (octcsg n)

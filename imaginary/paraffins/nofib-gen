@@ -1,0 +1,41 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing +RTS -H20m -RTS
+==nofib== paraffins: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 448485800 bytes, 120 GCs, 12204101/29559416 avg/max bytes residency (6 samples), 64M in use, 0.00 INIT (0.00 elapsed), 1.02 MUT (1.11 elapsed), 0.96 GC (1.01 elapsed) :ghc>>
+==nofib== paraffins: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  28947	    560	      0	  29507	   7343	Main.o
+==nofib== paraffins: time to link paraffins follows...
+<<ghc: 38446936 bytes, 14 GCs, 409400/648728 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.99 elapsed), 0.09 GC (0.10 elapsed) :ghc>>
+==nofib== paraffins: size of paraffins follows...
+   text	   data	    bss	    dec	    hex	filename
+ 885108	  48304	  48776	 982188	  efcac	paraffins
+==nofib== paraffins: time to run paraffins follows...
+../../runstdtest/runstdtest ./paraffins  -o1 paraffins.slowstdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    19;   ../../runstdtest/runstdtest ./paraffins  -o1 paraffins.slowstdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    19;   ../../runstdtest/runstdtest ./paraffins  -o1 paraffins.slowstdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    19;   ../../runstdtest/runstdtest ./paraffins  -o1 paraffins.slowstdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    19;   ../../runstdtest/runstdtest ./paraffins  -o1 paraffins.slowstdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    19;
+
+real	0m1.680s
+user	0m1.375s
+sys	0m0.288s
+<<ghc: 358924536 bytes, 641 GCs (635 + 6), 0/0 avg/max bytes residency (0 samples), 519741760 bytes GC work, 309M in use, 0.00 INIT (0.00 elapsed), 0.16 MUT (0.16 elapsed), 1.46 GC (1.46 elapsed), 0.43 GC(0) (0.43 elapsed), 1.02 GC(1) (1.03 elapsed), 1 balance :ghc>>
+
+real	0m1.791s
+user	0m1.429s
+sys	0m0.348s
+<<ghc: 358924536 bytes, 641 GCs (635 + 6), 0/0 avg/max bytes residency (0 samples), 519741760 bytes GC work, 309M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.22 elapsed), 1.51 GC (1.52 elapsed), 0.40 GC(0) (0.41 elapsed), 1.11 GC(1) (1.11 elapsed), 1 balance :ghc>>
+
+real	0m1.672s
+user	0m1.341s
+sys	0m0.324s
+<<ghc: 358924536 bytes, 641 GCs (635 + 6), 0/0 avg/max bytes residency (0 samples), 519741760 bytes GC work, 309M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.17 elapsed), 1.44 GC (1.44 elapsed), 0.39 GC(0) (0.39 elapsed), 1.05 GC(1) (1.05 elapsed), 1 balance :ghc>>
+
+real	0m2.305s
+user	0m1.873s
+sys	0m0.354s
+<<ghc: 358924536 bytes, 641 GCs (635 + 6), 0/0 avg/max bytes residency (0 samples), 519741760 bytes GC work, 309M in use, 0.00 INIT (0.00 elapsed), 0.24 MUT (0.24 elapsed), 1.93 GC (2.00 elapsed), 0.53 GC(0) (0.55 elapsed), 1.40 GC(1) (1.45 elapsed), 1 balance :ghc>>
+
+real	0m1.941s
+user	0m1.404s
+sys	0m0.335s
+<<ghc: 358924536 bytes, 641 GCs (635 + 6), 0/0 avg/max bytes residency (0 samples), 519741760 bytes GC work, 309M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.17 elapsed), 1.51 GC (1.71 elapsed), 0.38 GC(0) (0.38 elapsed), 1.13 GC(1) (1.33 elapsed), 1 balance :ghc>>

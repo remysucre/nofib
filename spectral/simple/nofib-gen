@@ -1,0 +1,41 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing +RTS -K3m -H20m -RTS
+==nofib== simple: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -H110m -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 4148044648 bytes, 569 GCs, 26718587/51305336 avg/max bytes residency (13 samples), 126M in use, 0.00 INIT (0.00 elapsed), 13.03 MUT (13.32 elapsed), 9.04 GC (9.08 elapsed) :ghc>>
+==nofib== simple: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+ 286988	  15840	      0	 302828	  49eec	Main.o
+==nofib== simple: time to link simple follows...
+<<ghc: 38445664 bytes, 14 GCs, 409328/648672 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (2.22 elapsed), 0.08 GC (0.09 elapsed) :ghc>>
+==nofib== simple: size of simple follows...
+   text	   data	    bss	    dec	    hex	filename
+1245752	  71896	  48776	1366424	 14d998	simple
+==nofib== simple: time to run simple follows...
+../../runstdtest/runstdtest ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;   ../../runstdtest/runstdtest ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;   ../../runstdtest/runstdtest ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;   ../../runstdtest/runstdtest ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;   ../../runstdtest/runstdtest ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;
+
+real	0m0.498s
+user	0m0.395s
+sys	0m0.077s
+<<ghc: 218761496 bytes, 231 GCs (226 + 5), 0/0 avg/max bytes residency (0 samples), 68736664 bytes GC work, 42M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.26 elapsed), 0.21 GC (0.21 elapsed), 0.10 GC(0) (0.10 elapsed), 0.10 GC(1) (0.11 elapsed), 1 balance :ghc>>
+
+real	0m0.580s
+user	0m0.469s
+sys	0m0.100s
+<<ghc: 218761496 bytes, 231 GCs (226 + 5), 0/0 avg/max bytes residency (0 samples), 68710696 bytes GC work, 42M in use, 0.00 INIT (0.00 elapsed), 0.31 MUT (0.31 elapsed), 0.25 GC (0.25 elapsed), 0.12 GC(0) (0.12 elapsed), 0.13 GC(1) (0.13 elapsed), 1 balance :ghc>>
+
+real	0m0.412s
+user	0m0.371s
+sys	0m0.039s
+<<ghc: 218761496 bytes, 231 GCs (226 + 5), 0/0 avg/max bytes residency (0 samples), 68711072 bytes GC work, 42M in use, 0.00 INIT (0.00 elapsed), 0.22 MUT (0.22 elapsed), 0.18 GC (0.18 elapsed), 0.09 GC(0) (0.09 elapsed), 0.09 GC(1) (0.09 elapsed), 1 balance :ghc>>
+
+real	0m0.599s
+user	0m0.528s
+sys	0m0.067s
+<<ghc: 218761496 bytes, 231 GCs (226 + 5), 0/0 avg/max bytes residency (0 samples), 68710696 bytes GC work, 42M in use, 0.00 INIT (0.00 elapsed), 0.32 MUT (0.32 elapsed), 0.26 GC (0.26 elapsed), 0.12 GC(0) (0.12 elapsed), 0.14 GC(1) (0.14 elapsed), 1 balance :ghc>>
+
+real	0m0.758s
+user	0m0.694s
+sys	0m0.061s
+<<ghc: 218761496 bytes, 231 GCs (226 + 5), 0/0 avg/max bytes residency (0 samples), 68716632 bytes GC work, 42M in use, 0.00 INIT (0.00 elapsed), 0.41 MUT (0.41 elapsed), 0.32 GC (0.32 elapsed), 0.18 GC(0) (0.18 elapsed), 0.14 GC(1) (0.14 elapsed), 1 balance :ghc>>

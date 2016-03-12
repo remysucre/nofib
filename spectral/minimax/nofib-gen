@@ -1,0 +1,71 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== minimax: time to compile Wins follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Wins.hs -o Wins.o
+<<ghc: 88427664 bytes, 38 GCs, 3916850/6755096 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.13 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+==nofib== minimax: size of Wins.o follows...
+   text	   data	    bss	    dec	    hex	filename
+      0	   1312	      0	   1312	    520	Wins.o
+==nofib== minimax: time to compile Board follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Board.hs -o Board.o
+<<ghc: 276080104 bytes, 67 GCs, 5648666/10689872 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.44 MUT (0.48 elapsed), 0.25 GC (0.25 elapsed) :ghc>>
+==nofib== minimax: size of Board.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  18504	   1632	      0	  20136	   4ea8	Board.o
+==nofib== minimax: time to compile Tree follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Tree.hs -o Tree.o
+<<ghc: 114285432 bytes, 37 GCs, 5693262/10574432 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.17 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
+==nofib== minimax: size of Tree.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   4687	    352	      0	   5039	   13af	Tree.o
+==nofib== minimax: time to compile Game follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Game.hs -o Game.o
+<<ghc: 167746216 bytes, 45 GCs, 5530766/10300920 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.22 MUT (0.29 elapsed), 0.22 GC (0.25 elapsed) :ghc>>
+==nofib== minimax: size of Game.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   9331	    496	      0	   9827	   2663	Game.o
+==nofib== minimax: time to compile Prog follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Prog.hs -o Prog.o
+<<ghc: 79026208 bytes, 44 GCs, 3876877/6412968 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.16 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
+==nofib== minimax: size of Prog.o follows...
+   text	   data	    bss	    dec	    hex	filename
+    969	    512	      0	   1481	    5c9	Prog.o
+==nofib== minimax: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 117657560 bytes, 58 GCs, 8232454/17943192 avg/max bytes residency (5 samples), 40M in use, 0.01 INIT (0.05 elapsed), 0.14 MUT (0.20 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
+==nofib== minimax: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+    237	    120	      0	    357	    165	Main.o
+==nofib== minimax: time to link minimax follows...
+<<ghc: 38491088 bytes, 14 GCs, 410684/648552 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.70 elapsed), 0.07 GC (0.07 elapsed) :ghc>>
+==nofib== minimax: size of minimax follows...
+   text	   data	    bss	    dec	    hex	filename
+ 850724	  46576	  48776	 946076	  e6f9c	minimax
+==nofib== minimax: time to run minimax follows...
+../../runstdtest/runstdtest ./minimax  -o1 minimax.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./minimax  -o1 minimax.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./minimax  -o1 minimax.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./minimax  -o1 minimax.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./minimax  -o1 minimax.stdout  -ghc-timing     ;
+
+real	0m0.024s
+user	0m0.008s
+sys	0m0.005s
+<<ghc: 6417096 bytes, 13 GCs (11 + 2), 0/0 avg/max bytes residency (0 samples), 108040 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.015s
+user	0m0.007s
+sys	0m0.008s
+<<ghc: 6417096 bytes, 13 GCs (11 + 2), 0/0 avg/max bytes residency (0 samples), 108040 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.017s
+user	0m0.008s
+sys	0m0.008s
+<<ghc: 6417096 bytes, 13 GCs (11 + 2), 0/0 avg/max bytes residency (0 samples), 108040 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.015s
+user	0m0.005s
+sys	0m0.009s
+<<ghc: 6417096 bytes, 13 GCs (11 + 2), 0/0 avg/max bytes residency (0 samples), 108040 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.016s
+user	0m0.007s
+sys	0m0.007s
+<<ghc: 6417096 bytes, 13 GCs (11 + 2), 0/0 avg/max bytes residency (0 samples), 108040 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

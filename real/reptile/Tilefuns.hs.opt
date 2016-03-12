@@ -7,10 +7,10 @@ import Drawfuns
 import Geomfuns
  
 nextoct :: Int -> Int
-nextoct (!n) = (n + 1) `mod` 8
+nextoct n = (n + 1) `mod` 8
  
 nop :: (Int, Int) -> (Int, Int)
-nop ((!n1), (!n2))
+nop (n1, (!n2))
   = if n2 == 7 then (nextoct n1, 0) else (n1, nextoct n2)
  
 indlist :: (Int, Int) -> [(Int, Int)]
@@ -27,39 +27,39 @@ unmark = undo . mark
  
 mark :: Int -> [Char]
 mark (!0) = ""
-mark (!n) = rectangle [x - 3, y - 3, x + w + 3, y + h + 3]
+mark n = rectangle [x - 3, y - 3, x + w + 3, y + h + 3]
   where (![x, (!y), (!w), (!h)]) = picbox n
  
 tlx, tly :: Int -> Int
-tlx = \ x -> tpxorig + (((x - tpxorig) `div` tpxygap) * tpxygap)
-tly = \ y -> tpyorig + (((y - tpyorig) `div` tpxygap) * tpxygap)
+tlx = \ (!x) -> tpxorig + (((x - tpxorig) `div` tpxygap) * tpxygap)
+tly = \ (!y) -> tpyorig + (((y - tpyorig) `div` tpxygap) * tpxygap)
  
 tlidx, tlidy :: Int -> Int
 tlidx = \ (!x) -> ((x - tpxorig) `div` tpxygap)
-tlidy = \ y -> ((y - tpyorig) `div` tpxygap)
+tlidy = \ (!y) -> ((y - tpyorig) `div` tpxygap)
  
 sqas :: Int -> Int -> [Int]
-sqas (!x) y = [tlx x, tly y]
+sqas x y = [tlx x, tly y]
  
 sqid :: [Int] -> (Int, Int)
-sqid [(!x), y] = (tlidy y, tlidx x)
+sqid (![(!x), y]) = (tlidy y, tlidx x)
  
 squas :: (Int, Int) -> [Int]
 squas (!(ln1, ln2))
   = [tpxorig + ln2 * tpxygap, tpyorig + ln1 * tpxygap]
  
 btlocate :: [Int] -> [Int]
-btlocate [x, (!y)] = if inbigtile x y then sqas x y else [0, 0]
+btlocate (![x, y]) = if inbigtile x y then sqas x y else [0, 0]
  
 put :: [Int] -> [[Int]] -> [Char]
-put [x, (!y)] = place x y
+put (![x, y]) = place x y
  
 ineights :: [a] -> [[a]]
-ineights (![]) = []
+ineights [] = []
 ineights ns = take 8 ns : ineights (drop 8 ns)
  
 rot :: Int -> Int
-rot (!n)
+rot n
   = case n of
         0 -> 0
         4 -> 1
@@ -67,7 +67,7 @@ rot (!n)
         (!7) -> 6
         6 -> 5
         5 -> 8
-        (!n) -> n + 1
+        n -> n + 1
  
 turn :: Int -> Int
 turn (!n)
@@ -77,23 +77,23 @@ inv :: Int -> Int
 inv = turn
  
 inbox :: [Int] -> Int
-inbox [xp, yp] = inbox' 1
+inbox (![(!xp), (!yp)]) = inbox' 1
   where inbox' n
           = if n > 8 then 0 else
               if inrect x y w h xp yp then n else inbox' (n + 1)
           where [x, (!y), w, h] = picbox n
  
 tpatformat :: [[Int]] -> [Char]
-tpatformat [] = ""
-tpatformat (!((!((!ln) : (!lns)))))
+tpatformat (![]) = ""
+tpatformat (!((!(ln : lns))))
   = formline ln ++ "\n" ++ tpatformat lns
-  where formline (n : (!ns))
+  where formline (n : ns)
           = if (ns /= []) then show n ++ " " ++ formline ns else show n
  
 pam :: (a -> b -> c) -> [a] -> b -> [c]
-pam f xs (!y) = map (\ (!x) -> f x y) xs
+pam (!f) (!xs) y = map (\ x -> f x y) xs
  
 newas :: (Eq a) => a -> b -> [(a, b)] -> [(a, b)]
-newas (!i) e [] = [(i, e)]
-newas (!i) e (!((g1, (!g2)) : gs))
+newas i (!e) (![]) = [(i, e)]
+newas i e ((!((!g1), (!g2))) : (!gs))
   = if g1 == i then (i, e) : gs else (g1, g2) : newas i e gs

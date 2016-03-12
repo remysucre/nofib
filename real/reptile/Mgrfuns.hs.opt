@@ -8,17 +8,17 @@ module Mgrfuns
 import Diff
  
 escom :: [Char] -> [Int] -> [Char]
-escom (!str) (!ns) = '\ESC' : foldr f "" ns
+escom str ns = '\ESC' : foldr f "" ns
   where f (!n) "" = show n ++ str
         f n s = show n ++ "," ++ s
 aligntext = '\ESC' : "l"
 bitcopy = escom "b"
 circle = escom "o"
 clear = "\f"
-clearevent (!event) = escom "e" [mapevent event]
+clearevent event = escom "e" [mapevent event]
 clearmode mode = escom "s" [mode]
 destroywin (!n) = escom ",OZ" [n]
-dragcircle [(!x1), (!y1), (!x2), (!y2)] = circle [x1, y1, r]
+dragcircle (![(!x1), (!y1), (!x2), (!y2)]) = circle [x1, y1, r]
   where r = bcroot (square (diff x1 x2) + square (diff y1 y2))
 dragline = "%l\n"
 dragrect = "%r\n"
@@ -30,7 +30,7 @@ line = escom "l"
 mapevent (!event)
   = if event == 3 || event == 4 then 2 - event else event
 newwin = escom "Z"
-rcircle r = escom "o" [r]
+rcircle (!r) = escom "o" [r]
 selectwin n = escom "Z" [n]
 setevent event (!str)
   = escom ("e" ++ str) [mapevent event, length str]
@@ -38,7 +38,7 @@ setmode mode = escom "S" [mode]
 shapewindow = escom "W"
 standend = '\ESC' : ",n"
 standout = '\ESC' : "i"
-stringto (!win) x (!y) str
+stringto win (!x) y str
   = escom ("." ++ str) [win, x, y, length str]
 textregion = escom "t"
 textreset = '\ESC' : "t"

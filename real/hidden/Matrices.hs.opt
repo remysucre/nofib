@@ -8,7 +8,7 @@ mat :: [Vector] -> Matrix
 mat (!m) = m
  
 rows :: Matrix -> [Vector]
-rows (!m) = m
+rows m = m
  
 mulm :: Matrix -> Vector -> Vector
-mulm m v = vec (map (inpr v) (rows m))
+mulm (!m) v = vec (map (inpr v) (rows m))

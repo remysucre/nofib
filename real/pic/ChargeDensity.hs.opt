@@ -6,11 +6,11 @@ import Data.Array
 chargeDensity :: ParticleHeap -> Rho
 chargeDensity (xyPos, xyVel)
   = accumArray (+) 0 ((0, 0), (n, n)) (accumCharge xyPos)
-  where n = nCell - 1
+  where (!n) = nCell - 1
  
 accumCharge :: [Position] -> [MeshAssoc]
 accumCharge [] = []
-accumCharge ((x, y) : xys)
+accumCharge (((!x), (!y)) : (!xys))
   = [((i, j), charge * (1 - dx) * (1 - dy))] ++
       [((i', j), charge * dx * (1 - dy))] ++
         [((i, j'), charge * (1 - dx) * dy)] ++

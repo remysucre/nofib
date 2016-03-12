@@ -1,0 +1,41 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== clausify: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 397990792 bytes, 95 GCs, 8693294/19250208 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.68 MUT (0.77 elapsed), 0.57 GC (0.58 elapsed) :ghc>>
+==nofib== clausify: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  25549	   1168	      0	  26717	   685d	Main.o
+==nofib== clausify: time to link clausify follows...
+<<ghc: 38451976 bytes, 14 GCs, 409388/648736 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (1.01 elapsed), 0.20 GC (0.20 elapsed) :ghc>>
+==nofib== clausify: size of clausify follows...
+   text	   data	    bss	    dec	    hex	filename
+ 882420	  49008	  48776	 980204	  ef4ec	clausify
+==nofib== clausify: time to run clausify follows...
+../../runstdtest/runstdtest ./clausify  -o1 clausify.slowstdout -o1 clausify.stdout  -ghc-timing     100;   ../../runstdtest/runstdtest ./clausify  -o1 clausify.slowstdout -o1 clausify.stdout  -ghc-timing     100;   ../../runstdtest/runstdtest ./clausify  -o1 clausify.slowstdout -o1 clausify.stdout  -ghc-timing     100;   ../../runstdtest/runstdtest ./clausify  -o1 clausify.slowstdout -o1 clausify.stdout  -ghc-timing     100;   ../../runstdtest/runstdtest ./clausify  -o1 clausify.slowstdout -o1 clausify.stdout  -ghc-timing     100;
+
+real	0m1.075s
+user	0m1.019s
+sys	0m0.039s
+<<ghc: 437857216 bytes, 839 GCs (737 + 102), 0/0 avg/max bytes residency (0 samples), 294594288 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 0.50 MUT (0.50 elapsed), 0.55 GC (0.55 elapsed), 0.35 GC(0) (0.35 elapsed), 0.20 GC(1) (0.20 elapsed), 1 balance :ghc>>
+
+real	0m0.988s
+user	0m0.974s
+sys	0m0.011s
+<<ghc: 437857216 bytes, 839 GCs (737 + 102), 0/0 avg/max bytes residency (0 samples), 294594288 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 0.47 MUT (0.47 elapsed), 0.51 GC (0.51 elapsed), 0.33 GC(0) (0.33 elapsed), 0.18 GC(1) (0.18 elapsed), 1 balance :ghc>>
+
+real	0m1.240s
+user	0m1.217s
+sys	0m0.017s
+<<ghc: 437857216 bytes, 839 GCs (737 + 102), 0/0 avg/max bytes residency (0 samples), 294594288 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 0.54 MUT (0.54 elapsed), 0.69 GC (0.69 elapsed), 0.41 GC(0) (0.41 elapsed), 0.28 GC(1) (0.28 elapsed), 1 balance :ghc>>
+
+real	0m1.035s
+user	0m1.014s
+sys	0m0.012s
+<<ghc: 437857216 bytes, 839 GCs (737 + 102), 0/0 avg/max bytes residency (0 samples), 294594288 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 0.47 MUT (0.47 elapsed), 0.55 GC (0.55 elapsed), 0.34 GC(0) (0.34 elapsed), 0.21 GC(1) (0.21 elapsed), 1 balance :ghc>>
+
+real	0m1.398s
+user	0m1.359s
+sys	0m0.031s
+<<ghc: 437857216 bytes, 839 GCs (737 + 102), 0/0 avg/max bytes residency (0 samples), 294594288 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 0.61 MUT (0.61 elapsed), 0.77 GC (0.78 elapsed), 0.46 GC(0) (0.46 elapsed), 0.31 GC(1) (0.31 elapsed), 1 balance :ghc>>

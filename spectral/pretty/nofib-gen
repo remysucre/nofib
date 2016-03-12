@@ -1,0 +1,53 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== pretty: time to compile CharSeq follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c CharSeq.hs -o CharSeq.o
+<<ghc: 128745048 bytes, 39 GCs, 5589324/10379056 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.22 elapsed), 0.21 GC (0.21 elapsed) :ghc>>
+==nofib== pretty: size of CharSeq.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   8144	    288	      0	   8432	   20f0	CharSeq.o
+==nofib== pretty: time to compile Pretty follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Pretty.hs -o Pretty.o
+<<ghc: 267030456 bytes, 61 GCs, 5567646/10530296 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.46 elapsed), 0.25 GC (0.29 elapsed) :ghc>>
+==nofib== pretty: size of Pretty.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  20174	    816	      0	  20990	   51fe	Pretty.o
+==nofib== pretty: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 139842016 bytes, 58 GCs, 8280947/17939800 avg/max bytes residency (5 samples), 39M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.23 elapsed), 0.28 GC (0.29 elapsed) :ghc>>
+==nofib== pretty: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   2431	    816	      0	   3247	    caf	Main.o
+==nofib== pretty: time to link pretty follows...
+<<ghc: 38469312 bytes, 14 GCs, 409368/648696 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.79 elapsed), 0.08 GC (0.10 elapsed) :ghc>>
+==nofib== pretty: size of pretty follows...
+   text	   data	    bss	    dec	    hex	filename
+ 877151	  46840	  48776	 972767	  ed7df	pretty
+==nofib== pretty: time to run pretty follows...
+../../runstdtest/runstdtest ./pretty  -o1 pretty.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./pretty  -o1 pretty.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./pretty  -o1 pretty.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./pretty  -o1 pretty.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./pretty  -o1 pretty.stdout  -ghc-timing     ;
+
+real	0m0.029s
+user	0m0.002s
+sys	0m0.005s
+<<ghc: 172216 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.010s
+user	0m0.002s
+sys	0m0.007s
+<<ghc: 172216 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.015s
+user	0m0.004s
+sys	0m0.009s
+<<ghc: 172216 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.009s
+user	0m0.001s
+sys	0m0.007s
+<<ghc: 172216 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.011s
+user	0m0.002s
+sys	0m0.006s
+<<ghc: 172216 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

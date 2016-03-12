@@ -5,7 +5,7 @@ import Auxprogfuns
 import Layout
 import Tilefuns
 main
-  = do (!fromMgr) <- getContents
+  = do fromMgr <- getContents
        let (!toMgr)
              = setmode 7 ++
                  shapewindow [0, 0, 1150, 900] ++

@@ -1,0 +1,44 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing +RTS -K3m -H24m -RTS
+==nofib== treejoin: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+
+Main.hs:59:1: Warning:
+    Local definition of ‘join’ clashes with a future Prelude name - this will become an error in GHC 7.10, under the Applicative-Monad Proposal.
+<<ghc: 275668232 bytes, 73 GCs, 8268798/17497720 avg/max bytes residency (5 samples), 40M in use, 0.00 INIT (0.00 elapsed), 0.59 MUT (0.65 elapsed), 0.54 GC (0.55 elapsed) :ghc>>
+==nofib== treejoin: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  13799	    736	      0	  14535	   38c7	Main.o
+==nofib== treejoin: time to link treejoin follows...
+<<ghc: 38446408 bytes, 14 GCs, 409388/648736 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.62 elapsed), 0.08 GC (0.10 elapsed) :ghc>>
+==nofib== treejoin: size of treejoin follows...
+   text	   data	    bss	    dec	    hex	filename
+ 844916	  44112	  48776	 937804	  e4f4c	treejoin
+==nofib== treejoin: time to run treejoin follows...
+../../runstdtest/runstdtest ./treejoin  -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;   ../../runstdtest/runstdtest ./treejoin  -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;   ../../runstdtest/runstdtest ./treejoin  -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;   ../../runstdtest/runstdtest ./treejoin  -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;   ../../runstdtest/runstdtest ./treejoin  -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;
+
+real	0m0.361s
+user	0m0.299s
+sys	0m0.050s
+<<ghc: 96540208 bytes, 16 GCs (11 + 5), 0/0 avg/max bytes residency (0 samples), 46455272 bytes GC work, 30M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.14 elapsed), 0.20 GC (0.20 elapsed), 0.14 GC(0) (0.14 elapsed), 0.06 GC(1) (0.06 elapsed), 1 balance :ghc>>
+
+real	0m0.310s
+user	0m0.268s
+sys	0m0.034s
+<<ghc: 96540208 bytes, 16 GCs (11 + 5), 0/0 avg/max bytes residency (0 samples), 46455272 bytes GC work, 30M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.12 elapsed), 0.17 GC (0.17 elapsed), 0.11 GC(0) (0.11 elapsed), 0.06 GC(1) (0.06 elapsed), 1 balance :ghc>>
+
+real	0m0.249s
+user	0m0.209s
+sys	0m0.035s
+<<ghc: 96540208 bytes, 16 GCs (11 + 5), 0/0 avg/max bytes residency (0 samples), 46456472 bytes GC work, 30M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.10 elapsed), 0.13 GC (0.14 elapsed), 0.09 GC(0) (0.09 elapsed), 0.04 GC(1) (0.05 elapsed), 1 balance :ghc>>
+
+real	0m0.358s
+user	0m0.303s
+sys	0m0.054s
+<<ghc: 96540208 bytes, 16 GCs (11 + 5), 0/0 avg/max bytes residency (0 samples), 46456472 bytes GC work, 30M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.21 GC (0.21 elapsed), 0.14 GC(0) (0.15 elapsed), 0.06 GC(1) (0.06 elapsed), 1 balance :ghc>>
+
+real	0m0.456s
+user	0m0.382s
+sys	0m0.065s
+<<ghc: 96540208 bytes, 16 GCs (11 + 5), 0/0 avg/max bytes residency (0 samples), 46455272 bytes GC work, 30M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.17 elapsed), 0.26 GC (0.26 elapsed), 0.18 GC(0) (0.18 elapsed), 0.08 GC(1) (0.08 elapsed), 1 balance :ghc>>

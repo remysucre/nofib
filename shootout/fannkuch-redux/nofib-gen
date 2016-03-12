@@ -1,0 +1,12 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -XBangPatterns -O2
+RUNTEST_OPTS = -ghc-timing
+==nofib== fannkuch-redux: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -XBangPatterns -O2 -c Main.hs -o Main.o
+
+Main.hs:13:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!mempty) = F 0 0
+<<ghc: 93829400 bytes, 33 GCs, 5649762/10857912 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.10 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
+make: *** [Main.o] Error 1
+make: Target `default' not remade because of errors.

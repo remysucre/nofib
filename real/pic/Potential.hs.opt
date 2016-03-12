@@ -5,13 +5,13 @@ import Utils
 import Data.Array
  
 potential :: Phi -> Rho -> Indx -> Indx -> Phi
-potential phi rho depth nIter
+potential phi rho depth (!nIter)
   | nIter == 0 = phi
   | otherwise = potential phi' rho depth (nIter - 1)
   where phi' = vCycle rho phi nCell depth
  
 vCycle :: Phi -> Rho -> Indx -> Indx -> Phi
-vCycle phi rho n depth
+vCycle (!phi) (!rho) n (!depth)
   = if (depth == 0) then relax phi' rho n else
       correct phi' eCoarse n nHalf
   where nHalf = n `div` 2
@@ -25,28 +25,26 @@ vCycle phi rho n depth
         eCoarse = vCycle eZero rCoarse nHalf (depth - 1)
  
 laplacianOp :: Mesh -> Range -> Value
-laplacianOp mesh [iLo, i, (!iHi), (!jLo), (!j), jHi]
+laplacianOp mesh [iLo, i, (!iHi), jLo, j, (!jHi)]
   = -(mesh ! (iLo, j) + mesh ! (i, jHi) + mesh ! (i, jLo) +
         mesh ! (iHi, j)
         - 4 * mesh ! (i, j))
  
 residual :: Phi -> Rho -> Indx -> Rho
-residual (!mesh) (!mesh') n
-  = applyOpToMesh (residualOp mesh') mesh n
-  where residualOp mesh' (!mesh)
-          (![iLo, (!i), (!iHi), jLo, (!j), jHi])
+residual (!mesh) mesh' n = applyOpToMesh (residualOp mesh') mesh n
+  where residualOp (!mesh') mesh [(!iLo), i, (!iHi), (!jLo), j, jHi]
           = mesh' ! (i, j) - laplacianOp mesh [iLo, i, iHi, jLo, j, jHi]
  
 relax :: Phi -> Rho -> Indx -> Phi
-relax mesh (!mesh') n = applyOpToMesh (relaxOp mesh') mesh n
-  where relaxOp mesh' mesh (![iLo, i, (!iHi), (!jLo), j, jHi])
+relax mesh mesh' (!n) = applyOpToMesh (relaxOp mesh') mesh n
+  where relaxOp mesh' mesh [(!iLo), (!i), iHi, (!jLo), j, jHi]
           = 0.25 * mesh' ! (i, j) +
               0.25 *
                 (mesh ! (iLo, j) + mesh ! (i, jLo) + mesh ! (i, jHi) +
                    mesh ! (iHi, j))
  
 correct :: Phi -> Mesh -> Indx -> Indx -> Phi
-correct (!phi) eCoarse (!n') nHalf
+correct (!phi) eCoarse n' nHalf
   = array ((0, 0), (n, n))
       [((i, j), phi ! (i, j) + eFine ! (i, j)) | i <- [0 .. n],
        j <- [0 .. n]]

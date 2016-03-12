@@ -1,0 +1,27 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing +RTS -K128M -H -RTS
+==nofib== binary-trees: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 247065080 bytes, 65 GCs, 8862982/20110016 avg/max bytes residency (5 samples), 44M in use, 0.00 INIT (0.00 elapsed), 0.49 MUT (0.58 elapsed), 0.51 GC (0.55 elapsed) :ghc>>
+==nofib== binary-trees: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   9166	    736	      0	   9902	   26ae	Main.o
+==nofib== binary-trees: time to link binary-trees follows...
+<<ghc: 38522760 bytes, 14 GCs, 410892/648672 avg/max bytes residency (2 samples), 30M in use, 0.01 INIT (0.01 elapsed), 0.08 MUT (0.93 elapsed), 0.09 GC (0.09 elapsed) :ghc>>
+==nofib== binary-trees: size of binary-trees follows...
+   text	   data	    bss	    dec	    hex	filename
+ 933252	  57712	  48776	1039740	  fdd7c	binary-trees
+==nofib== binary-trees: time to run binary-trees follows...
+../../runstdtest/runstdtest ./binary-trees  -o1 binary-trees.slowstdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    20  ;   ../../runstdtest/runstdtest ./binary-trees  -o1 binary-trees.slowstdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    20  ;   ../../runstdtest/runstdtest ./binary-trees  -o1 binary-trees.slowstdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    20  ;   ../../runstdtest/runstdtest ./binary-trees  -o1 binary-trees.slowstdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    20  ;   ../../runstdtest/runstdtest ./binary-trees  -o1 binary-trees.slowstdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    20  ;
+
+real	0m59.679s
+user	0m58.745s
+sys	0m0.803s
+<<ghc: 19552517760 bytes, 691 GCs (667 + 24), 0/0 avg/max bytes residency (0 samples), 5088579712 bytes GC work, 304M in use, 0.00 INIT (0.00 elapsed), 41.79 MUT (41.85 elapsed), 17.67 GC (17.73 elapsed), 13.64 GC(0) (13.67 elapsed), 4.04 GC(1) (4.06 elapsed), 1 balance :ghc>>
+
+real	0m38.416s
+user	0m37.263s
+sys	0m0.691s
+<<ghc: 19552517760 bytes, 691 GCs (667 + 24), 0/0 avg/max bytes residency (0 samples), 5088579712 bytes GC work, 304M in use, 0.00 INIT (0.00 elapsed), 24.50 MUT (24.61 elapsed), 13.39 GC (13.74 elapsed), 10.05 GC(0) (10.22 elapsed), 3.34 GC(1) (3.52 elapsed), 1 balance :ghc>>
+make: *** [runtests] Terminated

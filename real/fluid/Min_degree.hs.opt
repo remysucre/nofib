@@ -6,58 +6,57 @@ import Data.List (nub, partition)
  
 min_degree :: (My_Array Int [Int]) -> [Int]
 min_degree (!old_rows) = find_min init_counts [] [] []
-  where (!init_counts)
+  where init_counts
           = s_accumArray (++) ([] :: [Int]) (s_bounds old_rows)
-              (map (\ (x, y) -> (length y, [x])) (s_assocs old_rows))
-        find_min (!counts) cliques (!pro) (!res)
+              (map (\ ((!x), (!y)) -> (length y, [x])) (s_assocs old_rows))
+        find_min counts (!cliques) (!pro) res
           = if remaining == [] then res else
               find_min new_counts new_cliques processed new_pivots
           where (!new_pivots) = res ++ [pivot_i]
-                (!processed) = mg_line pro [pivot_i]
-                (!new_counts)
+                processed = mg_line pro [pivot_i]
+                new_counts
                   = s_accumArray mg_line ([] :: [Int]) (s_bounds counts)
-                      ((map (\ ((!i), js) -> (i, rm_list chgd js))
-                          (sparse_assocs counts))
+                      ((map (\ (i, js) -> (i, rm_list chgd js)) (sparse_assocs counts))
                          ++ updt)
-                  where chgd = mg_lines ([pivot_i] : [js | (_, (!js)) <- updt])
+                  where chgd = mg_lines ([pivot_i] : [js | (_, js) <- updt])
                 (!updt) = count_update new_cols []
                 (!remaining) = sparse_assocs counts
-                (_, ((!(pivot_i : _)))) = head remaining
-                rmed = do_rm cliques []
-                do_rm (!((!((!cli) : (!clis))))) rmd
+                ((!_), ((!pivot_i) : (!_))) = head remaining
+                (!rmed) = do_rm cliques []
+                do_rm (!(cli : (!clis))) rmd
                   = do_rm clis
                       (if (l2 == []) || (head l2) /= pivot_i then cli : rmd else
                          case r of
-                             ((!r1) : (r2 : _)) -> r : rmd
-                             (!_) -> rmd)
-                  where (!r) = l1 ++ (tail l2)
-                        ((!l1), (!l2)) = partition ((<) pivot_i) cli
-                do_rm _ res = res
+                             (r1 : (!((!r2) : _))) -> r : rmd
+                             _ -> rmd)
+                  where r = l1 ++ (tail l2)
+                        (l1, l2) = partition ((<) pivot_i) cli
+                do_rm _ (!res) = res
                 (!new_cliques) = nub (new_cols : rmed)
-                new_cols = remove pivot_i (get_cols pivot_i cliques)
-                  where remove (!x) = filter ((/=) x)
-                count_update (r : (!rs)) res
+                (!new_cols) = remove pivot_i (get_cols pivot_i cliques)
+                  where remove x = filter ((/=) x)
+                count_update (r : rs) res
                   = count_update rs
                       (((length (get_cols r (new_cols : cliques))) - 1, [r]) : res)
-                count_update _ res = res
-                (!get_cols)
-                  = \ (!i) (!cli) ->
+                count_update (!_) (!res) = res
+                get_cols
+                  = \ i cli ->
                       rm_list pro (mg_lines ((old_rows !^ i) : (filter (elem i) cli)))
-inter_sec (!x@((!((!x1) : xs)))) (!y@((!(y1 : ys))))
+inter_sec x@(!((!x1) : (!xs))) y@(!((!((!y1) : ys))))
   | x1 == y1 = True
   | x1 < y1 = inter_sec xs y
   | otherwise = inter_sec x ys
-inter_sec _ (!_) = False
-rm_list x@(!((!(x1 : xs)))) (!y@(!(y1 : (!ys))))
+inter_sec _ _ = False
+rm_list x@((!(x1 : xs))) (!y@((!(y1 : ys))))
   | x1 == y1 = rm_list xs ys
   | x1 < y1 = rm_list xs y
   | otherwise = y1 : rm_list x ys
-rm_list (!_) (!y) = y
-mg_line x@(!((!(x1 : (!xs))))) y@(!((!(y1 : ys))))
+rm_list _ (!y) = y
+mg_line x@(x1 : (!xs)) (!y@(y1 : (!ys)))
   | x1 == y1 = x1 : mg_line xs ys
   | x1 < y1 = x1 : mg_line xs y
   | otherwise = y1 : mg_line x ys
-mg_line x (!y) = x ++ y
+mg_line (!x) y = x ++ y
  
 mg_lines :: Ord a => [[a]] -> [a]
 mg_lines = foldl1 mg_line

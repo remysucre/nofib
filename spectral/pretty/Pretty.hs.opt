@@ -1,0 +1,146 @@
+module Pretty
+       (Pretty, PprStyle(..), ppNil, ppStr, ppChar, ppInt, ppInteger,
+        ppDouble, ppSP, pp'SP, ppLbrack, ppRbrack, ppLparen, ppRparen,
+        ppSemi, ppComma, ppCat, ppBeside, ppBesides, ppAbove, ppAboves,
+        ppNest, ppSep, ppHang, ppInterleave, ppShow, ppUnformatted,
+        PrettyRep)
+       where
+import CharSeq
+ 
+ppNil :: Pretty
+ 
+ppSP, pp'SP, ppLbrack, ppRbrack, ppLparen, ppRparen, ppSemi,
+      ppComma :: Pretty
+ 
+ppStr :: [Char] -> Pretty
+ 
+ppChar :: Char -> Pretty
+ 
+ppInt :: Int -> Pretty
+ 
+ppInteger :: Integer -> Pretty
+ 
+ppDouble :: Double -> Pretty
+ 
+ppBeside :: Pretty -> Pretty -> Pretty
+ 
+ppBesides :: [Pretty] -> Pretty
+ 
+ppBesideSP :: Pretty -> Pretty -> Pretty
+ 
+ppCat :: [Pretty] -> Pretty
+ 
+ppAbove :: Pretty -> Pretty -> Pretty
+ 
+ppAboves :: [Pretty] -> Pretty
+ 
+ppInterleave :: Pretty -> [Pretty] -> Pretty
+ 
+ppSep :: [Pretty] -> Pretty
+ 
+ppHang :: Pretty -> Int -> Pretty -> Pretty
+ 
+ppNest :: Int -> Pretty -> Pretty
+ 
+ppShow :: Int -> Pretty -> [Char]
+ 
+ppUnformatted :: Pretty -> [Char]
+ 
+type Pretty = Int -> Bool -> PrettyRep
+ 
+data PrettyRep = MkPrettyRep CSeq Int Bool Bool
+ppShow width p = cShow seq
+  where (!(MkPrettyRep seq ll (!emp) sl)) = p width False
+ppUnformatted p = cShow seq
+  where ((!(MkPrettyRep seq ll emp sl))) = p 80 False
+ppNil width is_vert = MkPrettyRep cNil 0 True (width >= 0)
+ppStr s width (!is_vert)
+  = MkPrettyRep (cStr s) ls False (width >= ls)
+  where (!ls) = length s
+ppChar (!c) (!width) is_vert
+  = MkPrettyRep (cCh c) 1 False (width >= 1)
+ppInt (!n) = ppStr (show n)
+ppInteger (!n) = ppStr (show n)
+ppDouble (!n) = ppStr (show n)
+ppSP = ppChar ' '
+pp'SP = ppStr ", "
+ppLbrack = ppChar '['
+ppRbrack = ppChar ']'
+ppLparen = ppChar '('
+ppRparen = ppChar ')'
+ppSemi = ppChar ';'
+ppComma = ppChar ','
+ppInterleave sep (!ps) = ppSep (pi ps)
+  where pi (![]) = []
+        pi [x] = [x]
+        pi ((!((!x) : xs))) = (ppBeside x sep) : pi xs
+ppBeside p1 p2 (!width) is_vert
+  = MkPrettyRep (seq1 `cAppend` (cIndent ll1 seq2)) (ll1 + ll2)
+      (emp1 `andL` emp2)
+      ((width >= 0) `andL` (sl1 `andL` sl2))
+  where (!(MkPrettyRep (!seq1) ll1 emp1 sl1)) = p1 width False
+        MkPrettyRep seq2 ll2 (!emp2) sl2 = p2 (width - ll1) False
+ppBesides [] = ppNil
+ppBesides ps = foldr1 ppBeside ps
+ppBesideSP p1 (!p2) width (!is_vert)
+  = MkPrettyRep (seq1 `cAppend` (sp `cAppend` (cIndent li seq2)))
+      (li + ll2)
+      (emp1 `andL` emp2)
+      ((width >= wi) `andL` (sl1 `andL` sl2))
+  where MkPrettyRep (!seq1) (!ll1) emp1 sl1 = p1 width False
+        MkPrettyRep seq2 ll2 emp2 sl2 = p2 (width - li) False
+         
+        li, wi :: Int
+        li = if emp1 then 0 else ll1 + 1
+        (!wi) = if emp1 then 0 else 1
+        sp = if emp1 `orL` emp2 then cNil else (cCh ' ')
+ppCat [] = ppNil
+ppCat ps = foldr1 ppBesideSP ps
+ppAbove (!p1) (!p2) width is_vert
+  = MkPrettyRep (seq1 `cAppend` (nl `cAppend` seq2)) ll2
+      (emp1 `andL` emp2)
+      False
+  where (!nl) = if emp1 `orL` emp2 then cNil else cNL
+        MkPrettyRep seq1 (!ll1) emp1 (!sl1) = p1 width True
+        (!(MkPrettyRep (!seq2) ll2 emp2 (!sl2))) = p2 width True
+ppAboves [] = ppNil
+ppAboves ps = foldr1 ppAbove ps
+ppNest (!n) (!p) width (!False) = p width False
+ppNest (!n) (!p) (!width) True
+  = MkPrettyRep (cIndent n seq) (ll + n) emp sl
+  where (!(MkPrettyRep seq ll (!emp) (!sl))) = p (width - n) True
+ppHang (!p1) n p2 (!width) is_vert
+  = if emp1 then p2 width is_vert else
+      if (ll1 <= n) `orL` sl2 then
+        MkPrettyRep
+          (seq1 `cAppend` (cCh ' ') `cAppend` (cIndent (ll1 + 1) seq2))
+          (ll1 + 1 + ll2)
+          False
+          (sl1 `andL` sl2)
+        else
+        MkPrettyRep (seq1 `cAppend` (cNL `cAppend` (cIndent n seq2'))) ll2'
+          False
+          False
+  where MkPrettyRep seq1 (!ll1) (!emp1) sl1 = p1 width False
+        (!(MkPrettyRep seq2 ll2 emp2 (!sl2)))
+          = p2 (width - (ll1 + 1)) False
+        MkPrettyRep (!seq2') ll2' emp2' sl2' = p2 (width - n) False
+ppSep [] width is_vert = ppNil width is_vert
+ppSep (![(!p)]) (!width) (!is_vert) = p width is_vert
+ppSep (!ps) width (!is_vert)
+  = if sl then pr else ppAboves ps width is_vert
+  where pr@((!(MkPrettyRep seq (!ll) emp sl)))
+          = ppCat ps width is_vert
+ 
+andL :: Bool -> Bool -> Bool
+andL False x = False
+andL (!True) (!x) = x
+ 
+orL :: Bool -> Bool -> Bool
+orL True (!x) = True
+orL False x = x
+ 
+data PprStyle = PprForUser
+              | PprDebug
+              | PprShowAll
+              | PprInterface

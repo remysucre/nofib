@@ -59,9 +59,9 @@ data ExceptionInt a = MkExInt Int [a]
                     deriving (Eq, Ord, Show)
  
 instance (Show a, Ord a) => Num (ExceptionInt a) where
-        (!(MkExInt i1 xs1)) + (!((!(MkExInt i2 (!xs2)))))
+        (MkExInt (!i1) (!xs1)) + (!(MkExInt (!i2) (!xs2)))
           = MkExInt (i1 + i2) (xs1 ++ xs2)
-        ((!(MkExInt (!i1) (!xs1)))) * (!(MkExInt i2 xs2))
+        (MkExInt i1 xs1) * (MkExInt i2 xs2)
           = MkExInt (i1 * i2) (xs1 ++ xs2)
  
 type DomainInt = ExceptionInt Domain

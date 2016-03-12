@@ -1,0 +1,59 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== expert: time to compile Result follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Result.hs -o Result.o
+<<ghc: 79336328 bytes, 40 GCs, 5738212/11145984 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.13 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
+==nofib== expert: size of Result.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   1610	    192	      0	   1802	    70a	Result.o
+==nofib== expert: time to compile Table follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Table.hs -o Table.o
+<<ghc: 257495176 bytes, 61 GCs, 5575516/10537992 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.38 MUT (0.44 elapsed), 0.25 GC (0.26 elapsed) :ghc>>
+==nofib== expert: size of Table.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  20655	    488	      0	  21143	   5297	Table.o
+==nofib== expert: time to compile Knowledge follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Knowledge.hs -o Knowledge.o
+<<ghc: 192331736 bytes, 48 GCs, 5536480/10225848 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.53 MUT (0.67 elapsed), 0.39 GC (0.41 elapsed) :ghc>>
+==nofib== expert: size of Knowledge.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  13890	   1480	      0	  15370	   3c0a	Knowledge.o
+==nofib== expert: time to compile Match follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Match.hs -o Match.o
+<<ghc: 117485064 bytes, 36 GCs, 5415454/10070544 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.01 elapsed), 0.15 MUT (0.23 elapsed), 0.19 GC (0.20 elapsed) :ghc>>
+==nofib== expert: size of Match.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   4758	    320	      0	   5078	   13d6	Match.o
+==nofib== expert: time to compile Search follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Search.hs -o Search.o
+<<ghc: 177120512 bytes, 45 GCs, 5455990/10138744 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.02 elapsed), 0.27 MUT (0.32 elapsed), 0.23 GC (0.26 elapsed) :ghc>>
+==nofib== expert: size of Search.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  11364	    656	      0	  12020	   2ef4	Search.o
+==nofib== expert: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+
+Main.hs:25:9:
+    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
+      (!results) = strip [] (solve db newsoln problem)
+      db = (defs, info)
+      info
+        = enterList
+            newTable [(q, a) | (!(Question (!q), a)) <- zip results replies]
+    In an equation for ‘process’:
+        process (!contents) (!input)
+          = "Solving: "
+            ++
+              showPhrase problem ++ "" ++ display results (vars problem) replies
+          where
+              problem = goal (words (head (lines contents)))
+              defs = definitions (tail (lines contents))
+              info
+                = enterList
+                    newTable [(q, a) | (!(Question (!q), a)) <- zip results replies]
+              replies = [words l /= [...] | l <- lines input]
+              ....
+<<ghc: 91159800 bytes, 34 GCs, 5616474/10550656 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.16 MUT (0.24 elapsed), 0.34 GC (0.35 elapsed) :ghc>>
+make: *** [Main.o] Error 1
+make: Target `default' not remade because of errors.

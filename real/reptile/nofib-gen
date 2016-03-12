@@ -3,111 +3,111 @@ HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-s
 RUNTEST_OPTS = -ghc-timing
 ==nofib== reptile: time to compile Rational follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Rational.hs -o Rational.o
-<<ghc: 146955360 bytes, 41 GCs, 5598436/10305624 avg/max bytes residency (4 samples), 32M in use, 0.01 INIT (0.01 elapsed), 0.33 MUT (0.37 elapsed), 0.34 GC (0.34 elapsed) :ghc>>
+<<ghc: 144855600 bytes, 41 GCs, 5594830/10294032 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.19 MUT (0.23 elapsed), 0.23 GC (0.24 elapsed) :ghc>>
 ==nofib== reptile: size of Rational.o follows...
    text	   data	    bss	    dec	    hex	filename
-   5506	    264	      0	   5770	   168a	Rational.o
+   6178	    256	      0	   6434	   1922	Rational.o
 ==nofib== reptile: time to compile Diff follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Diff.hs -o Diff.o
-<<ghc: 83660104 bytes, 33 GCs, 5527276/10160344 avg/max bytes residency (4 samples), 32M in use, 0.01 INIT (0.01 elapsed), 0.23 MUT (0.25 elapsed), 0.38 GC (0.38 elapsed) :ghc>>
+<<ghc: 84360096 bytes, 34 GCs, 5607030/10479608 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.18 elapsed), 0.21 GC (0.23 elapsed) :ghc>>
 ==nofib== reptile: size of Diff.o follows...
    text	   data	    bss	    dec	    hex	filename
     651	     32	      0	    683	    2ab	Diff.o
 ==nofib== reptile: time to compile Mgrfuns follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Mgrfuns.hs -o Mgrfuns.o
-<<ghc: 174271008 bytes, 45 GCs, 5557574/10547056 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.34 MUT (0.39 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
+<<ghc: 175200840 bytes, 45 GCs, 5558634/10545688 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.47 MUT (0.51 elapsed), 0.39 GC (0.39 elapsed) :ghc>>
 ==nofib== reptile: size of Mgrfuns.o follows...
    text	   data	    bss	    dec	    hex	filename
-   8136	   1432	      0	   9568	   2560	Mgrfuns.o
+   8792	   1456	      0	  10248	   2808	Mgrfuns.o
 ==nofib== reptile: time to compile Drawfuns follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Drawfuns.hs -o Drawfuns.o
-<<ghc: 177074224 bytes, 46 GCs, 5409852/10060736 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.39 MUT (0.44 elapsed), 0.39 GC (0.40 elapsed) :ghc>>
+<<ghc: 175468560 bytes, 46 GCs, 5405478/10050448 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.34 MUT (0.42 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
 ==nofib== reptile: size of Drawfuns.o follows...
    text	   data	    bss	    dec	    hex	filename
-  10036	    728	      0	  10764	   2a0c	Drawfuns.o
+  10040	    728	      0	  10768	   2a10	Drawfuns.o
 ==nofib== reptile: time to compile Layout follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Layout.hs -o Layout.o
-<<ghc: 436925400 bytes, 103 GCs, 6992937/12718064 avg/max bytes residency (5 samples), 34M in use, 0.01 INIT (0.01 elapsed), 1.11 MUT (1.22 elapsed), 0.80 GC (0.81 elapsed) :ghc>>
+<<ghc: 427650928 bytes, 105 GCs, 7053465/12999384 avg/max bytes residency (5 samples), 34M in use, 0.00 INIT (0.00 elapsed), 0.96 MUT (1.22 elapsed), 0.70 GC (0.77 elapsed) :ghc>>
 ==nofib== reptile: size of Layout.o follows...
    text	   data	    bss	    dec	    hex	filename
-  26537	  10936	      0	  37473	   9261	Layout.o
+  24553	  11184	      0	  35737	   8b99	Layout.o
 ==nofib== reptile: time to compile Geomfuns follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Geomfuns.hs -o Geomfuns.o
-<<ghc: 216130336 bytes, 50 GCs, 5516788/10495552 avg/max bytes residency (4 samples), 32M in use, 0.01 INIT (0.01 elapsed), 0.52 MUT (0.64 elapsed), 0.35 GC (0.38 elapsed) :ghc>>
+<<ghc: 225108264 bytes, 51 GCs, 5471620/10318312 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.55 MUT (0.62 elapsed), 0.40 GC (0.41 elapsed) :ghc>>
 ==nofib== reptile: size of Geomfuns.o follows...
    text	   data	    bss	    dec	    hex	filename
-  15530	    840	      0	  16370	   3ff2	Geomfuns.o
+  15749	    744	      0	  16493	   406d	Geomfuns.o
 ==nofib== reptile: time to compile Auxprogfuns follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Auxprogfuns.hs -o Auxprogfuns.o
-<<ghc: 371919992 bytes, 99 GCs, 7466758/14452232 avg/max bytes residency (5 samples), 35M in use, 0.00 INIT (0.00 elapsed), 0.79 MUT (0.83 elapsed), 0.65 GC (0.65 elapsed) :ghc>>
+<<ghc: 378534640 bytes, 98 GCs, 7536126/14760328 avg/max bytes residency (5 samples), 36M in use, 0.00 INIT (0.00 elapsed), 0.53 MUT (0.64 elapsed), 0.47 GC (0.48 elapsed) :ghc>>
 ==nofib== reptile: size of Auxprogfuns.o follows...
    text	   data	    bss	    dec	    hex	filename
-  19354	   1744	      0	  21098	   526a	Auxprogfuns.o
+  22395	   1768	      0	  24163	   5e63	Auxprogfuns.o
 ==nofib== reptile: time to compile Help follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Help.hs -o Help.o
-<<ghc: 160671328 bytes, 72 GCs, 5110934/9074984 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.26 MUT (0.31 elapsed), 0.23 GC (0.23 elapsed) :ghc>>
+<<ghc: 160721992 bytes, 72 GCs, 5116924/9088232 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.26 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
 ==nofib== reptile: size of Help.o follows...
    text	   data	    bss	    dec	    hex	filename
   11466	   3208	      0	  14674	   3952	Help.o
 ==nofib== reptile: time to compile Interstate follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Interstate.hs -o Interstate.o
-<<ghc: 71405216 bytes, 25 GCs, 3934330/6724680 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.16 MUT (0.20 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
+<<ghc: 69989864 bytes, 25 GCs, 3933829/6724032 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.13 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
 ==nofib== reptile: size of Interstate.o follows...
    text	   data	    bss	    dec	    hex	filename
-    891	      8	      0	    899	    383	Interstate.o
+    715	      8	      0	    723	    2d3	Interstate.o
 ==nofib== reptile: time to compile Tilefuns follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Tilefuns.hs -o Tilefuns.o
-<<ghc: 268949360 bytes, 125 GCs, 7304022/14681752 avg/max bytes residency (5 samples), 34M in use, 0.01 INIT (0.01 elapsed), 0.63 MUT (0.67 elapsed), 0.81 GC (0.86 elapsed) :ghc>>
+<<ghc: 233629208 bytes, 75 GCs, 5452014/10129336 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.51 MUT (0.57 elapsed), 0.39 GC (0.39 elapsed) :ghc>>
 ==nofib== reptile: size of Tilefuns.o follows...
    text	   data	    bss	    dec	    hex	filename
-  16278	   1440	      0	  17718	   4536	Tilefuns.o
+  13102	   1424	      0	  14526	   38be	Tilefuns.o
 ==nofib== reptile: time to compile Psfuns follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Psfuns.hs -o Psfuns.o
-<<ghc: 159338856 bytes, 43 GCs, 5558104/10588880 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.24 MUT (0.27 elapsed), 0.24 GC (0.25 elapsed) :ghc>>
+<<ghc: 158463280 bytes, 43 GCs, 5695392/10566392 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.30 MUT (0.33 elapsed), 0.23 GC (0.23 elapsed) :ghc>>
 ==nofib== reptile: size of Psfuns.o follows...
    text	   data	    bss	    dec	    hex	filename
-   8116	    624	      0	   8740	   2224	Psfuns.o
+   8081	    640	      0	   8721	   2211	Psfuns.o
 ==nofib== reptile: time to compile Progfuns follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Progfuns.hs -o Progfuns.o
-<<ghc: 692181552 bytes, 171 GCs, 11103205/22418600 avg/max bytes residency (7 samples), 55M in use, 0.00 INIT (0.00 elapsed), 2.08 MUT (2.18 elapsed), 1.89 GC (1.92 elapsed) :ghc>>
+<<ghc: 664187312 bytes, 176 GCs, 10963529/21685560 avg/max bytes residency (7 samples), 54M in use, 0.00 INIT (0.00 elapsed), 1.26 MUT (1.40 elapsed), 1.00 GC (1.04 elapsed) :ghc>>
 ==nofib== reptile: size of Progfuns.o follows...
    text	   data	    bss	    dec	    hex	filename
-  40403	   8336	      0	  48739	   be63	Progfuns.o
+  37314	   8136	      0	  45450	   b18a	Progfuns.o
 ==nofib== reptile: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
-<<ghc: 145793240 bytes, 59 GCs, 8312560/18422976 avg/max bytes residency (5 samples), 39M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.30 elapsed), 0.53 GC (0.54 elapsed) :ghc>>
+<<ghc: 161280872 bytes, 62 GCs, 8325064/18429160 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.30 MUT (0.40 elapsed), 0.49 GC (0.50 elapsed) :ghc>>
 ==nofib== reptile: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   1565	    856	      0	   2421	    975	Main.o
+   3413	    848	      0	   4261	   10a5	Main.o
 ==nofib== reptile: time to link reptile follows...
-<<ghc: 38596536 bytes, 14 GCs, 409628/644528 avg/max bytes residency (2 samples), 30M in use, 0.01 INIT (0.01 elapsed), 0.12 MUT (1.18 elapsed), 0.25 GC (0.25 elapsed) :ghc>>
+<<ghc: 38593832 bytes, 14 GCs, 409628/644528 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.99 elapsed), 0.09 GC (0.09 elapsed) :ghc>>
 ==nofib== reptile: size of reptile follows...
    text	   data	    bss	    dec	    hex	filename
-1056020	  80496	  48776	1185292	 12160c	reptile
+1054164	  80528	  48776	1183468	 120eec	reptile
 ==nofib== reptile: time to run reptile follows...
 ../../runstdtest/runstdtest ./reptile -i  reptile.stdin -o1 reptile.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./reptile -i  reptile.stdin -o1 reptile.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./reptile -i  reptile.stdin -o1 reptile.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./reptile -i  reptile.stdin -o1 reptile.stdout  -ghc-timing     ;   ../../runstdtest/runstdtest ./reptile -i  reptile.stdin -o1 reptile.stdout  -ghc-timing     ;
 
-real	0m0.038s
-user	0m0.016s
+real	0m0.044s
+user	0m0.019s
+sys	0m0.008s
+<<ghc: 16195896 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1908408 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.031s
+user	0m0.018s
+sys	0m0.010s
+<<ghc: 16195896 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1908408 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.031s
+user	0m0.019s
+sys	0m0.010s
+<<ghc: 16195896 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1908408 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.031s
+user	0m0.014s
 sys	0m0.014s
-<<ghc: 16202864 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1916736 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+<<ghc: 16195896 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1908408 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.033s
-user	0m0.018s
-sys	0m0.013s
-<<ghc: 16202864 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1916736 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.029s
-user	0m0.016s
-sys	0m0.012s
-<<ghc: 16202864 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1916736 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.037s
-user	0m0.018s
-sys	0m0.018s
-<<ghc: 16202864 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1916736 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.046s
-user	0m0.029s
-sys	0m0.016s
-<<ghc: 16202864 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1916736 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.02 GC (0.02 elapsed), 0.01 GC(0) (0.01 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+real	0m0.028s
+user	0m0.015s
+sys	0m0.011s
+<<ghc: 16195896 bytes, 31 GCs (28 + 3), 0/0 avg/max bytes residency (0 samples), 1908408 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

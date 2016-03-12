@@ -3,13 +3,13 @@ import Types
 import Interval
  
 unmkcolor :: Color -> (Int, Int, Int)
-unmkcolor (RGB (!x) (!y) z) = (a, b, c)
-  where (!a) = round (255.5 * x)
-        b = round (255.5 * y)
+unmkcolor ((!(RGB (!x) y (!z)))) = (a, b, c)
+  where a = round (255.5 * x)
+        (!b) = round (255.5 * y)
         (!c) = round (255.5 * z)
-mkcolor (!x) (!y) (!z) = RGB a b c
-  where (!a) = (x / 255.0) :: FType
-        (!b) = (y / 255.0) :: FType
+mkcolor x (!y) z = RGB a b c
+  where a = (x / 255.0) :: FType
+        b = (y / 255.0) :: FType
         c = (z / 255.0) :: FType
 white = mkcolor 255 255 255
 ivory = mkcolor 255 255 240

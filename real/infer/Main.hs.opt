@@ -17,7 +17,7 @@ readInferShow :: String -> String
 readInferShow
   = useP ("Failed to parse" ++ prompt)
       (lexactlyP reads `eachP`
-         (\ t ->
+         (\ (!t) ->
             useI ("Failed to type" ++ prompt)
               (inferTerm testEnv t `eachI`
                  (\ tt -> show t ++ " : " ++ show tt ++ prompt))))

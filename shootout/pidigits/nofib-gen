@@ -1,0 +1,41 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -O2
+RUNTEST_OPTS = -ghc-timing
+==nofib== pidigits: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -O2 -c Main.hs -o Main.o
+<<ghc: 216291088 bytes, 65 GCs, 8515979/19022936 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.32 MUT (0.39 elapsed), 0.41 GC (0.41 elapsed) :ghc>>
+==nofib== pidigits: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   6464	    528	      0	   6992	   1b50	Main.o
+==nofib== pidigits: time to link pidigits follows...
+<<ghc: 38475824 bytes, 14 GCs, 409144/648664 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.74 elapsed), 0.08 GC (0.08 elapsed) :ghc>>
+==nofib== pidigits: size of pidigits follows...
+   text	   data	    bss	    dec	    hex	filename
+ 881652	  50224	  48776	 980652	  ef6ac	pidigits
+==nofib== pidigits: time to run pidigits follows...
+../../runstdtest/runstdtest ./pidigits  -o1 pidigits.slowstdout -o1 pidigits.stdout  -ghc-timing     10000  ;   ../../runstdtest/runstdtest ./pidigits  -o1 pidigits.slowstdout -o1 pidigits.stdout  -ghc-timing     10000  ;   ../../runstdtest/runstdtest ./pidigits  -o1 pidigits.slowstdout -o1 pidigits.stdout  -ghc-timing     10000  ;   ../../runstdtest/runstdtest ./pidigits  -o1 pidigits.slowstdout -o1 pidigits.stdout  -ghc-timing     10000  ;   ../../runstdtest/runstdtest ./pidigits  -o1 pidigits.slowstdout -o1 pidigits.stdout  -ghc-timing     10000  ;
+
+real	0m2.311s
+user	0m2.219s
+sys	0m0.071s
+<<ghc: 8444368304 bytes, 15542 GCs (15509 + 33), 0/0 avg/max bytes residency (0 samples), 4747920 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 2.14 MUT (2.15 elapsed), 0.14 GC (0.14 elapsed), 0.14 GC(0) (0.14 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m2.235s
+user	0m2.169s
+sys	0m0.060s
+<<ghc: 8444368304 bytes, 15542 GCs (15509 + 33), 0/0 avg/max bytes residency (0 samples), 4747920 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 2.09 MUT (2.10 elapsed), 0.13 GC (0.13 elapsed), 0.12 GC(0) (0.12 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+
+real	0m2.280s
+user	0m2.179s
+sys	0m0.093s
+<<ghc: 8444368304 bytes, 15542 GCs (15509 + 33), 0/0 avg/max bytes residency (0 samples), 4747920 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 2.12 MUT (2.12 elapsed), 0.13 GC (0.13 elapsed), 0.13 GC(0) (0.13 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m2.395s
+user	0m2.306s
+sys	0m0.077s
+<<ghc: 8444368304 bytes, 15542 GCs (15509 + 33), 0/0 avg/max bytes residency (0 samples), 4747920 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 2.22 MUT (2.23 elapsed), 0.15 GC (0.14 elapsed), 0.14 GC(0) (0.14 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m2.420s
+user	0m2.357s
+sys	0m0.059s
+<<ghc: 8444368304 bytes, 15542 GCs (15509 + 33), 0/0 avg/max bytes residency (0 samples), 4747920 bytes GC work, 4M in use, 0.00 INIT (0.00 elapsed), 2.27 MUT (2.28 elapsed), 0.14 GC (0.14 elapsed), 0.13 GC(0) (0.13 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>

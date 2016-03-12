@@ -22,17 +22,17 @@ a_node (!s) (!uvw) (!node)
         (showrj 6 y) ++
           (showrj 7 bc) ++
             (showrj 15 u) ++ (showrj 15 v) ++ (showrj 15 theta) ++ "\n"
-  where ((!x), y) = getnxy s node
-        bc = getnbc s node
-        (u, (!v), theta) = getnuvw s node uvw
+  where (x, y) = getnxy s node
+        (!bc) = getnbc s node
+        ((!u), v, theta) = getnuvw s node uvw
 forceresult s frc
   = "\n\n\nINTERNAL FORCES OF ELEMENT " ++
       "\n\n" ++
         "    Element    NodeL   NodeR     TENSION\n" ++
           concat (map a_element_s [1 .. (nelem s)])
   where a_element_s = a_element s frc
-a_element s (!frc) element
+a_element (!s) frc (!element)
   = (showrj 8 element) ++
       (showrj 10 nodel) ++ (showrj 8 noder) ++ (showrj 15 f) ++ "\n"
-  where (!(nodel, (!noder))) = getenlr s element
-        f = getefrc s element frc
+  where (nodel, (!noder)) = getenlr s element
+        (!f) = getefrc s element frc

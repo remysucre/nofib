@@ -5,7 +5,7 @@ import Data.Array
  
 ergs :: Array Indx Value
 ergs = array (1, numLev) (zipWith (,) [1 .. numLev] (map f2 erg))
-  where erg
+  where (!erg)
           = [1.0e-3, 1.5e-3, 2.0e-3, 3.0e-3, 4.0e-3, 5.0e-3, 6.0e-3, 8.0e-3,
              1.0e-2, 1.5e-2, 2.0e-2, 3.0e-2, 4.0e-2, 5.0e-2, 6.0e-2, 8.0e-2,
              0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0, 1.5, 2.0, 3.0, 4.0,
@@ -13,7 +13,7 @@ ergs = array (1, numLev) (zipWith (,) [1 .. numLev] (map f2 erg))
  
 xComp :: Array Indx Value
 xComp = array (1, numLev) (zipWith (,) [1 .. numLev] (map f1 xc))
-  where xc
+  where (!xc)
           = [1.5e-2, 2.96e-2, 4.51e-2, 7.17e-2, 9.13e-2, 0.105, 0.115, 0.128,
              0.137, 0.152, 0.16, 0.165, 0.165, 0.163, 0.16, 0.153, 0.146, 0.133,
              0.122, 0.106, 9.53e-2, 8.67e-2, 8.02e-2, 7.07e-2, 6.37e-2, 5.16e-2,

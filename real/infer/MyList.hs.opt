@@ -4,5 +4,5 @@ minus :: (Eq x) => [x] -> [x] -> [x]
 minus xs ys = foldl rmv xs ys
  
 rmv :: (Eq x) => [x] -> x -> [x]
-rmv [] y = []
-rmv (!((!x) : (!xs))) y = if x == y then xs else x : (xs `rmv` y)
+rmv (![]) y = []
+rmv ((!((!x) : xs))) (!y) = if x == y then xs else x : (xs `rmv` y)

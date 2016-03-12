@@ -13,26 +13,26 @@ rdatabase (!s) = listArray (0, n - 1) rl
         (!n) = length rl
  
 isource :: [Char] -> [Int]
-isource (!s) = fst (irsource s)
+isource s = fst (irsource s)
  
 rsource :: [Char] -> [Float]
 rsource s = snd (irsource s)
 irsource s = intreal (words s)
-intreal [] = ([], [])
-intreal (x : (!ls))
+intreal (![]) = ([], [])
+intreal ((!x) : ls)
   = if (elem '.' x) then (idb, (realreal x) : rdb) else
       ((intint x) : idb, rdb)
   where (idb, rdb) = intreal ls
  
 intint :: [Char] -> Int
-intint (c : (!x))
+intint ((!((!c) : x)))
   = if (c == '-') then (-1) * (stoi x) else
       if (c == '+') then stoi x else stoi (c : x)
  
 stoi :: [Char] -> Int
 stoi (!s) = stoi' (reverse s)
-stoi' (![]) = 0
-stoi' (c : (!ls)) = (stoi' ls) * 10 + ctoi c
+stoi' [] = 0
+stoi' (!((!c) : (!ls))) = (stoi' ls) * 10 + ctoi c
 ctoi c
   = if (c == '0') then 0 else
       if (c == '1') then 1 else
@@ -44,7 +44,7 @@ ctoi c
                   if (c == '7') then 7 else if (c == '8') then 8 else 9
  
 realreal :: [Char] -> Float
-realreal ((!((!c) : (!x))))
+realreal ((!c) : (!x))
   = if (c == '-') then (-1.0) * (stor x) else
       if (c == '+') then stor x else stor (c : x)
  
@@ -57,7 +57,7 @@ intpart (!x) = intpart' (takeWhile isDigit x)
 intpart' :: [Char] -> Float
 intpart' s = intparts (reverse s)
 intparts (![]) = 0.0
-intparts (!((!((!c) : s)))) = (intparts s) * 10.0 + intpartss c
+intparts ((!(c : s))) = (intparts s) * 10.0 + intpartss c
 intpartss c
   = if (c == '0') then 0.0 else
       if (c == '1') then 1.0 else
@@ -72,6 +72,6 @@ floatpart :: [Char] -> Float
 floatpart (!x) = floatpart' (drop 1 (dropWhile isDigit x))
  
 floatpart' :: [Char] -> Float
-floatpart' (!s) = (intpart' s) / (e10 (length s))
+floatpart' s = (intpart' s) / (e10 (length s))
 e10 0 = 1.0
-e10 i = 10.0 * (e10 (i - 1))
+e10 (!i) = 10.0 * (e10 (i - 1))
