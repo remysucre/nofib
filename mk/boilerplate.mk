@@ -38,7 +38,7 @@ NoFibSubDirs = imaginary spectral real shootout
 NoFibHcOpts = -O2
 
 # Number of times to run each program
-NoFibRuns = 5
+NoFibRuns = 1
 
 # -----------------------------------------------------------------
 # Everything after this point

@@ -1,0 +1,11 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing
+==nofib== expert: time to compile Result follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Result.hs -o Result.o
+<<ghc: 79940376 bytes, 40 GCs, 5480670/10106376 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.16 MUT (0.17 elapsed), 0.26 GC (0.26 elapsed) :ghc>>
+==nofib== expert: size of Result.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   1666	    192	      0	   1858	    742	Result.o
+==nofib== expert: time to compile Table follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Table.hs -o Table.o
