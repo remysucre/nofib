@@ -1,7 +1,0 @@
-HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
-HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
-RUNTEST_OPTS = -ghc-timing
-==nofib== multiplier: time to compile Main follows...
-/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
-<<ghc: 109883856 bytes, 60 GCs, 6741608/14435888 avg/max bytes residency (5 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.43 MUT (0.43 elapsed), 1.32 GC (1.33 elapsed) :ghc>>
-make: *** [Main.o] Error 1

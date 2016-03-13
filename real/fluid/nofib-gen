@@ -1,7 +1,0 @@
-HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
-HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
-RUNTEST_OPTS = -ghc-timing
-==nofib== fluid: time to compile Norm follows...
-/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Norm.hs -o Norm.o
-<<ghc: 112248864 bytes, 38 GCs, 5518960/10129816 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.33 elapsed), 0.28 GC (0.28 elapsed) :ghc>>
-make: *** [Norm.o] Error 1

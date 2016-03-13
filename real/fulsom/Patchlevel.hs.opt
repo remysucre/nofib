@@ -1,5 +1,0 @@
-module Patchlevel (version, major, minor, patch) where
-version = "Fulsom version 3.4"
-major = 3 :: Int
-minor = 4 :: Int
-patch = 0 :: Int

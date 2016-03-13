@@ -1,7 +1,0 @@
-HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
-HC_OPTS = -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
-RUNTEST_OPTS = -ghc-timing +RTS -M140m -RTS
-==nofib== symalg: time to compile RealM follows...
-/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -O2 -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c RealM.hs -o RealM.o
-<<ghc: 29451912 bytes, 13 GCs, 292896/416144 avg/max bytes residency (2 samples), 27M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.09 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
-make: *** [RealM.o] Error 1

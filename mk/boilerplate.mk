@@ -35,10 +35,10 @@ EXECUTABLE_FILE = chmod +x
 NoFibSubDirs = imaginary spectral real shootout
 
 # Haskell compiler options for nofib
-NoFibHcOpts = -O2
+NoFibHcOpts = -XBangPatterns -O2 -funbox-strict-fields
 
 # Number of times to run each program
-NoFibRuns = 1
+NoFibRuns = 4
 
 # -----------------------------------------------------------------
 # Everything after this point
@@ -145,7 +145,7 @@ endef
 
 $(eval $(call ghc-ge,6,13))
 
-RUNTEST   = $(TOP)/runstdtest/runstdtest
+RUNTEST   = timeout 40s $(TOP)/runstdtest/runstdtest 
 
 include $(TOP)/mk/ghc-paths.mk
 include $(TOP)/mk/ghc-opts.mk
