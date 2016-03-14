@@ -1,0 +1,36 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== eliza: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 551736216 bytes, 137 GCs, 8243672/17975536 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.57 MUT (0.61 elapsed), 0.31 GC (0.31 elapsed) :ghc>>
+==nofib== eliza: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  42953	  13008	      0	  55961	   da99	Main.o
+==nofib== eliza: time to link eliza follows...
+<<ghc: 38409912 bytes, 14 GCs, 409648/648568 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.39 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== eliza: size of eliza follows...
+   text	   data	    bss	    dec	    hex	filename
+ 863396	  55312	  48776	 967484	  ec33c	eliza
+==nofib== eliza: time to run eliza follows...
+timeout 40s ../../runstdtest/runstdtest  ./eliza -i  eliza.stdin -o1 eliza.stdout -o1 eliza.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./eliza -i  eliza.stdin -o1 eliza.stdout -o1 eliza.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./eliza -i  eliza.stdin -o1 eliza.stdout -o1 eliza.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./eliza -i  eliza.stdin -o1 eliza.stdout -o1 eliza.stdout  -ghc-timing     ;
+
+real	0m0.015s
+user	0m0.003s
+sys	0m0.005s
+<<ghc: 699864 bytes, 2 GCs (1 + 1), 0/0 avg/max bytes residency (0 samples), 31960 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.007s
+user	0m0.002s
+sys	0m0.005s
+<<ghc: 699864 bytes, 2 GCs (1 + 1), 0/0 avg/max bytes residency (0 samples), 31960 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.002s
+sys	0m0.003s
+<<ghc: 699864 bytes, 2 GCs (1 + 1), 0/0 avg/max bytes residency (0 samples), 31960 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.002s
+sys	0m0.005s
+<<ghc: 699864 bytes, 2 GCs (1 + 1), 0/0 avg/max bytes residency (0 samples), 31960 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

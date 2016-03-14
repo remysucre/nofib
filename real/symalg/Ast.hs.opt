@@ -1,0 +1,18 @@
+module Ast where
+import BasicNumber
+ 
+type VarName = String
+ 
+type FunName = String
+ 
+data Ast = Set VarName BasicExp
+         | EvalSet VarName BasicExp
+         | Eval BasicExp
+         | NullCmd
+         | SyntaxError
+ 
+data BasicExp = Func FunName [BasicExp]
+              | Numb BasicNumber
+              | Var String
+              | EVar String
+              | BSError

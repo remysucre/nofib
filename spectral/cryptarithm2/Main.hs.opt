@@ -1,0 +1,64 @@
+module Main where
+import Control.Monad
+import Control.Monad.Trans.State
+import Control.Monad.Trans.Class
+import Data.List
+import Data.Maybe
+ 
+type DigitState a = StateT Digits [] a
+ 
+data Digits = Digits{digits :: [Int], digitEnv :: [(Char, Int)]}
+            deriving Show
+initState = Digits{digits = [0 .. 9], digitEnv = []}
+ 
+permute :: Char -> DigitState Int
+permute c
+  = do (!st) <- get
+       let xs = digits st
+       (i, (!is)) <- lift [(x, xs \\ [x]) | (!x) <- xs]
+       put (st{digits = is, digitEnv = (c, i) : digitEnv st})
+       return i
+ 
+select :: Char -> DigitState Int
+select c
+  = do st <- get
+       case lookup c (digitEnv st) of
+           Just r -> return r
+           Nothing -> permute c
+ 
+solve :: [[Char]] -> [Char] -> Int -> DigitState ()
+solve tops ((!bot) : bots) carry
+  = do (!topN) <- (case tops of
+                       [] -> return carry
+                       (!(top : _)) -> do (!topNS) <- mapM select top
+                                          return (sum topNS + carry))
+       botN <- select bot
+       guard (topN `mod` 10 == botN)
+       solve (rest tops) bots (topN `div` 10)
+  where rest [] = []
+        rest (!((!((!x) : (!xs))))) = xs
+solve [] (![]) (!0) = return ()
+solve _ (!_) _ = mzero
+ 
+puzzle :: [[Char]] -> [Char] -> String
+puzzle (!top) bot
+  = if length (nub (concat top ++ bot)) > 10 then
+      error "can not map more than 10 chars" else
+      if topVal /= botVal then error ("Internal Error") else
+        unlines [[c] ++ " => " ++ show i | (c, (!i)) <- digitEnv answer]
+  where (!solution)
+          = solve (transpose (map reverse top)) (reverse bot) 0
+        answer
+          = case (execStateT solution initState) of
+                ((!a) : _) -> a
+                [] -> error "can not find a solution"
+        (!env) = digitEnv answer
+        look (!c) = fromJust (lookup c env)
+        topVal = sum [expand xs | xs <- top]
+        botVal = expand bot
+        (!expand) = foldl (\ (!a) b -> a * 10 + look b) 0
+main
+  = putStr
+      (puzzle
+         ["THIRTY", "TWELVE", "TWELVE", "TWELVE", "TWELVE", "TWELVE"]
+         "NINETY")

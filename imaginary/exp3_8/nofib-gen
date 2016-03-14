@@ -1,0 +1,41 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== exp3_8: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+
+Main.hs:10:10: Warning:
+    No explicit implementation for
+      ‘abs’, ‘signum’, and (either ‘negate’ or ‘-’)
+    In the instance declaration for ‘Num Nat’
+<<ghc: 214550312 bytes, 62 GCs, 8560459/19261848 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.22 MUT (0.25 elapsed), 0.25 GC (0.25 elapsed) :ghc>>
+==nofib== exp3_8: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   7395	   1176	      0	   8571	   217b	Main.o
+==nofib== exp3_8: time to link exp3_8 follows...
+<<ghc: 38410328 bytes, 14 GCs, 409676/648600 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.49 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
+==nofib== exp3_8: size of exp3_8 follows...
+   text	   data	    bss	    dec	    hex	filename
+ 866148	  49360	  48776	 964284	  eb6bc	exp3_8
+==nofib== exp3_8: time to run exp3_8 follows...
+timeout 40s ../../runstdtest/runstdtest  ./exp3_8  -o1 exp3_8.stdout -o1 exp3_8.stdout  -ghc-timing     8;   timeout 40s ../../runstdtest/runstdtest  ./exp3_8  -o1 exp3_8.stdout -o1 exp3_8.stdout  -ghc-timing     8;   timeout 40s ../../runstdtest/runstdtest  ./exp3_8  -o1 exp3_8.stdout -o1 exp3_8.stdout  -ghc-timing     8;   timeout 40s ../../runstdtest/runstdtest  ./exp3_8  -o1 exp3_8.stdout -o1 exp3_8.stdout  -ghc-timing     8;
+
+real	0m0.257s
+user	0m0.238s
+sys	0m0.010s
+<<ghc: 583689736 bytes, 763 GCs (761 + 2), 0/0 avg/max bytes residency (0 samples), 24782640 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.20 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.249s
+user	0m0.244s
+sys	0m0.005s
+<<ghc: 583689736 bytes, 763 GCs (761 + 2), 0/0 avg/max bytes residency (0 samples), 24782640 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.20 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.251s
+user	0m0.243s
+sys	0m0.007s
+<<ghc: 583689736 bytes, 763 GCs (761 + 2), 0/0 avg/max bytes residency (0 samples), 24782640 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.20 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.245s
+user	0m0.236s
+sys	0m0.009s
+<<ghc: 583689736 bytes, 763 GCs (761 + 2), 0/0 avg/max bytes residency (0 samples), 24782640 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.20 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

@@ -1,0 +1,36 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields
+RUNTEST_OPTS = -ghc-timing +RTS -K128M -H -RTS
+==nofib== binary-trees: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -XBangPatterns -O2 -funbox-strict-fields -c Main.hs -o Main.o
+<<ghc: 244291552 bytes, 65 GCs, 8869758/20151952 avg/max bytes residency (5 samples), 45M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.29 elapsed), 0.26 GC (0.26 elapsed) :ghc>>
+==nofib== binary-trees: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   8510	    448	      0	   8958	   22fe	Main.o
+==nofib== binary-trees: time to link binary-trees follows...
+<<ghc: 38455312 bytes, 14 GCs, 409308/648640 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.56 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== binary-trees: size of binary-trees follows...
+   text	   data	    bss	    dec	    hex	filename
+ 932324	  57392	  48776	1038492	  fd89c	binary-trees
+==nofib== binary-trees: time to run binary-trees follows...
+timeout 40s ../../runstdtest/runstdtest  ./binary-trees  -o1 binary-trees.stdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    16;   timeout 40s ../../runstdtest/runstdtest  ./binary-trees  -o1 binary-trees.stdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    16;   timeout 40s ../../runstdtest/runstdtest  ./binary-trees  -o1 binary-trees.stdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    16;   timeout 40s ../../runstdtest/runstdtest  ./binary-trees  -o1 binary-trees.stdout -o1 binary-trees.stdout  -ghc-timing  +RTS -K128M -H -RTS    16;
+
+real	0m0.895s
+user	0m0.864s
+sys	0m0.021s
+<<ghc: 946739744 bytes, 241 GCs (227 + 14), 0/0 avg/max bytes residency (0 samples), 220436424 bytes GC work, 22M in use, 0.00 INIT (0.00 elapsed), 0.58 MUT (0.59 elapsed), 0.29 GC (0.29 elapsed), 0.20 GC(0) (0.20 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>
+
+real	0m0.936s
+user	0m0.910s
+sys	0m0.024s
+<<ghc: 946739744 bytes, 241 GCs (227 + 14), 0/0 avg/max bytes residency (0 samples), 220436424 bytes GC work, 22M in use, 0.00 INIT (0.00 elapsed), 0.62 MUT (0.62 elapsed), 0.30 GC (0.30 elapsed), 0.20 GC(0) (0.20 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>
+
+real	0m0.903s
+user	0m0.874s
+sys	0m0.028s
+<<ghc: 946739744 bytes, 241 GCs (227 + 14), 0/0 avg/max bytes residency (0 samples), 220436424 bytes GC work, 22M in use, 0.00 INIT (0.00 elapsed), 0.60 MUT (0.60 elapsed), 0.30 GC (0.30 elapsed), 0.20 GC(0) (0.20 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>
+
+real	0m0.907s
+user	0m0.880s
+sys	0m0.019s
+<<ghc: 946739744 bytes, 241 GCs (227 + 14), 0/0 avg/max bytes residency (0 samples), 220436424 bytes GC work, 22M in use, 0.00 INIT (0.00 elapsed), 0.60 MUT (0.60 elapsed), 0.30 GC (0.30 elapsed), 0.20 GC(0) (0.20 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>

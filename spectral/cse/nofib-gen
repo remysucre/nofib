@@ -1,0 +1,45 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== cse: time to compile StateMonad follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c StateMonad.hs -o StateMonad.o
+
+StateMonad.hs:12:1: Warning:
+    Local definition of ‘join’ clashes with a future Prelude name - this will become an error in GHC 7.10, under the Applicative-Monad Proposal.
+<<ghc: 109372616 bytes, 65 GCs, 3972413/6811744 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.12 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
+==nofib== cse: size of StateMonad.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   4238	    136	      0	   4374	   1116	StateMonad.o
+==nofib== cse: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 466898160 bytes, 88 GCs, 8669192/19136472 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.48 MUT (0.52 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
+==nofib== cse: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  36301	   3496	      0	  39797	   9b75	Main.o
+==nofib== cse: time to link cse follows...
+<<ghc: 38424200 bytes, 14 GCs, 409368/648584 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.43 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== cse: size of cse follows...
+   text	   data	    bss	    dec	    hex	filename
+ 840548	  47632	  48776	 936956	  e4bfc	cse
+==nofib== cse: time to run cse follows...
+timeout 40s ../../runstdtest/runstdtest  ./cse  -o1 cse.stdout -o1 cse.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cse  -o1 cse.stdout -o1 cse.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cse  -o1 cse.stdout -o1 cse.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cse  -o1 cse.stdout -o1 cse.stdout  -ghc-timing     ;
+
+real	0m0.013s
+user	0m0.001s
+sys	0m0.004s
+<<ghc: 1252120 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 126896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.001s
+sys	0m0.003s
+<<ghc: 1252120 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 126896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.001s
+sys	0m0.004s
+<<ghc: 1252120 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 126896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.002s
+<<ghc: 1252120 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 126896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

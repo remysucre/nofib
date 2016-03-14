@@ -1,0 +1,24 @@
+module Main (main) where
+import System.Environment
+ 
+infix 8 ^^^
+ 
+data Nat = Z
+         | S Nat
+         deriving (Eq, Ord, Show)
+ 
+instance Num Nat where
+        Z + (!y) = y
+        S (!x) + y = S (x + y)
+        x * Z = Z
+        x * S y = x * y + x
+        fromInteger x = if x < 1 then Z else S (fromInteger (x - 1))
+ 
+int :: Nat -> Int
+int (!Z) = 0
+int (S x) = 1 + int x
+x ^^^ Z = S Z
+x ^^^ (!(S y)) = x * (x ^^^ y)
+main
+  = do (![power]) <- getArgs
+       print $ int (3 ^^^ (fromInteger $ read power))

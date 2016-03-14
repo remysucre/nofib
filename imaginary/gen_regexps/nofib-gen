@@ -1,0 +1,36 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== gen_regexps: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 215984040 bytes, 61 GCs, 8733888/20153312 avg/max bytes residency (5 samples), 45M in use, 0.00 INIT (0.00 elapsed), 0.24 MUT (0.28 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
+==nofib== gen_regexps: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   7769	    384	      0	   8153	   1fd9	Main.o
+==nofib== gen_regexps: time to link gen_regexps follows...
+<<ghc: 38412264 bytes, 14 GCs, 409828/648760 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.43 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== gen_regexps: size of gen_regexps follows...
+   text	   data	    bss	    dec	    hex	filename
+ 827460	  42704	  48776	 918940	  e059c	gen_regexps
+==nofib== gen_regexps: time to run gen_regexps follows...
+timeout 40s ../../runstdtest/runstdtest  ./gen_regexps -i  gen_regexps.stdin -o1 gen_regexps.stdout -o1 gen_regexps.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./gen_regexps -i  gen_regexps.stdin -o1 gen_regexps.stdout -o1 gen_regexps.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./gen_regexps -i  gen_regexps.stdin -o1 gen_regexps.stdout -o1 gen_regexps.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./gen_regexps -i  gen_regexps.stdin -o1 gen_regexps.stdout -o1 gen_regexps.stdout  -ghc-timing     ;
+
+real	0m0.013s
+user	0m0.004s
+sys	0m0.002s
+<<ghc: 309520 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4248 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.003s
+sys	0m0.001s
+<<ghc: 309520 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4248 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.002s
+<<ghc: 309520 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4248 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
+<<ghc: 309520 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4248 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

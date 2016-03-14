@@ -1,0 +1,36 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== banner: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 419647528 bytes, 107 GCs, 8204176/17703136 avg/max bytes residency (5 samples), 40M in use, 0.00 INIT (0.00 elapsed), 0.44 MUT (0.48 elapsed), 0.34 GC (0.34 elapsed) :ghc>>
+==nofib== banner: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  14704	  13312	      0	  28016	   6d70	Main.o
+==nofib== banner: time to link banner follows...
+<<ghc: 38410264 bytes, 14 GCs, 409672/648592 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.40 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== banner: size of banner follows...
+   text	   data	    bss	    dec	    hex	filename
+ 833188	  55728	  48776	 937692	  e4edc	banner
+==nofib== banner: time to run banner follows...
+timeout 40s ../../runstdtest/runstdtest  ./banner -i  banner.stdin -o1 banner.stdout -o1 banner.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./banner -i  banner.stdin -o1 banner.stdout -o1 banner.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./banner -i  banner.stdin -o1 banner.stdout -o1 banner.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./banner -i  banner.stdin -o1 banner.stdout -o1 banner.stdout  -ghc-timing     ;
+
+real	0m0.018s
+user	0m0.001s
+sys	0m0.004s
+<<ghc: 265088 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4000 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.001s
+sys	0m0.004s
+<<ghc: 265088 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4000 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.001s
+sys	0m0.004s
+<<ghc: 265088 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4000 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.002s
+<<ghc: 265088 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4000 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

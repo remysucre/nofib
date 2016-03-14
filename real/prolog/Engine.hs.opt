@@ -1,0 +1,36 @@
+module Engine (prove) where
+import PrologData
+import Subst
+ 
+type Stack = [(Subst, [Term], [Alt])]
+ 
+type Alt = ([Term], Subst)
+ 
+alts :: Database -> Int -> Term -> [Alt]
+alts db n g
+  = [(tp, u) | (tm :== tp) <- renClauses db n g, u <- unify g tm]
+ 
+prove :: Database -> [Term] -> [Subst]
+prove db gl = solve 1 nullSubst gl []
+  where  
+        solve :: Int -> Subst -> [Term] -> Stack -> [Subst]
+        solve n s [] ow = s : backtrack n ow
+        solve n s (g : gs) ow
+          | g == theCut = solve n s gs (cut ow)
+          | otherwise = choose n s gs (alts db n (apply s g)) ow
+         
+        choose :: Int -> Subst -> [Term] -> [Alt] -> Stack -> [Subst]
+        choose n s gs [] ow = backtrack n ow
+        choose n s (!gs) ((tp, u) : rs) ow
+          = solve (n + 1) (u @@ s) (tp ++ gs) ((s, gs, rs) : ow)
+         
+        backtrack :: Int -> Stack -> [Subst]
+        backtrack n [] = []
+        backtrack n (!((s, gs, rs) : ow)) = choose (n - 1) s gs rs ow
+ 
+theCut :: Term
+theCut = Struct "!" []
+ 
+cut :: Stack -> Stack
+cut (top : ((s, gl, _) : ss)) = top : (s, gl, []) : ss
+cut ss = ss

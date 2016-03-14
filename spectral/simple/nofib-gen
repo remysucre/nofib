@@ -1,0 +1,36 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing +RTS -K3m -H20m -RTS
+==nofib== simple: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -H110m -rtsopts -c Main.hs -o Main.o
+<<ghc: 3941058072 bytes, 520 GCs, 26386481/50568904 avg/max bytes residency (12 samples), 132M in use, 0.00 INIT (0.00 elapsed), 4.38 MUT (4.56 elapsed), 2.95 GC (2.95 elapsed) :ghc>>
+==nofib== simple: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+ 271660	  16792	      0	 288452	  466c4	Main.o
+==nofib== simple: time to link simple follows...
+<<ghc: 38410176 bytes, 14 GCs, 409672/648592 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.60 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
+==nofib== simple: size of simple follows...
+   text	   data	    bss	    dec	    hex	filename
+1230216	  72824	  48776	1351816	 14a088	simple
+==nofib== simple: time to run simple follows...
+timeout 40s ../../runstdtest/runstdtest  ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;   timeout 40s ../../runstdtest/runstdtest  ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;   timeout 40s ../../runstdtest/runstdtest  ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;   timeout 40s ../../runstdtest/runstdtest  ./simple -i  simple.stdin -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux -o1 simple.stdout -o1 simple.stdout1 -o1 simple.stdout2 -o1 simple.stdout3 -o1 simple.stdout4 -o1 simple.stdout5 -o1 simple.stdout6 -o1 simple.stdout-linux  -ghc-timing  +RTS -K3m -H20m -RTS    ;
+
+real	0m0.297s
+user	0m0.262s
+sys	0m0.025s
+<<ghc: 219288152 bytes, 58 GCs (54 + 4), 0/0 avg/max bytes residency (0 samples), 35715368 bytes GC work, 26M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.19 elapsed), 0.09 GC (0.09 elapsed), 0.06 GC(0) (0.06 elapsed), 0.03 GC(1) (0.03 elapsed), 1 balance :ghc>>
+
+real	0m0.281s
+user	0m0.256s
+sys	0m0.023s
+<<ghc: 219288152 bytes, 58 GCs (54 + 4), 0/0 avg/max bytes residency (0 samples), 35680416 bytes GC work, 26M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.18 elapsed), 0.09 GC (0.09 elapsed), 0.06 GC(0) (0.06 elapsed), 0.03 GC(1) (0.03 elapsed), 1 balance :ghc>>
+
+real	0m0.281s
+user	0m0.259s
+sys	0m0.021s
+<<ghc: 219288152 bytes, 58 GCs (54 + 4), 0/0 avg/max bytes residency (0 samples), 35687320 bytes GC work, 26M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.18 elapsed), 0.09 GC (0.09 elapsed), 0.06 GC(0) (0.06 elapsed), 0.03 GC(1) (0.03 elapsed), 1 balance :ghc>>
+
+real	0m0.292s
+user	0m0.268s
+sys	0m0.021s
+<<ghc: 219288152 bytes, 58 GCs (54 + 4), 0/0 avg/max bytes residency (0 samples), 35655648 bytes GC work, 26M in use, 0.00 INIT (0.00 elapsed), 0.19 MUT (0.19 elapsed), 0.10 GC (0.10 elapsed), 0.06 GC(0) (0.06 elapsed), 0.03 GC(1) (0.03 elapsed), 1 balance :ghc>>

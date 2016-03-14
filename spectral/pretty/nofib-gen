@@ -1,0 +1,48 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== pretty: time to compile CharSeq follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c CharSeq.hs -o CharSeq.o
+<<ghc: 119229832 bytes, 39 GCs, 5579430/10349144 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.13 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+==nofib== pretty: size of CharSeq.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   7176	    192	      0	   7368	   1cc8	CharSeq.o
+==nofib== pretty: time to compile Pretty follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Pretty.hs -o Pretty.o
+<<ghc: 241674576 bytes, 56 GCs, 5561434/10539656 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.24 MUT (0.27 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+==nofib== pretty: size of Pretty.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  16806	    728	      0	  17534	   447e	Pretty.o
+==nofib== pretty: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 145603232 bytes, 49 GCs, 8303825/18108608 avg/max bytes residency (5 samples), 40M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.14 elapsed), 0.21 GC (0.21 elapsed) :ghc>>
+==nofib== pretty: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   2359	    976	      0	   3335	    d07	Main.o
+==nofib== pretty: time to link pretty follows...
+<<ghc: 38433896 bytes, 14 GCs, 409476/648616 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.44 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== pretty: size of pretty follows...
+   text	   data	    bss	    dec	    hex	filename
+ 872623	  46744	  48776	 968143	  ec5cf	pretty
+==nofib== pretty: time to run pretty follows...
+timeout 40s ../../runstdtest/runstdtest  ./pretty  -o1 pretty.stdout -o1 pretty.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./pretty  -o1 pretty.stdout -o1 pretty.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./pretty  -o1 pretty.stdout -o1 pretty.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./pretty  -o1 pretty.stdout -o1 pretty.stdout  -ghc-timing     ;
+
+real	0m0.015s
+user	0m0.002s
+sys	0m0.004s
+<<ghc: 193720 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.003s
+<<ghc: 193720 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.004s
+<<ghc: 193720 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.003s
+<<ghc: 193720 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

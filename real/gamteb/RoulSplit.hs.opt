@@ -1,0 +1,20 @@
+module RoulSplit (roulet, split) where
+import GamtebType
+import Consts
+import Utils
+ 
+roulet :: Particle -> (Particle, [Stat], Bool)
+roulet (!((!(Part (!pos) dir w (!e) eIndx cell (!seed)))))
+  = if (r1 < 0.5) then
+      (Part pos dir (2 * w) e eIndx 1 seed', [(nr, 1), (wrg, w)], False)
+      else
+      (Part pos dir 0 e eIndx 1 seed', [(nr, 1), (nrk, 1), (wrl, w)],
+       True)
+  where (!((!r1), r2)) = genRand seed
+        ((!seed'), r3) = genRand r2
+ 
+split :: Particle -> (Particle, Particle)
+split (!(Part (!pos) (!dir) (!w) e eIndx (!cell) (!seed)))
+  = (Part pos dir (0.5 * w) e eIndx 2 seed1,
+     Part pos dir (0.5 * w) e eIndx 2 seed2)
+  where (seed1, (!seed2)) = genRand seed

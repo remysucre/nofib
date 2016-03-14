@@ -1,0 +1,65 @@
+module Main where
+import System.Environment
+ 
+infixl 9 .*
+ 
+infix 9 <*>
+main
+  = do (![arg]) <- getArgs
+       let n = read arg :: Int
+       putStr (show (take n test))
+ 
+test :: StateStream
+test = runExperiment testforce 2.0e-2 [1.0] (State [1.0] [0.0])
+ 
+testforce :: ForceLaw [Float]
+testforce (!k) [] = []
+testforce (!k) (((!(State pos vel))) : atoms)
+  = (-1.0) .* k * pos : testforce k atoms
+ 
+data AtomState = State Position Velocity
+ 
+type Position = [Float]
+ 
+type Velocity = [Float]
+ 
+type Force = [Float]
+ 
+type StateStream = [AtomState]
+ 
+instance Show AtomState where
+        show (State pos (!vel))
+          = concat [(show component) ++ "\t" | component <- pos]
+        showList (!states)
+          = showString (concat [(show state) ++ "\n" | (!state) <- states])
+ 
+type ForceLaw a = a -> StateStream -> [Force]
+ 
+runExperiment ::
+              ForceLaw a -> Float -> a -> AtomState -> StateStream
+runExperiment law dt (!param) init
+  = init : zipWith (propagate dt) (law param stream) stream
+  where stream = runExperiment law dt param init
+ 
+propagate :: Float -> Force -> AtomState -> AtomState
+propagate (!dt) (!aforce) (State (!pos) (!vel))
+  = State newpos newvel
+  where (!newpos) = pos + (dt .* vel)
+        (!newvel) = vel + (dt .* aforce)
+ 
+instance Num a => Num [a] where
+        negate (!(f : fs)) = (negate f) : (negate fs)
+        l + [] = l
+        [] + (!l) = l
+        (!((!f) : fs)) + (!((!((!g) : (!gs))))) = (f + g) : fs + gs
+        (!_) * (![]) = []
+        (![]) * _ = []
+        (!(f : fs)) * ((!(g : gs))) = (f * g) : (gs * gs)
+        fromInteger (!c) = fromInteger c : [0]
+ 
+(.*) :: Num a => a -> [a] -> [a]
+(!c) .* (![]) = []
+(!c) .* ((!f) : (!fs)) = c * f : c .* fs
+ 
+(<*>) :: Num a => [a] -> [a] -> a
+(!f) <*> g = sum (f * g)

@@ -1,0 +1,67 @@
+module Types
+       (FType, BI, Prim(..), Ops(..), Csg(..), CsgOut, Calc, Color(..),
+        R3, R1, Row, Arr, Oct(..), tuple, Quad(..), Vector, In)
+       where
+import Interval
+ 
+type FType = Double
+ 
+type BI = Interval FType
+ 
+data Prim = Sphere FType FType FType FType
+          | Cube FType FType FType FType
+          | Plane FType FType FType FType
+          | X
+          | Y
+          | Z
+          deriving Show
+ 
+data Ops = RotX FType
+         | RotY FType
+         | RotZ FType
+         | Scale FType FType FType
+         | Trans FType FType FType
+         deriving Show
+ 
+data Csg = Object Prim
+         | Geom Csg Ops
+         | Func Calc
+         | Matrix Csg Arr
+         | Colour Color Csg
+         | Union Csg Csg
+         | Inter Csg Csg
+         | Sub Csg Csg
+         | Comp Csg
+ 
+type CsgOut = (BI, Csg, Color, Bool)
+ 
+type Calc = Color -> (R3 BI) -> CsgOut
+ 
+data Color = RGB FType FType FType
+           deriving Show
+ 
+type Row = (FType, FType, FType, FType)
+ 
+type Arr = (Row, Row, Row)
+ 
+type R3 a = (a, a, a)
+ 
+type R1 a = (a, a)
+ 
+data Oct = O_Full Color
+         | O_Empty
+         | O_Sub Color [Oct]
+         deriving Show
+ 
+data Quad = Q_Empty
+          | Q_Full Color
+          | Q_Sub Color [Quad]
+          | Q_NewXY FType FType FType
+          deriving Show
+ 
+type Vector = (FType, FType, FType)
+ 
+type In = Interval FType
+copyright (!()) = "Copyright 1990,1991,1992,1993 Duncan Sinclair."
+e_mail () = "sinclair@dcs.gla.ac.uk"
+tuple = (copyright, e_mail)

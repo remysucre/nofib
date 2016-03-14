@@ -1,0 +1,33 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== anna: time to compile BaseDefs follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c BaseDefs.hs -o BaseDefs.o
+
+BaseDefs.hs:61:10: Warning:
+    No explicit implementation for
+      ‘abs’, ‘signum’, ‘fromInteger’, and (either ‘negate’ or ‘-’)
+    In the instance declaration for ‘Num (ExceptionInt a)’
+<<ghc: 1171808664 bytes, 281 GCs, 12042472/20928200 avg/max bytes residency (8 samples), 55M in use, 0.00 INIT (0.00 elapsed), 1.17 MUT (1.24 elapsed), 0.71 GC (0.71 elapsed) :ghc>>
+==nofib== anna: size of BaseDefs.o follows...
+   text	   data	    bss	    dec	    hex	filename
+ 103493	   6832	      0	 110325	  1aef5	BaseDefs.o
+==nofib== anna: time to compile MyUtils follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c MyUtils.hs -o MyUtils.o
+<<ghc: 203999080 bytes, 49 GCs, 5533374/10426424 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.23 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+==nofib== anna: size of MyUtils.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  12827	    984	      0	  13811	   35f3	MyUtils.o
+==nofib== anna: time to compile Utils follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Utils.hs -o Utils.o
+
+Utils.hs:7:9:
+    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
+      (!xs) = x : xs
+    In an equation for ‘copy’:
+        copy (!n) (!x)
+          = take (max 0 n) xs
+          where
+              (!xs) = x : xs
+<<ghc: 112321464 bytes, 54 GCs, 6584136/14079744 avg/max bytes residency (5 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.08 MUT (0.09 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+make: *** [Utils.o] Error 1

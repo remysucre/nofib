@@ -1,0 +1,55 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts
+RUNTEST_OPTS = -ghc-timing -stdout-binary
+==nofib== fulsom: time to compile Interval follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Interval.hs -o Interval.o
+
+Interval.hs:20:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!(<=)) = ivLeEq
+
+Interval.hs:21:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!(>)) = ivGreat
+
+Interval.hs:23:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!min) = ivMin
+
+Interval.hs:28:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!(*)) = ivMult
+
+Interval.hs:29:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!negate) = ivNegate
+
+Interval.hs:40:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!pi) = Pt pi
+
+Interval.hs:41:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!exp) = ivExp
+
+Interval.hs:43:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!sqrt) = ivSqrt
+
+Interval.hs:48:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!asin) = ivAsin
+
+Interval.hs:49:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!acos) = ivAcos
+
+Interval.hs:52:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!cosh) = ivCosh
+
+Interval.hs:54:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!asinh) = ivAsinh
+<<ghc: 76786680 bytes, 30 GCs, 5271424/9570200 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.07 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
+make: *** [Interval.o] Error 1

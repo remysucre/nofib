@@ -1,0 +1,52 @@
+module CharSeq
+       (CSeq, cNil, cAppend, cIndent, cNL, cStr, cCh, cShow) where
+ 
+cShow :: CSeq -> [Char]
+ 
+cNil :: CSeq
+ 
+cAppend :: CSeq -> CSeq -> CSeq
+ 
+cIndent :: Int -> CSeq -> CSeq
+ 
+cNL :: CSeq
+ 
+cStr :: [Char] -> CSeq
+ 
+cCh :: Char -> CSeq
+ 
+data CSeq = CNil
+          | CAppend CSeq CSeq
+          | CIndent Int CSeq
+          | CNewline
+          | CStr [Char]
+          | CCh Char
+cNil = CNil
+cAppend cs1 cs2 = CAppend cs1 cs2
+cIndent n cs = CIndent n cs
+cNL = CNewline
+cStr = CStr
+cCh = CCh
+cShow seq = flatten 0 True seq []
+ 
+flatten :: Int -> Bool -> CSeq -> [(Int, CSeq)] -> String
+flatten n nlp CNil seqs = flattenS nlp seqs
+flatten n nlp (CAppend seq1 seq2) seqs
+  = flatten n nlp seq1 ((n, seq2) : seqs)
+flatten n nlp (CIndent n' seq) seqs = flatten (n' + n) nlp seq seqs
+flatten n (!nlp) CNewline seqs = '\n' : flattenS True seqs
+flatten n False (CStr s) seqs = s ++ flattenS False seqs
+flatten n False (CCh c) seqs = c : flattenS False seqs
+flatten n True (CStr (!s)) seqs
+  = mkIndent n (s ++ flattenS False seqs)
+flatten n True (CCh c) seqs = mkIndent n (c : flattenS False seqs)
+ 
+flattenS :: Bool -> [(Int, CSeq)] -> String
+flattenS nlp [] = ""
+flattenS nlp (!((!((col, seq) : seqs)))) = flatten col nlp seq seqs
+ 
+mkIndent :: Int -> String -> String
+mkIndent 0 s = s
+mkIndent n (!s)
+  = if (n >= 8) then '\t' : mkIndent (n - 8) s else
+      ' ' : mkIndent (n - 1) s

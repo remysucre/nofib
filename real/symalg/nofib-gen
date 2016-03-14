@@ -1,0 +1,101 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing +RTS -M140m -RTS
+==nofib== symalg: time to compile RealM follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c RealM.hs -o RealM.o
+<<ghc: 232964800 bytes, 58 GCs, 5683698/10505360 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.25 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+==nofib== symalg: size of RealM.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  17295	   2352	      0	  19647	   4cbf	RealM.o
+==nofib== symalg: time to compile BasicNumber follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c BasicNumber.hs -o BasicNumber.o
+
+BasicNumber.hs:80:10: Warning:
+    No explicit implementation for
+      ‘toEnum’ and ‘fromEnum’
+    In the instance declaration for ‘Enum BasicNumber’
+<<ghc: 373736944 bytes, 96 GCs, 8167806/17132952 avg/max bytes residency (5 samples), 39M in use, 0.00 INIT (0.00 elapsed), 0.40 MUT (0.43 elapsed), 0.25 GC (0.25 elapsed) :ghc>>
+==nofib== symalg: size of BasicNumber.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  29321	   5648	      0	  34969	   8899	BasicNumber.o
+==nofib== symalg: time to compile Ast follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Ast.hs -o Ast.o
+<<ghc: 68131072 bytes, 25 GCs, 3778880/6321000 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.07 elapsed), 0.09 GC (0.09 elapsed) :ghc>>
+==nofib== symalg: size of Ast.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   1436	     80	      0	   1516	    5ec	Ast.o
+==nofib== symalg: time to compile BasicNumberApprox follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c BasicNumberApprox.hs -o BasicNumberApprox.o
+<<ghc: 179211456 bytes, 52 GCs, 5675588/10916592 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.22 elapsed), 0.18 GC (0.18 elapsed) :ghc>>
+==nofib== symalg: size of BasicNumberApprox.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  10963	   1200	      0	  12163	   2f83	BasicNumberApprox.o
+==nofib== symalg: time to compile Env follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Env.hs -o Env.o
+<<ghc: 83079976 bytes, 33 GCs, 5439700/10147976 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.10 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+==nofib== symalg: size of Env.o follows...
+   text	   data	    bss	    dec	    hex	filename
+    858	    200	      0	   1058	    422	Env.o
+==nofib== symalg: time to compile Eval follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Eval.hs -o Eval.o
+<<ghc: 206160312 bytes, 63 GCs, 5641994/10460328 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.23 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
+==nofib== symalg: size of Eval.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  13069	   2240	      0	  15309	   3bcd	Eval.o
+==nofib== symalg: time to compile Lexer follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Lexer.hs -o Lexer.o
+<<ghc: 156346040 bytes, 42 GCs, 5511434/10103032 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.15 MUT (0.18 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+==nofib== symalg: size of Lexer.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   8592	    464	      0	   9056	   2360	Lexer.o
+==nofib== symalg: time to compile Op follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Op.hs -o Op.o
+<<ghc: 137088360 bytes, 63 GCs, 5094834/8593776 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.14 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+==nofib== symalg: size of Op.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   7225	   1304	      0	   8529	   2151	Op.o
+==nofib== symalg: time to compile Parser follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Parser.hs -o Parser.o
+<<ghc: 229566816 bytes, 68 GCs, 5614930/10402024 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.22 MUT (0.24 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
+==nofib== symalg: size of Parser.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  11583	    480	      0	  12063	   2f1f	Parser.o
+==nofib== symalg: time to compile Print follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Print.hs -o Print.o
+<<ghc: 191975240 bytes, 52 GCs, 5586542/10700592 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.19 MUT (0.21 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+==nofib== symalg: size of Print.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  11827	    656	      0	  12483	   30c3	Print.o
+==nofib== symalg: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 186561288 bytes, 55 GCs, 8472139/19391728 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.19 elapsed), 0.24 GC (0.24 elapsed) :ghc>>
+==nofib== symalg: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   5970	    712	      0	   6682	   1a1a	Main.o
+==nofib== symalg: time to link symalg follows...
+<<ghc: 38524568 bytes, 14 GCs, 409368/644608 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.47 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== symalg: size of symalg follows...
+   text	   data	    bss	    dec	    hex	filename
+1059231	  69528	  48776	1177535	 11f7bf	symalg
+==nofib== symalg: time to run symalg follows...
+timeout 40s ../../runstdtest/runstdtest  ./symalg -i  symalg.stdin -o1 symalg.stdout -o1 symalg.stdout  -ghc-timing    +RTS -M140m -RTS ;   timeout 40s ../../runstdtest/runstdtest  ./symalg -i  symalg.stdin -o1 symalg.stdout -o1 symalg.stdout  -ghc-timing    +RTS -M140m -RTS ;   timeout 40s ../../runstdtest/runstdtest  ./symalg -i  symalg.stdin -o1 symalg.stdout -o1 symalg.stdout  -ghc-timing    +RTS -M140m -RTS ;   timeout 40s ../../runstdtest/runstdtest  ./symalg -i  symalg.stdin -o1 symalg.stdout -o1 symalg.stdout  -ghc-timing    +RTS -M140m -RTS ;
+
+real	0m0.025s
+user	0m0.011s
+sys	0m0.005s
+<<ghc: 1361560 bytes, 2 GCs (1 + 1), 0/0 avg/max bytes residency (0 samples), 205928 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.016s
+user	0m0.013s
+sys	0m0.001s
+<<ghc: 1361560 bytes, 2 GCs (1 + 1), 0/0 avg/max bytes residency (0 samples), 205928 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.016s
+user	0m0.011s
+sys	0m0.003s
+<<ghc: 1361560 bytes, 2 GCs (1 + 1), 0/0 avg/max bytes residency (0 samples), 205928 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.016s
+user	0m0.011s
+sys	0m0.003s
+<<ghc: 1361560 bytes, 2 GCs (1 + 1), 0/0 avg/max bytes residency (0 samples), 205928 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

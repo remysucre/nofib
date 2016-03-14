@@ -1,0 +1,23 @@
+module ChargeDensity (chargeDensity) where
+import PicType
+import Consts
+import Data.Array
+ 
+chargeDensity :: ParticleHeap -> Rho
+chargeDensity (xyPos, xyVel)
+  = accumArray (+) 0 ((0, 0), (n, n)) (accumCharge xyPos)
+  where n = nCell - 1
+ 
+accumCharge :: [Position] -> [MeshAssoc]
+accumCharge [] = []
+accumCharge ((x, y) : xys)
+  = [((i, j), charge * (1 - dx) * (1 - dy))] ++
+      [((i', j), charge * dx * (1 - dy))] ++
+        [((i, j'), charge * (1 - dx) * dy)] ++
+          [((i', j'), charge * dx * dy)] ++ accumCharge xys
+  where i = truncate x
+        i' = (i + 1) `rem` nCell
+        j = truncate y
+        j' = (j + 1) `rem` nCell
+        dx = x - fromIntegral i
+        dy = y - fromIntegral j

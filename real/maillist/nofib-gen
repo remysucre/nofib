@@ -1,0 +1,36 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== maillist: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 262814488 bytes, 65 GCs, 8609932/18367984 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.28 MUT (0.30 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
+==nofib== maillist: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  10267	   1376	      0	  11643	   2d7b	Main.o
+==nofib== maillist: time to link maillist follows...
+<<ghc: 38410360 bytes, 14 GCs, 409724/648640 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.44 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
+==nofib== maillist: size of maillist follows...
+   text	   data	    bss	    dec	    hex	filename
+ 852804	  47856	  48776	 949436	  e7cbc	maillist
+==nofib== maillist: time to run maillist follows...
+timeout 40s ../../runstdtest/runstdtest  ./maillist -i  maillist.stdin -o1 maillist.stdout -o1 maillist.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./maillist -i  maillist.stdin -o1 maillist.stdout -o1 maillist.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./maillist -i  maillist.stdin -o1 maillist.stdout -o1 maillist.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./maillist -i  maillist.stdin -o1 maillist.stdout -o1 maillist.stdout  -ghc-timing     ;
+
+real	0m1.236s
+user	0m0.044s
+sys	0m0.099s
+<<ghc: 90562336 bytes, 141 GCs (121 + 20), 0/0 avg/max bytes residency (0 samples), 4216120 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (1.21 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m1.151s
+user	0m0.052s
+sys	0m0.095s
+<<ghc: 90562336 bytes, 141 GCs (122 + 19), 0/0 avg/max bytes residency (0 samples), 4193456 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (1.13 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m1.171s
+user	0m0.052s
+sys	0m0.106s
+<<ghc: 90562416 bytes, 141 GCs (120 + 21), 0/0 avg/max bytes residency (0 samples), 4277864 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (1.15 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m1.161s
+user	0m0.057s
+sys	0m0.111s
+<<ghc: 90562416 bytes, 141 GCs (120 + 21), 0/0 avg/max bytes residency (0 samples), 4260848 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.15 MUT (1.14 elapsed), 0.02 GC (0.02 elapsed), 0.01 GC(0) (0.01 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>

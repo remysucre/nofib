@@ -1,0 +1,60 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== cichelli: time to compile Key follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Key.lhs -o Key.o
+<<ghc: 83539568 bytes, 34 GCs, 3142008/6114032 avg/max bytes residency (2 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.12 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
+==nofib== cichelli: size of Key.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   2141	   1408	      0	   3549	    ddd	Key.o
+==nofib== cichelli: time to compile Auxil follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Auxil.hs -o Auxil.o
+<<ghc: 225947344 bytes, 53 GCs, 5572720/10552408 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.27 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+==nofib== cichelli: size of Auxil.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  14587	    704	      0	  15291	   3bbb	Auxil.o
+==nofib== cichelli: time to compile Interval follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Interval.hs -o Interval.o
+<<ghc: 61865952 bytes, 20 GCs, 3895024/6717656 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.08 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
+==nofib== cichelli: size of Interval.o follows...
+   text	   data	    bss	    dec	    hex	filename
+      0	     48	      0	     48	     30	Interval.o
+==nofib== cichelli: time to compile Prog follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Prog.hs -o Prog.o
+<<ghc: 207946136 bytes, 51 GCs, 5678330/10784848 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.26 MUT (0.29 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
+==nofib== cichelli: size of Prog.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  15496	    888	      0	  16384	   4000	Prog.o
+==nofib== cichelli: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 118746248 bytes, 57 GCs, 8283382/18207760 avg/max bytes residency (5 samples), 40M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.13 elapsed), 0.25 GC (0.25 elapsed) :ghc>>
+==nofib== cichelli: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+    253	    128	      0	    381	    17d	Main.o
+==nofib== cichelli: time to link cichelli follows...
+<<ghc: 38453272 bytes, 14 GCs, 409064/648464 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.46 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
+==nofib== cichelli: size of cichelli follows...
+   text	   data	    bss	    dec	    hex	filename
+ 859268	  48752	  48776	 956796	  e997c	cichelli
+==nofib== cichelli: time to run cichelli follows...
+timeout 40s ../../runstdtest/runstdtest  ./cichelli  -o1 cichelli.stdout -o1 cichelli.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cichelli  -o1 cichelli.stdout -o1 cichelli.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cichelli  -o1 cichelli.stdout -o1 cichelli.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cichelli  -o1 cichelli.stdout -o1 cichelli.stdout  -ghc-timing     ;
+
+real	0m0.085s
+user	0m0.073s
+sys	0m0.003s
+<<ghc: 59168904 bytes, 114 GCs (112 + 2), 0/0 avg/max bytes residency (0 samples), 133752 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.07 MUT (0.07 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.080s
+user	0m0.074s
+sys	0m0.005s
+<<ghc: 59168904 bytes, 114 GCs (112 + 2), 0/0 avg/max bytes residency (0 samples), 133576 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.07 MUT (0.07 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.078s
+user	0m0.075s
+sys	0m0.002s
+<<ghc: 59168904 bytes, 114 GCs (112 + 2), 0/0 avg/max bytes residency (0 samples), 133576 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.07 MUT (0.07 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.079s
+user	0m0.072s
+sys	0m0.007s
+<<ghc: 59168904 bytes, 114 GCs (112 + 2), 0/0 avg/max bytes residency (0 samples), 133656 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.07 MUT (0.07 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

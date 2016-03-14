@@ -1,0 +1,36 @@
+HC = /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc
+HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts
+RUNTEST_OPTS = -ghc-timing
+==nofib== wheel-sieve1: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 233291496 bytes, 67 GCs, 8351044/18623384 avg/max bytes residency (5 samples), 42M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.31 elapsed), 0.28 GC (0.28 elapsed) :ghc>>
+==nofib== wheel-sieve1: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  10022	    776	      0	  10798	   2a2e	Main.o
+==nofib== wheel-sieve1: time to link wheel-sieve1 follows...
+<<ghc: 38412256 bytes, 14 GCs, 409856/648792 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.50 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== wheel-sieve1: size of wheel-sieve1 follows...
+   text	   data	    bss	    dec	    hex	filename
+ 873860	  50000	  48776	 972636	  ed75c	wheel-sieve1
+==nofib== wheel-sieve1: time to run wheel-sieve1 follows...
+timeout 40s ../../runstdtest/runstdtest  ./wheel-sieve1  -o1 wheel-sieve1.stdout -o1 wheel-sieve1.stdout  -ghc-timing     100000;   timeout 40s ../../runstdtest/runstdtest  ./wheel-sieve1  -o1 wheel-sieve1.stdout -o1 wheel-sieve1.stdout  -ghc-timing     100000;   timeout 40s ../../runstdtest/runstdtest  ./wheel-sieve1  -o1 wheel-sieve1.stdout -o1 wheel-sieve1.stdout  -ghc-timing     100000;   timeout 40s ../../runstdtest/runstdtest  ./wheel-sieve1  -o1 wheel-sieve1.stdout -o1 wheel-sieve1.stdout  -ghc-timing     100000;
+
+real	0m0.300s
+user	0m0.281s
+sys	0m0.010s
+<<ghc: 16640768 bytes, 32 GCs (27 + 5), 0/0 avg/max bytes residency (0 samples), 15171648 bytes GC work, 11M in use, 0.00 INIT (0.00 elapsed), 0.26 MUT (0.26 elapsed), 0.03 GC (0.03 elapsed), 0.01 GC(0) (0.01 elapsed), 0.02 GC(1) (0.02 elapsed), 1 balance :ghc>>
+
+real	0m0.292s
+user	0m0.281s
+sys	0m0.010s
+<<ghc: 16640768 bytes, 32 GCs (27 + 5), 0/0 avg/max bytes residency (0 samples), 15171648 bytes GC work, 11M in use, 0.00 INIT (0.00 elapsed), 0.26 MUT (0.26 elapsed), 0.03 GC (0.03 elapsed), 0.01 GC(0) (0.01 elapsed), 0.02 GC(1) (0.02 elapsed), 1 balance :ghc>>
+
+real	0m0.296s
+user	0m0.283s
+sys	0m0.013s
+<<ghc: 16640768 bytes, 32 GCs (27 + 5), 0/0 avg/max bytes residency (0 samples), 15171648 bytes GC work, 11M in use, 0.00 INIT (0.00 elapsed), 0.26 MUT (0.26 elapsed), 0.03 GC (0.03 elapsed), 0.01 GC(0) (0.01 elapsed), 0.02 GC(1) (0.02 elapsed), 1 balance :ghc>>
+
+real	0m0.293s
+user	0m0.281s
+sys	0m0.010s
+<<ghc: 16640768 bytes, 32 GCs (27 + 5), 0/0 avg/max bytes residency (0 samples), 15171648 bytes GC work, 11M in use, 0.00 INIT (0.00 elapsed), 0.26 MUT (0.26 elapsed), 0.03 GC (0.03 elapsed), 0.01 GC(0) (0.01 elapsed), 0.02 GC(1) (0.02 elapsed), 1 balance :ghc>>
