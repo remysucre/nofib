@@ -6,20 +6,20 @@ import TransPort
 import Output
  
 sources :: Random -> Int -> Energy -> ([Result], [Stat])
-sources (!seed) nPart e | (nPart <= 1) = transPort p prob
-  where ((!eIndx), prob) = xsectInterp e
+sources seed nPart (!e) | (nPart <= 1) = transPort p prob
+  where (!(eIndx, (!prob))) = xsectInterp e
         (!((!seed'), (!_))) = genRand seed
-        (!p) = (Part (0, 0, 0) (0, 1, 0) 1 e eIndx 1 seed')
-sources seed (!nPart) (!e) = (res1 ++ res2, s1 ++ s2)
-  where nPart1 = nPart `div` 2
-        nPart2 = nPart - nPart1
-        (!((!r1), (!r2))) = genRand seed
-        (!(res1, s1)) = sources r1 nPart1 e
-        (!((!res2), s2)) = sources r2 nPart2 e
+        p = (Part (0, 0, 0) (0, 1, 0) 1 e eIndx 1 seed')
+sources seed nPart (!e) = (res1 ++ res2, s1 ++ s2)
+  where (!nPart1) = nPart `div` 2
+        (!nPart2) = nPart - nPart1
+        (!(r1, r2)) = genRand seed
+        (res1, (!s1)) = sources r1 nPart1 e
+        (res2, s2) = sources r2 nPart2 e
  
 gamteb :: Int -> [Char]
-gamteb scale = outGamteb nPart stats result
-  where (!seed) = 0.5
-        nPart = 1 * scale
-        energy = 6
-        (!(result, stats)) = sources seed nPart energy
+gamteb (!scale) = outGamteb nPart stats result
+  where seed = 0.5
+        (!nPart) = 1 * scale
+        (!energy) = 6
+        (!((!result), stats)) = sources seed nPart energy

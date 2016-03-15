@@ -7,11 +7,11 @@ import DB_interface
 ndgrs :: (Array Int Int, Array Int Float) -> Int
  
 getndgr :: (Array Int Int, Array Int Float) -> Int -> [Int]
-ndgrs (!s) = fst (ndgrs_and_dgrsn s)
-getndgr s (!node) = [u, v, theta]
+ndgrs s = fst (ndgrs_and_dgrsn s)
+getndgr s node = [u, v, theta]
   where u = dgrsn_s ! index
         v = dgrsn_s ! (index + 1)
-        (!theta) = dgrsn_s ! (index + 2)
+        theta = dgrsn_s ! (index + 2)
         dgrsn_s = dgrsn s
         (!index) = (node - 1) * 3 + 1
  
@@ -22,7 +22,7 @@ ndgrs_and_dgrsn :: (Array Int Int, Array Int Float) -> (Int, [Int])
 ndgrs_and_dgrsn s
   = foldl counting_one_node_s (0, []) [1 .. (nnode s)]
   where counting_one_node_s = counting_one_node s
-counting_one_node (!s) (!(ndgrs_till_now, dgrsn_till_now)) i
+counting_one_node s (!(ndgrs_till_now, dgrsn_till_now)) (!i)
   = (ndgrs_till_now + ndgrs_this_node,
      dgrsn_till_now ++ dgrsn_this_node)
   where dof = [fod j | j <- [2, 1, 0]]
@@ -33,7 +33,7 @@ counting_one_node (!s) (!(ndgrs_till_now, dgrsn_till_now)) i
         g j
           = if ((dof !! j) == 0) then 0 else
               sum (take (j + 1) dof) + ndgrs_till_now
-        (!bc) = getnbc s i
+        bc = getnbc s i
  
 degreesrlt :: (Array Int Int, Array Int Float) -> [Char]
 degreesrlt s
@@ -42,7 +42,7 @@ degreesrlt s
         showlj 4 (ndgrs s) ++
           "\n\n" ++ (concat (map a_node_s [1 .. (nnode s)])) ++ "\n\n"
   where a_node_s = a_node s
-a_node (!s) (!node)
+a_node s (!node)
   = "  Node.no = " ++
       (showrj 2 node) ++
         "   u = " ++
@@ -51,5 +51,5 @@ a_node (!s) (!node)
               (showrj 8 v) ++
                 " theta=" ++
                   (showrj 8 theta) ++ "   bc = " ++ (showrj 3 bc) ++ "\n"
-  where (!bc) = getnbc s node
-        [(!u), v, theta] = getndgr s node
+  where bc = getnbc s node
+        (![(!u), (!v), theta]) = getndgr s node

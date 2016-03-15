@@ -3,93 +3,64 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== expert: time to compile Result follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Result.hs -o Result.o
-<<ghc: 78428536 bytes, 39 GCs, 5738526/11148064 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.08 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
+<<ghc: 79587856 bytes, 41 GCs, 5679581/10145816 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.14 elapsed), 0.18 GC (0.25 elapsed) :ghc>>
 ==nofib== expert: size of Result.o follows...
    text	   data	    bss	    dec	    hex	filename
    1554	    192	      0	   1746	    6d2	Result.o
 ==nofib== expert: time to compile Table follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Table.hs -o Table.o
-<<ghc: 243866336 bytes, 59 GCs, 5565108/10516408 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.26 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+<<ghc: 244660656 bytes, 58 GCs, 5563530/10522072 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.29 MUT (0.34 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
 ==nofib== expert: size of Table.o follows...
    text	   data	    bss	    dec	    hex	filename
-  19815	    488	      0	  20303	   4f4f	Table.o
+  19679	    488	      0	  20167	   4ec7	Table.o
 ==nofib== expert: time to compile Knowledge follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Knowledge.hs -o Knowledge.o
-<<ghc: 185119096 bytes, 46 GCs, 5506938/10117928 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.20 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+<<ghc: 181002368 bytes, 45 GCs, 5570962/9919896 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.26 MUT (0.29 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
 ==nofib== expert: size of Knowledge.o follows...
    text	   data	    bss	    dec	    hex	filename
-  12834	   1480	      0	  14314	   37ea	Knowledge.o
+  11898	   1480	      0	  13378	   3442	Knowledge.o
 ==nofib== expert: time to compile Match follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Match.hs -o Match.o
-<<ghc: 113039160 bytes, 35 GCs, 5381198/9957632 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.12 elapsed), 0.12 GC (0.12 elapsed) :ghc>>
+<<ghc: 107055112 bytes, 35 GCs, 5403602/10042560 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.18 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
 ==nofib== expert: size of Match.o follows...
    text	   data	    bss	    dec	    hex	filename
-   4198	    320	      0	   4518	   11a6	Match.o
+   3430	    272	      0	   3702	    e76	Match.o
 ==nofib== expert: time to compile Search follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Search.hs -o Search.o
-<<ghc: 169886960 bytes, 44 GCs, 5453358/10135176 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.16 MUT (0.18 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+<<ghc: 170525528 bytes, 44 GCs, 5444568/10099216 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.25 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
 ==nofib== expert: size of Search.o follows...
    text	   data	    bss	    dec	    hex	filename
-  11524	    584	      0	  12108	   2f4c	Search.o
+  11100	    584	      0	  11684	   2da4	Search.o
 ==nofib== expert: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 219274576 bytes, 63 GCs, 8767203/20093544 avg/max bytes residency (5 samples), 45M in use, 0.00 INIT (0.00 elapsed), 0.19 MUT (0.21 elapsed), 0.23 GC (0.23 elapsed) :ghc>>
+<<ghc: 219460912 bytes, 63 GCs, 8766334/20099464 avg/max bytes residency (5 samples), 45M in use, 0.00 INIT (0.00 elapsed), 0.27 MUT (0.35 elapsed), 0.35 GC (0.36 elapsed) :ghc>>
 ==nofib== expert: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   7645	    720	      0	   8365	   20ad	Main.o
+   7461	    720	      0	   8181	   1ff5	Main.o
 ==nofib== expert: time to link expert follows...
-<<ghc: 38467880 bytes, 14 GCs, 410756/648488 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.37 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
+<<ghc: 38582616 bytes, 14 GCs, 410756/648488 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.56 elapsed), 0.06 GC (0.08 elapsed) :ghc>>
 ==nofib== expert: size of expert follows...
    text	   data	    bss	    dec	    hex	filename
- 914292	  49296	  48776	1012364	  f728c	expert
+ 911828	  49264	  48776	1009868	  f68cc	expert
 ==nofib== expert: time to run expert follows...
 timeout 40s ../../runstdtest/runstdtest  ./expert -i  expert.stdin -o1 expert.stdout -o1 expert.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./expert -i  expert.stdin -o1 expert.stdout -o1 expert.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./expert -i  expert.stdin -o1 expert.stdout -o1 expert.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./expert -i  expert.stdin -o1 expert.stdout -o1 expert.stdout  -ghc-timing     ;
 
-real	0m0.013s
-user	0m0.001s
+real	0m0.016s
+user	0m0.003s
+sys	0m0.005s
+<<ghc: 370296 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4784 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.007s
+user	0m0.004s
 sys	0m0.003s
-././expert < expert.stdin
-**** expected exit status 0 not seen ; got 1
-././expert < expert.stdin
-expected stderr not matched by reality
---- /var/tmp/no_stderr49217	2016-03-14 12:47:00.221927591 -0400
-+++ /var/tmp/runtest49217.2	2016-03-14 12:47:00.237927551 -0400
-@@ -0,0 +1 @@
-+expert: <<loop>>
+<<ghc: 370296 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4784 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.005s
-user	0m0.003s
-sys	0m0.001s
-././expert < expert.stdin
-**** expected exit status 0 not seen ; got 1
-././expert < expert.stdin
-expected stderr not matched by reality
---- /var/tmp/no_stderr49234	2016-03-14 12:47:00.261927491 -0400
-+++ /var/tmp/runtest49234.2	2016-03-14 12:47:00.270927468 -0400
-@@ -0,0 +1 @@
-+expert: <<loop>>
+real	0m0.008s
+user	0m0.004s
+sys	0m0.003s
+<<ghc: 370296 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4784 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.005s
-user	0m0.003s
-sys	0m0.001s
-././expert < expert.stdin
-**** expected exit status 0 not seen ; got 1
-././expert < expert.stdin
-expected stderr not matched by reality
---- /var/tmp/no_stderr49251	2016-03-14 12:47:00.293927411 -0400
-+++ /var/tmp/runtest49251.2	2016-03-14 12:47:00.302927388 -0400
-@@ -0,0 +1 @@
-+expert: <<loop>>
-
-real	0m0.006s
+real	0m0.008s
 user	0m0.002s
-sys	0m0.003s
-././expert < expert.stdin
-**** expected exit status 0 not seen ; got 1
-././expert < expert.stdin
-expected stderr not matched by reality
---- /var/tmp/no_stderr49268	2016-03-14 12:47:00.326927328 -0400
-+++ /var/tmp/runtest49268.2	2016-03-14 12:47:00.335927305 -0400
-@@ -0,0 +1 @@
-+expert: <<loop>>
-make: *** [runtests] Error 1
+sys	0m0.004s
+<<ghc: 370296 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 4784 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

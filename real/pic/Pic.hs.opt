@@ -10,38 +10,39 @@ import Data.Array
  
 pic :: Indx -> [Char]
 pic nPart = show dt'
-  where partHeap = initParticles nPart
-        dt = 1.0e-3
+  where (!partHeap) = initParticles nPart
+        (!dt) = 1.0e-3
         phi = initPhi partHeap
-        (dt', phi', partHeap') = timeStep partHeap phi dt 0 nStep
+        (!((!dt'), phi', partHeap')) = timeStep partHeap phi dt 0 nStep
  
 timeStep ::
          ParticleHeap ->
            Phi -> Value -> Indx -> Indx -> (Value, Phi, ParticleHeap)
-timeStep partHeap phi dt depth step
+timeStep partHeap phi dt depth (!step)
   | step == 0 = (dt, phi, partHeap)
   | otherwise = timeStep partHeap' phi' dt' depth' (step - 1)
-  where rho = chargeDensity partHeap
-        phi' = potential phi rho depth 1
+  where (!rho) = chargeDensity partHeap
+        (!phi') = potential phi rho depth 1
         xyElec = elecField phi'
-        (maxVel, maxAcc, partHeap') = pushParticle partHeap xyElec dt 0 0
-        dt' = (sqrt (maxVel * maxVel + 2 * maxAcc) - maxVel) / maxAcc
+        (!(maxVel, maxAcc, partHeap'))
+          = pushParticle partHeap xyElec dt 0 0
+        (!dt') = (sqrt (maxVel * maxVel + 2 * maxAcc) - maxVel) / maxAcc
         depth' = (depth + 1) `rem` maxDepth
  
 initParticles :: Indx -> ParticleHeap
 initParticles nPart = (xyPos, xyVel)
   where nCellD = fromIntegral nCell
-        nPartD = fromIntegral (nPart + 1)
+        (!nPartD) = fromIntegral (nPart + 1)
         xyPos
           = [(xPos, yPos) | i <- [1 .. nPart],
-             xPos <- [nCellD * genRand (fromIntegral i / nPartD)],
-             (!(!yPos)) <- [nCellD * genRand xPos]]
-        xyVel = [(0.0, 0.0) | i <- [1 .. nPart]]
+             (!xPos) <- [nCellD * genRand (fromIntegral i / nPartD)],
+             (!yPos) <- [nCellD * genRand xPos]]
+        (!xyVel) = [(0.0, 0.0) | (!i) <- [1 .. nPart]]
  
 initPhi :: ParticleHeap -> Phi
-initPhi partHeap = potential phi0 rho maxDepth 1
+initPhi (!partHeap) = potential phi0 rho maxDepth 1
   where rho = chargeDensity partHeap
         phi0
           = array ((0, 0), (n, n))
-              [((i, j), 0.0) | i <- [0 .. n], j <- [0 .. n]]
-        n = nCell - 1
+              [((i, j), 0.0) | (!i) <- [0 .. n], j <- [0 .. n]]
+        (!n) = nCell - 1

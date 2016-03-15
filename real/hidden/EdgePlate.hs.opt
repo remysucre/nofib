@@ -9,19 +9,19 @@ data Edge = Edg Vector Vector
  
 edgeT, edgeH :: Vector -> Vector -> Edge
 edgeH v w = Edg v w
-edgeT (!v) w = Edg v (w - v)
+edgeT v w = Edg v (w - v)
  
 s, h, t :: Edge -> Vector
 s (Edg v w) = v
-h (!(Edg (!v) w)) = w
-t (Edg v w) = v + w
+h (!(Edg v w)) = w
+t (Edg v (!w)) = v + w
  
 type Input = [[Vector]]
  
 data Plate = Plt Int [Edge]
  
 n :: Plate -> Vector
-n (!((!(Plt _ (l1 : ((!l2) : ls)))))) = norm (h (l1) * h (l2))
+n (!(Plt _ (l1 : ((!l2) : ls)))) = norm (h (l1) * h (l2))
  
 type Object = [Plate]
  

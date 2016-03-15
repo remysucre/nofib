@@ -3,53 +3,100 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing -stdout-binary
 ==nofib== fulsom: time to compile Interval follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Interval.hs -o Interval.o
+<<ghc: 472136096 bytes, 122 GCs, 7051627/13228680 avg/max bytes residency (5 samples), 34M in use, 0.00 INIT (0.00 elapsed), 0.71 MUT (0.79 elapsed), 0.39 GC (0.39 elapsed) :ghc>>
+==nofib== fulsom: size of Interval.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  40489	   2040	      0	  42529	   a621	Interval.o
+==nofib== fulsom: time to compile Types follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Types.hs -o Types.o
+<<ghc: 271592352 bytes, 72 GCs, 5369744/9736656 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.43 MUT (0.49 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
+==nofib== fulsom: size of Types.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  28788	   2072	      0	  30860	   788c	Types.o
+==nofib== fulsom: time to compile Matrix follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Matrix.hs -o Matrix.o
+<<ghc: 242872424 bytes, 66 GCs, 5464576/10425200 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.30 MUT (0.33 elapsed), 0.21 GC (0.22 elapsed) :ghc>>
+==nofib== fulsom: size of Matrix.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  19705	    200	      0	  19905	   4dc1	Matrix.o
+==nofib== fulsom: time to compile Csg follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Csg.hs -o Csg.o
+<<ghc: 647088392 bytes, 223 GCs, 10057856/18738600 avg/max bytes residency (7 samples), 49M in use, 0.00 INIT (0.00 elapsed), 0.71 MUT (0.78 elapsed), 0.57 GC (0.57 elapsed) :ghc>>
+==nofib== fulsom: size of Csg.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  66707	    536	      0	  67243	  106ab	Csg.o
+==nofib== fulsom: time to compile Kolor follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Kolor.hs -o Kolor.o
+<<ghc: 210876464 bytes, 58 GCs, 5575904/10642936 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.30 MUT (0.33 elapsed), 0.26 GC (0.26 elapsed) :ghc>>
+==nofib== fulsom: size of Kolor.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   1454	   7296	      0	   8750	   222e	Kolor.o
+==nofib== fulsom: time to compile Patchlevel follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Patchlevel.hs -o Patchlevel.o
+<<ghc: 63546544 bytes, 25 GCs, 3684645/6114352 avg/max bytes residency (3 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.09 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
+==nofib== fulsom: size of Patchlevel.o follows...
+   text	   data	    bss	    dec	    hex	filename
+    106	     80	      0	    186	     ba	Patchlevel.o
+==nofib== fulsom: time to compile Vector follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Vector.hs -o Vector.o
+<<ghc: 107015416 bytes, 36 GCs, 5233818/9644488 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.15 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+==nofib== fulsom: size of Vector.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   3825	    120	      0	   3945	    f69	Vector.o
+==nofib== fulsom: time to compile Oct follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Oct.hs -o Oct.o
+<<ghc: 206020856 bytes, 68 GCs, 5388774/10241328 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.29 MUT (0.42 elapsed), 0.24 GC (0.28 elapsed) :ghc>>
+==nofib== fulsom: size of Oct.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  14497	    272	      0	  14769	   39b1	Oct.o
+==nofib== fulsom: time to compile Quad follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Quad.hs -o Quad.o
+<<ghc: 157317752 bytes, 53 GCs, 4988310/8797328 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.25 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
+==nofib== fulsom: size of Quad.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  13296	   1104	      0	  14400	   3840	Quad.o
+==nofib== fulsom: time to compile Raster follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Raster.hs -o Raster.o
+<<ghc: 229523376 bytes, 82 GCs, 5310226/9557576 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.31 MUT (0.38 elapsed), 0.22 GC (0.22 elapsed) :ghc>>
+==nofib== fulsom: size of Raster.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  22795	    648	      0	  23443	   5b93	Raster.o
+==nofib== fulsom: time to compile Shapes follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Shapes.hs -o Shapes.o
+<<ghc: 101027888 bytes, 37 GCs, 5213870/9432688 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.18 elapsed), 0.20 GC (0.20 elapsed) :ghc>>
+==nofib== fulsom: size of Shapes.o follows...
+   text	   data	    bss	    dec	    hex	filename
+     97	   2584	      0	   2681	    a79	Shapes.o
+==nofib== fulsom: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -cpp -rtsopts -c Main.hs -o Main.o
+<<ghc: 163873352 bytes, 60 GCs, 8750550/19338160 avg/max bytes residency (4 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.28 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
+==nofib== fulsom: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   1141	    240	      0	   1381	    565	Main.o
+==nofib== fulsom: time to link fulsom follows...
+<<ghc: 38650416 bytes, 14 GCs, 409496/644568 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.75 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
+==nofib== fulsom: size of fulsom follows...
+   text	   data	    bss	    dec	    hex	filename
+1142478	  69808	  48776	1261062	 133e06	fulsom
+==nofib== fulsom: time to run fulsom follows...
+timeout 40s ../../runstdtest/runstdtest  ./fulsom  -o1 fulsom.stdout -o1 fulsom.stdout-mingw -o1 fulsom.stdout -o1 fulsom.stdout-mingw  -ghc-timing  -stdout-binary    7;   timeout 40s ../../runstdtest/runstdtest  ./fulsom  -o1 fulsom.stdout -o1 fulsom.stdout-mingw -o1 fulsom.stdout -o1 fulsom.stdout-mingw  -ghc-timing  -stdout-binary    7;   timeout 40s ../../runstdtest/runstdtest  ./fulsom  -o1 fulsom.stdout -o1 fulsom.stdout-mingw -o1 fulsom.stdout -o1 fulsom.stdout-mingw  -ghc-timing  -stdout-binary    7;   timeout 40s ../../runstdtest/runstdtest  ./fulsom  -o1 fulsom.stdout -o1 fulsom.stdout-mingw -o1 fulsom.stdout -o1 fulsom.stdout-mingw  -ghc-timing  -stdout-binary    7;
 
-Interval.hs:20:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!(<=)) = ivLeEq
+real	0m0.454s
+user	0m0.428s
+sys	0m0.015s
+<<ghc: 313584496 bytes, 607 GCs (565 + 42), 0/0 avg/max bytes residency (0 samples), 66594792 bytes GC work, 5M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.21 elapsed), 0.23 GC (0.23 elapsed), 0.14 GC(0) (0.14 elapsed), 0.09 GC(1) (0.09 elapsed), 1 balance :ghc>>
 
-Interval.hs:21:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!(>)) = ivGreat
+real	0m0.485s
+user	0m0.454s
+sys	0m0.026s
+<<ghc: 313584496 bytes, 607 GCs (565 + 42), 0/0 avg/max bytes residency (0 samples), 66594864 bytes GC work, 5M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.24 elapsed), 0.24 GC (0.24 elapsed), 0.14 GC(0) (0.14 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>
 
-Interval.hs:23:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!min) = ivMin
+real	0m0.470s
+user	0m0.455s
+sys	0m0.009s
+<<ghc: 313584496 bytes, 607 GCs (565 + 42), 0/0 avg/max bytes residency (0 samples), 66594792 bytes GC work, 5M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.23 elapsed), 0.23 GC (0.23 elapsed), 0.14 GC(0) (0.14 elapsed), 0.09 GC(1) (0.09 elapsed), 1 balance :ghc>>
 
-Interval.hs:28:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!(*)) = ivMult
-
-Interval.hs:29:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!negate) = ivNegate
-
-Interval.hs:40:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!pi) = Pt pi
-
-Interval.hs:41:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!exp) = ivExp
-
-Interval.hs:43:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!sqrt) = ivSqrt
-
-Interval.hs:48:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!asin) = ivAsin
-
-Interval.hs:49:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!acos) = ivAcos
-
-Interval.hs:52:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!cosh) = ivCosh
-
-Interval.hs:54:9:
-    Pattern bindings (except simple variables) not allowed in instance declarations
-      (!asinh) = ivAsinh
-<<ghc: 76786680 bytes, 30 GCs, 5271424/9570200 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.07 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
-make: *** [Interval.o] Error 1
+real	0m0.447s
+user	0m0.432s
+sys	0m0.014s
+<<ghc: 313584496 bytes, 607 GCs (565 + 42), 0/0 avg/max bytes residency (0 samples), 66594864 bytes GC work, 5M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.21 elapsed), 0.23 GC (0.23 elapsed), 0.14 GC(0) (0.14 elapsed), 0.09 GC(1) (0.09 elapsed), 1 balance :ghc>>

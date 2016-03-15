@@ -11,4 +11,4 @@ rows :: Matrix -> [Vector]
 rows m = m
  
 mulm :: Matrix -> Vector -> Vector
-mulm (!m) v = vec (map (inpr v) (rows m))
+mulm m v = vec (map (inpr v) (rows m))

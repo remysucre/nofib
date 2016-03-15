@@ -3,20 +3,40 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== scc: time to compile Digraph follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Digraph.hs -o Digraph.o
-<<ghc: 106321232 bytes, 35 GCs, 5750036/10301664 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.11 elapsed), 0.12 GC (0.12 elapsed) :ghc>>
+<<ghc: 103956984 bytes, 35 GCs, 5741372/10288056 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.25 elapsed), 0.16 GC (0.17 elapsed) :ghc>>
 ==nofib== scc: size of Digraph.o follows...
    text	   data	    bss	    dec	    hex	filename
-   3281	     40	      0	   3321	    cf9	Digraph.o
+   3025	     40	      0	   3065	    bf9	Digraph.o
 ==nofib== scc: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 136939184 bytes, 46 GCs, 8200724/17827552 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.12 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
+<<ghc: 136416400 bytes, 48 GCs, 8215723/17919872 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.01 elapsed), 0.16 MUT (0.29 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
 ==nofib== scc: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
     397	   1160	      0	   1557	    615	Main.o
 ==nofib== scc: time to link scc follows...
-<<ghc: 38421616 bytes, 14 GCs, 409324/648576 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.34 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38535560 bytes, 14 GCs, 409324/648576 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (1.17 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== scc: size of scc follows...
    text	   data	    bss	    dec	    hex	filename
- 789476	  41552	  48776	 879804	  d6cbc	scc
+ 789220	  41552	  48776	 879548	  d6bbc	scc
 ==nofib== scc: time to run scc follows...
 timeout 40s ../../runstdtest/runstdtest  ./scc  -o1 scc.stdout -o1 scc.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./scc  -o1 scc.stdout -o1 scc.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./scc  -o1 scc.stdout -o1 scc.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./scc  -o1 scc.stdout -o1 scc.stdout  -ghc-timing     ;
+
+real	0m0.065s
+user	0m0.002s
+sys	0m0.004s
+<<ghc: 59104 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.032s
+user	0m0.001s
+sys	0m0.004s
+<<ghc: 59104 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (-0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.029s
+user	0m0.001s
+sys	0m0.004s
+<<ghc: 59104 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.021s
+user	0m0.002s
+sys	0m0.004s
+<<ghc: 59104 bytes, 1 GCs (0 + 1), 0/0 avg/max bytes residency (0 samples), 3408 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

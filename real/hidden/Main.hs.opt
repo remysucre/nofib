@@ -9,5 +9,5 @@ import System.IO
 main
   = do ls <- hGetContents stdin
        (getFilename $
-          process (\ (!viewdir) -> hiddenline viewdir . map read . lines))
+          process (\ viewdir -> hiddenline viewdir . map read . lines))
          (lines ls)

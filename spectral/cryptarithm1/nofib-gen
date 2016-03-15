@@ -3,34 +3,37 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== cryptarithm1: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 167679376 bytes, 51 GCs, 8314944/18034336 avg/max bytes residency (5 samples), 40M in use, 0.00 INIT (0.00 elapsed), 0.15 MUT (0.19 elapsed), 0.24 GC (0.24 elapsed) :ghc>>
+<<ghc: 168980696 bytes, 50 GCs, 8320929/18053672 avg/max bytes residency (5 samples), 40M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.20 elapsed), 0.27 GC (0.27 elapsed) :ghc>>
 ==nofib== cryptarithm1: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   3781	    448	      0	   4229	   1085	Main.o
+   3941	    448	      0	   4389	   1125	Main.o
 ==nofib== cryptarithm1: time to link cryptarithm1 follows...
-<<ghc: 38412400 bytes, 14 GCs, 409852/648784 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.45 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38412488 bytes, 14 GCs, 409852/648784 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.47 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== cryptarithm1: size of cryptarithm1 follows...
    text	   data	    bss	    dec	    hex	filename
- 792964	  41232	  48776	 882972	  d791c	cryptarithm1
+ 793124	  41232	  48776	 883132	  d79bc	cryptarithm1
 ==nofib== cryptarithm1: time to run cryptarithm1 follows...
 timeout 40s ../../runstdtest/runstdtest  ./cryptarithm1  -o1 cryptarithm1.stdout -o1 cryptarithm1.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cryptarithm1  -o1 cryptarithm1.stdout -o1 cryptarithm1.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cryptarithm1  -o1 cryptarithm1.stdout -o1 cryptarithm1.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cryptarithm1  -o1 cryptarithm1.stdout -o1 cryptarithm1.stdout  -ghc-timing     ;
 
-real	0m0.745s
-user	0m0.726s
-sys	0m0.011s
-<<ghc: 2051819248 bytes, 3929 GCs (3927 + 2), 0/0 avg/max bytes residency (0 samples), 5221368 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.71 MUT (0.71 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m1.062s
+user	0m1.036s
+sys	0m0.017s
+<<ghc: 2051819248 bytes, 3929 GCs (3927 + 2), 0/0 avg/max bytes residency (0 samples), 5222064 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 1.00 MUT (1.01 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.741s
-user	0m0.729s
+real	0m0.966s
+user	0m0.954s
 sys	0m0.011s
-<<ghc: 2051819248 bytes, 3929 GCs (3927 + 2), 0/0 avg/max bytes residency (0 samples), 5221368 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.71 MUT (0.71 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+<<ghc: 2051819248 bytes, 3929 GCs (3927 + 2), 0/0 avg/max bytes residency (0 samples), 5222064 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.92 MUT (0.92 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.749s
-user	0m0.729s
+real	0m1.054s
+user	0m1.030s
+sys	0m0.022s
+<<ghc: 2051819248 bytes, 3929 GCs (3927 + 2), 0/0 avg/max bytes residency (0 samples), 5222064 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 1.01 MUT (1.01 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+make: *** wait: No child processes.  Stop.
+make: *** Waiting for unfinished jobs....
+make: *** wait: No child processes.  Stop.
+
+real	0m1.060s
+user	0m1.038s
 sys	0m0.019s
-<<ghc: 2051819248 bytes, 3929 GCs (3927 + 2), 0/0 avg/max bytes residency (0 samples), 5221368 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.71 MUT (0.71 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.746s
-user	0m0.725s
-sys	0m0.020s
-<<ghc: 2051819248 bytes, 3929 GCs (3927 + 2), 0/0 avg/max bytes residency (0 samples), 5221368 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.71 MUT (0.71 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+<<ghc: 2051819248 bytes, 3929 GCs (3927 + 2), 0/0 avg/max bytes residency (0 samples), 5222064 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 1.01 MUT (1.01 elapsed), 0.04 GC (0.04 elapsed), 0.04 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

@@ -3,34 +3,22 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== integer: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 252975096 bytes, 65 GCs, 8300126/18491248 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.23 elapsed), 0.22 GC (0.22 elapsed) :ghc>>
+<<ghc: 265684208 bytes, 66 GCs, 8332220/18579608 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.31 MUT (0.35 elapsed), 0.32 GC (0.33 elapsed) :ghc>>
 ==nofib== integer: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   5230	    408	      0	   5638	   1606	Main.o
+   7353	   1192	      0	   8545	   2161	Main.o
 ==nofib== integer: time to link integer follows...
-<<ghc: 38410568 bytes, 14 GCs, 409708/648632 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.45 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
+<<ghc: 38410536 bytes, 14 GCs, 409708/648632 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.58 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== integer: size of integer follows...
    text	   data	    bss	    dec	    hex	filename
- 848196	  49776	  48776	 946748	  e723c	integer
+ 850308	  50576	  48776	 949660	  e7d9c	integer
 ==nofib== integer: time to run integer follows...
 timeout 40s ../../runstdtest/runstdtest  ./integer    -ghc-timing     -2100000000 4000001 2100000000;   timeout 40s ../../runstdtest/runstdtest  ./integer    -ghc-timing     -2100000000 4000001 2100000000;   timeout 40s ../../runstdtest/runstdtest  ./integer    -ghc-timing     -2100000000 4000001 2100000000;   timeout 40s ../../runstdtest/runstdtest  ./integer    -ghc-timing     -2100000000 4000001 2100000000;
+make: *** wait: No child processes.  Stop.
+make: *** Waiting for unfinished jobs....
+make: *** wait: No child processes.  Stop.
 
-real	0m2.377s
-user	0m2.354s
-sys	0m0.016s
-<<ghc: 3338976600 bytes, 6467 GCs (6464 + 3), 0/0 avg/max bytes residency (0 samples), 3018600 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 2.33 MUT (2.33 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m2.371s
-user	0m2.348s
-sys	0m0.023s
-<<ghc: 3338976600 bytes, 6467 GCs (6464 + 3), 0/0 avg/max bytes residency (0 samples), 3018600 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 2.33 MUT (2.33 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m2.374s
-user	0m2.360s
-sys	0m0.013s
-<<ghc: 3338976600 bytes, 6467 GCs (6464 + 3), 0/0 avg/max bytes residency (0 samples), 3018600 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 2.33 MUT (2.33 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m2.380s
-user	0m2.358s
-sys	0m0.021s
-<<ghc: 3338976600 bytes, 6467 GCs (6464 + 3), 0/0 avg/max bytes residency (0 samples), 3018600 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 2.34 MUT (2.34 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m3.103s
+user	0m3.051s
+sys	0m0.028s
+<<ghc: 3338978056 bytes, 6467 GCs (6464 + 3), 0/0 avg/max bytes residency (0 samples), 3303760 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 3.02 MUT (3.03 elapsed), 0.06 GC (0.06 elapsed), 0.06 GC(0) (0.06 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

@@ -19,7 +19,7 @@ main
                    _ -> 7
        hSetBinaryMode stdout True
        putStr (picture n)
-picture (!n) = go n pic
+picture n = go n pic
  
 go :: Int -> Csg -> [Char]
-go (!n) = (cdraw n) . quadoct . (octcsg n)
+go n = (cdraw n) . quadoct . (octcsg n)

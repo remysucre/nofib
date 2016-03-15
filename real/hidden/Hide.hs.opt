@@ -11,12 +11,12 @@ import Data.Array
 hiddenline :: Vector -> Input -> Output
 hiddenline v corners
   = (draw . scale factor base . hideObj . makeObject) rotated
-  where (!rotated) = v `rot` corners
+  where rotated = v `rot` corners
         (base, factor) = getExtremes (concat rotated)
  
 hide :: Array (Triangle Int) Bool -> Object -> Plate -> [Edge]
-hide memory obj bottom@(!(Plt (!_) ls)) = foldr cmp ls tops
-  where tops = [top | top <- obj, lazyAbove memory top bottom]
+hide memory obj bottom@(!(Plt _ ls)) = foldr cmp ls tops
+  where (!tops) = [top | top <- obj, lazyAbove memory top bottom]
  
 hideObj :: Object -> [Edge]
 hideObj obj = concat [hide (mkmemo above obj) obj plt | plt <- obj]

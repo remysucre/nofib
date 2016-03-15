@@ -3,70 +3,70 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== scs: time to compile Types follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Types.hs -o Types.o
-<<ghc: 142096720 bytes, 42 GCs, 5787462/10994384 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.15 MUT (0.17 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+<<ghc: 142223832 bytes, 42 GCs, 5790046/11004640 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.34 elapsed), 0.19 GC (0.21 elapsed) :ghc>>
 ==nofib== scs: size of Types.o follows...
    text	   data	    bss	    dec	    hex	filename
    9059	    520	      0	   9579	   256b	Types.o
 ==nofib== scs: time to compile LinearAlgebra follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c LinearAlgebra.hs -o LinearAlgebra.o
-<<ghc: 929386288 bytes, 223 GCs, 11043741/20960344 avg/max bytes residency (7 samples), 52M in use, 0.00 INIT (0.00 elapsed), 1.10 MUT (1.17 elapsed), 0.68 GC (0.68 elapsed) :ghc>>
+<<ghc: 907805040 bytes, 222 GCs, 11001373/20561824 avg/max bytes residency (7 samples), 53M in use, 0.00 INIT (0.00 elapsed), 1.39 MUT (1.46 elapsed), 0.87 GC (0.91 elapsed) :ghc>>
 ==nofib== scs: size of LinearAlgebra.o follows...
    text	   data	    bss	    dec	    hex	filename
-  64181	   4376	      0	  68557	  10bcd	LinearAlgebra.o
+  62133	   4232	      0	  66365	  1033d	LinearAlgebra.o
 ==nofib== scs: time to compile RandomFix follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c RandomFix.hs -o RandomFix.o
-<<ghc: 130889848 bytes, 39 GCs, 5577832/10273000 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.16 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+<<ghc: 129283312 bytes, 39 GCs, 5573796/10259176 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.22 elapsed), 0.17 GC (0.19 elapsed) :ghc>>
 ==nofib== scs: size of RandomFix.o follows...
    text	   data	    bss	    dec	    hex	filename
-   5050	    520	      0	   5570	   15c2	RandomFix.o
+   5042	    528	      0	   5570	   15c2	RandomFix.o
 ==nofib== scs: time to compile Simulate follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Simulate.hs -o Simulate.o
-<<ghc: 921088528 bytes, 230 GCs, 11748416/21962000 avg/max bytes residency (8 samples), 55M in use, 0.00 INIT (0.00 elapsed), 1.00 MUT (1.08 elapsed), 0.70 GC (0.70 elapsed) :ghc>>
+<<ghc: 903722416 bytes, 222 GCs, 11639929/22318320 avg/max bytes residency (8 samples), 54M in use, 0.00 INIT (0.00 elapsed), 1.60 MUT (1.82 elapsed), 1.19 GC (1.24 elapsed) :ghc>>
 ==nofib== scs: size of Simulate.o follows...
    text	   data	    bss	    dec	    hex	filename
-  71612	   8336	      0	  79948	  1384c	Simulate.o
+  72694	   3712	      0	  76406	  12a76	Simulate.o
 ==nofib== scs: time to compile ParseLib follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c ParseLib.hs -o ParseLib.o
-<<ghc: 224587416 bytes, 53 GCs, 5558888/10222048 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.28 MUT (0.31 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
+<<ghc: 224961320 bytes, 53 GCs, 5554474/10217856 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.01 elapsed), 0.38 MUT (0.49 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
 ==nofib== scs: size of ParseLib.o follows...
    text	   data	    bss	    dec	    hex	filename
-  14965	    344	      0	  15309	   3bcd	ParseLib.o
+  16376	    320	      0	  16696	   4138	ParseLib.o
 ==nofib== scs: time to compile Parse follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Parse.hs -o Parse.o
-<<ghc: 326438560 bytes, 95 GCs, 7924902/16675472 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.39 MUT (0.43 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
+<<ghc: 377825464 bytes, 94 GCs, 7773566/16632400 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.58 MUT (0.76 elapsed), 0.34 GC (0.37 elapsed) :ghc>>
 ==nofib== scs: size of Parse.o follows...
    text	   data	    bss	    dec	    hex	filename
-  25128	   3160	      0	  28288	   6e80	Parse.o
+  34328	   3648	      0	  37976	   9458	Parse.o
 ==nofib== scs: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 245933448 bytes, 67 GCs, 8504289/18225680 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.31 MUT (0.37 elapsed), 0.34 GC (0.34 elapsed) :ghc>>
+<<ghc: 239832328 bytes, 67 GCs, 8534561/18256416 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.34 MUT (0.51 elapsed), 0.38 GC (0.43 elapsed) :ghc>>
 ==nofib== scs: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   9437	    960	      0	  10397	   289d	Main.o
+   9805	    960	      0	  10765	   2a0d	Main.o
 ==nofib== scs: time to link scs follows...
-<<ghc: 38482984 bytes, 14 GCs, 410992/648544 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.57 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38601880 bytes, 14 GCs, 410996/648552 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (1.08 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== scs: size of scs follows...
    text	   data	    bss	    dec	    hex	filename
-1190965	  78048	  48776	1317789	 141b9d	scs
+1201269	  73792	  48776	1323837	 14333d	scs
 ==nofib== scs: time to run scs follows...
 timeout 40s ../../runstdtest/runstdtest  ./scs  -o1 scs.stdout -o1 scs.stdout-x86_64 -o1 scs.stdout-x86-linux -o1 scs.stdout -o1 scs.stdout-x86_64 -o1 scs.stdout-x86-linux  -ghc-timing     inverter 345 10n 4u 1;   timeout 40s ../../runstdtest/runstdtest  ./scs  -o1 scs.stdout -o1 scs.stdout-x86_64 -o1 scs.stdout-x86-linux -o1 scs.stdout -o1 scs.stdout-x86_64 -o1 scs.stdout-x86-linux  -ghc-timing     inverter 345 10n 4u 1;   timeout 40s ../../runstdtest/runstdtest  ./scs  -o1 scs.stdout -o1 scs.stdout-x86_64 -o1 scs.stdout-x86-linux -o1 scs.stdout -o1 scs.stdout-x86_64 -o1 scs.stdout-x86-linux  -ghc-timing     inverter 345 10n 4u 1;   timeout 40s ../../runstdtest/runstdtest  ./scs  -o1 scs.stdout -o1 scs.stdout-x86_64 -o1 scs.stdout-x86-linux -o1 scs.stdout -o1 scs.stdout-x86_64 -o1 scs.stdout-x86-linux  -ghc-timing     inverter 345 10n 4u 1;
 
-real	0m0.732s
-user	0m0.707s
+real	0m0.964s
+user	0m0.933s
 sys	0m0.015s
-<<ghc: 933397800 bytes, 1813 GCs (1765 + 48), 0/0 avg/max bytes residency (0 samples), 199217768 bytes GC work, 8M in use, 0.00 INIT (0.00 elapsed), 0.41 MUT (0.41 elapsed), 0.31 GC (0.31 elapsed), 0.20 GC(0) (0.20 elapsed), 0.11 GC(1) (0.11 elapsed), 1 balance :ghc>>
+<<ghc: 931369376 bytes, 1810 GCs (1760 + 50), 0/0 avg/max bytes residency (0 samples), 196767096 bytes GC work, 7M in use, 0.00 INIT (0.00 elapsed), 0.54 MUT (0.55 elapsed), 0.40 GC (0.40 elapsed), 0.26 GC(0) (0.26 elapsed), 0.14 GC(1) (0.14 elapsed), 1 balance :ghc>>
 
-real	0m0.696s
-user	0m0.683s
-sys	0m0.012s
-<<ghc: 933397800 bytes, 1813 GCs (1765 + 48), 0/0 avg/max bytes residency (0 samples), 199219848 bytes GC work, 8M in use, 0.00 INIT (0.00 elapsed), 0.39 MUT (0.39 elapsed), 0.30 GC (0.30 elapsed), 0.19 GC(0) (0.19 elapsed), 0.11 GC(1) (0.11 elapsed), 1 balance :ghc>>
+real	0m0.949s
+user	0m0.928s
+sys	0m0.016s
+<<ghc: 931369376 bytes, 1810 GCs (1760 + 50), 0/0 avg/max bytes residency (0 samples), 196767176 bytes GC work, 7M in use, 0.00 INIT (0.00 elapsed), 0.54 MUT (0.54 elapsed), 0.40 GC (0.40 elapsed), 0.25 GC(0) (0.25 elapsed), 0.14 GC(1) (0.14 elapsed), 1 balance :ghc>>
 
-real	0m0.695s
-user	0m0.673s
+real	0m1.010s
+user	0m0.961s
+sys	0m0.013s
+<<ghc: 931369376 bytes, 1810 GCs (1760 + 50), 0/0 avg/max bytes residency (0 samples), 196769120 bytes GC work, 7M in use, 0.00 INIT (0.00 elapsed), 0.54 MUT (0.56 elapsed), 0.42 GC (0.43 elapsed), 0.27 GC(0) (0.27 elapsed), 0.15 GC(1) (0.15 elapsed), 1 balance :ghc>>
+
+real	0m0.956s
+user	0m0.932s
 sys	0m0.021s
-<<ghc: 933397800 bytes, 1813 GCs (1765 + 48), 0/0 avg/max bytes residency (0 samples), 199219848 bytes GC work, 8M in use, 0.00 INIT (0.00 elapsed), 0.39 MUT (0.39 elapsed), 0.29 GC (0.29 elapsed), 0.19 GC(0) (0.19 elapsed), 0.11 GC(1) (0.11 elapsed), 1 balance :ghc>>
-
-real	0m0.689s
-user	0m0.675s
-sys	0m0.014s
-<<ghc: 933397800 bytes, 1813 GCs (1765 + 48), 0/0 avg/max bytes residency (0 samples), 199219848 bytes GC work, 8M in use, 0.00 INIT (0.00 elapsed), 0.39 MUT (0.39 elapsed), 0.29 GC (0.29 elapsed), 0.19 GC(0) (0.19 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>
+<<ghc: 931369376 bytes, 1810 GCs (1760 + 50), 0/0 avg/max bytes residency (0 samples), 196769120 bytes GC work, 7M in use, 0.00 INIT (0.00 elapsed), 0.56 MUT (0.56 elapsed), 0.38 GC (0.39 elapsed), 0.25 GC(0) (0.25 elapsed), 0.14 GC(1) (0.14 elapsed), 1 balance :ghc>>

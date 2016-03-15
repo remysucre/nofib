@@ -9,10 +9,10 @@ import Cross
 import Data.List (nub)
  
 cmp :: Plate -> [Edge] -> [Edge]
-cmp p ls = concat [comp l p | (!l) <- ls]
+cmp p ls = concat [comp l p | l <- ls]
  
 comp :: Edge -> Plate -> [Edge]
-comp l (!p@(Plt _ ks))
+comp l p@(Plt _ ks)
   = if inS && inT then [] else
       if crosses == [] then [l] else
         if inS && not inT then [edgeT w (t l)] else
@@ -20,7 +20,7 @@ comp l (!p@(Plt _ ks))
             [edgeT (s l) v, edgeT w (t l)]
   where inS = s (l) `into` p
         inT = t (l) `into` p
-        (!crosses) = nub [p | k <- ks, (p, q) <- cross l k]
+        (!crosses) = nub [p | k <- ks, ((!p), q) <- cross l k]
         cr1 = head crosses
         cr2 = last crosses
         ((!v), w)
@@ -30,8 +30,8 @@ comp l (!p@(Plt _ ks))
 above :: Plate -> Plate -> Bool
 above ls ks
   = if vertical ls then
-      if vertical ks then or [z (p) > z (q) | (!p) <- olk, (!q) <- okl]
-        else or [z (p) > alt ks p | p <- olk]
+      if vertical ks then or [z (p) > z (q) | p <- olk, (!q) <- okl] else
+        or [z (p) > alt ks p | p <- olk]
       else
       if vertical ks then or [alt ls q > z (q) | (!q) <- okl] else
         or [alt ls p > alt ks p | p <- ovl]

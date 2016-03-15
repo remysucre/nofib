@@ -9,36 +9,19 @@ Main.hs:49:10: Warning:
       ‘abs’ and ‘signum’
     In the instance declaration for ‘Num [a]’
 
-Main.hs:64:6: Warning:
+Main.hs:64:3: Warning:
     Local definition of ‘<*>’ clashes with a future Prelude name - this will become an error in GHC 7.10, under the Applicative-Monad Proposal.
-<<ghc: 247688184 bytes, 66 GCs, 7954913/16752272 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.28 elapsed), 0.24 GC (0.24 elapsed) :ghc>>
+<<ghc: 233118224 bytes, 65 GCs, 7944769/16710200 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.29 MUT (0.35 elapsed), 0.29 GC (0.30 elapsed) :ghc>>
 ==nofib== atom: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-  12422	   1160	      0	  13582	   350e	Main.o
+   9990	   1120	      0	  11110	   2b66	Main.o
 ==nofib== atom: time to link atom follows...
-<<ghc: 38405032 bytes, 14 GCs, 409636/648576 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.44 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38409520 bytes, 14 GCs, 409612/648528 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.64 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
 ==nofib== atom: size of atom follows...
    text	   data	    bss	    dec	    hex	filename
- 920207	  52728	  48776	1021711	  f970f	atom
+ 916943	  52696	  48776	1018415	  f8a2f	atom
 ==nofib== atom: time to run atom follows...
 timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;
-
-real	0m0.238s
-user	0m0.225s
-sys	0m0.004s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
-
-real	0m0.232s
-user	0m0.226s
-sys	0m0.007s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
-
-real	0m0.233s
-user	0m0.228s
-sys	0m0.005s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
-
-real	0m0.231s
-user	0m0.227s
-sys	0m0.004s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+make: *** wait: No child processes.  Stop.
+make: *** Waiting for unfinished jobs....
+make: *** wait: No child processes.  Stop.

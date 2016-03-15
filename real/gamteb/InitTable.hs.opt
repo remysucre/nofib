@@ -13,7 +13,7 @@ ergs = array (1, numLev) (zipWith (,) [1 .. numLev] (map f2 erg))
  
 xComp :: Array Indx Value
 xComp = array (1, numLev) (zipWith (,) [1 .. numLev] (map f1 xc))
-  where (!xc)
+  where xc
           = [1.5e-2, 2.96e-2, 4.51e-2, 7.17e-2, 9.13e-2, 0.105, 0.115, 0.128,
              0.137, 0.152, 0.16, 0.165, 0.165, 0.163, 0.16, 0.153, 0.146, 0.133,
              0.122, 0.106, 9.53e-2, 8.67e-2, 8.02e-2, 7.07e-2, 6.37e-2, 5.16e-2,
@@ -22,7 +22,7 @@ xComp = array (1, numLev) (zipWith (,) [1 .. numLev] (map f1 xc))
  
 xPair :: Array Indx Value
 xPair = array (1, numLev) (zipWith (,) [1 .. numLev] (map f1 xp))
-  where xp
+  where (!xp)
           = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
              0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
              7.92e-5, 3.16e-4, 9.23e-4, 1.53e-3, 2.08e-3, 2.56e-3, 3.43e-3,
@@ -40,4 +40,4 @@ f1 :: Value -> Value
 f1 (!x) = if (x < small) then nothing else log (2.2 * x)
  
 f2 :: Value -> Value
-f2 (!x) = if (x < small) then nothing else log x
+f2 x = if (x < small) then nothing else log x

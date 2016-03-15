@@ -22,42 +22,41 @@ type Parse a x = a -> [(x, a)]
 type Parses x = Parse String x
  
 thenP :: Parse a x -> (x -> Parse a y) -> Parse a y
-thenP xP kP
-  = \ (!a) -> [(y, c) | (x, (!b)) <- xP a, (!((!y), (!c))) <- kP x b]
+thenP xP kP = \ (!a) -> [(y, c) | (x, b) <- xP a, (y, c) <- kP x b]
  
 returnP :: x -> Parse a x
-returnP x = \ a -> [(x, a)]
+returnP x = \ (!a) -> [(x, a)]
  
 eachP :: Parse a x -> (x -> y) -> Parse a y
-eachP xP f = xP `thenP` (\ (!x) -> returnP (f x))
+eachP (!xP) f = xP `thenP` (\ x -> returnP (f x))
  
 consP :: Parse a x -> Parse a [x] -> Parse a [x]
-consP (!xP) xsP
+consP xP xsP
   = xP `thenP` (\ (!x) -> xsP `thenP` (\ xs -> returnP (x : xs)))
  
 elseP :: Parse a x -> Parse a x -> Parse a x
-elseP (!xP) yP = \ a -> xP a ++ yP a
+elseP xP yP = \ a -> xP a ++ yP a
  
 failP :: Parse a x
 failP = \ a -> []
  
 guardP :: Bool -> Parse a x -> Parse a x
-guardP b xP = if b then xP else failP
+guardP b (!xP) = if b then xP else failP
  
 filterP :: (x -> Bool) -> Parse a x -> Parse a x
-filterP p (!xP) = xP `thenP` (\ x -> p x `guardP` returnP x)
+filterP p xP = xP `thenP` (\ x -> p x `guardP` returnP x)
  
 starP :: Parse a x -> Parse a [x]
 starP xP = cutP (plusP xP `elseP` returnP [])
  
 plusP :: Parse a x -> Parse a [x]
-plusP xP = xP `consP` starP xP
+plusP (!xP) = xP `consP` starP xP
  
 cutP :: Parse a x -> Parse a x
-cutP xP
+cutP (!xP)
   = \ a ->
       case xP a of
-          ~((!(~(!(x, b)) : (!_)))) -> [(x, b)]
+          ~(!(~(x, b) : _)) -> [(x, b)]
  
 endP :: Parse [x] ()
 endP = \ xs -> if null xs then returnP () xs else failP xs
@@ -67,11 +66,11 @@ itemP
   = \ xs -> if null xs then failP xs else returnP (head xs) (tail xs)
  
 litP :: (Eq x) => x -> Parse [x] x
-litP (!c) = (\ (!x) -> c == x) `filterP` itemP
+litP c = (\ x -> c == x) `filterP` itemP
  
 litsP :: (Eq x) => [x] -> Parse [x] [x]
 litsP [] = returnP []
-litsP (c : cs) = litP c `consP` litsP cs
+litsP ((!(c : cs))) = litP c `consP` litsP cs
  
 exactlyP :: Parse [y] x -> Parse [y] x
 exactlyP xP
@@ -81,14 +80,14 @@ spacesP :: Parses String
 spacesP = starP spaceP
  
 lexicalP :: Parses x -> Parses x
-lexicalP (!xP)
-  = xP `thenP` (\ (!x) -> spacesP `thenP` (\ _ -> returnP x))
+lexicalP xP
+  = xP `thenP` (\ x -> spacesP `thenP` (\ _ -> returnP x))
  
 lexP :: String -> Parses String
-lexP (!cs) = lexicalP (litsP cs)
+lexP cs = lexicalP (litsP cs)
  
 lexactlyP :: Parses x -> Parses x
-lexactlyP xP = spacesP `thenP` (\ _ -> exactlyP xP)
+lexactlyP xP = spacesP `thenP` (\ (!_) -> exactlyP xP)
  
 asciiP, controlP, printP, spaceP, upperP :: Parses Char
  
@@ -106,13 +105,13 @@ alphanumP = isAlphaNum `filterP` itemP
 surroundP :: String -> Parses x -> String -> Parses x
 surroundP l xP r
   = lexP l `thenP`
-      (\ _ -> xP `thenP` (\ (!x) -> lexP r `thenP` (\ _ -> returnP x)))
+      (\ _ -> xP `thenP` (\ x -> lexP r `thenP` (\ _ -> returnP x)))
  
 plusSepP :: String -> Parses x -> Parses [x]
-plusSepP (!s) (!xP) = xP `consP` starP (lexP s `thenP` (\ _ -> xP))
+plusSepP s (!xP) = xP `consP` starP (lexP s `thenP` (\ (!_) -> xP))
  
 starSepP :: String -> Parses x -> Parses [x]
-starSepP (!s) xP = plusSepP s xP `elseP` returnP []
+starSepP s xP = plusSepP s xP `elseP` returnP []
  
 parenP :: Parses x -> Parses x
 parenP xP = surroundP "(" xP ")"
@@ -125,4 +124,4 @@ useP (!failx) xP
   = \ a ->
       case xP a of
           [] -> failx
-          (!((!(((!x), _) : _)))) -> x
+          ((x, _) : _) -> x

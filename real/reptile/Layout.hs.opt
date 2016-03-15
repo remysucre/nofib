@@ -93,11 +93,12 @@ picbox :: Int -> [Int]
 picbox (!1) = [picxorig, picyorig, 72, 72]
 picbox 2 = [picxorig + picxygap, picyorig, 72, 72]
 picbox 3 = [picxorig + (2 * picxygap), picyorig, 72, 72]
-picbox (!4) = [picxorig + (3 * picxygap), picyorig, 72, 72]
+picbox 4 = [picxorig + (3 * picxygap), picyorig, 72, 72]
 picbox (!5) = [picxorig, picyorig + picxygap, 72, 72]
 picbox (!6) = [picxorig + picxygap, picyorig + picxygap, 72, 72]
 picbox 7 = [picxorig + (2 * picxygap), picyorig + picxygap, 72, 72]
-picbox 8 = [picxorig + (3 * picxygap), picyorig + picxygap, 72, 72]
+picbox (!8)
+  = [picxorig + (3 * picxygap), picyorig + picxygap, 72, 72]
  
 textarea :: [Int]
 textarea = [50, 550, 300, 300]
@@ -136,7 +137,7 @@ invisibletext :: [Char]
 invisibletext = vistextreg ++ go [500, 500] ++ aligntext ++ "\n"
  
 inrect :: Int -> Int -> Int -> Int -> Int -> Int -> Bool
-inrect (!x) (!y) (!w) (!h) xp yp
+inrect x (!y) (!w) (!h) xp (!yp)
   = xp > x && xp <= x + w && yp > y && yp <= y + h
  
 dmcirc, tmcirc, amcirc, hmcirc :: [Char]
@@ -146,31 +147,32 @@ amcirc = circle [485, 339, 30]
 hmcirc = circle [485, 712, 38]
  
 modemark :: [Char] -> [Char]
-modemark (!str)
+modemark str
   = case str of
         (!"draw") -> dmcirc ++ undo (tmcirc ++ amcirc ++ hmcirc)
         "tile" -> tmcirc ++ undo (dmcirc ++ amcirc ++ hmcirc)
-        "alter" -> amcirc ++ undo (dmcirc ++ tmcirc ++ hmcirc)
-        "help" -> hmcirc ++ undo (dmcirc ++ tmcirc ++ amcirc)
+        (!"alter") -> amcirc ++ undo (dmcirc ++ tmcirc ++ hmcirc)
+        (!"help") -> hmcirc ++ undo (dmcirc ++ tmcirc ++ amcirc)
  
 menumark :: [Char] -> [Char]
 menumark (!"tsave") = circ 30 tmxorig (tmyorig + (2 * tmxygap))
-menumark (!"tget") = circ 30 tmxorig (tmyorig + (3 * tmxygap))
-menumark "tclear" = circ 30 tmxorig (tmyorig + (4 * tmxygap))
-menumark "t4" = circ 30 tmxorig (tmyorig + (5 * tmxygap))
+menumark "tget" = circ 30 tmxorig (tmyorig + (3 * tmxygap))
+menumark (!"tclear") = circ 30 tmxorig (tmyorig + (4 * tmxygap))
+menumark (!"t4") = circ 30 tmxorig (tmyorig + (5 * tmxygap))
 menumark "dsave" = circ 30 dmxorig (dmyorig + dmxygap)
 menumark (!"dget") = circ 30 dmxorig (dmyorig + (2 * dmxygap))
-menumark (!"dclear") = circ 30 dmxorig (dmyorig + (3 * dmxygap))
+menumark "dclear" = circ 30 dmxorig (dmyorig + (3 * dmxygap))
  
 unmenumark :: [Char] -> [Char]
 unmenumark = undo . menumark
  
 incirc :: Int -> Int -> Int -> Int -> Int -> Bool
-incirc (!xc) yc r xp (!yp)
+incirc (!xc) (!yc) (!r) xp yp
   = square (xp - xc) + square (yp - yc) <= square r
  
 indgrid :: [Int] -> Bool
-indgrid [x0, (!y0), (!x1), y1] = indesign x0 y0 && indesign x1 y1
+indgrid [(!x0), (!y0), x1, (!y1)]
+  = indesign x0 y0 && indesign x1 y1
  
 inbigtile, indesign :: Int -> Int -> Bool
 inbigtile = inrect tpxorig tpyorig tpwh tpwh

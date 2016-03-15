@@ -19,34 +19,34 @@ Numbers.hs:23:10: Warning:
       ‘pi’, ‘exp’, ‘log’, ‘sin’, ‘cos’, ‘asin’, ‘atan’, ‘acos’, ‘sinh’,
       ‘cosh’, ‘asinh’, ‘atanh’, and ‘acosh’
     In the instance declaration for ‘Floating Number’
-<<ghc: 185277760 bytes, 50 GCs, 5859914/11038328 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.19 MUT (0.20 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+<<ghc: 184810256 bytes, 52 GCs, 5854608/11017360 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.28 MUT (0.62 elapsed), 0.21 GC (0.30 elapsed) :ghc>>
 ==nofib== hidden: size of Numbers.o follows...
    text	   data	    bss	    dec	    hex	filename
   10068	   1576	      0	  11644	   2d7c	Numbers.o
 ==nofib== hidden: time to compile Vectors follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Vectors.hs -o Vectors.o
-<<ghc: 198127240 bytes, 57 GCs, 5586992/10554424 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.23 elapsed), 0.18 GC (0.18 elapsed) :ghc>>
+<<ghc: 199166896 bytes, 56 GCs, 5601880/10614952 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.29 MUT (0.43 elapsed), 0.20 GC (0.22 elapsed) :ghc>>
 ==nofib== hidden: size of Vectors.o follows...
    text	   data	    bss	    dec	    hex	filename
-  11159	   1168	      0	  12327	   3027	Vectors.o
+  11503	   1176	      0	  12679	   3187	Vectors.o
 ==nofib== hidden: time to compile Matrices follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Matrices.hs -o Matrices.o
-<<ghc: 68242384 bytes, 25 GCs, 3799856/6357744 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.08 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
+<<ghc: 67813528 bytes, 26 GCs, 3803336/6368776 avg/max bytes residency (3 samples), 31M in use, 0.00 INIT (0.01 elapsed), 0.09 MUT (0.18 elapsed), 0.13 GC (0.14 elapsed) :ghc>>
 ==nofib== hidden: size of Matrices.o follows...
    text	   data	    bss	    dec	    hex	filename
-    397	     24	      0	    421	    1a5	Matrices.o
+    317	     24	      0	    341	    155	Matrices.o
 ==nofib== hidden: time to compile Rotate follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Rotate.lhs -o Rotate.o
-<<ghc: 88825272 bytes, 34 GCs, 5301144/9878952 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.08 MUT (0.09 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+<<ghc: 95753392 bytes, 32 GCs, 5215148/9603960 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.22 elapsed), 0.16 GC (0.17 elapsed) :ghc>>
 ==nofib== hidden: size of Rotate.o follows...
    text	   data	    bss	    dec	    hex	filename
-   1346	    368	      0	   1714	    6b2	Rotate.o
+   2602	    408	      0	   3010	    bc2	Rotate.o
 ==nofib== hidden: time to compile EdgePlate follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c EdgePlate.hs -o EdgePlate.o
-<<ghc: 95825648 bytes, 52 GCs, 5289154/9641472 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.10 elapsed), 0.12 GC (0.12 elapsed) :ghc>>
+<<ghc: 94099592 bytes, 46 GCs, 5298124/9665416 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.15 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
 ==nofib== hidden: size of EdgePlate.o follows...
    text	   data	    bss	    dec	    hex	filename
-   3249	    256	      0	   3505	    db1	EdgePlate.o
+   2897	    256	      0	   3153	    c51	EdgePlate.o
 ==nofib== hidden: time to compile Geometric follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Geometric.hs -o Geometric.o
 
@@ -59,88 +59,88 @@ Geometric.hs:38:10: Warning:
     No explicit implementation for
       ‘scale’
     In the instance declaration for ‘Geom Plate’
-<<ghc: 173329768 bytes, 45 GCs, 5444070/10069128 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.19 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+<<ghc: 178164552 bytes, 46 GCs, 5391396/10042568 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.33 MUT (0.50 elapsed), 0.23 GC (0.26 elapsed) :ghc>>
 ==nofib== hidden: size of Geometric.o follows...
    text	   data	    bss	    dec	    hex	filename
-  10932	   1144	      0	  12076	   2f2c	Geometric.o
+  11884	   1192	      0	  13076	   3314	Geometric.o
 ==nofib== hidden: time to compile Preds follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Preds.hs -o Preds.o
-<<ghc: 114970456 bytes, 37 GCs, 5266888/9848024 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.12 elapsed), 0.12 GC (0.12 elapsed) :ghc>>
+<<ghc: 118489008 bytes, 38 GCs, 5282504/9894712 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.16 MUT (0.35 elapsed), 0.18 GC (0.24 elapsed) :ghc>>
 ==nofib== hidden: size of Preds.o follows...
    text	   data	    bss	    dec	    hex	filename
-   4694	    168	      0	   4862	   12fe	Preds.o
+   4918	    176	      0	   5094	   13e6	Preds.o
 ==nofib== hidden: time to compile Solve follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Solve.hs -o Solve.o
-<<ghc: 119061240 bytes, 38 GCs, 5425758/10032544 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.12 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+<<ghc: 118811952 bytes, 38 GCs, 5409324/9955440 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.15 MUT (0.23 elapsed), 0.17 GC (0.18 elapsed) :ghc>>
 ==nofib== hidden: size of Solve.o follows...
    text	   data	    bss	    dec	    hex	filename
-   5389	    264	      0	   5653	   1615	Solve.o
+   5073	    232	      0	   5305	   14b9	Solve.o
 ==nofib== hidden: time to compile Cross follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Cross.hs -o Cross.o
-<<ghc: 116486312 bytes, 37 GCs, 5384250/9958024 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.12 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+<<ghc: 129417928 bytes, 40 GCs, 5336326/9945152 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.44 elapsed), 0.20 GC (0.22 elapsed) :ghc>>
 ==nofib== hidden: size of Cross.o follows...
    text	   data	    bss	    dec	    hex	filename
-   4526	    112	      0	   4638	   121e	Cross.o
+   6094	     88	      0	   6182	   1826	Cross.o
 ==nofib== hidden: time to compile Comparing follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Comparing.hs -o Comparing.o
-<<ghc: 246436856 bytes, 72 GCs, 5471280/10285056 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.27 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
+<<ghc: 271530304 bytes, 79 GCs, 7331324/14749816 avg/max bytes residency (5 samples), 33M in use, 0.00 INIT (0.00 elapsed), 0.42 MUT (0.89 elapsed), 0.39 GC (0.42 elapsed) :ghc>>
 ==nofib== hidden: size of Comparing.o follows...
    text	   data	    bss	    dec	    hex	filename
-  21534	    184	      0	  21718	   54d6	Comparing.o
+  22598	    168	      0	  22766	   58ee	Comparing.o
 ==nofib== hidden: time to compile Postscript follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Postscript.hs -o Postscript.o
-<<ghc: 131115592 bytes, 40 GCs, 5474160/10225384 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.18 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+<<ghc: 130538816 bytes, 39 GCs, 5457496/10147120 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.29 elapsed), 0.19 GC (0.23 elapsed) :ghc>>
 ==nofib== hidden: size of Postscript.o follows...
    text	   data	    bss	    dec	    hex	filename
-   8827	    320	      0	   9147	   23bb	Postscript.o
+   8617	    320	      0	   8937	   22e9	Postscript.o
 ==nofib== hidden: time to compile Memo follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Memo.hs -o Memo.o
-<<ghc: 410662568 bytes, 110 GCs, 7510444/15195360 avg/max bytes residency (5 samples), 35M in use, 0.00 INIT (0.00 elapsed), 0.46 MUT (0.49 elapsed), 0.31 GC (0.31 elapsed) :ghc>>
+<<ghc: 411218808 bytes, 111 GCs, 7429832/15211816 avg/max bytes residency (5 samples), 35M in use, 0.00 INIT (0.00 elapsed), 0.72 MUT (1.09 elapsed), 0.47 GC (0.48 elapsed) :ghc>>
 ==nofib== hidden: size of Memo.o follows...
    text	   data	    bss	    dec	    hex	filename
-  25587	   1088	      0	  26675	   6833	Memo.o
+  25691	   1088	      0	  26779	   689b	Memo.o
 ==nofib== hidden: time to compile Hide follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Hide.hs -o Hide.o
-<<ghc: 179003472 bytes, 57 GCs, 5470530/10263824 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.20 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+<<ghc: 181124984 bytes, 56 GCs, 5463746/10229800 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.28 MUT (0.49 elapsed), 0.25 GC (0.30 elapsed) :ghc>>
 ==nofib== hidden: size of Hide.o follows...
    text	   data	    bss	    dec	    hex	filename
-  10808	    232	      0	  11040	   2b20	Hide.o
+  11249	    232	      0	  11481	   2cd9	Hide.o
 ==nofib== hidden: time to compile MyIO follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c MyIO.hs -o MyIO.o
-<<ghc: 160007776 bytes, 54 GCs, 7993888/16886816 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.15 elapsed), 0.20 GC (0.20 elapsed) :ghc>>
+<<ghc: 160163632 bytes, 55 GCs, 8016652/17012736 avg/max bytes residency (5 samples), 39M in use, 0.00 INIT (0.00 elapsed), 0.22 MUT (0.52 elapsed), 0.34 GC (0.36 elapsed) :ghc>>
 ==nofib== hidden: size of MyIO.o follows...
    text	   data	    bss	    dec	    hex	filename
-   2748	    528	      0	   3276	    ccc	MyIO.o
+   2772	    528	      0	   3300	    ce4	MyIO.o
 ==nofib== hidden: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 151610080 bytes, 56 GCs, 8186225/18285144 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.14 elapsed), 0.23 GC (0.23 elapsed) :ghc>>
+<<ghc: 151286656 bytes, 55 GCs, 8282371/18149080 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.65 elapsed), 0.33 GC (0.37 elapsed) :ghc>>
 ==nofib== hidden: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   2085	    400	      0	   2485	    9b5	Main.o
+   2109	    400	      0	   2509	    9cd	Main.o
 ==nofib== hidden: time to link hidden follows...
-<<ghc: 38576776 bytes, 14 GCs, 411768/648648 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.53 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
+<<ghc: 38691008 bytes, 14 GCs, 411768/648648 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.01 elapsed), 0.05 MUT (1.18 elapsed), 0.06 GC (0.07 elapsed) :ghc>>
 ==nofib== hidden: size of hidden follows...
    text	   data	    bss	    dec	    hex	filename
-1104955	  64640	  48776	1218371	 129743	hidden
+1110171	  64704	  48776	1223651	 12abe3	hidden
 ==nofib== hidden: time to run hidden follows...
 timeout 40s ../../runstdtest/runstdtest  ./hidden -i  hidden.stdin -o1 hidden.stdout -o1 hidden.stdout2 -o1 hidden.stdout3 -o1 hidden.stdout4 -o1 hidden.stdout5 -o1 hidden.stdout-x86-linux -o1 hidden.stdout -o1 hidden.stdout2 -o1 hidden.stdout3 -o1 hidden.stdout4 -o1 hidden.stdout5 -o1 hidden.stdout-x86-linux -o2 hidden.stderr -o2 hidden.stderr -ghc-timing  +RTS -K1m -RTS    objects/four.plate;   timeout 40s ../../runstdtest/runstdtest  ./hidden -i  hidden.stdin -o1 hidden.stdout -o1 hidden.stdout2 -o1 hidden.stdout3 -o1 hidden.stdout4 -o1 hidden.stdout5 -o1 hidden.stdout-x86-linux -o1 hidden.stdout -o1 hidden.stdout2 -o1 hidden.stdout3 -o1 hidden.stdout4 -o1 hidden.stdout5 -o1 hidden.stdout-x86-linux -o2 hidden.stderr -o2 hidden.stderr -ghc-timing  +RTS -K1m -RTS    objects/four.plate;   timeout 40s ../../runstdtest/runstdtest  ./hidden -i  hidden.stdin -o1 hidden.stdout -o1 hidden.stdout2 -o1 hidden.stdout3 -o1 hidden.stdout4 -o1 hidden.stdout5 -o1 hidden.stdout-x86-linux -o1 hidden.stdout -o1 hidden.stdout2 -o1 hidden.stdout3 -o1 hidden.stdout4 -o1 hidden.stdout5 -o1 hidden.stdout-x86-linux -o2 hidden.stderr -o2 hidden.stderr -ghc-timing  +RTS -K1m -RTS    objects/four.plate;   timeout 40s ../../runstdtest/runstdtest  ./hidden -i  hidden.stdin -o1 hidden.stdout -o1 hidden.stdout2 -o1 hidden.stdout3 -o1 hidden.stdout4 -o1 hidden.stdout5 -o1 hidden.stdout-x86-linux -o1 hidden.stdout -o1 hidden.stdout2 -o1 hidden.stdout3 -o1 hidden.stdout4 -o1 hidden.stdout5 -o1 hidden.stdout-x86-linux -o2 hidden.stderr -o2 hidden.stderr -ghc-timing  +RTS -K1m -RTS    objects/four.plate;
 
-real	0m0.488s
-user	0m0.473s
-sys	0m0.007s
-<<ghc: 961235904 bytes, 1855 GCs (1851 + 4), 0/0 avg/max bytes residency (0 samples), 4237624 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.45 MUT (0.45 elapsed), 0.02 GC (0.02 elapsed), 0.02 GC(0) (0.02 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m0.837s
+user	0m0.697s
+sys	0m0.013s
+<<ghc: 1013305912 bytes, 1953 GCs (1949 + 4), 0/0 avg/max bytes residency (0 samples), 4465216 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.67 MUT (0.77 elapsed), 0.04 GC (0.04 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.485s
-user	0m0.473s
-sys	0m0.011s
-<<ghc: 961235904 bytes, 1855 GCs (1851 + 4), 0/0 avg/max bytes residency (0 samples), 4237840 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.46 MUT (0.46 elapsed), 0.02 GC (0.02 elapsed), 0.02 GC(0) (0.02 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m0.698s
+user	0m0.644s
+sys	0m0.015s
+<<ghc: 1013305912 bytes, 1953 GCs (1949 + 4), 0/0 avg/max bytes residency (0 samples), 4457544 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.62 MUT (0.64 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.479s
-user	0m0.469s
-sys	0m0.008s
-<<ghc: 961235904 bytes, 1855 GCs (1851 + 4), 0/0 avg/max bytes residency (0 samples), 4235288 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.45 MUT (0.45 elapsed), 0.02 GC (0.02 elapsed), 0.02 GC(0) (0.02 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m0.690s
+user	0m0.652s
+sys	0m0.016s
+<<ghc: 1013305912 bytes, 1953 GCs (1949 + 4), 0/0 avg/max bytes residency (0 samples), 4465424 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.63 MUT (0.65 elapsed), 0.03 GC (0.03 elapsed), 0.03 GC(0) (0.03 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.480s
-user	0m0.468s
-sys	0m0.012s
-<<ghc: 961235904 bytes, 1855 GCs (1851 + 4), 0/0 avg/max bytes residency (0 samples), 4235288 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.45 MUT (0.45 elapsed), 0.02 GC (0.02 elapsed), 0.02 GC(0) (0.02 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m0.766s
+user	0m0.705s
+sys	0m0.013s
+<<ghc: 1013305912 bytes, 1953 GCs (1949 + 4), 0/0 avg/max bytes residency (0 samples), 4465424 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.67 MUT (0.70 elapsed), 0.03 GC (0.05 elapsed), 0.03 GC(0) (0.04 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

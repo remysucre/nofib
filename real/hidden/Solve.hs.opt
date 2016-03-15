@@ -4,13 +4,13 @@ import Vectors
 import EdgePlate
  
 solve :: Vector -> Vector -> Vector -> [(Number, Number)]
-solve v1 v2 (!w)
+solve v1 v2 w
   = let determinant = z (v1 * v2) in
       if determinant == 0 then [] else
         [(z (w * v2) / determinant, z (v1 * w) / determinant)]
  
 alt :: Plate -> Vector -> Number
-alt ((!(Plt _ (l1 : (!(l2 : _)))))) p
+alt ((!(Plt _ (l1 : (l2 : _))))) (!p)
   = z (sl1 + lambda `mulv` hl1 + mu `mulv` hl2)
   where sl1 = s (l1)
         hl1 = h (l1)

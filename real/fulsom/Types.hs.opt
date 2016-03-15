@@ -62,6 +62,6 @@ data Quad = Q_Empty
 type Vector = (FType, FType, FType)
  
 type In = Interval FType
-copyright (!()) = "Copyright 1990,1991,1992,1993 Duncan Sinclair."
+copyright () = "Copyright 1990,1991,1992,1993 Duncan Sinclair."
 e_mail () = "sinclair@dcs.gla.ac.uk"
 tuple = (copyright, e_mail)

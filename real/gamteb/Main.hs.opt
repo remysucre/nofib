@@ -4,5 +4,5 @@ import System.IO
 main
   = do hPutStr stderr "Enter the scale of computation: "
        s <- getContents
-       let (scale, (!rest)) = (head (reads s)) :: (Int, String)
+       let (!((!scale), rest)) = (head (reads s)) :: (Int, String)
        putStr (takeWhile ((/=) '\n') s ++ (gamteb scale))

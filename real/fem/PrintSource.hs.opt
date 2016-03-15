@@ -4,7 +4,7 @@ import DB_interface
 import Basics
  
 source_data :: (Array Int Int, Array Int Float) -> [Char]
-source_data (!db)
+source_data db
   = control_data db ++
       node_data db ++ material_data db ++ elements db ++ plds db
 control_data db
@@ -20,11 +20,11 @@ control_data db
                       "\n" ++
                         "   Total number of materials = " ++
                           (showlj 3 (nmats db)) ++ "\n\n\n"
-node_data (!db)
+node_data db
   = "NODE INFORMATION  :\n\n" ++
       (concat (map a_node_s [1 .. (nnode db)])) ++ "\n\n"
   where a_node_s = a_node db
-a_node db (!node)
+a_node db node
   = "  Node.no = " ++
       (showlj 3 node) ++
         "   x = " ++
@@ -35,12 +35,12 @@ a_node db (!node)
 material_data db
   = "MATERIAL INFORMATION :\n\n" ++
       (concat (map a_material_s [1 .. (nmats db)]))
-  where (!a_material_s) = a_material db
+  where a_material_s = a_material db
 a_material db material
   = "  Material No.=" ++
       (showlj 3 material) ++
         "   EA = " ++ (showlj 8 ea) ++ "   EI = " ++ (showlj 8 ei) ++ "\n"
-  where ((!ea), ei) = getmpro db material
+  where ((!ea), (!ei)) = getmpro db material
 elements db
   = "\nELEMENT DATA:\n\n" ++
       (concat (map (a_element_s) [1 .. (nelem db)])) ++ "\n\n"
@@ -54,15 +54,15 @@ a_element (!db) element
               (showlj 3 noder) ++
                 "   Material No. =" ++ (showlj 3 material) ++ "\n"
   where (nodel, noder) = getenlr db element
-        (!material) = getemat db element
+        material = getemat db element
 plds db
   = "\nPOINT LOADS DATA:\n\n" ++
       (concat (map (a_load_s) [1 .. (nplds db)])) ++ "\n\n"
   where a_load_s = a_load db
-a_load (!db) (!n)
+a_load db (!n)
   = "  To_point No." ++
       (showlj 3 to_point) ++
         "  Px = " ++
           (showlj 9 px) ++
             "  Py = " ++ (showlj 9 py) ++ "  M = " ++ (showlj 9 m) ++ "\n"
-  where ((!to_point), (!px), py, m) = getpld db n
+  where (!(to_point, (!px), (!py), m)) = getpld db n
