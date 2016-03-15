@@ -3,34 +3,34 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing -o1 fasta.stdout
 ==nofib== fasta: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -O2 -XBangPatterns -XOverloadedStrings -package bytestring -c Main.hs -o Main.o
-<<ghc: 267958160 bytes, 70 GCs, 8474291/18270560 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.27 MUT (0.32 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
+<<ghc: 264865520 bytes, 72 GCs, 8410150/17951848 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.30 MUT (0.33 elapsed), 0.33 GC (0.33 elapsed) :ghc>>
 ==nofib== fasta: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   7227	   2192	      0	   9419	   24cb	Main.o
+   7403	   2208	      0	   9611	   258b	Main.o
 ==nofib== fasta: time to link fasta follows...
-<<ghc: 38938344 bytes, 14 GCs, 411952/650664 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.49 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38938432 bytes, 14 GCs, 411952/650664 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.54 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== fasta: size of fasta follows...
    text	   data	    bss	    dec	    hex	filename
- 848516	  51568	  48776	 948860	  e7a7c	fasta
+ 848692	  51600	  48776	 949068	  e7b4c	fasta
 ==nofib== fasta: time to run fasta follows...
 timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;   timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;   timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;   timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;
 
-real	0m0.389s
-user	0m0.343s
-sys	0m0.036s
-<<ghc: 310188136 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 116512 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.373s
-user	0m0.334s
-sys	0m0.038s
-<<ghc: 310188136 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 116512 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.36 MUT (0.36 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.374s
-user	0m0.324s
+real	0m0.386s
+user	0m0.329s
 sys	0m0.049s
-<<ghc: 310188136 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 116512 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+<<ghc: 310188088 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 126120 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
 
-real	0m0.377s
-user	0m0.342s
-sys	0m0.034s
-<<ghc: 310188136 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 116512 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m0.381s
+user	0m0.344s
+sys	0m0.036s
+<<ghc: 310188088 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 126120 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.383s
+user	0m0.343s
+sys	0m0.039s
+<<ghc: 310188088 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 126120 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m0.384s
+user	0m0.334s
+sys	0m0.049s
+<<ghc: 310188088 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 126120 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.38 MUT (0.38 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

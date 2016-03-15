@@ -6,29 +6,30 @@ infixr 1 =:
  
 type Assoc a b = (a, b)
 (=:) = (,)
-main = getContents >>= \ userInput -> runSimple (lines userInput)
+main
+  = getContents >>= \ (!userInput) -> runSimple (lines userInput)
  
 runSimple :: [String] -> IO ()
-runSimple inputLines
+runSimple (!inputLines)
   = readInt "Run_simple :  " inputLines >>=
-      \ (!num1) ->
+      \ num1 ->
         if num1 >= 0 then reportSimple num1 else reportSimple2 (-num1)
  
 readInt :: String -> [String] -> IO Int
-readInt prompt inputLines
+readInt prompt (!inputLines)
   = putStr prompt >>
       (case inputLines of
            (l1 : rest) -> case (reads l1) of
-                              [((!x), "")] -> return x
-                              _ -> error "Error"
+                              [(x, "")] -> return x
+                              (!_) -> error "Error"
            _ -> error "Eof Error")
  
 reportSimple :: Int -> IO ()
 reportSimple iterations
   = putStrLn
       (mix "\n"
-         (let (u, v, r, z, (!alpha), (!s), rho, p, q, epsilon, (!theta),
-               deltat, err)
+         (let (!(u, v, r, z, alpha, (!s), rho, p, q, epsilon, theta,
+                 (!deltat), err))
                 = simple_total iterations
             in
             [show "RESULT u,v,r,z,alpha,s,rho,p,q,epsilon,theta,deltat err",
@@ -62,7 +63,7 @@ reportSimple2 :: Int -> IO ()
 reportSimple2 iterations
   = putStrLn
       (mix "\n"
-         (let (((!mat0), mat1), (mat2, mat3), mat4, mat5, mat6, mat7, mat8,
+         (let ((mat0, mat1), (mat2, mat3), mat4, mat5, mat6, mat7, mat8,
                mat9, (!mat10), a, b)
                 = simple iterations
             in
@@ -103,25 +104,25 @@ arrays_2 b ivs
 arrays_3 ::
            (Ix a) =>
            (a, a) -> [Assoc a (b, c, d)] -> (Array a b, Array a c, Array a d)
-arrays_3 b (!ivs)
-  = let first (x, y, (!z)) = x
-        second (!(x, (!y), z)) = y
-        third (!(x, y, z)) = z
+arrays_3 b ivs
+  = let first ((!x), y, z) = x
+        second (x, y, z) = y
+        third (x, y, z) = z
       in
       (array b (array_unzip ivs first), array b (array_unzip ivs second),
        array b (array_unzip ivs third))
-strictArray resultArray
+strictArray (!resultArray)
   = seq (map evalValue (elems resultArray)) resultArray
   where evalValue v = seq v v
-strictArrays_2 (a1, a2) = (strictArray a1, strictArray a2)
-strictArrays_3 (a1, a2, a3)
+strictArrays_2 ((!a1), a2) = (strictArray a1, strictArray a2)
+strictArrays_3 (a1, a2, (!a3))
   = (strictArray a1, strictArray a2, strictArray a3)
  
 array_unzip :: [Assoc a b] -> (b -> c) -> [Assoc a c]
-array_unzip ivs (!sel) = [i =: (sel vs) | (i, vs) <- ivs]
+array_unzip ivs sel = [i =: (sel vs) | (i, vs) <- ivs]
  
 pHbounds :: ((a, b), (c, d)) -> ((a, c), (b, d))
-pHbounds (!((x_low, x_high), (!(y_low, y_high))))
+pHbounds (!((x_low, x_high), (y_low, y_high)))
   = ((x_low, y_low), (x_high, y_high))
  
 simple :: Int -> State
@@ -131,18 +132,19 @@ simple step_count
       in state
  
 simple_total :: Int -> Totals
-simple_total (!step_count)
-  = let (!(totals, state))
+simple_total step_count
+  = let (totals, state)
           = simple_loop (compute_initial_state ()) step_count
       in totals
  
 simple_loop :: (Totals, State) -> Int -> (Totals, State)
-simple_loop result@(totals, state) step
+simple_loop (!result@(totals, state)) step
   = if step < 1 then result else
       seq (total_total totals) (simple_loop (compute_next_state state))
         (step - (1 :: Int))
 total_total
-  (!(v1, v2, x1, x2, alpha, s, rho, p, q, epsilon, theta, deltat, c))
+  ((!v1), (!v2), x1, x2, alpha, s, rho, p, q, (!epsilon), theta,
+   deltat, c)
   = v1 + v2 + x1 + x2 + alpha + s + rho + p + q + epsilon + theta +
       deltat
       + c
@@ -152,14 +154,14 @@ total a = foldl (+) (0.0 :: Double) (elems a)
  
 total_state :: State -> Totals
 total_state state
-  = let ((v1, v2), (x1, (!x2)), alpha, s, rho, p, q, epsilon, theta,
-         deltat, c)
+  = let (((!v1), v2), (x1, x2), alpha, (!s), rho, p, q, epsilon,
+         theta, deltat, c)
           = state
         v1' = total v1
-        v2' = total v2
+        (!v2') = total v2
         x1' = total x1
         x2' = total x2
-        alpha' = total alpha
+        (!alpha') = total alpha
         s' = total s
         (!rho') = total rho
         p' = total p
@@ -173,25 +175,24 @@ total_state state
  
 compute_next_state :: State -> (Totals, State)
 compute_next_state (!state)
-  = let (!state')
+  = let state'
           = (v', x', alpha', s', rho', p', q', epsilon', theta', deltat', c')
-        (v, (!x), alpha, (!s), rho, p, q, epsilon, theta, deltat, c)
-          = state
+        (v, x, alpha, s, rho, p, q, epsilon, theta, (!deltat), c) = state
         v' = make_velocity v x p q alpha rho deltat
         x' = make_position x deltat v'
-        ((!alpha'), s', (!rho')) = make_area_density_volume rho s x'
+        (!(alpha', (!s'), rho')) = make_area_density_volume rho s x'
         (q', d) = make_viscosity p v' x' alpha' rho'
         theta_hat = make_temperature p epsilon rho theta rho' q'
         p' = make_pressure rho' theta'
         epsilon' = make_energy rho' theta'
-        (theta', gamma_k, gamma_l)
+        ((!theta'), gamma_k, gamma_l)
           = compute_heat_conduction theta_hat deltat x' alpha' rho'
         c'
           = compute_energy_error v' x' p' q' epsilon' theta' rho' alpha'
               gamma_k
               gamma_l
               deltat
-        (deltat', delta_t_c, delta_t_h)
+        ((!deltat'), (!delta_t_c), delta_t_h)
           = compute_time_step d theta_hat theta'
       in (total_state state', state')
  
@@ -200,7 +201,7 @@ compute_initial_state _
   = let state
           = (v, x, alpha, s, rho, p, q, epsilon, theta, deltat, c)
         v = (all_zero_nodes (), all_zero_nodes ())
-        x = let interior_position ((!k), l)
+        x = let interior_position (k, l)
                   = let rp = fromIntegral (lmax - lmin)
                         z1 = fromIntegral ((10 + k) - kmin)
                         zz
@@ -208,14 +209,14 @@ compute_initial_state _
                               (pi :: Double)
                       in ((z1 :: Double) * (cos (zz :: Double)), z1 * (sin zz))
               in make_position_matrix interior_position
-        (alpha, s)
+        (!(alpha, s))
           = let reflect_area_vol reflect_function
                   = (reflect_function alpha', reflect_function s')
                 (alpha', s')
                   = (arrays_2 (pHbounds dimension_all_zones)
                        ([zone =: zone_area_vol x zone | zone <- interior_zones] ++
                           [zone =: reflect_area_vol (reflect_south zone) |
-                           (!zone) <- north_zones]
+                           zone <- north_zones]
                             ++
                             [zone =: reflect_area_vol (reflect_north zone) |
                              zone <- south_zones]
@@ -229,17 +230,17 @@ compute_initial_state _
         rho
           = strictArray
               (array (pHbounds dimension_all_zones)
-                 ([zone =: (1.4 :: Double) | zone <- all_zones]))
+                 ([zone =: (1.4 :: Double) | (!zone) <- all_zones]))
         (!p) = make_pressure rho theta
         q = all_zero_zones ()
-        (!epsilon) = make_energy rho theta
+        epsilon = make_energy rho theta
         theta
           = strictArray
               (array (pHbounds dimension_all_zones)
                  ([zone =: (10.0 :: Double) | zone <- interior_zones] ++
                     [zone =: constant_heat_source | zone <- north_zones] ++
-                      [zone =: constant_heat_source | zone <- south_zones] ++
-                        [zone =: constant_heat_source | zone <- east_zones] ++
+                      [zone =: constant_heat_source | (!zone) <- south_zones] ++
+                        [zone =: constant_heat_source | (!zone) <- east_zones] ++
                           [zone =: constant_heat_source | zone <- west_zones]))
         deltat = (1.0e-2 :: Double)
         c = (0.0 :: Double)
@@ -258,7 +259,7 @@ make_velocity ::
                   DblArray ->
                     DblArray ->
                       (DblArray) -> (DblArray) -> Double -> (DblArray, DblArray)
-make_velocity (u, (!w)) (r, z) p q alpha rho deltat
+make_velocity (u, w) (r, z) p q (!alpha) rho deltat
   = let regional_mass node
           = (0.5 :: Double) *
               ((((rho ! zone_a node) * (alpha ! zone_a node) +
@@ -299,20 +300,20 @@ make_area_density_volume ::
                              (DblArray, DblArray) -> (DblArray, DblArray, DblArray)
 make_area_density_volume rho s x'
   = let interior_area zone
-          = let (!(area, vol)) = zone_area_vol x' zone
+          = let (area, vol) = zone_area_vol x' zone
                 density = ((rho ! zone) * (s ! zone)) / vol
               in (area, vol, density)
-        reflect_area_vol_density (!reflect_function)
+        reflect_area_vol_density reflect_function
           = (reflect_function alpha', reflect_function s',
              reflect_function rho')
         (alpha', s', rho')
           = (arrays_3 (pHbounds dimension_all_zones)
                ([zone =: interior_area zone | zone <- interior_zones] ++
                   [zone =: reflect_area_vol_density (reflect_south zone) |
-                   (!zone) <- north_zones]
+                   zone <- north_zones]
                     ++
                     [zone =: reflect_area_vol_density (reflect_north zone) |
-                     (!zone) <- south_zones]
+                     zone <- south_zones]
                       ++
                       [zone =: reflect_area_vol_density (reflect_west zone) |
                        zone <- east_zones]
@@ -356,17 +357,17 @@ make_viscosity p (u', w') (r', z') alpha' rho'
                       lower_disc ^ (2 :: Int) / eta else (0.0 :: Double)
                 gamma = 1.6
                 speed_of_sound = (gamma * (p ! zone)) / (rho' ! zone)
-                (!ubar) = upper_ubar + lower_ubar
+                ubar = upper_ubar + lower_ubar
                 viscosity
                   = (rho' ! zone) *
                       ((c0 ^ (2 :: Int) / 4.0) * ubar +
                          ((c1 / (2.0 :: Double)) * speed_of_sound) * (sqrt ubar))
-                (!length)
+                length
                   = sqrt ((upper_del r') ^ (2 :: Int) + (lower_del r') ^ (2 :: Int))
-                courant_delta
+                (!courant_delta)
                   = ((0.5 :: Double) * (alpha' ! zone)) / speed_of_sound * length
               in (viscosity, courant_delta)
-        reflect_viscosity_cdelta direction (!zone)
+        reflect_viscosity_cdelta direction zone
           = ((q' ! direction zone) * (qb ! (nbc ! zone)), (0.0 :: Double))
         (q', d)
           = (arrays_2 (pHbounds dimension_all_zones)
@@ -399,17 +400,17 @@ polynomial g degree rho_table theta_table rho_value theta_value
       in
       sum_list
         [((a ! (i, j)) * rho_value ^ (i :: Int)) * theta_value ^ j |
-         i <- [0 .. degree], (!j) <- [0 .. degree]]
+         i <- [0 .. degree], j <- [0 .. degree]]
  
 zonal_pressure :: Double -> Double -> Double
 zonal_pressure rho_value theta_value
-  = let (g, degree, (!rho_table), theta_table)
+  = let (g, degree, rho_table, theta_table)
           = extract_pressure_tables_from_constants
       in polynomial g degree rho_table theta_table rho_value theta_value
  
 zonal_energy :: Double -> Double -> Double
-zonal_energy rho_value theta_value
-  = let ((!g), degree, (!rho_table), (!theta_table))
+zonal_energy (!rho_value) (!theta_value)
+  = let (g, (!degree), rho_table, theta_table)
           = extract_energy_tables_from_constants
       in polynomial g degree rho_table theta_table rho_value theta_value
  
@@ -427,8 +428,8 @@ newton_raphson_loop ::
 newton_raphson_loop f x fx
   = if fx > tiny then
       let fxdx = f (x + dx)
-          (!denom) = fxdx - fx
-          (!(next_x, next_fx))
+          denom = fxdx - fx
+          (!((!next_x), next_fx))
             = if denom < tiny then (x, tiny) else (x - (fx * dx) / denom, fxdx)
         in newton_raphson_loop f next_x next_fx
       else x
@@ -438,10 +439,10 @@ make_temperature ::
                    (DblArray) ->
                      (DblArray) -> (DblArray) -> (DblArray) -> (DblArray) -> DblArray
 make_temperature p epsilon rho theta rho' q'
-  = let interior_temperature (!zone)
-          = let (!qkl) = q' ! zone
+  = let interior_temperature zone
+          = let qkl = q' ! zone
                 rho_kl = rho ! zone
-                (!rho'_kl) = rho' ! zone
+                rho'_kl = rho' ! zone
                 tau_kl = 1.0 / rho'_kl - 1.0 / rho_kl
                 energy_equation epsilon_kl theta_kl
                   = epsilon_kl - zonal_energy rho_kl theta_kl
@@ -452,20 +453,20 @@ make_temperature p epsilon rho theta rho' q'
                 epsilon_0 = epsilon ! zone
                 p_0 = p ! zone
                 theta_0 = theta ! zone
-                epsilon_1 = revised_energy p_0
+                (!epsilon_1) = revised_energy p_0
                 theta_1 = revised_temperature epsilon_1 theta_0
                 p_1 = revised_pressure theta_1
                 epsilon_2 = revised_energy p_1
-                (!theta_2) = revised_temperature epsilon_2 theta_1
+                theta_2 = revised_temperature epsilon_2 theta_1
               in theta_2
       in
       strictArray
         (array (pHbounds dimension_all_zones)
-           ([zone =: interior_temperature zone | zone <- interior_zones] ++
+           ([zone =: interior_temperature zone | (!zone) <- interior_zones] ++
               [zone =: constant_heat_source | zone <- north_zones] ++
                 [zone =: constant_heat_source | zone <- south_zones] ++
-                  [zone =: constant_heat_source | zone <- east_zones] ++
-                    [zone =: constant_heat_source | (!zone) <- west_zones]))
+                  [zone =: constant_heat_source | (!zone) <- east_zones] ++
+                    [zone =: constant_heat_source | zone <- west_zones]))
  
 make_cc :: (DblArray) -> (DblArray) -> DblArray
 make_cc alpha' theta_hat
@@ -475,7 +476,7 @@ make_cc alpha' theta_hat
         cc
           = (array (pHbounds dimension_all_zones)
                ([zone =: interior_cc zone | zone <- interior_zones] ++
-                  [zone =: reflect_south zone cc | zone <- north_zones] ++
+                  [zone =: reflect_south zone cc | (!zone) <- north_zones] ++
                     [zone =: reflect_north zone cc | zone <- south_zones] ++
                       [zone =: reflect_west zone cc | zone <- east_zones] ++
                         [zone =: reflect_east zone cc | zone <- west_zones]))
@@ -483,13 +484,13 @@ make_cc alpha' theta_hat
  
 make_sigma ::
            Double -> (DblArray) -> (DblArray) -> Array (Int, Int) Double
-make_sigma deltat (!rho') alpha'
-  = let interior_sigma (!zone)
+make_sigma (!deltat) rho' alpha'
+  = let interior_sigma zone
           = (((rho' ! zone) * (alpha' ! zone)) * specific_heat) / deltat
       in
       strictArray
         (array (pHbounds dimension_interior_zones)
-           ([zone =: interior_sigma zone | (!zone) <- interior_zones]))
+           ([zone =: interior_sigma zone | zone <- interior_zones]))
  
 make_gamma ::
            (DblArray, DblArray) ->
@@ -497,15 +498,15 @@ make_gamma ::
                ((Int, Int) -> (Int, Int)) ->
                  ((Int, Int) -> (Int, Int)) -> DblArray
 make_gamma (!(r', z')) cc succeeding adjacent
-  = let interior_gamma (!zone)
-          = let r1 = r' ! zone_corner_southeast zone
-                z1 = z' ! zone_corner_southeast zone
+  = let interior_gamma zone
+          = let (!r1) = r' ! zone_corner_southeast zone
+                (!z1) = z' ! zone_corner_southeast zone
                 r2 = r' ! zone_corner_southeast (adjacent zone)
                 z2 = z' ! zone_corner_southeast (adjacent zone)
                 cross_section
                   = ((0.5 :: Double) * (r1 + r2)) *
                       ((r1 - r2) ^ (2 :: Int) + (z1 - z2) ^ (2 :: Int))
-                (c1, c2) = (cc ! zone, cc ! succeeding zone)
+                ((!c1), c2) = (cc ! zone, cc ! succeeding zone)
                 specific_conductivity = (((2.0 :: Double) * c1) * c2) / (c1 + c2)
               in cross_section * specific_conductivity
       in
@@ -531,15 +532,13 @@ make_ab theta sigma gamma preceding
                   = (gamma ! preceding zone) * (b ! preceding zone) +
                       (sigma ! zone) * (theta ! zone)
                 result1 = nume1 / denom
-                (!result2) = nume2 / denom
+                result2 = nume2 / denom
               in seq (result1 + result2) (result1, result2)
         (a, b)
           = (arrays_2 (pHbounds dimension_all_zones)
                ([zone =: interior_ab zone | zone <- interior_zones] ++
-                  [zone =: ((0.0 :: Double), theta ! zone) | (!zone) <- north_zones]
-                    ++
-                    [zone =: ((0.0 :: Double), theta ! zone) | (!zone) <- south_zones]
-                      ++
+                  [zone =: ((0.0 :: Double), theta ! zone) | zone <- north_zones] ++
+                    [zone =: ((0.0 :: Double), theta ! zone) | zone <- south_zones] ++
                       [zone =: ((0.0 :: Double), theta ! zone) | zone <- east_zones] ++
                         [zone =: ((0.0 :: Double), theta ! zone) | zone <- west_zones]))
       in strictArrays_2 (a, b)
@@ -548,12 +547,12 @@ make_theta ::
            (DblArray) ->
              (DblArray) ->
                ((Int, Int) -> (Int, Int)) -> [(Int, Int)] -> DblArray
-make_theta a b succeeding int_zones
+make_theta a b (!succeeding) int_zones
   = let interior_theta zone
           = (a ! zone) * (theta ! succeeding zone) + (b ! zone)
         theta
           = (array (pHbounds dimension_all_zones)
-               ([zone =: interior_theta zone | (!zone) <- int_zones] ++
+               ([zone =: interior_theta zone | zone <- int_zones] ++
                   [zone =: constant_heat_source | zone <- north_zones] ++
                     [zone =: constant_heat_source | zone <- south_zones] ++
                       [zone =: constant_heat_source | zone <- east_zones] ++
@@ -561,7 +560,7 @@ make_theta a b succeeding int_zones
       in strictArray theta
  
 make_pressure :: (DblArray) -> (DblArray) -> DblArray
-make_pressure rho' theta'
+make_pressure rho' (!theta')
   = let boundary_p direction zone
           = (pbb ! (nbc ! zone)) + (pb ! (nbc ! zone)) * (p ! direction zone)
         p = (array (pHbounds dimension_all_zones)
@@ -571,7 +570,7 @@ make_pressure rho' theta'
                   [zone =: boundary_p south zone | zone <- north_zones] ++
                     [zone =: boundary_p north zone | zone <- south_zones] ++
                       [zone =: boundary_p west zone | zone <- east_zones] ++
-                        [zone =: boundary_p east zone | zone <- west_zones]))
+                        [zone =: boundary_p east zone | (!zone) <- west_zones]))
       in strictArray p
  
 make_energy :: (DblArray) -> (DblArray) -> DblArray
@@ -581,8 +580,8 @@ make_energy rho' theta'
                ([zone =: zonal_energy (rho' ! zone) (theta' ! zone) |
                  zone <- interior_zones]
                   ++
-                  [zone =: reflect_south zone epsilon' | (!zone) <- north_zones] ++
-                    [zone =: reflect_north zone epsilon' | (!zone) <- south_zones] ++
+                  [zone =: reflect_south zone epsilon' | zone <- north_zones] ++
+                    [zone =: reflect_north zone epsilon' | zone <- south_zones] ++
                       [zone =: reflect_west zone epsilon' | zone <- east_zones] ++
                         [zone =: reflect_east zone epsilon' | zone <- west_zones]))
       in strictArray epsilon'
@@ -594,13 +593,13 @@ compute_heat_conduction ::
                               (DblArray) -> (DblArray) -> (DblArray, DblArray, DblArray)
 compute_heat_conduction theta_hat deltat x' alpha' rho'
   = let sigma = make_sigma deltat rho' alpha'
-        cc = make_cc alpha' theta_hat
+        (!cc) = make_cc alpha' theta_hat
         gamma_k = make_gamma x' cc north east
         (a_k, b_k) = make_ab theta_hat sigma gamma_k north
         theta_k = make_theta a_k b_k south north_ward_interior_zones
         gamma_l = make_gamma x' cc west south
-        (!(a_l, b_l)) = make_ab theta_k sigma gamma_l west
-        theta_l = make_theta a_l b_l east west_ward_interior_zones
+        (a_l, b_l) = make_ab theta_k sigma gamma_l west
+        (!theta_l) = make_theta a_l b_l east west_ward_interior_zones
       in (theta_l, gamma_k, gamma_l)
  
 compute_energy_error ::
@@ -612,8 +611,8 @@ compute_energy_error ::
                                (DblArray) ->
                                  (DblArray) ->
                                    (DblArray) -> (DblArray) -> (DblArray) -> Double -> Double
-compute_energy_error ((!u'), w') (r', z') p' q' epsilon' theta'
-  rho' (!alpha') gamma_k (!gamma_l) deltat
+compute_energy_error (u', w') (r', z') p' q' epsilon' theta' rho'
+  alpha' gamma_k gamma_l deltat
   = let mass zone = (rho' ! zone) * (alpha' ! zone)
         internal_energy
           = sum_list
@@ -627,29 +626,29 @@ compute_energy_error ((!u'), w') (r', z') p' q' epsilon' theta'
               in ((0.5 :: Double) * average_mass) * v_square
         kinetic_energy = sum_list [kinetic node | node <- interior_nodes]
         work_done (node1, node2)
-          = let (r1, r2) = (r' ! node1, r' ! node2)
-                ((!z1), z2) = (z' ! node1, z' ! node2)
-                (u1, u2) = (p' ! node1, p' ! node2)
-                (!((!w1), w2)) = (z' ! node1, z' ! node2)
-                (p1, p2) = (p' ! node1, p' ! node2)
+          = let (!(r1, r2)) = (r' ! node1, r' ! node2)
+                (z1, z2) = (z' ! node1, z' ! node2)
+                (!(u1, u2)) = (p' ! node1, p' ! node2)
+                (!(w1, w2)) = (z' ! node1, z' ! node2)
+                (p1, (!p2)) = (p' ! node1, p' ! node2)
                 (q1, q2) = (q' ! node1, q' ! node2)
                 force = (0.5 :: Double) * (((p1 + p2) + q1) + q2)
                 radius = (0.5 :: Double) * (r1 + r2)
                 area
                   = (0.5 :: Double) * ((r1 - r2) * (u1 - u2) - (z1 - z2) * (w1 - w2))
               in ((force * radius) * area) * deltat
-        (!north_line)
-          = [((i, j), (k, l)) | (!k) <- [kmin], l <- [lmin + 1 .. lmax],
-             (i, (!j)) <- [west (k, l)]]
+        north_line
+          = [((i, j), (k, l)) | k <- [kmin], l <- [lmin + 1 .. lmax],
+             (i, j) <- [west (k, l)]]
         south_line
           = [((i, j), (k, l)) | k <- [kmax], l <- [lmin + 1 .. lmax],
              (i, j) <- [west (k, l)]]
         east_line
           = [((i, j), (k, l)) | l <- [lmax], k <- [kmin + 1 .. kmax],
-             (i, j) <- [south (k, l)]]
+             (!(i, j)) <- [south (k, l)]]
         west_line
-          = [((i, j), (k, l)) | (!l) <- [lmin + 1], k <- [kmin + 1 .. kmax],
-             (i, j) <- [south (k, l)]]
+          = [((i, j), (k, l)) | (!l) <- [lmin + 1],
+             (!k) <- [kmin + 1 .. kmax], (i, j) <- [south (k, l)]]
         w1 = sum_list [work_done segment | segment <- north_line]
         w2 = sum_list [work_done segment | segment <- south_line]
         w3 = sum_list [work_done segment | segment <- east_line]
@@ -669,9 +668,9 @@ compute_energy_error ((!u'), w') (r', z') p' q' epsilon' theta'
              (i, j) <- [east (k, l)]]
         west_flow
           = [((i, j), (k, l)) | l <- [lmin + 1], k <- [kmin + 2 .. kmax],
-             ((!i), j) <- [west (k, l)]]
-        h1
-          = sum_list [heat_flow gamma_k segment | (!segment) <- north_flow]
+             (i, j) <- [west (k, l)]]
+        (!h1)
+          = sum_list [heat_flow gamma_k segment | segment <- north_flow]
         h2 = sum_list [heat_flow gamma_k segment | segment <- south_flow]
         h3 = sum_list [heat_flow gamma_l segment | segment <- east_flow]
         h4 = sum_list [heat_flow gamma_l segment | segment <- west_flow]
@@ -682,12 +681,12 @@ compute_energy_error ((!u'), w') (r', z') p' q' epsilon' theta'
  
 compute_time_step ::
                   (DblArray) -> (DblArray) -> (DblArray) -> (Double, Double, Double)
-compute_time_step (!d) theta_hat theta'
+compute_time_step d (!theta_hat) theta'
   = let deltat_courant = min_list [d ! zone | zone <- interior_zones]
-        deltat_conduct
+        (!deltat_conduct)
           = max_list
               [(abs ((theta_hat ! zone) - (theta' ! zone))) / (theta_hat ! zone)
-               | zone <- interior_zones]
+               | (!zone) <- interior_zones]
         deltat_minimum = min deltat_courant deltat_conduct
       in
       (min deltat_maximum deltat_minimum, deltat_courant, deltat_conduct)
@@ -696,7 +695,7 @@ north :: Zone -> Zone
 north (k, l) = (k - 1, l)
  
 south :: Zone -> Zone
-south (!((!k), l)) = (k + 1, l)
+south (k, l) = (k + 1, l)
  
 east :: Zone -> Zone
 east (k, l) = (k, l + 1)
@@ -723,7 +722,7 @@ farsouth :: Zone -> Zone
 farsouth node = south (south node)
  
 fareast :: Zone -> Zone
-fareast node = east (east node)
+fareast (!node) = east (east node)
  
 farwest :: Zone -> Zone
 farwest node = west (west node)
@@ -741,7 +740,7 @@ zone_d :: Zone -> Zone
 zone_d (k, l) = (k, l + 1)
  
 zone_corner_northeast :: Zone -> Zone
-zone_corner_northeast (!zone) = north zone
+zone_corner_northeast zone = north zone
  
 zone_corner_northwest :: Zone -> Zone
 zone_corner_northwest zone = northwest zone
@@ -751,7 +750,7 @@ zone_corner_southeast zone = zone
  
 zone_corner_southwest :: Zone -> Zone
 zone_corner_southwest zone = west zone
-((kmin, kmax), (lmin, lmax)) = grid_size :: ArrayDim
+((kmin, kmax), ((!lmin), lmax)) = grid_size :: ArrayDim
 dimension_all_nodes
   = ((kmin - 1, kmax + 1), (lmin - 1, lmax + 1)) :: ArrayDim
  
@@ -779,7 +778,7 @@ dimension_interior_zones = ((kmin + 1, kmax), (lmin + 1, lmax))
  
 interior_zones :: [(Int, Int)]
 interior_zones
-  = [(k, l) | k <- [kmin + 1 .. kmax], l <- [lmin + 1 .. lmax]]
+  = [(k, l) | k <- [kmin + 1 .. kmax], (!l) <- [lmin + 1 .. lmax]]
  
 north_ward_interior_zones :: [(Int, Int)]
 north_ward_interior_zones
@@ -792,7 +791,7 @@ west_ward_interior_zones
      l <- [lmax, (lmax - 1) .. lmin + 1]]
  
 north_zones :: [(Int, Int)]
-north_zones = [(k, l) | k <- [kmin], l <- [lmin .. lmax + 1]]
+north_zones = [(k, l) | k <- [kmin], (!l) <- [lmin .. lmax + 1]]
  
 south_zones :: [(Int, Int)]
 south_zones = [(k, l) | k <- [kmax + 1], l <- [lmin + 1 .. lmax]]
@@ -802,7 +801,7 @@ east_zones
   = [(k, l) | k <- [kmin + 1 .. kmax + 1], l <- [lmax + 1]]
  
 west_zones :: [(Int, Int)]
-west_zones = [(k, l) | (!k) <- [kmin + 1 .. kmax + 1], l <- [lmin]]
+west_zones = [(k, l) | k <- [kmin + 1 .. kmax + 1], l <- [lmin]]
  
 reflect ::
         ((Int, Int) -> (Int, Int)) -> (Int, Int) -> DblArray -> Double
@@ -821,7 +820,8 @@ reflect_west :: (Int, Int) -> (Array (Int, Int) Double) -> Double
 reflect_west = reflect west
  
 north_nodes :: [(Int, Int)]
-north_nodes = [(k, l) | k <- [kmin - 1], l <- [lmin .. lmax - 1]]
+north_nodes
+  = [(k, l) | k <- [kmin - 1], (!l) <- [lmin .. lmax - 1]]
  
 south_nodes :: [(Int, Int)]
 south_nodes = [(k, l) | k <- [kmax + 1], l <- [lmin .. lmax - 1]]
@@ -830,13 +830,13 @@ east_nodes :: [(Int, Int)]
 east_nodes = [(k, l) | k <- [kmin .. kmax - 1], l <- [lmax + 1]]
  
 west_nodes :: [(Int, Int)]
-west_nodes = [(k, l) | (!k) <- [kmin .. kmax - 1], l <- [lmin - 1]]
+west_nodes = [(k, l) | k <- [kmin .. kmax - 1], l <- [lmin - 1]]
  
 north_east_corner :: [(Int, Int)]
 north_east_corner = [(k, l) | k <- [kmin - 1], l <- [lmax + 1]]
  
 north_west_corner :: [(Int, Int)]
-north_west_corner = [(k, l) | k <- [kmin - 1], l <- [lmin - 1]]
+north_west_corner = [(k, l) | (!k) <- [kmin - 1], l <- [lmin - 1]]
  
 south_east_corner :: [(Int, Int)]
 south_east_corner = [(k, l) | k <- [kmax + 1], l <- [lmax + 1]]
@@ -848,7 +848,7 @@ west_of_north_east :: [(Int, Int)]
 west_of_north_east = [(k, l) | k <- [kmin - 1], l <- [lmax]]
  
 west_of_south_east :: [(Int, Int)]
-west_of_south_east = [(k, l) | k <- [kmax + 1], (!l) <- [lmax]]
+west_of_south_east = [(k, l) | k <- [kmax + 1], l <- [lmax]]
  
 north_of_south_east :: [(Int, Int)]
 north_of_south_east = [(k, l) | k <- [kmax], l <- [lmax + 1]]
@@ -874,16 +874,16 @@ e_coeffs
   = strictArray
       (array ((0, 0), (2, 2))
          ([(0, 1) =: 0.1] ++
-            [(i, j) =: 0.0 | i <- [0 .. 2], j <- [0 .. 2],
+            [(i, j) =: 0.0 | (!i) <- [0 .. 2], (!j) <- [0 .. 2],
              not (i == 0 && j == 1)]))
 p_poly
   = strictArray
       (array ((1, 1), (4, 5))
-         ([(i, j) =: p_coeffs | (!i) <- [1 .. 4], (!j) <- [1 .. 5]]))
+         ([(i, j) =: p_coeffs | i <- [1 .. 4], j <- [1 .. 5]]))
 e_poly
   = strictArray
       (array ((1, 1), (4, 5))
-         ([(i, j) =: e_coeffs | (!i) <- [1 .. 4], j <- [1 .. 5]]))
+         ([(i, j) =: e_coeffs | i <- [1 .. 4], (!j) <- [1 .. 5]]))
  
 rho_table :: DblVector
 rho_table
@@ -904,11 +904,11 @@ nbc :: Array (Int, Int) Int
 nbc
   = strictArray
       (array (pHbounds dimension_all_zones)
-         ([(i, j) =: 1 | i <- [kmin], (!j) <- [lmin + 1 .. lmax]] ++
+         ([(i, j) =: 1 | i <- [kmin], j <- [lmin + 1 .. lmax]] ++
             [(i, j) =: 2 | i <- [kmax + 1], j <- [lmin + 1 .. lmax]] ++
-              [(i, j) =: 1 | j <- [lmin], i <- [kmin + 1 .. kmax]] ++
+              [(i, j) =: 1 | j <- [lmin], (!i) <- [kmin + 1 .. kmax]] ++
                 [(i, j) =: 1 | j <- [lmax + 1], i <- [lmin + 1 .. lmax]] ++
-                  [(i, j) =: 4 | (!i) <- [kmin], (!j) <- [lmin]] ++
+                  [(i, j) =: 4 | i <- [kmin], j <- [lmin]] ++
                     [(i, j) =: 4 | i <- [kmin], j <- [lmax + 1]] ++
                       [(i, j) =: 4 | i <- [kmax + 1], j <- [lmin]] ++
                         [(i, j) =: 4 | i <- [kmax + 1], j <- [lmax + 1]]))
@@ -923,14 +923,14 @@ pb :: DblVector
 pb
   = strictArray
       (array (1, 4)
-         ([i =: 1.0 | i <- [1 .. 4], not (i == 2 || i == 3)] ++
+         ([i =: 1.0 | (!i) <- [1 .. 4], not (i == 2 || i == 3)] ++
             [i =: 0.0 | i <- [2 .. 3]]))
  
 qb :: DblVector
 qb = pb
  
 all_zero_nodes :: a -> DblArray
-all_zero_nodes _
+all_zero_nodes (!_)
   = strictArray
       (array (pHbounds dimension_all_nodes)
          ([node =: 0.0 | node <- all_nodes]))
@@ -945,7 +945,7 @@ make_position_matrix ::
                      ((Int, Int) -> (Double, Double)) -> (DblArray, DblArray)
 make_position_matrix interior_function
   = let boundary_position rx zx ry zy ra za
-          = let (rax, zax) = (ra - rx, za - zx)
+          = let (!(rax, zax)) = (ra - rx, za - zx)
                 (ryx, zyx) = (ry - rx, zy - zx)
                 omega
                   = ((2.0 :: Double) * (rax * ryx + zax * zyx)) /
@@ -958,12 +958,12 @@ make_position_matrix interior_function
                 zx = reflect x_dir node z'
                 ry = reflect y_dir node r'
                 zy = reflect y_dir node z'
-                (!ra) = reflect a_dir node r'
+                ra = reflect a_dir node r'
                 za = reflect a_dir node z'
               in boundary_position rx zx ry zy ra za
         (r', z')
           = (arrays_2 (pHbounds dimension_all_nodes)
-               ([node =: interior_function node | (!node) <- interior_nodes] ++
+               ([node =: interior_function node | node <- interior_nodes] ++
                   [node =: reflect_node south southeast farsouth node |
                    node <- north_nodes]
                     ++
@@ -971,7 +971,7 @@ make_position_matrix interior_function
                      node <- south_nodes]
                       ++
                       [node =: reflect_node west southwest farwest node |
-                       node <- east_nodes]
+                       (!node) <- east_nodes]
                         ++
                         [node =: reflect_node east southeast fareast node |
                          node <- west_nodes]
@@ -980,7 +980,7 @@ make_position_matrix interior_function
                            node <- north_east_corner]
                             ++
                             [node =: reflect_node northwest west farwest node |
-                             (!node) <- south_east_corner]
+                             node <- south_east_corner]
                               ++
                               [node =: reflect_node southeast south farsouth node |
                                node <- north_west_corner]
@@ -1015,14 +1015,14 @@ zone_area_vol (r, z) zone
         area2 = (rnw * (zsw - zne) + rne * (znw - zsw)) + rsw * (zne - znw)
         average1 = (rsw + rse) + rne
         volume1 = (area1 * average1) / (3.0 :: Double)
-        (!average2) = (rsw + rne) + rnw
+        average2 = (rsw + rne) + rnw
         volume2 = (area2 * average2) / (3.0 :: Double)
         zone_area = (area1 + area2) / (2.0 :: Double)
-        zone_volume = (volume1 + volume2) * (pi :: Double)
+        (!zone_volume) = (volume1 + volume2) * (pi :: Double)
       in (zone_area, zone_volume)
  
 reduce_list :: (a -> b -> a) -> a -> [b] -> a
-reduce_list fcn z list = foldl fcn z list
+reduce_list fcn (!z) list = foldl fcn z list
  
 max_list :: [Double] -> Double
 max_list list = reduce_list max (head (list :: [Double])) list

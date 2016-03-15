@@ -11,34 +11,34 @@ Main.hs:49:10: Warning:
 
 Main.hs:64:6: Warning:
     Local definition of ‘<*>’ clashes with a future Prelude name - this will become an error in GHC 7.10, under the Applicative-Monad Proposal.
-<<ghc: 247688184 bytes, 66 GCs, 7954913/16752272 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.28 elapsed), 0.24 GC (0.24 elapsed) :ghc>>
+<<ghc: 252319512 bytes, 67 GCs, 7894680/16440448 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.26 elapsed), 0.22 GC (0.22 elapsed) :ghc>>
 ==nofib== atom: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-  12422	   1160	      0	  13582	   350e	Main.o
+  13422	   1112	      0	  14534	   38c6	Main.o
 ==nofib== atom: time to link atom follows...
-<<ghc: 38405032 bytes, 14 GCs, 409636/648576 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.44 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38409520 bytes, 14 GCs, 409612/648528 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.45 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
 ==nofib== atom: size of atom follows...
    text	   data	    bss	    dec	    hex	filename
- 920207	  52728	  48776	1021711	  f970f	atom
+ 921423	  52696	  48776	1022895	  f9baf	atom
 ==nofib== atom: time to run atom follows...
 timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;
 
-real	0m0.238s
-user	0m0.225s
+real	0m0.263s
+user	0m0.252s
+sys	0m0.003s
+<<ghc: 384121520 bytes, 702 GCs (665 + 37), 0/0 avg/max bytes residency (0 samples), 55041752 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.14 elapsed), 0.11 GC (0.11 elapsed), 0.10 GC(0) (0.10 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+
+real	0m0.258s
+user	0m0.253s
+sys	0m0.003s
+<<ghc: 384121520 bytes, 702 GCs (665 + 37), 0/0 avg/max bytes residency (0 samples), 55041752 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.14 elapsed), 0.11 GC (0.11 elapsed), 0.10 GC(0) (0.10 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+
+real	0m0.257s
+user	0m0.252s
 sys	0m0.004s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+<<ghc: 384121520 bytes, 702 GCs (665 + 37), 0/0 avg/max bytes residency (0 samples), 55041752 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.14 elapsed), 0.11 GC (0.11 elapsed), 0.10 GC(0) (0.10 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
 
-real	0m0.232s
-user	0m0.226s
-sys	0m0.007s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
-
-real	0m0.233s
-user	0m0.228s
-sys	0m0.005s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
-
-real	0m0.231s
-user	0m0.227s
-sys	0m0.004s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+real	0m0.257s
+user	0m0.252s
+sys	0m0.003s
+<<ghc: 384121520 bytes, 702 GCs (665 + 37), 0/0 avg/max bytes residency (0 samples), 55041752 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.14 elapsed), 0.11 GC (0.11 elapsed), 0.10 GC(0) (0.10 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>

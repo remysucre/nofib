@@ -3,34 +3,34 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== n-body: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -O2 -XBangPatterns -fexcess-precision -c Main.hs -o Main.o
-<<ghc: 395687120 bytes, 112 GCs, 11557288/26548256 avg/max bytes residency (6 samples), 57M in use, 0.00 INIT (0.00 elapsed), 0.36 MUT (0.39 elapsed), 0.39 GC (0.39 elapsed) :ghc>>
+<<ghc: 357807832 bytes, 124 GCs, 11280104/26573464 avg/max bytes residency (6 samples), 57M in use, 0.00 INIT (0.00 elapsed), 0.34 MUT (0.36 elapsed), 0.37 GC (0.37 elapsed) :ghc>>
 ==nofib== n-body: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-  15236	    640	      0	  15876	   3e04	Main.o
+  11084	   2352	      0	  13436	   347c	Main.o
 ==nofib== n-body: time to link n-body follows...
-<<ghc: 38454792 bytes, 14 GCs, 409368/649016 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.53 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
+<<ghc: 38454880 bytes, 14 GCs, 409368/649016 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.59 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
 ==nofib== n-body: size of n-body follows...
    text	   data	    bss	    dec	    hex	filename
-1003288	  60928	  48776	1112992	 10fba0	n-body
+ 999128	  62624	  48776	1110528	 10f200	n-body
 ==nofib== n-body: time to run n-body follows...
 timeout 40s ../../runstdtest/runstdtest  ./n-body  -o1 n-body.stdout -o1 n-body.stdout  -ghc-timing     5000000;   timeout 40s ../../runstdtest/runstdtest  ./n-body  -o1 n-body.stdout -o1 n-body.stdout  -ghc-timing     5000000;   timeout 40s ../../runstdtest/runstdtest  ./n-body  -o1 n-body.stdout -o1 n-body.stdout  -ghc-timing     5000000;   timeout 40s ../../runstdtest/runstdtest  ./n-body  -o1 n-body.stdout -o1 n-body.stdout  -ghc-timing     5000000;
 
-real	0m2.044s
-user	0m2.024s
-sys	0m0.011s
-<<ghc: 1600177960 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.02 MUT (2.02 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m2.042s
+real	0m2.059s
 user	0m2.033s
-sys	0m0.008s
-<<ghc: 1600177960 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.02 MUT (2.02 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m2.039s
-user	0m2.029s
-sys	0m0.010s
-<<ghc: 1600177960 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.02 MUT (2.02 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m2.045s
-user	0m2.031s
 sys	0m0.012s
-<<ghc: 1600177960 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114896 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.03 MUT (2.03 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+<<ghc: 1600178600 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114976 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.03 MUT (2.04 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m2.058s
+user	0m2.049s
+sys	0m0.007s
+<<ghc: 1600178600 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114976 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.04 MUT (2.04 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m2.046s
+user	0m2.038s
+sys	0m0.006s
+<<ghc: 1600178600 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114976 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.03 MUT (2.03 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+
+real	0m2.055s
+user	0m2.046s
+sys	0m0.007s
+<<ghc: 1600178600 bytes, 3052 GCs (3050 + 2), 0/0 avg/max bytes residency (0 samples), 114976 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 2.04 MUT (2.04 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

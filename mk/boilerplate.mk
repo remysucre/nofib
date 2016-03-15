@@ -145,7 +145,7 @@ endef
 
 $(eval $(call ghc-ge,6,13))
 
-RUNTEST   = timeout 40s $(TOP)/runstdtest/runstdtest 
+RUNTEST   = timeout 5s $(TOP)/runstdtest/runstdtest 
 
 include $(TOP)/mk/ghc-paths.mk
 include $(TOP)/mk/ghc-opts.mk

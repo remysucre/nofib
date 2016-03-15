@@ -8,26 +8,220 @@ BaseDefs.hs:61:10: Warning:
     No explicit implementation for
       ‘abs’, ‘signum’, ‘fromInteger’, and (either ‘negate’ or ‘-’)
     In the instance declaration for ‘Num (ExceptionInt a)’
-<<ghc: 1171808664 bytes, 281 GCs, 12042472/20928200 avg/max bytes residency (8 samples), 55M in use, 0.00 INIT (0.00 elapsed), 1.17 MUT (1.24 elapsed), 0.71 GC (0.71 elapsed) :ghc>>
+<<ghc: 1169326792 bytes, 294 GCs, 12005482/20740096 avg/max bytes residency (8 samples), 54M in use, 0.00 INIT (0.00 elapsed), 1.16 MUT (1.22 elapsed), 0.70 GC (0.70 elapsed) :ghc>>
 ==nofib== anna: size of BaseDefs.o follows...
    text	   data	    bss	    dec	    hex	filename
- 103493	   6832	      0	 110325	  1aef5	BaseDefs.o
+ 103309	   6832	      0	 110141	  1ae3d	BaseDefs.o
 ==nofib== anna: time to compile MyUtils follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c MyUtils.hs -o MyUtils.o
-<<ghc: 203999080 bytes, 49 GCs, 5533374/10426424 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.20 MUT (0.23 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+<<ghc: 190256808 bytes, 47 GCs, 5521778/10410232 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.21 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
 ==nofib== anna: size of MyUtils.o follows...
    text	   data	    bss	    dec	    hex	filename
-  12827	    984	      0	  13811	   35f3	MyUtils.o
+  10747	   1264	      0	  12011	   2eeb	MyUtils.o
 ==nofib== anna: time to compile Utils follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Utils.hs -o Utils.o
+<<ghc: 506676040 bytes, 116 GCs, 6863302/14003432 avg/max bytes residency (5 samples), 33M in use, 0.00 INIT (0.00 elapsed), 0.54 MUT (0.57 elapsed), 0.27 GC (0.27 elapsed) :ghc>>
+==nofib== anna: size of Utils.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  36621	   1536	      0	  38157	   950d	Utils.o
+==nofib== anna: time to compile DomainExpr follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c DomainExpr.hs -o DomainExpr.o
+<<ghc: 182366680 bytes, 49 GCs, 5543786/10233712 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.20 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+==nofib== anna: size of DomainExpr.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  12020	    776	      0	  12796	   31fc	DomainExpr.o
+==nofib== anna: time to compile AbstractVals2 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c AbstractVals2.hs -o AbstractVals2.o
+<<ghc: 458803016 bytes, 136 GCs, 6720254/12643864 avg/max bytes residency (5 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.44 MUT (0.47 elapsed), 0.26 GC (0.26 elapsed) :ghc>>
+==nofib== anna: size of AbstractVals2.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  44703	   2184	      0	  46887	   b727	AbstractVals2.o
+==nofib== anna: time to compile SuccsAndPreds2 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c SuccsAndPreds2.hs -o SuccsAndPreds2.o
+<<ghc: 356180920 bytes, 94 GCs, 7621872/15278680 avg/max bytes residency (5 samples), 35M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.40 elapsed), 0.25 GC (0.25 elapsed) :ghc>>
+==nofib== anna: size of SuccsAndPreds2.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  26901	   1632	      0	  28533	   6f75	SuccsAndPreds2.o
+==nofib== anna: time to compile AbstractMisc follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c AbstractMisc.hs -o AbstractMisc.o
+<<ghc: 183569928 bytes, 47 GCs, 5520404/10225232 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.19 elapsed), 0.14 GC (0.13 elapsed) :ghc>>
+==nofib== anna: size of AbstractMisc.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  12537	    784	      0	  13321	   3409	AbstractMisc.o
+==nofib== anna: time to compile AbsConc3 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c AbsConc3.hs -o AbsConc3.o
+<<ghc: 393444288 bytes, 106 GCs, 6973553/13423664 avg/max bytes residency (5 samples), 33M in use, 0.00 INIT (0.00 elapsed), 0.38 MUT (0.41 elapsed), 0.24 GC (0.24 elapsed) :ghc>>
+==nofib== anna: size of AbsConc3.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  36127	   3168	      0	  39295	   997f	AbsConc3.o
+==nofib== anna: time to compile Apply follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Apply.hs -o Apply.o
+<<ghc: 176040536 bytes, 48 GCs, 5414852/10036800 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.16 MUT (0.18 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+==nofib== anna: size of Apply.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  14150	    528	      0	  14678	   3956	Apply.o
+==nofib== anna: time to compile AbstractEval2 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c AbstractEval2.hs -o AbstractEval2.o
+<<ghc: 127632800 bytes, 40 GCs, 5609600/10727000 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.12 MUT (0.14 elapsed), 0.12 GC (0.12 elapsed) :ghc>>
+==nofib== anna: size of AbstractEval2.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   6731	    904	      0	   7635	   1dd3	AbstractEval2.o
+==nofib== anna: time to compile BarakiMeet follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c BarakiMeet.hs -o BarakiMeet.o
+<<ghc: 189217800 bytes, 48 GCs, 5587980/10627376 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.19 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+==nofib== anna: size of BarakiMeet.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  13858	    824	      0	  14682	   395a	BarakiMeet.o
+==nofib== anna: time to compile BarakiConc3 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c BarakiConc3.hs -o BarakiConc3.o
+<<ghc: 256077576 bytes, 67 GCs, 5615334/10401720 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.24 MUT (0.27 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+==nofib== anna: size of BarakiConc3.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  17795	   1064	      0	  18859	   49ab	BarakiConc3.o
+==nofib== anna: time to compile Inverse follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Inverse.hs -o Inverse.o
+<<ghc: 224676768 bytes, 56 GCs, 5523486/10223536 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.23 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+==nofib== anna: size of Inverse.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  16552	    600	      0	  17152	   4300	Inverse.o
+==nofib== anna: time to compile Constructors follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Constructors.hs -o Constructors.o
+<<ghc: 291760912 bytes, 82 GCs, 5546964/10292224 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.28 MUT (0.31 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
+==nofib== anna: size of Constructors.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  25090	   1848	      0	  26938	   693a	Constructors.o
+==nofib== anna: time to compile Dependancy follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Dependancy.hs -o Dependancy.o
+<<ghc: 413573408 bytes, 109 GCs, 7284508/13839040 avg/max bytes residency (5 samples), 35M in use, 0.00 INIT (0.00 elapsed), 0.41 MUT (0.44 elapsed), 0.26 GC (0.26 elapsed) :ghc>>
+==nofib== anna: size of Dependancy.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  40578	    712	      0	  41290	   a14a	Dependancy.o
+==nofib== anna: time to compile EtaAbstract follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c EtaAbstract.hs -o EtaAbstract.o
+<<ghc: 193029968 bytes, 52 GCs, 5596548/10415184 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.21 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+==nofib== anna: size of EtaAbstract.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  10071	    488	      0	  10559	   293f	EtaAbstract.o
+==nofib== anna: time to compile FrontierMisc2 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c FrontierMisc2.hs -o FrontierMisc2.o
+<<ghc: 162316632 bytes, 45 GCs, 5505048/10127984 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.15 MUT (0.17 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+==nofib== anna: size of FrontierMisc2.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   9558	    344	      0	   9902	   26ae	FrontierMisc2.o
+==nofib== anna: time to compile FrontierDATAFN2 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c FrontierDATAFN2.hs -o FrontierDATAFN2.o
+<<ghc: 292416960 bytes, 107 GCs, 5599038/10385664 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.28 MUT (0.30 elapsed), 0.18 GC (0.18 elapsed) :ghc>>
+==nofib== anna: size of FrontierDATAFN2.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  20910	   1256	      0	  22166	   5696	FrontierDATAFN2.o
+==nofib== anna: time to compile FrontierGENERIC2 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c FrontierGENERIC2.hs -o FrontierGENERIC2.o
+<<ghc: 282863952 bytes, 116 GCs, 5538222/10134320 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.27 MUT (0.29 elapsed), 0.18 GC (0.18 elapsed) :ghc>>
+==nofib== anna: size of FrontierGENERIC2.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  23369	   1504	      0	  24873	   6129	FrontierGENERIC2.o
+==nofib== anna: time to compile LambdaLift5 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c LambdaLift5.hs -o LambdaLift5.o
+<<ghc: 554129512 bytes, 158 GCs, 8351998/16776288 avg/max bytes residency (6 samples), 42M in use, 0.00 INIT (0.00 elapsed), 0.57 MUT (0.64 elapsed), 0.34 GC (0.34 elapsed) :ghc>>
+==nofib== anna: size of LambdaLift5.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  45588	   1576	      0	  47164	   b83c	LambdaLift5.o
+==nofib== anna: time to compile MakeDomains follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c MakeDomains.hs -o MakeDomains.o
+<<ghc: 145678352 bytes, 42 GCs, 5509488/10204456 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.15 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+==nofib== anna: size of MakeDomains.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   6043	    512	      0	   6555	   199b	MakeDomains.o
+==nofib== anna: time to compile Parser2 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Parser2.hs -o Parser2.o
+<<ghc: 827699712 bytes, 185 GCs, 10486272/21228064 avg/max bytes residency (7 samples), 53M in use, 0.00 INIT (0.00 elapsed), 0.88 MUT (0.93 elapsed), 0.56 GC (0.56 elapsed) :ghc>>
+==nofib== anna: size of Parser2.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  62159	   7544	      0	  69703	  11047	Parser2.o
+==nofib== anna: time to compile ReadTable follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c ReadTable.hs -o ReadTable.o
+<<ghc: 253091400 bytes, 70 GCs, 5649476/10779744 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.27 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+==nofib== anna: size of ReadTable.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  15599	   1624	      0	  17223	   4347	ReadTable.o
+==nofib== anna: time to compile SmallerLattice follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c SmallerLattice.hs -o SmallerLattice.o
+<<ghc: 583777312 bytes, 151 GCs, 7588732/15366144 avg/max bytes residency (5 samples), 35M in use, 0.00 INIT (0.00 elapsed), 0.58 MUT (0.62 elapsed), 0.31 GC (0.31 elapsed) :ghc>>
+==nofib== anna: size of SmallerLattice.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  51029	   1792	      0	  52821	   ce55	SmallerLattice.o
+==nofib== anna: time to compile Simplify follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Simplify.hs -o Simplify.o
+<<ghc: 157096376 bytes, 45 GCs, 5581818/10587216 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.16 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+==nofib== anna: size of Simplify.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   8828	    408	      0	   9236	   2414	Simplify.o
+==nofib== anna: time to compile TypeCheck5 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c TypeCheck5.hs -o TypeCheck5.o
+<<ghc: 1009539240 bytes, 241 GCs, 9672540/17406624 avg/max bytes residency (7 samples), 46M in use, 0.00 INIT (0.00 elapsed), 1.09 MUT (1.14 elapsed), 0.59 GC (0.59 elapsed) :ghc>>
+==nofib== anna: size of TypeCheck5.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  79044	   7784	      0	  86828	  1532c	TypeCheck5.o
+==nofib== anna: time to compile TExpr2DExpr follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c TExpr2DExpr.hs -o TExpr2DExpr.o
+<<ghc: 152497216 bytes, 43 GCs, 5471788/10014688 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.16 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+==nofib== anna: size of TExpr2DExpr.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   7131	    776	      0	   7907	   1ee3	TExpr2DExpr.o
+==nofib== anna: time to compile PrintResults follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c PrintResults.hs -o PrintResults.o
+<<ghc: 318463032 bytes, 135 GCs, 7502729/15085984 avg/max bytes residency (5 samples), 35M in use, 0.00 INIT (0.00 elapsed), 0.33 MUT (0.36 elapsed), 0.23 GC (0.23 elapsed) :ghc>>
+==nofib== anna: size of PrintResults.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  20114	   1520	      0	  21634	   5482	PrintResults.o
+==nofib== anna: time to compile StrictAn6 follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c StrictAn6.hs -o StrictAn6.o
+<<ghc: 839187624 bytes, 247 GCs, 10301840/20100696 avg/max bytes residency (7 samples), 52M in use, 0.00 INIT (0.00 elapsed), 0.84 MUT (0.91 elapsed), 0.50 GC (0.50 elapsed) :ghc>>
+==nofib== anna: size of StrictAn6.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  80194	   5736	      0	  85930	  14faa	StrictAn6.o
+==nofib== anna: time to compile PrettyPrint follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c PrettyPrint.hs -o PrettyPrint.o
+<<ghc: 215112544 bytes, 53 GCs, 5588592/10428208 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.23 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+==nofib== anna: size of PrettyPrint.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  16103	   1184	      0	  17287	   4387	PrettyPrint.o
+==nofib== anna: time to compile Main follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
+<<ghc: 427399496 bytes, 121 GCs, 11888460/27972576 avg/max bytes residency (6 samples), 61M in use, 0.00 INIT (0.00 elapsed), 0.40 MUT (0.44 elapsed), 0.38 GC (0.38 elapsed) :ghc>>
+==nofib== anna: size of Main.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  20504	   6504	      0	  27008	   6980	Main.o
+==nofib== anna: time to compile Monster follows...
+/h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Monster.hs -o Monster.o
+<<ghc: 162355768 bytes, 59 GCs, 8342867/19208512 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.16 elapsed), 0.20 GC (0.20 elapsed) :ghc>>
+==nofib== anna: size of Monster.o follows...
+   text	   data	    bss	    dec	    hex	filename
+   5696	    544	      0	   6240	   1860	Monster.o
+==nofib== anna: time to link anna follows...
+<<ghc: 38882312 bytes, 14 GCs, 415232/648624 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.58 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+==nofib== anna: size of anna follows...
+   text	   data	    bss	    dec	    hex	filename
+1848580	 123152	  48776	2020508	 1ed49c	anna
+==nofib== anna: time to run anna follows...
+timeout 5s ../../runstdtest/runstdtest  ./anna -i  big.cor -o1 anna.stdout -o1 anna.stdout  -ghc-timing     ;   timeout 5s ../../runstdtest/runstdtest  ./anna -i  big.cor -o1 anna.stdout -o1 anna.stdout  -ghc-timing     ;   timeout 5s ../../runstdtest/runstdtest  ./anna -i  big.cor -o1 anna.stdout -o1 anna.stdout  -ghc-timing     ;   timeout 5s ../../runstdtest/runstdtest  ./anna -i  big.cor -o1 anna.stdout -o1 anna.stdout  -ghc-timing     ;
 
-Utils.hs:7:9:
-    Recursive bang-pattern or unboxed-tuple bindings aren't allowed:
-      (!xs) = x : xs
-    In an equation for ‘copy’:
-        copy (!n) (!x)
-          = take (max 0 n) xs
-          where
-              (!xs) = x : xs
-<<ghc: 112321464 bytes, 54 GCs, 6584136/14079744 avg/max bytes residency (5 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.08 MUT (0.09 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
-make: *** [Utils.o] Error 1
+real	0m0.159s
+user	0m0.138s
+sys	0m0.006s
+<<ghc: 70287184 bytes, 136 GCs (127 + 9), 0/0 avg/max bytes residency (0 samples), 10714144 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.12 elapsed), 0.03 GC (0.03 elapsed), 0.02 GC(0) (0.02 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+
+real	0m0.145s
+user	0m0.141s
+sys	0m0.003s
+<<ghc: 70287184 bytes, 136 GCs (127 + 9), 0/0 avg/max bytes residency (0 samples), 10693176 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.11 elapsed), 0.03 GC (0.03 elapsed), 0.02 GC(0) (0.02 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+
+real	0m0.146s
+user	0m0.137s
+sys	0m0.007s
+<<ghc: 70287184 bytes, 136 GCs (127 + 9), 0/0 avg/max bytes residency (0 samples), 10693176 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.11 elapsed), 0.03 GC (0.03 elapsed), 0.02 GC(0) (0.02 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+
+real	0m0.144s
+user	0m0.136s
+sys	0m0.006s
+<<ghc: 70287184 bytes, 136 GCs (127 + 9), 0/0 avg/max bytes residency (0 samples), 10693176 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.11 elapsed), 0.03 GC (0.03 elapsed), 0.02 GC(0) (0.02 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>

@@ -8,52 +8,52 @@ import System.Environment
 import System.IO.Unsafe (unsafePerformIO)
 import Text.Printf
 main
-  = do (!n) <- getArgs >>= readIO . head
+  = do n <- getArgs >>= readIO . head
        initialize
        offset_momentum
        energy 0 planets >>= printf "%.9f\n"
        replicateM_ n (advance planets)
        energy 0 planets >>= printf "%.9f\n"
 offset_momentum
-  = do m <- foldr (.+.) (Vec 0 0 0) `fmap`
-              (mapM momentum . take (nbodies - 1) . iterate next $ next planets)
+  = do (!m) <- foldr (.+.) (Vec 0 0 0) `fmap`
+                 (mapM momentum . take (nbodies - 1) . iterate next $ next planets)
        setVec (vel planets) $ (-1 / solar_mass) *. m
-  where momentum p = liftM2 (*.) (mass p) (getVec (vel p))
+  where momentum (!p) = liftM2 (*.) (mass p) (getVec (vel p))
  
 energy :: Double -> Ptr Double -> IO Double
-energy !e (!p)
+energy !e !(!p)
   | p == end = return e
   | otherwise =
-    do p1 <- getVec (pos p)
-       v1 <- getVec (vel p)
-       (!m1) <- mass p
-       (!e) <- energy2 p1 m1 e p2
+    do (!p1) <- getVec (pos p)
+       (!v1) <- getVec (vel p)
+       m1 <- mass p
+       e <- energy2 p1 m1 e p2
        energy (e + 0.5 * m1 * magnitude2 v1) p2
   where p2 = next p
-energy2 (!p1) !(!m1) (!e) !(!p)
+energy2 p1 (!m1) e !p
   | p == end = return e
   | otherwise =
     do (!p2) <- getVec (pos p)
        v2 <- getVec (vel p)
-       (!m2) <- mass p
+       m2 <- mass p
        let (!distance) = sqrt . magnitude2 $ p1 .-. p2
        energy2 p1 m1 (e - m1 * m2 / distance) (next p)
  
 advance :: Ptr Double -> IO ()
-advance (!p1)
+advance p1
   = when (p1 /= end) $
       do pos1 <- getVec $ pos p1
-         m1 <- mass p1
-         let go p2
+         (!m1) <- mass p1
+         let go !(!p2)
                | p2 /= end =
-                 do (!pos2) <- getVec (pos p2)
+                 do pos2 <- getVec (pos p2)
                     (!m2) <- mass p2
                     let vel2 = vel p2
-                        difference = pos1 .-. pos2
+                        (!difference) = pos1 .-. pos2
                         distance2 = magnitude2 difference
                         distance = sqrt distance2
                         magnitude = delta_t / (distance2 * distance)
-                        (!mass_magn) = magnitude *. difference
+                        mass_magn = magnitude *. difference
                     vel1 -= m2 *. mass_magn
                     vel2 += m1 *. mass_magn
                     go (next p2)
@@ -104,7 +104,7 @@ cursor :: IORef (Ptr Double)
 cursor = unsafePerformIO $ newIORef planets
  
 inc :: Ptr Double -> Int -> Ptr Double
-inc ptr (!n) = plusPtr ptr (n * 8)
+inc (!ptr) n = plusPtr ptr (n * 8)
  
 newPlanet :: Double -> IO ()
 newPlanet (!d)
@@ -113,21 +113,20 @@ newPlanet (!d)
        writeIORef cursor (inc ptr 1)
  
 pos :: Ptr Double -> Ptr Double
-pos ptr = ptr
+pos (!ptr) = ptr
  
 vel :: Ptr Double -> Ptr Double
-vel (!ptr) = inc ptr 3
+vel ptr = inc ptr 3
  
 mass :: Ptr Double -> IO Double
 mass ptr = peekElemOff ptr 6
-((!(Vec x y z))) .+. (!(Vec (!u) v w))
-  = Vec (x + u) (y + v) (z + w)
-(!((!(Vec (!x) y (!z))))) .-. (Vec (!u) v w)
+(Vec x y z) .+. (Vec u v (!w)) = Vec (x + u) (y + v) (z + w)
+(Vec (!x) y z) .-. (!(Vec u (!v) (!w)))
   = Vec (x - u) (y - v) (z - w)
-k *. (Vec (!x) (!y) (!z)) = Vec (k * x) (k * y) (k * z)
-magnitude2 (Vec x (!y) (!z)) = x * x + y * y + z * z
+(!k) *. (!(Vec (!x) y z)) = Vec (k * x) (k * y) (k * z)
+magnitude2 ((!(Vec (!x) (!y) z))) = x * x + y * y + z * z
 getVec (!p) = liftM3 Vec (peek p) (f 1) (f 2)
-  where (!f) = peekElemOff p
+  where f = peekElemOff p
 setVec p ((!(Vec x y z)))
   = do poke p x
        pokeElemOff p 1 y
@@ -136,17 +135,17 @@ setVec p ((!(Vec x y z)))
 infix 4 +=
  
 infix 4 -=
-(!v1) += ((!(Vec u (!v) w)))
+v1 += ((!(Vec (!u) (!v) w)))
   = do x <- peek v1
        poke v1 (x + u)
        y <- peekElemOff v1 1
        pokeElemOff v1 1 (y + v)
-       z <- peekElemOff v1 2
+       (!z) <- peekElemOff v1 2
        pokeElemOff v1 2 (z + w)
-v1 -= (Vec (!u) v (!w))
-  = do x <- peek v1
+v1 -= (!(Vec (!u) v (!w)))
+  = do (!x) <- peek v1
        poke v1 (x - u)
        y <- peekElemOff v1 1
        pokeElemOff v1 1 (y - v)
-       (!z) <- peekElemOff v1 2
+       z <- peekElemOff v1 2
        pokeElemOff v1 2 (z - w)
