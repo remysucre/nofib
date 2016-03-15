@@ -1,0 +1,28 @@
+module Match where
+import Result
+import Table
+import Knowledge
+ 
+type Environment = Table String Phrase
+subst (!env) (!(Term (!x) ps)) = Term x [subst env p | p <- ps]
+subst (!env) ((!(Var x)))
+  = if fails lookup then (Var x) else subst env (answer lookup)
+  where lookup = find env x
+match (!env) p1 p2 = compear env (subst env p1) (subst env p2)
+matchList env [] = success env
+matchList env (((!p1), p2) : pairs)
+  = if fails res then res else matchList (answer res) pairs
+  where res = match env p1 p2
+compear (!env) (!(Term x1 ps1)) (Term x2 ps2)
+  | x1 == x2 = matchList env (zip ps1 ps2)
+  | otherwise = failure "no match"
+compear env (Var x) (Var y)
+  | x /= y = success (update env x (Var y))
+  | otherwise = success env
+compear env (Var x) p
+  | not (occurs (Var x) p) = success (update env x p)
+  | otherwise = failure "occurs check failed"
+compear env (!p) (!(Var x)) = compear env (Var x) p
+occurs v (Term x ps) = or [occurs v p | p <- ps]
+occurs ((!(Var (!y)))) (Var x) = y == x
+occurs (!p) (Var x) = False

@@ -31,6 +31,6 @@ run (mon, m_iter, m_toler, max_jcb_iter, jcb_toler, relax, dlt_t)
       init_vec
   where chl_fac = chl_factor init_L
         (init_L, o_to_n) = orded_mat p_total el_det_fac p_steer p_fixed
-        (!p_asb_table) = get_asb_table p_total e_total p_nodel p_steer
+        p_asb_table = get_asb_table p_total e_total p_nodel p_steer
         v_asb_table = get_asb_table n_total e_total v_nodel v_steer
         el_det_fac = get_el_det_fac e_total coord p_steer

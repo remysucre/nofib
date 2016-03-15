@@ -7,29 +7,29 @@ import System.Environment
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy.Char8 as L
 main
-  = do (!n) <- getArgs >>= readIO . head
+  = do n <- getArgs >>= readIO . head
        writeAlu ">ONE Homo sapiens alu"
          (L.take (fromIntegral n * 2) (L.cycle alu))
        make ">TWO IUB ambiguity codes" (n * 3) iub 42 >>=
          void . make ">THREE Homo sapiens frequency" (n * 5) homosapiens
 writeAlu name (!s0) = B.putStrLn name >> go s0
-  where go s = L.putStrLn h >> unless (L.null t) (go t)
-          where (h, t) = L.splitAt 60 s
-make name n0 tbl seed0
+  where go (!s) = L.putStrLn h >> unless (L.null t) (go t)
+          where ((!h), t) = L.splitAt 60 s
+make name (!n0) tbl seed0
   = do B.putStrLn name
-       let modulus = 139968
-           fill (((!c), (!p)) : cps) (!j)
-             = let !k
+       let (!modulus) = 139968
+           fill ((!((!c), p)) : cps) (!j)
+             = let !(!k)
                      = min modulus (floor (fromIntegral modulus * (p :: Float) + 1))
                  in B.replicate (k - j) c : fill cps k
-           fill _ _ = []
-           lookupTable
+           fill (!_) (!_) = []
+           (!lookupTable)
              = B.concat $
-                 fill (scanl1 (\ ((!_), p) (!(c, q)) -> (c, p + q)) tbl) 0
-           (!line) = B.replicate 60 '\NUL'
+                 fill (scanl1 (\ (_, (!p)) (!((!c), (!q))) -> (c, p + q)) tbl) 0
+           line = B.replicate 60 '\NUL'
        unsafeUseAsCString line $
          \ ptr ->
-           do let make' n !(!i) seed
+           do let make' n (!i) seed
                     | n > (0 :: Int) =
                       do let newseed = rem (seed * 3877 + 29573) modulus
                          plusPtr ptr i `poke` unsafeIndex lookupTable newseed
@@ -47,4 +47,4 @@ iub
 homosapiens
   = [('a', 0.302954942668), ('c', 0.1979883004921),
      ('g', 0.1975473066391), ('t', 0.3015094502008)]
-puts bs n = B.putStrLn (B.take n bs)
+puts bs (!n) = B.putStrLn (B.take n bs)

@@ -21,7 +21,7 @@ cc_list
         select1 = \ (x, _, _, _, _, _) -> x
         select2 = \ (_, x, _, _, _, _) -> x
         select3 = \ (_, _, x, _, _, _) -> x
-        select4 = \ ((!_), _, _, x, _, _) -> x
+        select4 = \ (_, _, _, x, _, _) -> x
         select5 = \ (_, _, _, _, x, _) -> x
         select6 = \ (_, _, _, _, _, (!x)) -> x
 c4 = 4 :: Frac_type
@@ -75,16 +75,15 @@ c_mat ::
 c_mat
   = s_listArray bnds
       (map
-         (\ ((!col1), col2, col3, col4, (!col5), col6) ->
-            (\ (gd1, gd2, (!gd3)) u ->
+         (\ (col1, col2, (!col3), col4, col5, col6) ->
+            (\ (gd1, gd2, gd3) u ->
                map (\ col -> list_match_prod col u)
                  [map ((*) gd1) col1, map ((*) gd2) col2, map ((*) gd3) col3,
                   map (f' gd2 gd3) col4, map (f' gd1 gd3) col5,
                   map (f' gd1 gd2) col6])
               `bindTo`
-              (\ f ->
-                 (\ (y1, y2) (u1, (!u2)) -> zipWith (+) (f y1 u1) (f y2 u2))))
+              (\ f -> (\ (y1, y2) (u1, u2) -> zipWith (+) (f y1 u1) (f y2 u2))))
          cc_list)
-  where f' = \ g1 g2 x -> (fst x) * g1 + (snd x) * g2
-        (!bnds) = (1, v_nodel)
+  where f' = \ g1 g2 (!x) -> (fst x) * g1 + (snd x) * g2
+        bnds = (1, v_nodel)
         bindTo x k = k x

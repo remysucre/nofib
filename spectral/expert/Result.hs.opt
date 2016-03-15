@@ -1,0 +1,13 @@
+module Result where
+ 
+data Result a r = Answer a
+                | Reason r
+success (!a) = Answer a
+succeeds (Answer (!a)) = True
+succeeds (!_) = False
+answer ((!(Answer a))) = a
+failure (!r) = Reason r
+fails = not . succeeds
+reason ((!(Reason r))) = r
+answers (Answer a) = [a]
+answers _ = []

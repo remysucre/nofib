@@ -39,7 +39,7 @@ orded_mat p_total el_det_fac p_steer fixed = (init_L, o_to_n)
         o_to_n = s_amap ((!^) min_to_n) o_to_min
         n_to_o = inv_map o_to_n
         o_to_min = inv_map min_to_o
-        (!min_to_o) = s_listArray n_bnds' (0 : min_degree old_rows)
+        min_to_o = s_listArray n_bnds' (0 : min_degree old_rows)
          
         min_to_n :: My_Array Int Int
         min_to_n
@@ -66,7 +66,7 @@ orded_mat p_total el_det_fac p_steer fixed = (init_L, o_to_n)
                           where new_k = old_anc !^ k
                         (rss, new_ance)
                           = foldl
-                              (\ (rs, anc) k1 ->
+                              (\ (!(rs, anc)) k1 ->
                                  (root (k1, anc)) `bindTo`
                                    (\ (r, new_anc) ->
                                       (r =: i) `bindTo`
@@ -77,21 +77,21 @@ orded_mat p_total el_det_fac p_steer fixed = (init_L, o_to_n)
                               (remove i (get_js (min_to_o !^ i) o_to_min))
         init_L
           = s_listArray (1, length block_ends)
-              [(s_listArray bn [get_v i i | (!i) <- range bn],
-                (filter (\ (_, j) -> j <= u)
+              [(s_listArray bn [get_v i i | i <- range bn],
+                (filter (\ ((!_), j) -> j <= u)
                    [(i, find_first bn (find_non0 i)) | i <- range (l + 1, p_total)])
                   `bindTo`
                   (\ non_emp_set ->
                      s_def_array (l + 1, p_total) (u + 1, [])
                        [i =: (j', [get_v i j | j <- range (j', min u (i - 1))]) |
-                        ((!i), j') <- non_emp_set]))
+                        (i, j') <- non_emp_set]))
                | bn@(l, u) <- block_bnds]
           where get_v (!i) j
                   = if (i' < j') then (old_mat !^ j') !^ i' else
                       (old_mat !^ i') !^ j'
                   where i' = n_to_o !^ i
                         j' = n_to_o !^ j
-                find_non0 i
+                find_non0 (!i)
                   = foldl (\ ar j -> all_non0s j ar) (s_def_array (1, i) False [])
                       (get_js (n_to_o !^ i) o_to_n)
                   where all_non0s j arr
@@ -101,9 +101,8 @@ orded_mat p_total el_det_fac p_steer fixed = (init_L, o_to_n)
                 find_first :: (Int, Int) -> (My_Array Int Bool) -> Int
                 find_first (j1, u) non0_line = f' j1
                   where f' j = if (j > u) || non0_line !^ j then j else f' (j + 1)
-                (!block_ends) = [i | (i, j) <- s_assocs new_e_tree, j /= (i + 1)]
-                (!block_bnds)
-                  = zip (1 : (map ((+) 1) (init block_ends))) block_ends
+                block_ends = [i | (i, (!j)) <- s_assocs new_e_tree, j /= (i + 1)]
+                block_bnds = zip (1 : (map ((+) 1) (init block_ends))) block_ends
                  
                 decnd :: My_Array Int [Int]
                 decnd
@@ -113,7 +112,7 @@ orded_mat p_total el_det_fac p_steer fixed = (init_L, o_to_n)
         old_rows
           = s_accumArray (++) [] n_bnds
               (concat
-                 [[j | ((!j), _) <- sparse_assocs (old_mat !^ i)] `bindTo`
+                 [[j | (j, _) <- sparse_assocs (old_mat !^ i)] `bindTo`
                     (\ j_set -> (i =: j_set) : [j' =: [i] | j' <- j_set, i /= j'])
                   | i <- range n_bnds])
          
@@ -123,7 +122,7 @@ orded_mat p_total el_det_fac p_steer fixed = (init_L, o_to_n)
               [(arr !^ i) `bindTo`
                  (\ ar -> i =: ar //^ [i =: (ar !^ i) * large_scalor])
                | i <- fixed]
-          where (!arr)
+          where arr
                   = s_listArray n_bnds
                       [s_accumArray (+) (0 :: Frac_type) (1, i) (temp !^ i) |
                        i <- range n_bnds]
@@ -138,29 +137,29 @@ orded_mat p_total el_det_fac p_steer fixed = (init_L, o_to_n)
                                  (\ pairs ->
                                     concat
                                       [(dd_mat !^ ii) `bindTo`
-                                         (\ dd_m ->
-                                            [i =: [j =: (dd_m !^ jj) d_f] | ((!jj), j) <- pairs,
+                                         (\ (!dd_m) ->
+                                            [i =: [j =: (dd_m !^ jj) d_f] | (jj, j) <- pairs,
                                              j <= i])
                                        | (ii, i) <- pairs]))
-                          | e <- s_indices el_det_fac])
+                          | (!e) <- s_indices el_det_fac])
                 dd_mat
                   = s_listArray (1, p_nodel)
                       [s_listArray (1, p_nodel) [f11, f12, f13],
                        s_listArray (1, p_nodel) [f12, f22, f23],
                        s_listArray (1, p_nodel) [f13, f23, f33]]
-                  where f = \ x y u v d -> (x * y + u * v) * d
-                        s1 = \ (x, _, _) -> x
+                  where f = \ x y u v (!d) -> (x * y + u * v) * d
+                        s1 = \ ((!x), _, _) -> x
                         s2 = \ (_, y, _) -> y
-                        s3 = \ (_, _, (!z)) -> z
+                        s3 = \ (_, _, z) -> z
                         f11 (det, (x, y)) = f c1 c1 c2 c2 det
                           where c1 = s1 x
                                 c2 = s1 y
-                        f12 = \ (!(det, ((!x), y))) -> f (s1 x) (s2 x) (s1 y) (s2 y) det
-                        f13 = \ (det, (!((!x), y))) -> f (s1 x) (s3 x) (s1 y) (s3 y) det
-                        f22 (det, ((!x), y)) = f c1 c1 c2 c2 det
+                        f12 = \ (det, ((!x), (!y))) -> f (s1 x) (s2 x) (s1 y) (s2 y) det
+                        f13 = \ (det, (x, y)) -> f (s1 x) (s3 x) (s1 y) (s3 y) det
+                        f22 (det, (x, y)) = f c1 c1 c2 c2 det
                           where c1 = s2 x
-                                c2 = s2 y
-                        f23 = \ (!(det, (x, y))) -> f (s2 x) (s3 x) (s2 y) (s3 y) det
-                        f33 ((!det), (x, y)) = f c1 c1 c2 c2 det
+                                (!c2) = s2 y
+                        f23 = \ (det, (x, y)) -> f (s2 x) (s3 x) (s2 y) (s3 y) det
+                        f33 (det, (x, y)) = f c1 c1 c2 c2 det
                           where c1 = s3 x
                                 c2 = s3 y

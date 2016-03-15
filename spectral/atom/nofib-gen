@@ -9,36 +9,21 @@ Main.hs:49:10: Warning:
       ‘abs’ and ‘signum’
     In the instance declaration for ‘Num [a]’
 
-Main.hs:64:6: Warning:
+Main.hs:64:3: Warning:
     Local definition of ‘<*>’ clashes with a future Prelude name - this will become an error in GHC 7.10, under the Applicative-Monad Proposal.
-<<ghc: 247688184 bytes, 66 GCs, 7954913/16752272 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.28 elapsed), 0.24 GC (0.24 elapsed) :ghc>>
+<<ghc: 252456368 bytes, 67 GCs, 7963953/16785280 avg/max bytes residency (5 samples), 38M in use, 0.00 INIT (0.00 elapsed), 0.39 MUT (0.50 elapsed), 0.37 GC (0.37 elapsed) :ghc>>
 ==nofib== atom: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-  12422	   1160	      0	  13582	   350e	Main.o
+  12438	   1128	      0	  13566	   34fe	Main.o
 ==nofib== atom: time to link atom follows...
-<<ghc: 38405032 bytes, 14 GCs, 409636/648576 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.44 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38432144 bytes, 14 GCs, 409636/648576 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.84 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== atom: size of atom follows...
    text	   data	    bss	    dec	    hex	filename
- 920207	  52728	  48776	1021711	  f970f	atom
+ 920447	  52728	  48776	1021951	  f97ff	atom
 ==nofib== atom: time to run atom follows...
-timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;   timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;
+timeout 40s ../../runstdtest/runstdtest  ./atom  -o1 atom.stdout -o1 atom.stdout  -ghc-timing     1000;
 
-real	0m0.238s
-user	0m0.225s
-sys	0m0.004s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
-
-real	0m0.232s
-user	0m0.226s
-sys	0m0.007s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
-
-real	0m0.233s
-user	0m0.228s
-sys	0m0.005s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
-
-real	0m0.231s
-user	0m0.227s
-sys	0m0.004s
-<<ghc: 364117520 bytes, 664 GCs (635 + 29), 0/0 avg/max bytes residency (0 samples), 47985144 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.10 GC (0.10 elapsed), 0.09 GC(0) (0.09 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>
+real	0m0.350s
+user	0m0.332s
+sys	0m0.008s
+<<ghc: 383769056 bytes, 701 GCs (664 + 37), 0/0 avg/max bytes residency (0 samples), 54761792 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.19 elapsed), 0.15 GC (0.15 elapsed), 0.14 GC(0) (0.14 elapsed), 0.01 GC(1) (0.01 elapsed), 1 balance :ghc>>

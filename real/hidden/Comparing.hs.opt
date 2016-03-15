@@ -20,7 +20,7 @@ comp l (!p@(Plt _ ks))
             [edgeT (s l) v, edgeT w (t l)]
   where inS = s (l) `into` p
         inT = t (l) `into` p
-        (!crosses) = nub [p | k <- ks, (p, q) <- cross l k]
+        crosses = nub [p | k <- ks, (p, q) <- cross l k]
         cr1 = head crosses
         cr2 = last crosses
         ((!v), w)
@@ -34,7 +34,7 @@ above ls ks
         else or [z (p) > alt ks p | p <- olk]
       else
       if vertical ks then or [alt ls q > z (q) | (!q) <- okl] else
-        or [alt ls p > alt ks p | p <- ovl]
+        or [alt ls p > alt ks p | (!p) <- ovl]
   where (!olk) = overlap ls ks
         okl = overlap ks ls
-        ovl = nub ([proj p | p <- olk] ++ [proj p | p <- okl])
+        ovl = nub ([proj p | p <- olk] ++ [proj p | (!p) <- okl])

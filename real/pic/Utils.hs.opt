@@ -7,7 +7,7 @@ infix 1 =:
 a =: b = (a, b)
  
 applyOpToMesh :: (Mesh -> Range -> Value) -> Mesh -> Indx -> Mesh
-applyOpToMesh operator mesh n'
+applyOpToMesh operator (!mesh) n'
   = array ((0, 0), (n, n))
       ([(0, 0) =: operator mesh [n, 0, 1, n, 0, 1]] ++
          [(0, n) =: operator mesh [n, 0, 1, n1, n, 0]] ++
@@ -34,7 +34,7 @@ coarseMesh :: Mesh -> Indx -> Mesh
 coarseMesh mesh n
   = array ((0, 0), (nHalf, nHalf))
       [(i, j) =: mesh ! (i * 2, j * 2) | i <- [0 .. nHalf],
-       j <- [0 .. nHalf]]
+       (!j) <- [0 .. nHalf]]
   where nHalf = n `div` 2 - 1
  
 fineMesh :: Mesh -> Indx -> Mesh
@@ -45,27 +45,26 @@ fineMesh mesh nHalf'
            [(n, 0) =: 3] ++
              [(n, n) =: 3] ++
                [(0, 2 * j) =: 4 | j <- [1 .. nHalf]] ++
-                 [(0, 2 * j - 1) =: 4 | j <- [1 .. nHalf]] ++
+                 [(0, 2 * j - 1) =: 4 | (!j) <- [1 .. nHalf]] ++
                    [(n, 2 * j) =: 4 | j <- [1 .. nHalf]] ++
                      [(n, 2 * j - 1) =: 4 | j <- [1 .. nHalf]] ++
-                       [(2 * i, 0) =: 5 | i <- [1 .. nHalf]] ++
+                       [(2 * i, 0) =: 5 | (!i) <- [1 .. nHalf]] ++
                          [(2 * i - 1, 0) =: 5 | i <- [1 .. nHalf]] ++
-                           [(2 * i, n) =: 5 | i <- [1 .. nHalf]] ++
+                           [(2 * i, n) =: 5 | (!i) <- [1 .. nHalf]] ++
                              [(2 * i - 1, n) =: 5 | i <- [1 .. nHalf]] ++
-                               [(2 * i, 2 * j) =: 6 | (!(!i)) <- [1 .. nHalf], j <- [1 .. nHalf]]
-                                 ++
+                               [(2 * i, 2 * j) =: 6 | i <- [1 .. nHalf], (!j) <- [1 .. nHalf]] ++
                                  [(2 * i, 2 * j - 1) =: 6 | i <- [1 .. nHalf], j <- [1 .. nHalf]] ++
                                    [(2 * i - 1, 2 * j) =: 6 | i <- [1 .. nHalf], j <- [1 .. nHalf]]
                                      ++
                                      [(2 * i - 1, 2 * j - 1) =: 6 | i <- [1 .. nHalf],
                                       j <- [1 .. nHalf]])
-  where nHalf = nHalf' - 1
+  where (!nHalf) = nHalf' - 1
         n = 2 * nHalf' - 1
  
 genRand :: Value -> Value
-genRand seed = r1 / 655357
+genRand (!seed) = r1 / 655357
   where r1 = (31453257 * seed + 271829) `fiRem` 655357
-        fiRem x m = x - fromIntegral ((truncate x `div` m) * m)
+        fiRem (!x) m = x - fromIntegral ((truncate x `div` m) * m)
  
 log2 :: Int -> Int
 log2 n = log2' n 0

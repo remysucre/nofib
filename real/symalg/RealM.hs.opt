@@ -33,16 +33,16 @@ lookupTree tree (!n) = followPath (getPath (1 - n) []) tree
   where getPath 1 p = p
         getPath n p | even n = getPath (n `quot` 2) (0 : p)
         getPath n p | odd n = getPath (n `quot` 2) (1 : p)
-        followPath [] (!(TreeC (!x) (!_) _)) = x
-        followPath ((!(0 : ps))) (TreeC x (!lc) (!_)) = followPath ps lc
-        followPath (1 : ps) (TreeC x _ rc) = followPath ps rc
+        followPath [] (TreeC (!x) _ _) = x
+        followPath (0 : ps) (TreeC x (!lc) _) = followPath ps lc
+        followPath (1 : (!ps)) ((!(TreeC x _ rc))) = followPath ps rc
  
 mapTree :: (a -> b) -> Tree a -> Tree b
-mapTree (!f) ((!(TreeC x (!lc) rc)))
+mapTree f (TreeC x lc rc)
   = TreeC (f x) (mapTree f lc) (mapTree f rc)
  
 int2Real :: Integer -> RealT
-int2Real x = RealC (mapTree (\ (!n) -> scale x n) numberTree)
+int2Real (!x) = RealC (mapTree (\ n -> scale x n) numberTree)
  
 addReal :: RealT -> RealT -> RealT
 addReal x y
@@ -53,7 +53,7 @@ addReal x y
          numberTree)
  
 subReal :: RealT -> RealT -> RealT
-subReal x y
+subReal x (!y)
   = RealC
       (mapTree
          (\ (!n) ->
@@ -61,7 +61,7 @@ subReal x y
          numberTree)
  
 mulReal :: RealT -> RealT -> RealT
-mulReal (xr@(RealC x)) (yr@(RealC y))
+mulReal (xr@(RealC x)) (yr@(!(RealC y)))
   = RealC
       (mapTree
          (\ n ->
@@ -82,10 +82,10 @@ divReal :: RealT -> RealT -> RealT
 divReal x y = mulReal x (reciprocalReal y)
  
 reciprocalReal :: RealT -> RealT
-reciprocalReal (!xr@(RealC x))
+reciprocalReal xr@(RealC x)
   = RealC (mapTree (\ n -> ((f (dx + n)) + 5) `quot` 10) numberTree)
   where dx = msd x 0
-        f (!m)
+        f m
           = if m >= 0 then 0 else
               if m == (-1) then 10000 `quot` (evalReal xr (dx - 2)) else
                 (scale
@@ -96,28 +96,28 @@ reciprocalReal (!xr@(RealC x))
                 fm = f hm
  
 sqrReal :: RealT -> RealT
-sqrReal (xr@(RealC x))
+sqrReal (xr@(RealC (!x)))
   = RealC
       (mapTree
          (\ n ->
             let m = if n >= 0 then (n + 1) `quot` 2 else (n - 1) `quot` 2
-                (!x0) = evalReal xr m
+                x0 = evalReal xr m
                 x1 = evalReal xr (n - (msd x 0) - 2)
               in
               if (x0 == 0) then 0 else scale (x1 * x1) (4 + 2 * (msd x 0) - n))
          numberTree)
  
 sqrtReal :: RealT -> RealT
-sqrtReal (!xr@(RealC x))
+sqrtReal xr@(RealC x)
   = RealC
       (mapTree
-         (\ (!n) ->
+         (\ n ->
             if (evalReal xr (2 * n)) == 0 then 0 else
               f n (2 * hdx + 2) xr ((-2 * hdx) - 2 + n))
          numberTree)
-  where (!dx) = msd x 0
+  where dx = msd x 0
         hdx = if dx >= 0 then (dx + 1) `quot` 2 else dx `quot` 2
-        f n dx (!xr) m
+        f n dx xr m
           = if m >= 0 then 0 else
               if m == (-1) then
                 scale ((round . sqrt . fromInteger) (evalReal xr (dx - 10)))
@@ -125,5 +125,5 @@ sqrtReal (!xr@(RealC x))
                 else (fm + xv `quot` fm) `quot` 2
           where hm = (m - 1) `quot` 2
                 fm = (f n dx xr hm)
-                (!xv) = evalReal xr (n + n)
-                (!hx) = dx `quot` 2
+                xv = evalReal xr (n + n)
+                hx = dx `quot` 2

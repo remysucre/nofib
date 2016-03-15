@@ -8,24 +8,25 @@ lemmas :: LUT
 lemmas = addlemmalst (makelemmas rules) newLUT
  
 makelemmas :: [String] -> [Lisplist]
-makelemmas [] = []
-makelemmas (h : t) = mkLisplist (strToToken h) : (makelemmas t)
+makelemmas (![]) = []
+makelemmas (!((!((!h) : (!t)))))
+  = mkLisplist (strToToken h) : (makelemmas t)
  
 addlemmalst :: [Lisplist] -> LUT -> LUT
-addlemmalst (![]) (!term) = term
-addlemmalst (!(h : t)) (!term) = addlemmalst t (addlemma h term)
+addlemmalst [] term = term
+addlemmalst (!((!h) : t)) (!term) = addlemmalst t (addlemma h term)
  
 addlemma :: Lisplist -> LUT -> LUT
-addlemma (!Nil) (!term) = term
-addlemma (!(Atom x)) (!term) = error "Atoms can't be lemmas"
+addlemma Nil term = term
+addlemma ((!(Atom x))) (!term) = error "Atoms can't be lemmas"
 addlemma (Cons (x, y)) (!term)
   | tv x == "equal" && not (atom z) =
     addtoLUT (tv (car z), Cons (x, y), term)
   | otherwise = error "Malformed lemma"
-  where z = car y
+  where (!z) = car y
  
 tautp :: Lisplist -> Bool
-tautp term = tautologyp (rewrite term lemmas, Nil, Nil)
+tautp (!term) = tautologyp (rewrite term lemmas, Nil, Nil)
  
 statement :: Lisplist
 statement
@@ -46,6 +47,6 @@ testresult :: Bool
 testresult = tautp teststatement
  
 report :: Bool -> String
-report (!True) = "The term is a tautology\n"
-report False = "The term is not a tautology\n"
+report True = "The term is a tautology\n"
+report (!False) = "The term is not a tautology\n"
 main = putStr (report testresult)

@@ -18,12 +18,12 @@ specialiseI ((!(All xxs tt)))
       (\ (!yys) -> returnI (applySubs xxs yys tt))
  
 applySubs :: [TVarId] -> [MonoType] -> MonoType -> MonoType
-applySubs xxs (!yys) (!tt) = applySub (makeSub (zip xxs yys)) tt
+applySubs xxs yys tt = applySub (makeSub (zip xxs yys)) tt
  
 generaliseI :: Env -> MonoType -> Infer PolyType
-generaliseI (!aa) tt
+generaliseI aa tt
   = getSubI `thenI`
-      (\ s ->
+      (\ (!s) ->
          let aaVars = nub (freeTVarSubEnv s aa) in
            let ttVars = nub (freeTVarMono tt) in
              let (!xxs) = ttVars `minus` aaVars in returnI (All xxs tt))
@@ -33,21 +33,21 @@ freeTVarSubEnv (!s) aa
   = concat (map (freeTVarMono . lookupSub s) (freeTVarEnv aa))
  
 inferTerm :: Env -> Term -> Infer MonoType
-inferTerm (!aa) ((!(Var x)))
+inferTerm aa (!(Var x))
   = (x `elem` domEnv aa) `guardI`
       (let ss = lookupEnv aa x in
          specialiseI ss `thenI`
            (\ tt -> substituteI tt `thenI` (\ uu -> returnI uu)))
-inferTerm aa ((!(Abs x v)))
+inferTerm aa ((!(Abs (!x) v)))
   = freshI `thenI`
       (\ xx ->
          inferTerm (extendLocal aa x xx) v `thenI`
            (\ vv -> substituteI xx `thenI` (\ uu -> returnI (uu `arrow` vv))))
-inferTerm aa ((!(App t u)))
+inferTerm (!aa) (App t u)
   = inferTerm aa t `thenI`
       (\ (!tt) ->
          inferTerm aa u `thenI`
-           (\ (!uu) ->
+           (\ uu ->
               freshI `thenI`
                 (\ xx ->
                    unifyI tt (uu `arrow` xx) `thenI`

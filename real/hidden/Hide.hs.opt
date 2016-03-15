@@ -15,7 +15,7 @@ hiddenline v corners
         (base, factor) = getExtremes (concat rotated)
  
 hide :: Array (Triangle Int) Bool -> Object -> Plate -> [Edge]
-hide memory obj bottom@(!(Plt (!_) ls)) = foldr cmp ls tops
+hide memory obj bottom@(Plt (!_) ls) = foldr cmp ls tops
   where tops = [top | top <- obj, lazyAbove memory top bottom]
  
 hideObj :: Object -> [Edge]

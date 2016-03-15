@@ -33,7 +33,7 @@ cmd_process (c, e)
                    where rexpr = eval bexpr e
                          res = printAst ast e ++ (printBasicExp rexpr e)
                  (!(Eval bexpr)) -> (printBasicExp (eval bexpr e) e, e)
-                 (!_) -> (printAst ast e, e)
+                 _ -> (printAst ast e, e)
           where ast = parse c
  
 printHelp :: String

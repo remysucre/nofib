@@ -61,7 +61,7 @@ tg_iter mon m_iter m_toler max_jcb_iter jcb_toler relax dlt_t
                       (shows (retrieve_obj new_p) "\n") ++
                         "velocities:\n" ++ (shows (retrieve_obj new_u) "\n")
                 tmp_p | normalize_obj new_p = retrieve_obj new_p
-                (!(tmp_u_x, tmp_u_y)) | normalize_obj new_u = retrieve_obj new_u
+                (tmp_u_x, tmp_u_y) | normalize_obj new_u = retrieve_obj new_u
                 max_tol = max tol_u tol_p
                 tol_u
                   = tol_cal ((s_elems tmp_u_x) ++ (s_elems tmp_u_y))

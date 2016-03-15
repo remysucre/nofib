@@ -14,59 +14,59 @@ type Entity = (Int, Int, Int)
 type Join = (Int, Int, Int, Int, Int)
  
 insertT :: Key -> entity -> Tree entity -> Tree entity
-insertT k e (Node (!k') (!l) (!r))
+insertT k e (Node (!k') (!l) r)
   | k <= k' = Node k' (insertT k e l) r
   | otherwise = Node k' l (insertT k e r)
-insertT (!k) e l@(Leaf k' _)
+insertT k e (!l@(Leaf k' _))
   | k < k' = Node k l' l
   | k > k' = Node k' l l'
   | otherwise = error ("Key Value " ++ show k ++ " already exists")
-  where (!l') = Leaf k e
-insertT (!k) e (!Empty) = Leaf k e
+  where l' = Leaf k e
+insertT k e (!Empty) = Leaf k e
  
 lookupT :: Key -> Tree entity -> Maybe entity
-lookupT k ((!(Node (!k') l r)))
+lookupT (!k) (Node k' (!l) r)
   | k <= k' = lookupT k l
   | otherwise = lookupT k r
-lookupT (!k) (!((!(Leaf k' e))))
+lookupT k (!(Leaf k' e))
   | k == k' = Just e
   | otherwise = Nothing
-lookupT k (!Empty) = Nothing
+lookupT k Empty = Nothing
  
 forceTree :: Tree Join -> ()
-forceTree (Node (!k) (!l) (!r))
+forceTree (Node k l r)
   | k == k && forceTree l == () && forceTree r == () = ()
-forceTree (!(Leaf k (!e))) | k == k && e == e = ()
+forceTree ((!(Leaf (!k) e))) | k == k && e == e = ()
 forceTree Empty = ()
  
 readTree :: (Entity -> Key) -> String -> Tree Entity -> Tree Entity
 readTree fk [] t = t
-readTree (!fk) (!s) (!t)
+readTree fk s t
   = let (f, (!s')) = readInt s
         (g, s'') = readInt s'
-        (!(h, s''')) = readInt s''
+        (h, s''') = readInt s''
         e = (f, g, h)
         k = fk e
       in readTree fk s''' (insertT k e t)
  
 readInt :: String -> (Int, String)
 readInt s = readInt' 0 s
-  where readInt' n (!s@(!((!(c : cs)))))
+  where readInt' n s@(c : cs)
           | isDigit c = readInt' (n * 10 + fromEnum c - fromEnum '0') cs
-        readInt' n s = let (!s') = dropWhile isSpace s in (n, s')
+        readInt' (!n) (!s) = let (!s') = dropWhile isSpace s in (n, s')
  
 join :: Tree Entity -> Tree Entity -> Tree Join -> Tree Join
-join (!Empty) _ j = j
-join (!_) (!Empty) j = j
-join ((!(Leaf k (a, b, c)))) t j
+join Empty (!_) j = j
+join _ (!Empty) j = j
+join (!((!(Leaf (!k) (a, (!b), (!c)))))) (!t) j
   = case lookupT c t of
-        (!Nothing) -> j
-        (!(Just (!(d, (!e), (!f))))) -> insertT c (a, b, c, d, e) j
-join ((!(Node k l r))) (!t) j = join l t (join r t j)
+        Nothing -> j
+        Just ((!d), e, f) -> insertT c (a, b, c, d, e) j
+join (Node k l r) t (!j) = join l t (join r t j)
 main
-  = do ~((!(f1 : ~(f2 : _)))) <- getArgs
+  = do ~(!(f1 : ~((!(f2 : _))))) <- getArgs
        (!c1) <- readFile f1
        (!c2) <- readFile f2
-       let a = readTree (\ (!((!x), _, _)) -> x) c1 Empty
-       let b = readTree (\ ((!x), (!_), (!_)) -> x) c2 Empty
+       let (!a) = readTree (\ ((!x), _, _) -> x) c1 Empty
+       let b = readTree (\ (x, _, _) -> x) c2 Empty
        print (forceTree (join a b Empty))

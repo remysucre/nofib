@@ -2,11 +2,11 @@ module Main (main) where
 import Data.Char
 import Data.List
 main
-  = do stuff <- getContents
+  = do (!stuff) <- getContents
        putStr (say stuff)
 say = ('\n' :) . unlines . map join . transpose . map picChar
   where join = foldr1 (\ xs ys -> xs ++ "  " ++ ys)
-picChar c
+picChar (!c)
   | isUpper c = alphas !! (fromEnum c - fromEnum 'A')
   | isLower c = alphas !! (fromEnum c - fromEnum 'a')
   | isSpace c = blank
@@ -14,7 +14,7 @@ picChar c
   | c == '/' = slant
   | c == '\\' = reverse slant
   | otherwise =
-    head ([letter | (c', letter) <- punct, c' == c] ++ [nothing])
+    head ([letter | ((!c'), letter) <- punct, c' == c] ++ [nothing])
 blank = ["     ", "     ", "     ", "     ", "     "]
 slant = ["    ", "   ", "  ", " ", ""]
 nothing = repeat ""

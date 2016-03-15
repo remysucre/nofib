@@ -35,18 +35,18 @@ read_fs_cs f
         ([m_iter, max_jcb_iter], rest1) = read_n_int 2 start
         ([m_toler, (!jcb_toler), relax], rest2) = read_n_flt 3 rest1
         rest3 = skip_lines 2 rest2
-        (dlt_t, rest4) = rd_flt rest3
+        (dlt_t, (!rest4)) = rd_flt rest3
         rest5 = skip_lines 11 rest4
         data_file = head (drop 5 (words rest5))
 read_data f
   = (e_total, n_total, p_total, v_steer, p_steer, coord,
      (init_p, init_u), (all_bry, (x_fixed, y_fixed)), p_fixed)
   where hed1 = skip_lines 1 f
-        (i, (!hed2)) = rd_int hed1
+        (!(i, hed2)) = rd_int hed1
         start = skip_lines (i + 4) hed2
-        ((e_total :
-            (!(n_total : (bnd_total : (_ : ((!_) : (p_total : _))))))),
-         rest1)
+        (!((e_total :
+              (!(n_total : (bnd_total : (_ : (_ : (p_total : _))))))),
+           rest1))
           = read_n_int 6 start
         rest2 = skip_lines 2 rest1
         (v_vals, rest3)
@@ -57,10 +57,10 @@ read_data f
         rest6 = skip_lines 2 rest5
          
         line_size :: Int
-        (!line_size) = length (words (takeWhile ((/=) '\n') rest6)) - 1
-        (init_vals, rest7)
+        line_size = length (words (takeWhile ((/=) '\n') rest6)) - 1
+        (init_vals, (!rest7))
           = read_n_val (rd_pair rd_int (read_n_flt line_size)) n_total rest6
-        (!rest8) = skip_lines 2 rest7
+        rest8 = skip_lines 2 rest7
         (bry_vals, rest9)
           = read_n_val
               (rd_pair rd_int (read_n_val (rd_pair rd_int rd_flt) line_size))
@@ -68,15 +68,16 @@ read_data f
               rest8
         v_steer
           = s_array (1, e_total)
-              (map (\ ((!i) : (_ : rest)) -> i =: rest) v_vals)
+              (map (\ (i : (_ : rest)) -> i =: rest) v_vals)
         p_steer
           = s_array (1, e_total)
-              (map (\ (i : (_ : (!rest))) -> i =: rest)
+              (map (\ (i : (_ : rest)) -> i =: rest)
                  (map (take (p_nodel + 2)) v_vals))
         coord
           = s_array (1, n_total)
-              (map (\ (i, ((!x) : (y : _))) -> i =: (x, y)) c_vals)
-        v_init = map (\ (i, (x : (y : _))) -> (i, (x, y))) init_vals
+              (map (\ (!((!i), (x : (y : _)))) -> i =: (x, y)) c_vals)
+        v_init
+          = map (\ (!(i, ((!(x : (y : _)))))) -> (i, (x, y))) init_vals
         init_u
           = (s_def_array (1, n_total) (0 :: Frac_type)
                [i =:
@@ -96,21 +97,20 @@ read_data f
                  (if i `elem` p_fixed then
                     (snd . head) (dropWhile (\ t -> (fst t) /= i) p_cond) else
                     if (line_size == 5) then head y else x)
-               | ((!i), (_ : (_ : (x : y)))) <- init_vals, i <= p_total]
+               | (i, (_ : (_ : (x : y)))) <- init_vals, i <= p_total]
         bry_xys
-          = [(i, (x, y)) |
-             (!((!i), ((!(_, x)) : (!((!(_, y)) : _))))) <- bry_vals]
+          = [(i, (x, y)) | ((!i), (((!_), x) : ((_, y) : _))) <- bry_vals]
         x_fixed
           = s_def_array (1, n_total) False
-              [i =: True | (i, ((1, _) : _)) <- bry_vals]
+              [i =: True | (i, ((!(1, _)) : _)) <- bry_vals]
         y_fixed
           = s_def_array (1, n_total) False
-              [i =: True | ((!i), ((!_) : ((1, _) : _))) <- bry_vals]
+              [i =: True | (!(i, (_ : ((1, _) : _)))) <- bry_vals]
         all_bry
-          = s_def_array (1, n_total) False
-              [i =: True | (!(i, _)) <- bry_vals]
-        (!p_fixed) = map fst p_cond
+          = s_def_array (1, n_total) False [i =: True | (i, _) <- bry_vals]
+        p_fixed = map fst p_cond
         p_cond
           = if (line_size == 5) then
-              [(i, p) | ((!i), ((!(_ : (_ : (_ : ((1, p) : _))))))) <- bry_vals]
-              else [(i, p) | (i, (_ : (_ : (!(((!1), p) : _))))) <- bry_vals]
+              [(i, p) |
+               ((!i), (!((!(_ : (_ : (_ : (!((1, (!p)) : _))))))))) <- bry_vals]
+              else [(i, p) | (i, (!(_ : (_ : ((!(1, p)) : _))))) <- bry_vals]

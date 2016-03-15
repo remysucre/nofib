@@ -11,32 +11,33 @@ type Label = Int
  
 labelTree :: GenTree a -> GenTree (Label, a)
 labelTree t = label t `startingWith` 0
-  where label (Node x xs)
+  where label (Node x (!xs))
           = incr `bind`
-              \ n -> mmapl label xs `bind` \ ts -> retURN (Node (n, x) ts)
+              \ n -> mmapl label xs `bind` \ (!ts) -> retURN (Node (n, x) ts)
  
 ltGraph :: GenTree (Label, a) -> LabGraph a
-ltGraph (Node (n, x) xs)
+ltGraph (Node ((!n), (!x)) xs)
   = (n, x, map labelOf xs) : concat (map ltGraph xs)
-  where labelOf (Node (n, x) xs) = n
+  where labelOf (!((!(Node ((!n), x) xs)))) = n
  
 unGraph :: LabGraph a -> GenTree a
-unGraph ((n, x, cs) : ts) = Node x (map (unGraph . find) cs)
-  where find c = dropWhile (\ (d, (!_), _) -> c /= d) ts
+unGraph ((!(((!n), x, cs) : ts)))
+  = Node x (map (unGraph . find) cs)
+  where find c = dropWhile (\ (d, _, _) -> c /= d) ts
  
 unGraph' :: LabGraph String -> GenTree (Int, String)
-unGraph' lg = ung lg `startingWith` []
-  where ung ((n, x, cs) : ts)
+unGraph' (!lg) = ung lg `startingWith` []
+  where ung ((!(n, x, cs)) : ts)
           = mif (visited n) (retURN (Node (n, "<>") []))
-              (mmapl (ung . find) cs `bind` \ ts -> retURN (Node (n, x) ts))
+              (mmapl (ung . find) cs `bind` \ (!ts) -> retURN (Node (n, x) ts))
           where find c = dropWhile (\ (d, _, _) -> c /= d) ts
  
 visited :: Label -> SM [Label] Bool
-visited (!n)
+visited n
   = fetch `bind`
       \ us ->
         if n `elem` us then retURN True else
-          set (n : us) `bind` \ _ -> retURN False
+          set (n : us) `bind` \ (!_) -> retURN False
  
 findCommon :: Eq a => LabGraph a -> LabGraph a
 findCommon = snd . foldr sim (id, [])
@@ -45,47 +46,48 @@ findCommon = snd . foldr sim (id, [])
               Eq a =>
               (Label, a, [Label]) ->
                 (Label -> Label, LabGraph a) -> (Label -> Label, LabGraph a)
-        sim (n, s, cs) (r, lg)
+        sim ((!n), s, cs) (!(r, lg))
           = if null ms then (r, [(n, s, rcs)] ++ lg) else
               ((n +=> head ms) r, lg)
-          where ms = [m | (m, s', cs') <- lg, s == s', cs' == rcs]
-                rcs = map r cs
+          where (!ms)
+                  = [m | (!(m, (!s'), (!cs'))) <- lg, s == s', cs' == rcs]
+                (!rcs) = map r cs
  
 (+=>) :: Eq a => a -> b -> (a -> b) -> (a -> b)
-((!x) +=> (!fx)) f y = if x == y then fx else f y
+((!x) +=> fx) (!f) (!y) = if x == y then fx else f y
  
 cse :: Eq a => GenTree a -> LabGraph a
 cse = findCommon . ltGraph . labelTree
  
 instance Show a => Show (GenTree a) where
-        showsPrec (!d) (Node (!x) ts)
+        showsPrec d (!(Node (!x) ts))
           | null ts = shows x
           | otherwise =
             showChar '(' .
               shows x .
                 showChar ' ' .
-                  (foldr1 (\ x y -> x . showChar ' ' . y) (map shows ts)) .
+                  (foldr1 (\ (!x) y -> x . showChar ' ' . y) (map shows ts)) .
                     showChar ')'
  
 copy :: Int -> a -> [a]
-copy (!n) x = take n (repeat x)
+copy n x = take n (repeat x)
 space n = copy n ' '
  
 drawTree :: GenTree String -> String
 drawTree = unlines . draw
-draw (Node x ts)
+draw (Node (!x) ts)
   = grp (s1 ++ pad width x ++ "]") (space (width + 3)) (stLoop ts)
   where stLoop [] = [""]
         stLoop [t] = grp s2 "  " (draw t)
         stLoop (t : ts) = grp s3 s4 (draw t) ++ [s4] ++ rsLoop ts
         rsLoop [t] = grp s5 "  " (draw t)
-        rsLoop (t : ts) = grp s6 s4 (draw t) ++ [s4] ++ rsLoop ts
-        grp (!fst) rst = zipWith (++) (fst : repeat rst)
-        [s1, s2, s3, (!s4), s5, s6]
+        rsLoop (t : (!ts)) = grp s6 s4 (draw t) ++ [s4] ++ rsLoop ts
+        grp fst rst = zipWith (++) (fst : repeat rst)
+        [(!s1), s2, s3, s4, s5, s6]
           | pcGraphics =
             ["\196[", "\196\196", "\196\194", " \179", " \192", " \195"]
           | otherwise = ["-[", "--", "-+", " |", " `", " +"]
-        pad (!n) x = take n (x ++ repeat ' ')
+        pad (!n) (!x) = take n (x ++ repeat ' ')
         width = 4
         pcGraphics = False
  
@@ -93,10 +95,10 @@ showGraph :: Show a => LabGraph a -> String
 showGraph (![]) = "[]\n"
 showGraph (!xs) = "[" ++ loop (map show xs)
   where loop [x] = x ++ "]\n"
-        loop (x : xs) = x ++ ",\n " ++ loop xs
+        loop ((!(x : xs))) = x ++ ",\n " ++ loop xs
 plus x y = Node "+" [x, y]
 mult x y = Node "*" [x, y]
-prod xs = Node "X" xs
+prod (!xs) = Node "X" xs
 zerO = Node "0" []
 a = Node "a" []
 b = Node "b" []
@@ -114,7 +116,7 @@ main
   = putStr
       (unlines
          (map
-            (\ t ->
+            (\ (!t) ->
                let c = cse t in
                  copy 78 '-' ++
                    "\nExpression:\n" ++
@@ -124,6 +126,7 @@ main
                            "\nLabelled graph:\n" ++
                              showGraph c ++ "\nSimplified tree:\n" ++ showCse c)
             examples))
-  where showCse
-          = drawTree . mapGenTree (\ (n, s) -> show n ++ ":" ++ s) . unGraph'
-        mapGenTree f (Node x ts) = Node (f x) (map (mapGenTree f) ts)
+  where (!showCse)
+          = drawTree .
+              mapGenTree (\ ((!n), (!s)) -> show n ++ ":" ++ s) . unGraph'
+        mapGenTree (!f) (Node x ts) = Node (f x) (map (mapGenTree f) ts)

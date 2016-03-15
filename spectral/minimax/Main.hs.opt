@@ -1,5 +1,5 @@
 module Main where
 import Prog (prog)
 main
-  = do (!_) <- getContents
+  = do _ <- getContents
        putStr (prog "")

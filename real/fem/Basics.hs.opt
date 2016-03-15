@@ -5,10 +5,10 @@ showlj, showrj :: (Show a) => Int -> a -> [Char]
  
 rep :: Int -> a -> [a]
 rep (!0) x = []
-rep (!n) x = x : (rep (n - 1) x)
+rep n (!x) = x : (rep (n - 1) x)
 showrj l (!x) = (rep bs ' ') ++ ns
   where ns = dropWhile ((==) ' ') (show x)
-        (!bs)
+        bs
           | l <= length ns = 1
           | otherwise = l - length ns
 showlj l x = ns ++ (rep bs ' ')
@@ -19,4 +19,4 @@ showlj l x = ns ++ (rep bs ' ')
  
 azip :: [a] -> [b] -> [(a, b)]
 azip [] [] = []
-azip ((!x) : ls) (x' : (!ls')) = (x, x') : (azip ls ls')
+azip (x : ls) ((!x') : ls') = (x, x') : (azip ls ls')

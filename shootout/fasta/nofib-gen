@@ -3,34 +3,19 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing -o1 fasta.stdout
 ==nofib== fasta: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -O2 -XBangPatterns -XOverloadedStrings -package bytestring -c Main.hs -o Main.o
-<<ghc: 267958160 bytes, 70 GCs, 8474291/18270560 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.27 MUT (0.32 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
+<<ghc: 282932800 bytes, 78 GCs, 8479494/18264632 avg/max bytes residency (5 samples), 41M in use, 0.00 INIT (0.00 elapsed), 0.35 MUT (0.40 elapsed), 0.37 GC (0.37 elapsed) :ghc>>
 ==nofib== fasta: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   7227	   2192	      0	   9419	   24cb	Main.o
+   9075	   2176	      0	  11251	   2bf3	Main.o
 ==nofib== fasta: time to link fasta follows...
-<<ghc: 38938344 bytes, 14 GCs, 411952/650664 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.49 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38938432 bytes, 14 GCs, 411952/650664 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.65 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
 ==nofib== fasta: size of fasta follows...
    text	   data	    bss	    dec	    hex	filename
- 848516	  51568	  48776	 948860	  e7a7c	fasta
+ 850148	  51536	  48776	 950460	  e80bc	fasta
 ==nofib== fasta: time to run fasta follows...
-timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;   timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;   timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;   timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;
+timeout 40s ../../runstdtest/runstdtest  ./fasta  -o1 fasta.stdout -o1 fasta.stdout  -ghc-timing  -o1 fasta.stdout    2500000;
 
-real	0m0.389s
-user	0m0.343s
-sys	0m0.036s
-<<ghc: 310188136 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 116512 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.373s
-user	0m0.334s
-sys	0m0.038s
-<<ghc: 310188136 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 116512 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.36 MUT (0.36 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.374s
-user	0m0.324s
-sys	0m0.049s
-<<ghc: 310188136 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 116512 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.377s
-user	0m0.342s
-sys	0m0.034s
-<<ghc: 310188136 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 116512 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.37 MUT (0.37 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m0.659s
+user	0m0.593s
+sys	0m0.059s
+<<ghc: 310187400 bytes, 597 GCs (595 + 2), 0/0 avg/max bytes residency (0 samples), 125768 bytes GC work, 2M in use, 0.00 INIT (0.00 elapsed), 0.64 MUT (0.64 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

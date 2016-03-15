@@ -3,7 +3,7 @@ module Op (opName, opName1, opPrec, opPrec1, toOp, toOp1, opAssoc)
  
 opPrec1 :: String -> Int
 opPrec1 "-" = 1
-opPrec1 _ = 0
+opPrec1 (!_) = 0
  
 opPrec :: String -> Int
 opPrec "==" = 5
@@ -35,36 +35,36 @@ opName "-" = "sub"
 opName "*" = "mul"
 opName "/" = "div"
 opName (!"^") = "pow"
-opName (!_) = ""
+opName _ = ""
  
 opAssoc :: String -> String
 opAssoc "==" = "non"
 opAssoc ">=" = "non"
-opAssoc (!"<=") = "non"
+opAssoc "<=" = "non"
 opAssoc "/=" = "non"
 opAssoc ">" = "non"
-opAssoc (!"<") = "non"
+opAssoc "<" = "non"
 opAssoc "+" = "left"
 opAssoc "-" = "left"
 opAssoc (!"*") = "left"
-opAssoc (!"/") = "left"
+opAssoc "/" = "left"
 opAssoc "^" = "right"
 opAssoc _ = "non"
  
 toOp :: String -> String
 toOp "add" = "+"
-toOp "sub" = "-"
+toOp (!"sub") = "-"
 toOp "mul" = "*"
 toOp "div" = "/"
 toOp "pow" = "^"
 toOp "equ" = "=="
 toOp "lt" = "<"
-toOp "gt" = ">"
+toOp (!"gt") = ">"
 toOp "lte" = "<="
-toOp (!"gte") = ">="
+toOp "gte" = ">="
 toOp "ne" = "/="
-toOp (!_) = ""
+toOp _ = ""
  
 toOp1 :: String -> String
 toOp1 "neg" = "-"
-toOp1 (!_) = ""
+toOp1 _ = ""

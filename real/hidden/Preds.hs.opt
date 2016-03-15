@@ -15,5 +15,5 @@ onto p l
 into :: Vector -> Plate -> Bool
 into v p@(!(Plt _ ls))
   | vertical p = or [v `onto` l | l <- ls]
-  | otherwise = and [a >= 0 | (!a) <- zs] || and [a <= 0 | a <- zs]
+  | otherwise = and [a >= 0 | a <- zs] || and [a <= 0 | a <- zs]
   where zs = [z ((v - s (l)) * h (l)) | l <- ls]

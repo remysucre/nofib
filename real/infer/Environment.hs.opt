@@ -19,10 +19,10 @@ emptyEnv :: Env
 emptyEnv = MkEnv emptyFM
  
 extendLocal :: Env -> VarId -> MonoType -> Env
-extendLocal (!env) x (!t) = MkEnv (extendFM (rep env) x (All [] t))
+extendLocal (!env) x t = MkEnv (extendFM (rep env) x (All [] t))
  
 extendGlobal :: Env -> VarId -> PolyType -> Env
-extendGlobal (!env) (!x) t = MkEnv (extendFM (rep env) x t)
+extendGlobal env x t = MkEnv (extendFM (rep env) x t)
  
 makeEnv :: [(VarId, PolyType)] -> Env
 makeEnv = MkEnv . makeFM
@@ -40,7 +40,7 @@ freeTVarEnv :: Env -> [TVarId]
 freeTVarEnv env = concat (map freeTVarPoly (ranFM (rep env)))
  
 instance Read Env where
-        readsPrec (!d) = readsEnv
+        readsPrec d = readsEnv
  
 instance Show Env where
         showsPrec d = showsEnv
@@ -59,4 +59,5 @@ showsEnv
   = showsSurround "[" (showsStarSep ",\n " showsPair) "]" . unmakeEnv
  
 showsPair :: Shows (VarId, PolyType)
-showsPair (!(x, t)) = showsString x . showsString " : " . shows t
+showsPair (!((!x), t))
+  = showsString x . showsString " : " . shows t

@@ -3,34 +3,19 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== queens: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 172029248 bytes, 55 GCs, 8409819/18998792 avg/max bytes residency (5 samples), 42M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.23 elapsed), 0.26 GC (0.26 elapsed) :ghc>>
+<<ghc: 174966376 bytes, 55 GCs, 8404296/18967800 avg/max bytes residency (5 samples), 42M in use, 0.00 INIT (0.00 elapsed), 0.25 MUT (0.42 elapsed), 0.33 GC (0.33 elapsed) :ghc>>
 ==nofib== queens: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   2502	    312	      0	   2814	    afe	Main.o
+   2766	    312	      0	   3078	    c06	Main.o
 ==nofib== queens: time to link queens follows...
-<<ghc: 38410328 bytes, 14 GCs, 409676/648600 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.56 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38410416 bytes, 14 GCs, 409676/648600 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.77 elapsed), 0.07 GC (0.08 elapsed) :ghc>>
 ==nofib== queens: size of queens follows...
    text	   data	    bss	    dec	    hex	filename
- 859188	  48080	  48776	 956044	  e968c	queens
+ 859444	  48080	  48776	 956300	  e978c	queens
 ==nofib== queens: time to run queens follows...
-timeout 40s ../../runstdtest/runstdtest  ./queens  -o1 queens.stdout -o1 queens.stdout  -ghc-timing     10;   timeout 40s ../../runstdtest/runstdtest  ./queens  -o1 queens.stdout -o1 queens.stdout  -ghc-timing     10;   timeout 40s ../../runstdtest/runstdtest  ./queens  -o1 queens.stdout -o1 queens.stdout  -ghc-timing     10;   timeout 40s ../../runstdtest/runstdtest  ./queens  -o1 queens.stdout -o1 queens.stdout  -ghc-timing     10;
+timeout 40s ../../runstdtest/runstdtest  ./queens  -o1 queens.stdout -o1 queens.stdout  -ghc-timing     10;
 
-real	0m0.027s
-user	0m0.013s
+real	0m0.035s
+user	0m0.020s
 sys	0m0.006s
-<<ghc: 4887504 bytes, 10 GCs (8 + 2), 0/0 avg/max bytes residency (0 samples), 21016 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.019s
-user	0m0.015s
-sys	0m0.002s
-<<ghc: 4887504 bytes, 10 GCs (8 + 2), 0/0 avg/max bytes residency (0 samples), 21016 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.019s
-user	0m0.016s
-sys	0m0.002s
-<<ghc: 4887504 bytes, 10 GCs (8 + 2), 0/0 avg/max bytes residency (0 samples), 21016 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.018s
-user	0m0.015s
-sys	0m0.002s
-<<ghc: 4887504 bytes, 10 GCs (8 + 2), 0/0 avg/max bytes residency (0 samples), 21016 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.01 MUT (0.01 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+<<ghc: 4887504 bytes, 10 GCs (8 + 2), 0/0 avg/max bytes residency (0 samples), 21160 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.02 MUT (0.02 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

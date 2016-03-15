@@ -3,70 +3,55 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== prolog: time to compile Parse follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Parse.hs -o Parse.o
-<<ghc: 140797000 bytes, 39 GCs, 5561948/10265992 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.16 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+<<ghc: 145119392 bytes, 39 GCs, 5563812/10269792 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.23 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
 ==nofib== prolog: size of Parse.o follows...
    text	   data	    bss	    dec	    hex	filename
-   7005	    120	      0	   7125	   1bd5	Parse.o
+   7669	    120	      0	   7789	   1e6d	Parse.o
 ==nofib== prolog: time to compile PrologData follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c PrologData.hs -o PrologData.o
-<<ghc: 336800576 bytes, 117 GCs, 5568298/10459712 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.36 MUT (0.40 elapsed), 0.21 GC (0.21 elapsed) :ghc>>
+<<ghc: 365021104 bytes, 84 GCs, 7279022/14185112 avg/max bytes residency (5 samples), 33M in use, 0.00 INIT (0.00 elapsed), 0.60 MUT (0.65 elapsed), 0.34 GC (0.34 elapsed) :ghc>>
 ==nofib== prolog: size of PrologData.o follows...
    text	   data	    bss	    dec	    hex	filename
-  26734	   1640	      0	  28374	   6ed6	PrologData.o
+  29742	   1640	      0	  31382	   7a96	PrologData.o
 ==nofib== prolog: time to compile Subst follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Subst.hs -o Subst.o
-<<ghc: 120744952 bytes, 37 GCs, 5404882/10105000 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.15 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+<<ghc: 120529672 bytes, 37 GCs, 5412370/10121904 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.21 elapsed), 0.21 GC (0.21 elapsed) :ghc>>
 ==nofib== prolog: size of Subst.o follows...
    text	   data	    bss	    dec	    hex	filename
-   5507	    168	      0	   5675	   162b	Subst.o
+   5479	    168	      0	   5647	   160f	Subst.o
 ==nofib== prolog: time to compile Engine follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Engine.hs -o Engine.o
-<<ghc: 115835952 bytes, 37 GCs, 5398700/10037824 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.13 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
+<<ghc: 122659792 bytes, 38 GCs, 5387106/9977384 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.17 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
 ==nofib== prolog: size of Engine.o follows...
    text	   data	    bss	    dec	    hex	filename
-   6415	    128	      0	   6543	   198f	Engine.o
+   7703	    128	      0	   7831	   1e97	Engine.o
 ==nofib== prolog: time to compile Interact follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Interact.hs -o Interact.o
-<<ghc: 107647856 bytes, 37 GCs, 5581374/10349200 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.13 elapsed), 0.13 GC (0.13 elapsed) :ghc>>
+<<ghc: 108954664 bytes, 37 GCs, 5581992/10340480 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.19 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
 ==nofib== prolog: size of Interact.o follows...
    text	   data	    bss	    dec	    hex	filename
-   3081	    168	      0	   3249	    cb1	Interact.o
+   3275	    168	      0	   3443	    d73	Interact.o
 ==nofib== prolog: time to compile Version follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Version.hs -o Version.o
-<<ghc: 62087936 bytes, 20 GCs, 3995016/6995720 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.06 elapsed), 0.09 GC (0.09 elapsed) :ghc>>
+<<ghc: 62088024 bytes, 20 GCs, 3995016/6995720 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.07 MUT (0.08 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
 ==nofib== prolog: size of Version.o follows...
    text	   data	    bss	    dec	    hex	filename
      99	     32	      0	    131	     83	Version.o
 ==nofib== prolog: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 276563640 bytes, 69 GCs, 8744760/20155736 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.30 MUT (0.34 elapsed), 0.29 GC (0.29 elapsed) :ghc>>
+<<ghc: 289895088 bytes, 70 GCs, 8588400/19360176 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.39 MUT (0.45 elapsed), 0.32 GC (0.32 elapsed) :ghc>>
 ==nofib== prolog: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-  14234	   1328	      0	  15562	   3cca	Main.o
+  15074	   1368	      0	  16442	   403a	Main.o
 ==nofib== prolog: time to link prolog follows...
-<<ghc: 38480688 bytes, 14 GCs, 410964/648608 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.50 elapsed), 0.07 GC (0.07 elapsed) :ghc>>
+<<ghc: 38480776 bytes, 14 GCs, 410964/648608 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.56 elapsed), 0.06 GC (0.07 elapsed) :ghc>>
 ==nofib== prolog: size of prolog follows...
    text	   data	    bss	    dec	    hex	filename
- 902628	  47664	  48776	 999068	  f3e9c	prolog
+ 908468	  47696	  48776	1004940	  f558c	prolog
 ==nofib== prolog: time to run prolog follows...
-timeout 40s ../../runstdtest/runstdtest  ./prolog -i  prolog.stdin -o1 prolog.stdout -o1 prolog.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./prolog -i  prolog.stdin -o1 prolog.stdout -o1 prolog.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./prolog -i  prolog.stdin -o1 prolog.stdout -o1 prolog.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./prolog -i  prolog.stdin -o1 prolog.stdout -o1 prolog.stdout  -ghc-timing     ;
+timeout 40s ../../runstdtest/runstdtest  ./prolog -i  prolog.stdin -o1 prolog.stdout -o1 prolog.stdout  -ghc-timing     ;
 
-real	0m0.015s
-user	0m0.003s
+real	0m0.017s
+user	0m0.004s
 sys	0m0.004s
-<<ghc: 1588896 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 76704 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.007s
-user	0m0.002s
-sys	0m0.003s
-<<ghc: 1588896 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 76704 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.006s
-user	0m0.003s
-sys	0m0.002s
-<<ghc: 1588896 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 76704 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.007s
-user	0m0.002s
-sys	0m0.003s
-<<ghc: 1588896 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 76704 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+<<ghc: 1566120 bytes, 3 GCs (1 + 2), 0/0 avg/max bytes residency (0 samples), 78432 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.00 MUT (0.00 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

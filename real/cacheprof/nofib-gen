@@ -3,47 +3,31 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== cacheprof: time to compile Arch_x86 follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Arch_x86.hs -o Arch_x86.o
-<<ghc: 880148448 bytes, 238 GCs, 9270438/13937536 avg/max bytes residency (8 samples), 39M in use, 0.00 INIT (0.00 elapsed), 0.88 MUT (0.93 elapsed), 0.50 GC (0.50 elapsed) :ghc>>
+<<ghc: 880148536 bytes, 207 GCs, 9724538/16082144 avg/max bytes residency (8 samples), 41M in use, 0.00 INIT (0.00 elapsed), 1.11 MUT (1.19 elapsed), 0.66 GC (0.66 elapsed) :ghc>>
 ==nofib== cacheprof: size of Arch_x86.o follows...
    text	   data	    bss	    dec	    hex	filename
   61498	  35768	      0	  97266	  17bf2	Arch_x86.o
 ==nofib== cacheprof: time to compile Generics follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Generics.hs -o Generics.o
-<<ghc: 285186888 bytes, 67 GCs, 8259681/13042744 avg/max bytes residency (6 samples), 36M in use, 0.01 INIT (0.01 elapsed), 0.55 MUT (65589.78 elapsed), 0.54 GC (4.22 elapsed) :ghc>>
-make: *** [Generics.o] Error 1
-make: *** Deleting file `Generics.o'
-ss	    dec	    hex	filename
-  23588	   2024	      0	  25612	   640c	Generics.o
+<<ghc: 277465976 bytes, 64 GCs, 5872812/11037680 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.40 MUT (0.45 elapsed), 0.23 GC (0.23 elapsed) :ghc>>
+==nofib== cacheprof: size of Generics.o follows...
+   text	   data	    bss	    dec	    hex	filename
+  21636	   1976	      0	  23612	   5c3c	Generics.o
 ==nofib== cacheprof: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 2715635312 bytes, 396 GCs, 18914897/35440472 avg/max bytes residency (10 samples), 97M in use, 0.00 INIT (0.00 elapsed), 3.12 MUT (3.26 elapsed), 1.61 GC (1.61 elapsed) :ghc>>
+<<ghc: 2735919920 bytes, 422 GCs, 18942210/36243360 avg/max bytes residency (10 samples), 99M in use, 0.00 INIT (0.01 elapsed), 3.75 MUT (3.96 elapsed), 2.08 GC (2.08 elapsed) :ghc>>
 ==nofib== cacheprof: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
- 224953	  29064	      0	 254017	  3e041	Main.o
+ 220017	  31784	      0	 251801	  3d799	Main.o
 ==nofib== cacheprof: time to link cacheprof follows...
-<<ghc: 38437008 bytes, 14 GCs, 409376/648712 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.52 elapsed), 0.04 GC (0.04 elapsed) :ghc>>
+<<ghc: 38437096 bytes, 14 GCs, 409376/648712 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.77 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== cacheprof: size of cacheprof follows...
    text	   data	    bss	    dec	    hex	filename
-1233604	 122096	  48776	1404476	 156e3c	cacheprof
+1226836	 124816	  48776	1400428	 155e6c	cacheprof
 ==nofib== cacheprof: time to run cacheprof follows...
-timeout 40s ../../runstdtest/runstdtest  ./cacheprof -i  cacheprof.stdin -o1 cacheprof.stdout -o1 cacheprof.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cacheprof -i  cacheprof.stdin -o1 cacheprof.stdout -o1 cacheprof.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cacheprof -i  cacheprof.stdin -o1 cacheprof.stdout -o1 cacheprof.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./cacheprof -i  cacheprof.stdin -o1 cacheprof.stdout -o1 cacheprof.stdout  -ghc-timing     ;
+timeout 40s ../../runstdtest/runstdtest  ./cacheprof -i  cacheprof.stdin -o1 cacheprof.stdout -o1 cacheprof.stdout  -ghc-timing     ;
 
-real	0m0.548s
-user	0m0.511s
-sys	0m0.026s
-<<ghc: 479571584 bytes, 922 GCs (909 + 13), 0/0 avg/max bytes residency (0 samples), 74820616 bytes GC work, 29M in use, 0.00 INIT (0.00 elapsed), 0.35 MUT (0.35 elapsed), 0.19 GC (0.19 elapsed), 0.09 GC(0) (0.09 elapsed), 0.09 GC(1) (0.09 elapsed), 1 balance :ghc>>
-
-real	0m0.559s
-user	0m0.518s
-sys	0m0.039s
-<<ghc: 479571584 bytes, 922 GCs (909 + 13), 0/0 avg/max bytes residency (0 samples), 74828024 bytes GC work, 29M in use, 0.00 INIT (0.00 elapsed), 0.35 MUT (0.35 elapsed), 0.20 GC (0.20 elapsed), 0.09 GC(0) (0.09 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>
-
-real	0m0.541s
-user	0m0.511s
-sys	0m0.028s
-<<ghc: 479571584 bytes, 922 GCs (909 + 13), 0/0 avg/max bytes residency (0 samples), 74805328 bytes GC work, 29M in use, 0.00 INIT (0.00 elapsed), 0.35 MUT (0.35 elapsed), 0.19 GC (0.19 elapsed), 0.09 GC(0) (0.09 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>
-
-real	0m0.541s
-user	0m0.509s
-sys	0m0.030s
-<<ghc: 479571584 bytes, 922 GCs (909 + 13), 0/0 avg/max bytes residency (0 samples), 74998984 bytes GC work, 29M in use, 0.00 INIT (0.00 elapsed), 0.35 MUT (0.35 elapsed), 0.19 GC (0.19 elapsed), 0.09 GC(0) (0.09 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>
+real	0m0.688s
+user	0m0.642s
+sys	0m0.035s
+<<ghc: 468706032 bytes, 901 GCs (887 + 14), 0/0 avg/max bytes residency (0 samples), 62531272 bytes GC work, 22M in use, 0.00 INIT (0.00 elapsed), 0.47 MUT (0.47 elapsed), 0.20 GC (0.20 elapsed), 0.10 GC(0) (0.10 elapsed), 0.10 GC(1) (0.10 elapsed), 1 balance :ghc>>

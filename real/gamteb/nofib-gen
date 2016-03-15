@@ -3,106 +3,91 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== gamteb: time to compile Consts follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Consts.hs -o Consts.o
-<<ghc: 70157360 bytes, 24 GCs, 3915552/6754216 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.07 MUT (0.08 elapsed), 0.12 GC (0.12 elapsed) :ghc>>
+<<ghc: 70155128 bytes, 24 GCs, 3915552/6754216 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.07 MUT (0.13 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
 ==nofib== gamteb: size of Consts.o follows...
    text	   data	    bss	    dec	    hex	filename
       0	    544	      0	    544	    220	Consts.o
 ==nofib== gamteb: time to compile GamtebType follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c GamtebType.hs -o GamtebType.o
-<<ghc: 65084928 bytes, 21 GCs, 3934453/6734584 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.07 elapsed), 0.09 GC (0.09 elapsed) :ghc>>
+<<ghc: 65083888 bytes, 21 GCs, 3934453/6734584 avg/max bytes residency (3 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.07 MUT (0.12 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
 ==nofib== gamteb: size of GamtebType.o follows...
    text	   data	    bss	    dec	    hex	filename
     307	      8	      0	    315	    13b	GamtebType.o
 ==nofib== gamteb: time to compile InitTable follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c InitTable.hs -o InitTable.o
-<<ghc: 232044840 bytes, 62 GCs, 5645756/10619072 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.27 MUT (0.31 elapsed), 0.20 GC (0.20 elapsed) :ghc>>
+<<ghc: 232838200 bytes, 62 GCs, 5667228/10704992 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.30 MUT (0.34 elapsed), 0.21 GC (0.22 elapsed) :ghc>>
 ==nofib== gamteb: size of InitTable.o follows...
    text	   data	    bss	    dec	    hex	filename
    8823	   6264	      0	  15087	   3aef	InitTable.o
 ==nofib== gamteb: time to compile Utils follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Utils.hs -o Utils.o
-<<ghc: 184496264 bytes, 55 GCs, 5605804/10517136 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.23 elapsed), 0.21 GC (0.21 elapsed) :ghc>>
+<<ghc: 177750448 bytes, 53 GCs, 5580760/10415560 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.24 MUT (0.29 elapsed), 0.19 GC (0.19 elapsed) :ghc>>
 ==nofib== gamteb: size of Utils.o follows...
    text	   data	    bss	    dec	    hex	filename
-   6948	    336	      0	   7284	   1c74	Utils.o
+   5219	    344	      0	   5563	   15bb	Utils.o
 ==nofib== gamteb: time to compile Compton follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Compton.hs -o Compton.o
-<<ghc: 140263328 bytes, 42 GCs, 5603114/10722544 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.15 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+<<ghc: 154924576 bytes, 45 GCs, 5625466/10800912 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.19 MUT (0.21 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
 ==nofib== gamteb: size of Compton.o follows...
    text	   data	    bss	    dec	    hex	filename
-   4321	     88	      0	   4409	   1139	Compton.o
+   5145	    104	      0	   5249	   1481	Compton.o
 ==nofib== gamteb: time to compile Distance follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Distance.hs -o Distance.o
-<<ghc: 147461448 bytes, 44 GCs, 5620718/10849784 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.16 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+<<ghc: 133276536 bytes, 42 GCs, 5554892/10596608 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.20 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
 ==nofib== gamteb: size of Distance.o follows...
    text	   data	    bss	    dec	    hex	filename
-   5436	     80	      0	   5516	   158c	Distance.o
+   3084	     96	      0	   3180	    c6c	Distance.o
 ==nofib== gamteb: time to compile Output follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Output.hs -o Output.o
-<<ghc: 220349584 bytes, 113 GCs, 7296320/14646088 avg/max bytes residency (5 samples), 33M in use, 0.00 INIT (0.00 elapsed), 0.24 MUT (0.28 elapsed), 0.25 GC (0.25 elapsed) :ghc>>
+<<ghc: 228104224 bytes, 107 GCs, 7384750/15013880 avg/max bytes residency (5 samples), 34M in use, 0.00 INIT (0.00 elapsed), 0.33 MUT (0.42 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
 ==nofib== gamteb: size of Output.o follows...
    text	   data	    bss	    dec	    hex	filename
-  11245	   1336	      0	  12581	   3125	Output.o
+  12422	   1336	      0	  13758	   35be	Output.o
 ==nofib== gamteb: time to compile Pair follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Pair.hs -o Pair.o
-<<ghc: 104031288 bytes, 39 GCs, 5542118/10537552 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.12 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+<<ghc: 109329824 bytes, 39 GCs, 5552882/10575712 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.19 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
 ==nofib== gamteb: size of Pair.o follows...
    text	   data	    bss	    dec	    hex	filename
-   2561	    280	      0	   2841	    b19	Pair.o
+   3017	    216	      0	   3233	    ca1	Pair.o
 ==nofib== gamteb: time to compile PhotoElec follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c PhotoElec.hs -o PhotoElec.o
-<<ghc: 97632192 bytes, 37 GCs, 5526426/10460280 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.09 MUT (0.11 elapsed), 0.15 GC (0.15 elapsed) :ghc>>
+<<ghc: 100563528 bytes, 37 GCs, 5526656/10443624 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.17 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
 ==nofib== gamteb: size of PhotoElec.o follows...
    text	   data	    bss	    dec	    hex	filename
-   1643	     32	      0	   1675	    68b	PhotoElec.o
+   2297	     72	      0	   2369	    941	PhotoElec.o
 ==nofib== gamteb: time to compile RoulSplit follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c RoulSplit.hs -o RoulSplit.o
-<<ghc: 96661992 bytes, 37 GCs, 5494826/10381576 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.11 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+<<ghc: 103384424 bytes, 37 GCs, 5498032/10382584 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.16 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
 ==nofib== gamteb: size of RoulSplit.o follows...
    text	   data	    bss	    dec	    hex	filename
-   2047	    184	      0	   2231	    8b7	RoulSplit.o
+   3524	    248	      0	   3772	    ebc	RoulSplit.o
 ==nofib== gamteb: time to compile TransPort follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c TransPort.hs -o TransPort.o
-<<ghc: 212301088 bytes, 54 GCs, 5371976/9797056 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.23 MUT (0.26 elapsed), 0.20 GC (0.20 elapsed) :ghc>>
+<<ghc: 245670984 bytes, 76 GCs, 6999336/13290272 avg/max bytes residency (5 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.32 MUT (0.36 elapsed), 0.27 GC (0.27 elapsed) :ghc>>
 ==nofib== gamteb: size of TransPort.o follows...
    text	   data	    bss	    dec	    hex	filename
-  10212	    712	      0	  10924	   2aac	TransPort.o
+  15428	    640	      0	  16068	   3ec4	TransPort.o
 ==nofib== gamteb: time to compile GamtebMain follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c GamtebMain.hs -o GamtebMain.o
-<<ghc: 96333832 bytes, 35 GCs, 5351088/9885672 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.13 elapsed), 0.16 GC (0.16 elapsed) :ghc>>
+<<ghc: 101300144 bytes, 35 GCs, 5357570/9900360 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.17 elapsed), 0.17 GC (0.17 elapsed) :ghc>>
 ==nofib== gamteb: size of GamtebMain.o follows...
    text	   data	    bss	    dec	    hex	filename
-   1934	    136	      0	   2070	    816	GamtebMain.o
+   2198	    152	      0	   2350	    92e	GamtebMain.o
 ==nofib== gamteb: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 143122200 bytes, 51 GCs, 8524475/19694192 avg/max bytes residency (5 samples), 45M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.16 elapsed), 0.27 GC (0.27 elapsed) :ghc>>
+<<ghc: 143035368 bytes, 51 GCs, 8516753/19655920 avg/max bytes residency (5 samples), 43M in use, 0.00 INIT (0.00 elapsed), 0.17 MUT (0.21 elapsed), 0.29 GC (0.30 elapsed) :ghc>>
 ==nofib== gamteb: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-   1174	    248	      0	   1422	    58e	Main.o
+   1150	    248	      0	   1398	    576	Main.o
 ==nofib== gamteb: time to link gamteb follows...
-<<ghc: 38564152 bytes, 14 GCs, 411692/648608 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.53 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
+<<ghc: 38564240 bytes, 14 GCs, 411692/648608 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.71 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== gamteb: size of gamteb follows...
    text	   data	    bss	    dec	    hex	filename
-1006218	  63408	  48776	1118402	 1110c2	gamteb
+1012186	  63408	  48776	1124370	 112812	gamteb
 ==nofib== gamteb: time to run gamteb follows...
-timeout 40s ../../runstdtest/runstdtest  ./gamteb -i  gamteb.stdin -o1 gamteb.stdout -o1 gamteb.stdout1 -o1 gamteb.stdout -o1 gamteb.stdout1 -o2 gamteb.stderr -o2 gamteb.stderr -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./gamteb -i  gamteb.stdin -o1 gamteb.stdout -o1 gamteb.stdout1 -o1 gamteb.stdout -o1 gamteb.stdout1 -o2 gamteb.stderr -o2 gamteb.stderr -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./gamteb -i  gamteb.stdin -o1 gamteb.stdout -o1 gamteb.stdout1 -o1 gamteb.stdout -o1 gamteb.stdout1 -o2 gamteb.stderr -o2 gamteb.stderr -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./gamteb -i  gamteb.stdin -o1 gamteb.stdout -o1 gamteb.stdout1 -o1 gamteb.stdout -o1 gamteb.stdout1 -o2 gamteb.stderr -o2 gamteb.stderr -ghc-timing     ;
+timeout 40s ../../runstdtest/runstdtest  ./gamteb -i  gamteb.stdin -o1 gamteb.stdout -o1 gamteb.stdout1 -o1 gamteb.stdout -o1 gamteb.stdout1 -o2 gamteb.stderr -o2 gamteb.stderr -ghc-timing     ;
 
-real	0m0.053s
-user	0m0.030s
-sys	0m0.007s
-<<ghc: 44488152 bytes, 85 GCs (81 + 4), 0/0 avg/max bytes residency (0 samples), 4227992 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.02 MUT (0.03 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.039s
-user	0m0.032s
-sys	0m0.005s
-<<ghc: 44488152 bytes, 85 GCs (81 + 4), 0/0 avg/max bytes residency (0 samples), 4227992 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.02 MUT (0.02 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.039s
-user	0m0.032s
-sys	0m0.005s
-<<ghc: 44488152 bytes, 85 GCs (81 + 4), 0/0 avg/max bytes residency (0 samples), 4227992 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.02 MUT (0.02 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.038s
-user	0m0.028s
-sys	0m0.009s
-<<ghc: 44488152 bytes, 85 GCs (81 + 4), 0/0 avg/max bytes residency (0 samples), 4228200 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.02 MUT (0.02 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m0.061s
+user	0m0.047s
+sys	0m0.004s
+<<ghc: 42309184 bytes, 81 GCs (78 + 3), 0/0 avg/max bytes residency (0 samples), 2637872 bytes GC work, 3M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.04 elapsed), 0.01 GC (0.01 elapsed), 0.01 GC(0) (0.01 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

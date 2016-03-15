@@ -6,34 +6,19 @@ RUNTEST_OPTS = -ghc-timing +RTS -K3m -H24m -RTS
 
 Main.hs:59:1: Warning:
     Local definition of ‘join’ clashes with a future Prelude name - this will become an error in GHC 7.10, under the Applicative-Monad Proposal.
-<<ghc: 274389096 bytes, 73 GCs, 8258566/17495952 avg/max bytes residency (5 samples), 40M in use, 0.00 INIT (0.00 elapsed), 0.30 MUT (0.40 elapsed), 0.31 GC (0.31 elapsed) :ghc>>
+<<ghc: 269425192 bytes, 73 GCs, 8245841/17440832 avg/max bytes residency (5 samples), 40M in use, 0.00 INIT (0.00 elapsed), 0.42 MUT (0.59 elapsed), 0.40 GC (0.40 elapsed) :ghc>>
 ==nofib== treejoin: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-  13535	    736	      0	  14271	   37bf	Main.o
+  13583	    712	      0	  14295	   37d7	Main.o
 ==nofib== treejoin: time to link treejoin follows...
-<<ghc: 38411088 bytes, 14 GCs, 409732/648656 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.46 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
+<<ghc: 38411312 bytes, 14 GCs, 409732/648656 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.05 MUT (0.58 elapsed), 0.06 GC (0.08 elapsed) :ghc>>
 ==nofib== treejoin: size of treejoin follows...
    text	   data	    bss	    dec	    hex	filename
- 844660	  44112	  48776	 937548	  e4e4c	treejoin
+ 844708	  44080	  48776	 937564	  e4e5c	treejoin
 ==nofib== treejoin: time to run treejoin follows...
-timeout 40s ../../runstdtest/runstdtest  ./treejoin  -o1 treejoin.stdout -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;   timeout 40s ../../runstdtest/runstdtest  ./treejoin  -o1 treejoin.stdout -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;   timeout 40s ../../runstdtest/runstdtest  ./treejoin  -o1 treejoin.stdout -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;   timeout 40s ../../runstdtest/runstdtest  ./treejoin  -o1 treejoin.stdout -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;
+timeout 40s ../../runstdtest/runstdtest  ./treejoin  -o1 treejoin.stdout -o1 treejoin.stdout  -ghc-timing  +RTS -K3m -H24m -RTS    27000.1 27000.2;
 
-real	0m0.163s
-user	0m0.129s
-sys	0m0.022s
-<<ghc: 114233848 bytes, 8 GCs (5 + 3), 0/0 avg/max bytes residency (0 samples), 19162616 bytes GC work, 27M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.10 elapsed), 0.05 GC (0.05 elapsed), 0.03 GC(0) (0.03 elapsed), 0.02 GC(1) (0.02 elapsed), 1 balance :ghc>>
-
-real	0m0.154s
-user	0m0.128s
-sys	0m0.024s
-<<ghc: 114233848 bytes, 8 GCs (5 + 3), 0/0 avg/max bytes residency (0 samples), 19162616 bytes GC work, 27M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.10 elapsed), 0.05 GC (0.05 elapsed), 0.03 GC(0) (0.03 elapsed), 0.02 GC(1) (0.02 elapsed), 1 balance :ghc>>
-
-real	0m0.202s
-user	0m0.178s
-sys	0m0.023s
-<<ghc: 114233848 bytes, 8 GCs (5 + 3), 0/0 avg/max bytes residency (0 samples), 19162616 bytes GC work, 27M in use, 0.00 INIT (0.00 elapsed), 0.13 MUT (0.13 elapsed), 0.06 GC (0.06 elapsed), 0.04 GC(0) (0.04 elapsed), 0.03 GC(1) (0.03 elapsed), 1 balance :ghc>>
-
-real	0m0.154s
-user	0m0.126s
-sys	0m0.027s
-<<ghc: 114233848 bytes, 8 GCs (5 + 3), 0/0 avg/max bytes residency (0 samples), 19162616 bytes GC work, 27M in use, 0.00 INIT (0.00 elapsed), 0.10 MUT (0.10 elapsed), 0.05 GC (0.05 elapsed), 0.03 GC(0) (0.03 elapsed), 0.02 GC(1) (0.02 elapsed), 1 balance :ghc>>
+real	0m0.299s
+user	0m0.252s
+sys	0m0.039s
+<<ghc: 96107880 bytes, 16 GCs (11 + 5), 0/0 avg/max bytes residency (0 samples), 47766088 bytes GC work, 29M in use, 0.00 INIT (0.00 elapsed), 0.11 MUT (0.12 elapsed), 0.17 GC (0.17 elapsed), 0.11 GC(0) (0.11 elapsed), 0.06 GC(1) (0.06 elapsed), 1 balance :ghc>>

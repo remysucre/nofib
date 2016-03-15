@@ -77,7 +77,7 @@ get_rh2 ::
               [Int] ->
                 (My_Array Int Frac_type, My_Array Int Frac_type) ->
                   (My_Array Int Frac_type)
-get_rh2 el_det_fac (!asb_table) v_steer p_fixed (u1, u2)
+get_rh2 el_det_fac asb_table v_steer p_fixed (u1, u2)
   = s_def_listArray p_bnds (0 :: Frac_type)
       [if (i `elem` p_fixed) then 0 else
          (sum
@@ -123,7 +123,7 @@ get_rh3 el_det_fac asb_table p_steer (!del_p)
                         (el_det_fac !^ e) `bindTo`
                           (\ el_d_f ->
                              (fst el_d_f) `bindTo`
-                               (\ det ->
+                               (\ (!det) ->
                                   (snd el_d_f) `bindTo`
                                     (\ fac ->
                                        (det * (list_match_prod p_val (l_m (fst fac))),
@@ -131,4 +131,4 @@ get_rh3 el_det_fac asb_table p_steer (!del_p)
               | (e, id) <- tab_elem]
              | tab_elem <- s_elems asb_table]
         n_bnds = s_bounds asb_table
-        bindTo (!x) k = k x
+        bindTo x (!k) = k x

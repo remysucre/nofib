@@ -6,7 +6,7 @@ import InitTable
 import Data.Array
  
 outGamteb :: Int -> [Stat] -> [Result] -> [Char]
-outGamteb (!nPart) stats results
+outGamteb (!nPart) stats (!results)
   = "Number of particles " ++
       show nPart ++
         "\n" ++
@@ -14,7 +14,7 @@ outGamteb (!nPart) stats results
             outResultsRaw results ++ outStats stats ++ outResults results
 outResults (!results)
   = "\nScatter, Escape, Transit tables:\n" ++ show resArray
-  where resArray
+  where (!resArray)
           = accumArray (+) 0 ((1, 1), (numExit, numLev)) results
 outStats stats = showStats titles statList
   where (!statArray) = accumArray (+) 0 (1, numStat) stats
@@ -27,12 +27,12 @@ outStats stats = showStats titles statList
              "Number of noncollisions: ", "Number of roulettes kills: ",
              "Weight of roulette kills: ", "Weight of roulette gains: "]
         showStats (![]) [] = ""
-        showStats ((!t) : (!ts)) ((!((!s) : (!ss))))
+        showStats (!((!t) : (!ts))) (!((!s) : ss))
           = t ++ show s ++ "\n" ++ showStats ts ss
  
 outResultsRaw :: [Result] -> [Char]
-outResultsRaw [] = []
-outResultsRaw ((((!i), (!t)), (!w)) : (!rs))
+outResultsRaw (![]) = []
+outResultsRaw (!((!(((!((!i), t)), w) : (!rs)))))
   = "Result: index " ++
       show i ++
         "  type " ++

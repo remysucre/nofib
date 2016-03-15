@@ -44,7 +44,7 @@ instance Normal Float where
  
 instance Normal Double where
         normal 0 = True
-        normal (!_) = True
+        normal _ = True
 pack_obj obj = Norm_pack (normal obj) obj
 normalize_obj (Norm_pack b _) = b
 retrieve_obj (Norm_pack _ obj) = obj

@@ -3,34 +3,19 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing +RTS -H20m -RTS
 ==nofib== paraffins: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 508652096 bytes, 133 GCs, 12040828/28494928 avg/max bytes residency (6 samples), 61M in use, 0.00 INIT (0.00 elapsed), 0.60 MUT (0.66 elapsed), 0.53 GC (0.53 elapsed) :ghc>>
+<<ghc: 440520776 bytes, 131 GCs, 13067521/28437528 avg/max bytes residency (5 samples), 60M in use, 0.00 INIT (0.00 elapsed), 0.63 MUT (0.73 elapsed), 0.56 GC (0.56 elapsed) :ghc>>
 ==nofib== paraffins: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
-  39603	    608	      0	  40211	   9d13	Main.o
+  28203	    560	      0	  28763	   705b	Main.o
 ==nofib== paraffins: time to link paraffins follows...
-<<ghc: 38411424 bytes, 14 GCs, 409768/648696 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.54 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38411512 bytes, 14 GCs, 409768/648696 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.63 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== paraffins: size of paraffins follows...
    text	   data	    bss	    dec	    hex	filename
- 895764	  48368	  48776	 992908	  f268c	paraffins
+ 884372	  48304	  48776	 981452	  ef9cc	paraffins
 ==nofib== paraffins: time to run paraffins follows...
-timeout 40s ../../runstdtest/runstdtest  ./paraffins  -o1 paraffins.stdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    17;   timeout 40s ../../runstdtest/runstdtest  ./paraffins  -o1 paraffins.stdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    17;   timeout 40s ../../runstdtest/runstdtest  ./paraffins  -o1 paraffins.stdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    17;   timeout 40s ../../runstdtest/runstdtest  ./paraffins  -o1 paraffins.stdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    17;
+timeout 40s ../../runstdtest/runstdtest  ./paraffins  -o1 paraffins.stdout -o1 paraffins.stdout  -ghc-timing  +RTS -H20m -RTS    17;
 
-real	0m0.165s
-user	0m0.124s
-sys	0m0.032s
-<<ghc: 55623912 bytes, 56 GCs (53 + 3), 0/0 avg/max bytes residency (0 samples), 59161912 bytes GC work, 40M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.03 elapsed), 0.12 GC (0.12 elapsed), 0.05 GC(0) (0.06 elapsed), 0.06 GC(1) (0.06 elapsed), 1 balance :ghc>>
-
-real	0m0.154s
-user	0m0.124s
-sys	0m0.029s
-<<ghc: 55623912 bytes, 56 GCs (53 + 3), 0/0 avg/max bytes residency (0 samples), 59161912 bytes GC work, 40M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.03 elapsed), 0.12 GC (0.12 elapsed), 0.05 GC(0) (0.05 elapsed), 0.06 GC(1) (0.06 elapsed), 1 balance :ghc>>
-
-real	0m0.153s
-user	0m0.127s
-sys	0m0.026s
-<<ghc: 55623912 bytes, 56 GCs (53 + 3), 0/0 avg/max bytes residency (0 samples), 59161912 bytes GC work, 40M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.03 elapsed), 0.12 GC (0.12 elapsed), 0.05 GC(0) (0.05 elapsed), 0.06 GC(1) (0.06 elapsed), 1 balance :ghc>>
-
-real	0m0.180s
-user	0m0.138s
-sys	0m0.040s
-<<ghc: 55623912 bytes, 56 GCs (53 + 3), 0/0 avg/max bytes residency (0 samples), 59161912 bytes GC work, 40M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.04 elapsed), 0.13 GC (0.13 elapsed), 0.06 GC(0) (0.06 elapsed), 0.07 GC(1) (0.07 elapsed), 1 balance :ghc>>
+real	0m0.207s
+user	0m0.161s
+sys	0m0.037s
+<<ghc: 55551416 bytes, 56 GCs (53 + 3), 0/0 avg/max bytes residency (0 samples), 59215664 bytes GC work, 40M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.04 elapsed), 0.15 GC (0.15 elapsed), 0.07 GC(0) (0.07 elapsed), 0.08 GC(1) (0.08 elapsed), 1 balance :ghc>>

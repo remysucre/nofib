@@ -3,40 +3,25 @@ HC_OPTS = -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi 
 RUNTEST_OPTS = -ghc-timing
 ==nofib== rsa: time to compile Rsa follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Rsa.hs -o Rsa.o
-<<ghc: 174294792 bytes, 52 GCs, 5765874/10650672 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.18 MUT (0.20 elapsed), 0.18 GC (0.18 elapsed) :ghc>>
+<<ghc: 173506936 bytes, 52 GCs, 5754094/10604936 avg/max bytes residency (4 samples), 32M in use, 0.00 INIT (0.00 elapsed), 0.21 MUT (0.24 elapsed), 0.20 GC (0.20 elapsed) :ghc>>
 ==nofib== rsa: size of Rsa.o follows...
    text	   data	    bss	    dec	    hex	filename
-   8401	    720	      0	   9121	   23a1	Rsa.o
+   8265	    720	      0	   8985	   2319	Rsa.o
 ==nofib== rsa: time to compile Main follows...
 /h/ywang30/.stack/programs/x86_64-linux/ghc-gmp4-7.8.4/bin/ghc -XBangPatterns -O2 -funbox-strict-fields -Rghc-timing -H32m -hisuf hi -rtsopts -c Main.hs -o Main.o
-<<ghc: 134525392 bytes, 48 GCs, 8637712/19783280 avg/max bytes residency (5 samples), 42M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.15 elapsed), 0.27 GC (0.27 elapsed) :ghc>>
+<<ghc: 134516872 bytes, 48 GCs, 8632931/19770656 avg/max bytes residency (5 samples), 42M in use, 0.00 INIT (0.00 elapsed), 0.14 MUT (0.17 elapsed), 0.30 GC (0.30 elapsed) :ghc>>
 ==nofib== rsa: size of Main.o follows...
    text	   data	    bss	    dec	    hex	filename
     645	   1904	      0	   2549	    9f5	Main.o
 ==nofib== rsa: time to link rsa follows...
-<<ghc: 38415832 bytes, 14 GCs, 409280/648600 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.54 elapsed), 0.05 GC (0.05 elapsed) :ghc>>
+<<ghc: 38415920 bytes, 14 GCs, 409280/648600 avg/max bytes residency (2 samples), 30M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.59 elapsed), 0.06 GC (0.06 elapsed) :ghc>>
 ==nofib== rsa: size of rsa follows...
    text	   data	    bss	    dec	    hex	filename
- 909092	  53232	  48776	1011100	  f6d9c	rsa
+ 908964	  53232	  48776	1010972	  f6d1c	rsa
 ==nofib== rsa: time to run rsa follows...
-timeout 40s ../../runstdtest/runstdtest  ./rsa -i  rsa.stdin -o1 rsa.stdout -o1 rsa.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./rsa -i  rsa.stdin -o1 rsa.stdout -o1 rsa.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./rsa -i  rsa.stdin -o1 rsa.stdout -o1 rsa.stdout  -ghc-timing     ;   timeout 40s ../../runstdtest/runstdtest  ./rsa -i  rsa.stdin -o1 rsa.stdout -o1 rsa.stdout  -ghc-timing     ;
+timeout 40s ../../runstdtest/runstdtest  ./rsa -i  rsa.stdin -o1 rsa.stdout -o1 rsa.stdout  -ghc-timing     ;
 
-real	0m0.044s
-user	0m0.033s
-sys	0m0.003s
-<<ghc: 12648232 bytes, 25 GCs (23 + 2), 0/0 avg/max bytes residency (0 samples), 308640 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.03 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.036s
-user	0m0.030s
-sys	0m0.004s
-<<ghc: 12648232 bytes, 25 GCs (23 + 2), 0/0 avg/max bytes residency (0 samples), 308640 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.03 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.036s
-user	0m0.030s
-sys	0m0.006s
-<<ghc: 12648232 bytes, 25 GCs (23 + 2), 0/0 avg/max bytes residency (0 samples), 308640 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.03 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
-
-real	0m0.036s
-user	0m0.030s
-sys	0m0.005s
-<<ghc: 12648232 bytes, 25 GCs (23 + 2), 0/0 avg/max bytes residency (0 samples), 308640 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.03 MUT (0.03 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>
+real	0m0.053s
+user	0m0.037s
+sys	0m0.007s
+<<ghc: 12647248 bytes, 25 GCs (23 + 2), 0/0 avg/max bytes residency (0 samples), 308600 bytes GC work, 1M in use, 0.00 INIT (0.00 elapsed), 0.04 MUT (0.04 elapsed), 0.00 GC (0.00 elapsed), 0.00 GC(0) (0.00 elapsed), 0.00 GC(1) (0.00 elapsed), 1 balance :ghc>>

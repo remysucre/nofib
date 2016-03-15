@@ -13,7 +13,7 @@ edgeT (!v) w = Edg v (w - v)
  
 s, h, t :: Edge -> Vector
 s (Edg v w) = v
-h (!(Edg (!v) w)) = w
+h (Edg (!v) w) = w
 t (Edg v w) = v + w
  
 type Input = [[Vector]]
@@ -29,7 +29,7 @@ makeObject :: Input -> Object
 makeObject = zipWith borders [1 ..]
   where  
         borders :: Int -> [Vector] -> Plate
-        borders (!n) ps = Plt n (zipWith edgeT ps (ror 1 ps))
+        borders (!n) (!ps) = Plt n (zipWith edgeT ps (ror 1 ps))
  
 ror :: Int -> [a] -> [a]
 ror (!n) xs = reverse (take n rvxs) ++ reverse (drop n rvxs)

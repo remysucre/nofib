@@ -8,13 +8,17 @@ Interval.hs:20:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!(<=)) = ivLeEq
 
-Interval.hs:21:9:
+Interval.hs:22:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
-      (!(>)) = ivGreat
+      (!(>=)) = ivGrEq
 
 Interval.hs:23:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!min) = ivMin
+
+Interval.hs:24:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!max) = ivMax
 
 Interval.hs:28:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
@@ -24,32 +28,52 @@ Interval.hs:29:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!negate) = ivNegate
 
-Interval.hs:40:9:
+Interval.hs:31:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
-      (!pi) = Pt pi
+      (!signum) = ivSignum
 
 Interval.hs:41:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!exp) = ivExp
 
+Interval.hs:42:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!log) = ivLog
+
 Interval.hs:43:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!sqrt) = ivSqrt
+
+Interval.hs:46:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!cos) = ivCos
 
 Interval.hs:48:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!asin) = ivAsin
 
-Interval.hs:49:9:
+Interval.hs:50:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
-      (!acos) = ivAcos
+      (!atan) = ivAtan
 
 Interval.hs:52:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!cosh) = ivCosh
 
+Interval.hs:53:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!tanh) = ivTanh
+
 Interval.hs:54:9:
     Pattern bindings (except simple variables) not allowed in instance declarations
       (!asinh) = ivAsinh
-<<ghc: 76786680 bytes, 30 GCs, 5271424/9570200 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.06 MUT (0.07 elapsed), 0.11 GC (0.11 elapsed) :ghc>>
+
+Interval.hs:55:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!acosh) = ivAcosh
+
+Interval.hs:56:9:
+    Pattern bindings (except simple variables) not allowed in instance declarations
+      (!atanh) = ivAtanh
+<<ghc: 76344432 bytes, 32 GCs, 5293126/9691592 avg/max bytes residency (4 samples), 31M in use, 0.00 INIT (0.00 elapsed), 0.08 MUT (0.09 elapsed), 0.14 GC (0.14 elapsed) :ghc>>
 make: *** [Interval.o] Error 1

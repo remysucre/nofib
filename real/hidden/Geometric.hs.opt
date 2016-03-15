@@ -26,7 +26,7 @@ instance Geom Vector where
         vertical v = v ||| vec [0, 0, 1]
         rot = rotate
         proj (!v) = vec [x (v), y (v), 0]
-        scale factor base (!v) = factor `mulv` (v - base)
+        scale factor base v = factor `mulv` (v - base)
  
 instance Geom Edge where
         l ||| k = h (l) ||| h (k)
@@ -38,5 +38,5 @@ instance Geom Edge where
 instance Geom Plate where
         plt1 ||| plt2 = n (plt1) ||| n (plt2)
         vertical (!plt) = z (n (plt)) == 0
-        rot (!v) (!(Plt n (!ls))) = Plt n [v `rot` l | l <- ls]
-        proj (Plt n ls) = Plt n [proj l | l <- ls]
+        rot (!v) (!((!(Plt n (!ls))))) = Plt n [v `rot` l | l <- ls]
+        proj ((!(Plt n ls))) = Plt n [proj l | l <- ls]

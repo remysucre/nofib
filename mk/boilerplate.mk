@@ -38,7 +38,7 @@ NoFibSubDirs = imaginary spectral real shootout
 NoFibHcOpts = -XBangPatterns -O2 -funbox-strict-fields
 
 # Number of times to run each program
-NoFibRuns = 4
+NoFibRuns = 1
 
 # -----------------------------------------------------------------
 # Everything after this point

@@ -44,7 +44,7 @@ jcb_method f_step el_det_fac asb_table v_steer
                       else
                       (find_diff all_bry (fst old_x) b1,
                        find_diff all_bry (snd old_x) b2)
-                bindTo x (!k) = k x
+                bindTo x k = k x
                 find_diff fixed x b
                   = s_def_listArray n_bnds (0 :: Frac_type)
                       [if fixed !^ i then 0 else

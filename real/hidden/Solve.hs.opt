@@ -10,7 +10,7 @@ solve v1 v2 (!w)
         [(z (w * v2) / determinant, z (v1 * w) / determinant)]
  
 alt :: Plate -> Vector -> Number
-alt ((!(Plt _ (l1 : (!(l2 : _)))))) p
+alt (Plt _ (l1 : (!(l2 : _)))) p
   = z (sl1 + lambda `mulv` hl1 + mu `mulv` hl2)
   where sl1 = s (l1)
         hl1 = h (l1)

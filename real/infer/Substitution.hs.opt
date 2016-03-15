@@ -14,8 +14,8 @@ rep :: Sub -> FM TVarId MonoType
 rep (!(MkSub f)) = f
  
 applySub :: Sub -> MonoType -> MonoType
-applySub s (!(TVar (!x))) = lookupSub s x
-applySub (!s) (TCon (!k) ts) = TCon k (map (applySub s) ts)
+applySub s (TVar (!x)) = lookupSub s x
+applySub s ((!(TCon k ts))) = TCon k (map (applySub s) ts)
  
 lookupSub :: Sub -> TVarId -> MonoType
 lookupSub s (!x) = lookupElseFM (TVar x) (rep s) x
@@ -30,7 +30,7 @@ makeSub :: [(TVarId, MonoType)] -> Sub
 makeSub xts = MkSub (makeFM xts)
  
 extendSub :: Sub -> TVarId -> MonoType -> Sub
-extendSub (!s) x t = s `thenSub` unitSub x (applySub s t)
+extendSub s (!x) t = s `thenSub` unitSub x (applySub s t)
  
 thenSub :: Sub -> Sub -> Sub
 thenSub r s = MkSub (mapFM (applySub s) (rep r) `thenFM` rep s)
@@ -41,14 +41,14 @@ unifySub = unify
  
 unify :: MonoType -> MonoType -> Sub -> Maybe Sub
 unify ((!(TVar x))) u s = unifyTVar x u s
-unify t (TVar y) (!s) = unifyTVar y t s
-unify ((!(TCon j (!ts)))) (TCon k us) s
+unify t (TVar (!y)) s = unifyTVar y t s
+unify (TCon j (!ts)) (TCon k us) s
   = (j == k) `guardM` unifies ts us s
  
 unifies :: [MonoType] -> [MonoType] -> Sub -> Maybe Sub
 unifies (![]) (![]) s = returnM s
-unifies (t : ts) ((!(u : us))) (!s)
-  = unify t u s `thenM` (\ (!s') -> unifies ts us s')
+unifies (t : ts) (u : us) (!s)
+  = unify t u s `thenM` (\ s' -> unifies ts us s')
  
 unifyTVar :: TVarId -> MonoType -> Sub -> Maybe Sub
 unifyTVar x (!t) s

@@ -10,65 +10,66 @@ main
  
 trim :: String -> String
 trim = foldr cons "" . dropWhile (`elem` punct)
-  where cons x xs
+  where cons (!x) (!xs)
           | x `elem` punct && null xs = []
           | otherwise = x : xs
-        punct = [' ', '.', '!', '?', ',']
+        (!punct) = [' ', '.', '!', '?', ',']
  
 session :: State -> Words -> [Words] -> String
-session rs prev [] = []
-session rs prev (l : ls) = response ++ "\n\n" ++ session rs' l ls
-  where (response, rs')
+session rs (!prev) [] = []
+session rs prev (!((!((!l) : ls))))
+  = response ++ "\n\n" ++ session rs' l ls
+  where (!(response, (!rs')))
           | prev == l = repeated rs
           | otherwise = answer rs l
  
 answer :: State -> Words -> (String, State)
 answer st l = (response, newKeyTab kt st)
-  where (response, kt) = ans (keyTabOf st)
+  where (!((!response), (!kt))) = ans (keyTabOf st)
         cons e (r, es) = (r, e : es)
         ans ((!(e : es)))
           | null rs = e `cons` ans es
           | otherwise = (makeResponse a (head rs), (key, as) : es)
           where rs = replies key l
-                (key, (a : as)) = e
+                (!(key, (!((!(a : as)))))) = e
  
 replies :: Words -> Words -> [String]
-replies key l
+replies key (!l)
   = (map (conjug l . drop (length key)) .
        filter (prefix key . map ucase) . tails)
       l
  
 prefix :: Eq a => [a] -> [a] -> Bool
-prefix [] xs = True
-prefix (x : xs) (![]) = False
+prefix (![]) (!xs) = True
+prefix (x : xs) [] = False
 prefix (x : xs) (y : ys) = x == y && (xs `prefix` ys)
  
 tails :: [a] -> [[a]]
 tails [] = []
-tails xs = xs : tails (tail xs)
+tails (!xs) = xs : tails (tail xs)
  
 ucase :: String -> String
 ucase = map toUpper
  
 conjug :: Words -> Words -> String
-conjug d = unwords . trailingI . map conj . maybe d
-  where maybe d xs = if null xs then d else xs
-        conj w = head ([m | (!(w', (!m))) <- conjugates, uw == w'] ++ [w])
-          where uw = ucase w
-        trailingI = foldr cons []
-          where cons x (!xs)
+conjug (!d) = unwords . trailingI . map conj . maybe d
+  where maybe d (!xs) = if null xs then d else xs
+        conj w = head ([m | (w', m) <- conjugates, uw == w'] ++ [w])
+          where (!uw) = ucase w
+        (!trailingI) = foldr cons []
+          where cons x xs
                   | x == "I" && null xs = ["me"]
                   | otherwise = x : xs
  
 conjugates :: [(Word, Word)]
 conjugates
   = prepare
-      (oneways ++ concat [[(x, y), (y, x)] | (x, y) <- bothways])
+      (oneways ++ concat [[(x, y), (y, x)] | (!((!x), y)) <- bothways])
   where oneways = [("me", "you")]
-        bothways
+        (!bothways)
           = [("are", "am"), ("we're", "was"), ("you", "I"), ("your", "my"),
              ("I've", "you've"), ("I'm", "you're")]
-        (!prepare) = map (\ (!(w, r)) -> (ucase w, r))
+        prepare = map (\ (w, (!r)) -> (ucase w, r))
  
 type Word = String
  
@@ -83,23 +84,22 @@ type State = (KeyTable, Replies)
 type Key = Words
  
 repeated :: State -> (String, State)
-repeated (kt, (r : rp)) = (r, (kt, rp))
+repeated (!(kt, (!((!(r : rp)))))) = (r, (kt, rp))
  
 newKeyTab :: KeyTable -> State -> State
-newKeyTab kt' (kt, rp) = (kt', rp)
+newKeyTab (!kt') ((!kt), (!rp)) = (kt', rp)
  
 keyTabOf :: State -> KeyTable
-keyTabOf (kt, rp) = kt
+keyTabOf (!((!kt), (!rp))) = kt
  
 makeResponse :: String -> String -> String
-makeResponse ('?' : cs) (!us) = cs ++ " " ++ us ++ "?"
-makeResponse ('.' : cs) (!us) = cs ++ " " ++ us ++ "."
+makeResponse ('?' : (!cs)) us = cs ++ " " ++ us ++ "?"
+makeResponse ('.' : (!cs)) (!us) = cs ++ " " ++ us ++ "."
 makeResponse cs us = cs
  
 initial :: State
 initial
-  = ([(words k, cycle rs) | ((!k), rs) <- respMsgs],
-     cycle repeatMsgs)
+  = ([(words k, cycle rs) | (k, rs) <- respMsgs], cycle repeatMsgs)
 repeatMsgs
   = ["Why did you repeat yourself?",
      "Do you expect a different answer by repeating yourself?",
@@ -128,7 +128,7 @@ respMsgs
           = ["?What makes you think I am",
              "?Does it please you to believe I am",
              "?Perhaps you would like to be", "?Do you sometimes wish you were"]
-        iDont
+        (!iDont)
           = ["?Don't you really", "?Why don't you",
              "?Do you wish to be able to", "Does that trouble you?"]
         iFeel
@@ -155,7 +155,7 @@ respMsgs
         yes
           = ["You seem quite positive.", "Are you Sure?", "I see.",
              "I understand."]
-        no
+        (!no)
           = ["Are you saying no just to be negative?",
              "You are being a bit negative.", "Why not?", "Are you sure?",
              "Why no?"]
@@ -166,7 +166,7 @@ respMsgs
              "What do you think machines have to do with your problems?",
              "Don't you think computers can help people?",
              "What is it about machines that worries you?"]
-        iWant
+        (!iWant)
           = ["?Why do you want", "?What would it mean to you if you got",
              "?Suppose you got", "?What if you never got",
              ".I sometimes also want"]
@@ -178,7 +178,7 @@ respMsgs
              "Have you asked anyone else?",
              "Have you asked such questions before?",
              "What else comes to mind when you ask that?"]
-        (!name)
+        name
           = ["Names don't interest me.",
              "I don't care about names --please go on."]
         because
